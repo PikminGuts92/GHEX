@@ -151,7 +151,7 @@ public class GClass80
 			if (num <= 7.0)
 			{
 				b = 0;
-				IL_113:
+
 				double_5 = num2;
 				double_6 = num3;
 				for (int k = 0; k < 28; k++)
@@ -170,8 +170,24 @@ public class GClass80
 				return;
 			}
 		}
-		goto IL_113;
-	}
+
+        double_5 = num2;
+        double_6 = num3;
+        for (int k = 0; k < 28; k++)
+        {
+            float_0[(int)(checked((IntPtr)(unchecked(long_0 + (long)k))))] = (float)array[k + (int)(b * 28)];
+        }
+        int num6_0 = (int)num;
+        int num7_0 = 16384;
+        byte b2_0 = 0;
+        while (b2_0 < 12 && (num7_0 & num6_0 + (num7_0 >> 3)) == 0)
+        {
+            b2_0 += 1;
+            num7_0 >>= 1;
+        }
+        byte_0[(int)(checked((IntPtr)long_1))] = (byte)((int)b << 4 | (int)b2_0);
+        return;
+    }
 
 	static void smethod_6(ref byte[] byte_0, long long_0, ref float[] float_0, long long_1, ref double double_5, ref double double_6)
 	{

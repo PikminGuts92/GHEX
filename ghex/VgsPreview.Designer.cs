@@ -530,7 +530,7 @@ public class VgsPreview : UserControl
 				else
 				{
 					flag = false;
-					IL_CC:
+
 					if (flag)
 					{
 						this.btnStop_Click(sender, e);
@@ -539,8 +539,14 @@ public class VgsPreview : UserControl
 					return;
 				}
 			}
-			goto IL_CC;
-		}
+
+            if (flag)
+            {
+                this.btnStop_Click(sender, e);
+                return;
+            }
+            return;
+        }
 	}
 
 	void tbSpeed_ValueChanged(object sender, EventArgs e)

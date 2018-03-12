@@ -654,7 +654,7 @@ class Class97
 				{
 					Class97.smethod_4(num8, num6, num7, int_5, float_7, float_7, float_7, float_6, float_6, float_8, num4 - 1);
 					num2 = 0;
-					IL_111:
+
 					if (num2 == 1)
 					{
 						return;
@@ -668,8 +668,17 @@ class Class97
 			}
 			num3 = num7;
 		}
-		goto IL_111;
-	}
+
+        if (num2 == 1)
+        {
+            return;
+        }
+        for (int j = 0; j < int_3; j++)
+        {
+            float_6[j] = float_7[j];
+        }
+        return;
+    }
 
 	static void smethod_6(int int_3, int int_4, float[] float_6, float[] float_7, float[] float_8, int int_5)
 	{

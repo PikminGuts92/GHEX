@@ -110,15 +110,16 @@ public partial class BadArkDialog : Form
 				}
 				else
 				{
-					IL_C9:
 					this.string_0 = this.folderBrowserDialog_0.SelectedPath;
 					Class61.smethod_0().method_8().method_2("RecoverArchive", this.folderBrowserDialog_0.SelectedPath);
 				}
 				return;
 			}
 		}
-		goto IL_C9;
-	}
+
+        this.string_0 = this.folderBrowserDialog_0.SelectedPath;
+        Class61.smethod_0().method_8().method_2("RecoverArchive", this.folderBrowserDialog_0.SelectedPath);
+    }
 
 	void btnOk_Click(object sender, EventArgs e)
 	{
