@@ -7,7 +7,8 @@
     <ProjectGuid>{A29E44B7-9936-4C9A-B9C7-6F38637D5AED}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ghex</RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>ghex</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -206,7 +207,9 @@
     <Compile Include="GClass101.cs" />
     <Compile Include="GClass102.cs" />
     <Compile Include="GClass103.cs" />
-    <Compile Include="GClass104.cs" />
+    <Compile Include="GClass104.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GClass106.cs" />
     <Compile Include="GClass107.cs" />
     <Compile Include="GClass108.cs" />
@@ -238,8 +241,12 @@
     <Compile Include="GClass131.cs" />
     <Compile Include="GClass132.cs" />
     <Compile Include="GClass133.cs" />
-    <Compile Include="GClass134.cs" />
-    <Compile Include="GClass135.cs" />
+    <Compile Include="GClass134.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass135.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GClass136.cs" />
     <Compile Include="GClass137.cs" />
     <Compile Include="GClass138.cs" />
@@ -262,24 +269,48 @@
     <Compile Include="GClass153.cs" />
     <Compile Include="GClass154.cs" />
     <Compile Include="GClass16.cs" />
-    <Compile Include="GClass17.cs" />
-    <Compile Include="GClass18.cs" />
-    <Compile Include="GClass19.cs" />
+    <Compile Include="GClass17.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass18.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass19.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GClass2.cs" />
-    <Compile Include="GClass20.cs" />
-    <Compile Include="GClass21.cs" />
-    <Compile Include="GClass22.cs" />
-    <Compile Include="GClass23.cs" />
-    <Compile Include="GClass24.cs" />
-    <Compile Include="GClass25.cs" />
-    <Compile Include="GClass26.cs" />
-    <Compile Include="GClass27.cs" />
+    <Compile Include="GClass20.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass21.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass22.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass23.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass24.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass25.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass26.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GClass27.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GClass28.cs" />
     <Compile Include="GClass29.cs" />
     <Compile Include="GClass3.cs" />
     <Compile Include="GClass30.cs" />
     <Compile Include="GClass31.cs" />
-    <Compile Include="GClass32.cs" />
+    <Compile Include="GClass32.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GClass33.cs" />
     <Compile Include="GClass34.cs" />
     <Compile Include="GClass35.cs" />
@@ -324,7 +355,9 @@
     <Compile Include="GClass72.cs" />
     <Compile Include="GClass74.cs" />
     <Compile Include="GClass76.cs" />
-    <Compile Include="GClass77.cs" />
+    <Compile Include="GClass77.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GClass78.cs" />
     <Compile Include="GClass79.cs" />
     <Compile Include="GClass8.cs" />
@@ -347,11 +380,19 @@
     <Compile Include="GClass95.cs" />
     <Compile Include="GClass96.cs" />
     <Compile Include="GClass97.cs" />
-    <Compile Include="GClass98.cs" />
+    <Compile Include="GClass98.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GClass99.cs" />
-    <Compile Include="GControl0.cs" />
-    <Compile Include="GControl1.cs" />
-    <Compile Include="GControl2.cs" />
+    <Compile Include="GControl0.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GControl1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GControl2.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GDelegate0.cs" />
     <Compile Include="GDelegate1.cs" />
     <Compile Include="GDelegate10.cs" />
