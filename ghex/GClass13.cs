@@ -32,9 +32,9 @@ public abstract class GClass13 : GClass1, GInterface8
 		return result;
 	}
 
-	public virtual Rectangle imethod_0()
+	public override Rectangle imethod_0()
 	{
-		Rectangle result = new Rectangle(base.GInterface1.imethod_1().Location, base.GInterface1.imethod_1().Size);
+		Rectangle result = new Rectangle(base.imethod_1().Location, base.imethod_1().Size);
 		result.Inflate(-2, -2);
 		return result;
 	}

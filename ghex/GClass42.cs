@@ -7,7 +7,7 @@ public class GClass42 : GClass38
 	{
 	}
 
-	public virtual int Compare(object object_0, object object_1)
+	public override int Compare(object object_0, object object_1)
 	{
 		GClass97 gclass = (GClass97)object_0;
 		GClass97 gclass2 = (GClass97)object_1;
