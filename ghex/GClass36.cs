@@ -203,7 +203,7 @@ public class GClass36 : GClass34
 					if (gclass2 is GClass116)
 					{
 						gclass.list_0.Insert(0, gclass2 as GClass116);
-						IL_12B:
+
 						for (int k = num2; k >= 0; k--)
 						{
 							GClass114 gclass3 = base.method_1()[k];
@@ -234,8 +234,27 @@ public class GClass36 : GClass34
 					}
 				}
 			}
-			goto IL_12B;
-		}
+
+            for (int k = num2; k >= 0; k--)
+            {
+                GClass114 gclass3 = base.method_1()[k];
+                if (gclass3.method_2() <= gclass.int_1 && gclass3 is GClass117)
+                {
+                    if ((gclass.int_1 - gclass3.method_2()) % ((1 << (int)(gclass3 as GClass117).method_16()) * base.method_0().method_9()) == 0)
+                    {
+                        gclass.genum66_0 |= GEnum66.const_0;
+                    }
+
+                    this.list_1.Add(gclass);
+                    i += base.method_0().method_9();
+                    goto IL_1BA;
+                }
+            }
+
+            this.list_1.Add(gclass);
+            i += base.method_0().method_9();
+            goto IL_1BA;
+        }
 	}
 
 	protected override void vmethod_0(GClass114 gclass114_0, GEnum5 genum5_0)

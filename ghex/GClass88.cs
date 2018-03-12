@@ -154,7 +154,7 @@ public class GClass88 : GClass87
 								if (gclass4.vmethod_2() == GEnum63.const_3 && ((GClass143)gclass4).byte_0 == gclass2.byte_0)
 								{
 									gclass3 = (GClass143)gclass4;
-									IL_11C:
+
 									bool bool_ = true;
 									int num4 = 0;
 									if (gclass3 != null)
@@ -183,8 +183,34 @@ public class GClass88 : GClass87
 									goto IL_32D;
 								}
 							}
-							goto IL_11C;
-						}
+
+                            bool bool_0 = true;
+                            int num4_0 = 0;
+                            if (gclass3 != null)
+                            {
+                                num4_0 = gclass3.int_0 - gclass2.int_0;
+                                if (gclass3.bool_0 && (!gclass3.bool_0 || gclass3.byte_1 != 0))
+                                {
+                                    if (num4_0 < num)
+                                    {
+                                        bool_0 = false;
+                                    }
+                                    if (num4_0 < base.method_0().method_1() / 3)
+                                    {
+                                        num4_0 = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    list.Add(gclass3);
+                                }
+                            }
+                            gclass2.bool_1 = bool_0;
+                            gclass2.vmethod_1(num4_0);
+                            this.list_1[num2].Add(gclass2);
+                            list.Add(gclass2);
+                            goto IL_32D;
+                        }
 					}
 					else if (num3 == 7)
 					{
