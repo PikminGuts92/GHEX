@@ -90,6 +90,7 @@ public class MidPreview : UserControl
 			else
 			{
 				this.cbDifficulty.SelectedIndex = j;
+                break;
 			}
 		}
 
