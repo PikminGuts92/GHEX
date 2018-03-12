@@ -13,7 +13,7 @@ public abstract class GClass2 : GClass1, GInterface2
 
 	public override void Dispose()
 	{
-		base.System.IDisposable.Dispose();
+		base.Dispose();
 		if (this.solidBrush_2 != null)
 		{
 			this.solidBrush_2.Dispose();
@@ -31,9 +31,9 @@ public abstract class GClass2 : GClass1, GInterface2
 		gclass97_0.method_46(object_0);
 	}
 
-	public virtual Rectangle imethod_0()
+	public override Rectangle imethod_0()
 	{
-		Rectangle result = new Rectangle(base.GInterface1.imethod_1().Location, base.GInterface1.imethod_1().Size);
+		Rectangle result = new Rectangle(base.imethod_1().Location, base.imethod_1().Size);
 		result.Width -= GClass1.int_0;
 		result.Height -= GClass1.int_0;
 		result.X += this.method_14().method_0() + 1;
@@ -229,7 +229,7 @@ public abstract class GClass2 : GClass1, GInterface2
 			this.method_12("");
 			base.imethod_4(null);
 		}
-		if (base.GInterface1.imethod_3() == null)
+		if (base.imethod_3() == null)
 		{
 			base.imethod_4(Control.DefaultFont);
 		}
@@ -243,15 +243,15 @@ public abstract class GClass2 : GClass1, GInterface2
 		{
 			if (!geventArgs8_0.method_2().Focused && !geventArgs8_0.method_2().method_175())
 			{
-				base.GInterface1.imethod_8(geventArgs8_0.method_2().method_231());
-				base.GInterface1.imethod_6(geventArgs8_0.method_2().method_234());
+				base.imethod_8(geventArgs8_0.method_2().method_231());
+				base.imethod_6(geventArgs8_0.method_2().method_234());
 			}
 			else
 			{
-				base.GInterface1.imethod_6(geventArgs8_0.method_2().method_228());
-				base.GInterface1.imethod_8(geventArgs8_0.method_2().method_225());
+				base.imethod_6(geventArgs8_0.method_2().method_228());
+				base.imethod_8(geventArgs8_0.method_2().method_225());
 			}
-			if (base.GInterface1.imethod_7().A != 0)
+			if (base.imethod_7().A != 0)
 			{
 				geventArgs8_0.Graphics.FillRectangle(base.method_2(), geventArgs8_0.method_18());
 				return;
@@ -259,10 +259,10 @@ public abstract class GClass2 : GClass1, GInterface2
 		}
 		else
 		{
-			base.GInterface1.imethod_6((geventArgs8_0.method_0() != null) ? geventArgs8_0.method_0().method_18() : Color.Black);
+			base.imethod_6((geventArgs8_0.method_0() != null) ? geventArgs8_0.method_0().method_18() : Color.Black);
 			if (geventArgs8_0.method_12() && (!geventArgs8_0.method_12() || geventArgs8_0.method_2().method_172().A >= 255))
 			{
-				base.GInterface1.imethod_8(geventArgs8_0.method_2().method_172());
+				base.imethod_8(geventArgs8_0.method_2().method_172());
 				geventArgs8_0.Graphics.FillRectangle(base.method_2(), geventArgs8_0.method_18());
 			}
 			else
@@ -273,10 +273,10 @@ public abstract class GClass2 : GClass1, GInterface2
 					{
 						if (geventArgs8_0.method_4() % 2 == 1 && geventArgs8_0.method_2().method_209().A != 0)
 						{
-							base.GInterface1.imethod_8(geventArgs8_0.method_2().method_209());
+							base.imethod_8(geventArgs8_0.method_2().method_209());
 							geventArgs8_0.Graphics.FillRectangle(base.method_2(), geventArgs8_0.method_18());
 						}
-						base.GInterface1.imethod_8(geventArgs8_0.method_0().method_15());
+						base.imethod_8(geventArgs8_0.method_0().method_15());
 						if (geventArgs8_0.method_0().method_15().A != 0)
 						{
 							geventArgs8_0.Graphics.FillRectangle(base.method_2(), geventArgs8_0.method_18());
@@ -284,7 +284,7 @@ public abstract class GClass2 : GClass1, GInterface2
 					}
 					else
 					{
-						base.GInterface1.imethod_8(geventArgs8_0.method_0().method_15());
+						base.imethod_8(geventArgs8_0.method_0().method_15());
 						if (geventArgs8_0.method_0().method_15().A != 0)
 						{
 							geventArgs8_0.Graphics.FillRectangle(base.method_2(), geventArgs8_0.method_18());
@@ -293,12 +293,12 @@ public abstract class GClass2 : GClass1, GInterface2
 				}
 				else if (geventArgs8_0.method_4() % 2 == 1 && geventArgs8_0.method_2().method_209().A != 0)
 				{
-					base.GInterface1.imethod_8(geventArgs8_0.method_2().method_209());
+					base.imethod_8(geventArgs8_0.method_2().method_209());
 					geventArgs8_0.Graphics.FillRectangle(base.method_2(), geventArgs8_0.method_18());
 				}
 				if (geventArgs8_0.method_12())
 				{
-					base.GInterface1.imethod_8(geventArgs8_0.method_2().method_172());
+					base.imethod_8(geventArgs8_0.method_2().method_172());
 					if (geventArgs8_0.method_2().method_172().A != 0)
 					{
 						geventArgs8_0.Graphics.FillRectangle(base.method_2(), geventArgs8_0.method_18());

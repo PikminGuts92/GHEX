@@ -11,7 +11,7 @@ class Class0 : GInterface0
 		this.gchandle_0 = GCHandle.Alloc(this.byte_0, GCHandleType.Pinned);
 	}
 
-	virtual ~Class0()
+	~Class0()
 	{
 		this.gchandle_0.Free();
 	}

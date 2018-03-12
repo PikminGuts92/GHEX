@@ -61,12 +61,12 @@ public class GClass16 : GClass13
 		{
 			if (geventArgs7_0.method_0().method_31())
 			{
-				geventArgs7_0.Graphics.DrawString(geventArgs7_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_3(), r, base.method_4());
+				geventArgs7_0.Graphics.DrawString(geventArgs7_0.method_0().method_5(), base.imethod_3(), base.method_3(), r, base.method_4());
 				return;
 			}
 			using (SolidBrush solidBrush = new SolidBrush(SystemPens.GrayText.Color))
 			{
-				geventArgs7_0.Graphics.DrawString(geventArgs7_0.method_0().method_5(), base.GInterface1.imethod_3(), solidBrush, r, base.method_4());
+				geventArgs7_0.Graphics.DrawString(geventArgs7_0.method_0().method_5(), base.imethod_3(), solidBrush, r, base.method_4());
 			}
 		}
 	}

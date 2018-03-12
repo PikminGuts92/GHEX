@@ -31,9 +31,9 @@ class Class12 : IDisposable
 		Class11.smethod_0(Class47.waveOutPrepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0)));
 	}
 
-	virtual ~Class12()
+	~Class12()
 	{
-		this.System.IDisposable.Dispose();
+		this.Dispose();
 	}
 
 	public void Dispose()

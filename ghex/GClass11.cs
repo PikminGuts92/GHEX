@@ -15,11 +15,11 @@ public class GClass11 : GClass2
 		{
 			if (geventArgs8_0.method_16())
 			{
-				geventArgs8_0.Graphics.DrawString(text, base.GInterface1.imethod_3(), base.method_3(), this.imethod_0(), base.method_4());
+				geventArgs8_0.Graphics.DrawString(text, base.imethod_3(), base.method_3(), this.imethod_0(), base.method_4());
 			}
 			else
 			{
-				geventArgs8_0.Graphics.DrawString(text, base.GInterface1.imethod_3(), base.method_13(), this.imethod_0(), base.method_4());
+				geventArgs8_0.Graphics.DrawString(text, base.imethod_3(), base.method_13(), this.imethod_0(), base.method_4());
 			}
 		}
 		if (geventArgs8_0.method_10() && geventArgs8_0.method_16())

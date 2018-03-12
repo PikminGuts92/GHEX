@@ -12,7 +12,7 @@ public class GClass15 : GClass13
 	protected override void vmethod_0(GEventArgs7 geventArgs7_0)
 	{
 		base.vmethod_0(geventArgs7_0);
-		geventArgs7_0.Graphics.FillRectangle(base.method_2(), base.GInterface1.imethod_1());
+		geventArgs7_0.Graphics.FillRectangle(base.method_2(), base.imethod_1());
 	}
 
 	protected override void vmethod_1(GEventArgs7 geventArgs7_0)
@@ -51,12 +51,12 @@ public class GClass15 : GClass13
 		{
 			if (geventArgs7_0.method_0().method_31())
 			{
-				geventArgs7_0.Graphics.DrawString(geventArgs7_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_3(), r, base.method_4());
+				geventArgs7_0.Graphics.DrawString(geventArgs7_0.method_0().method_5(), base.imethod_3(), base.method_3(), r, base.method_4());
 				return;
 			}
 			using (SolidBrush solidBrush = new SolidBrush(SystemPens.GrayText.Color))
 			{
-				geventArgs7_0.Graphics.DrawString(geventArgs7_0.method_0().method_5(), base.GInterface1.imethod_3(), solidBrush, r, base.method_4());
+				geventArgs7_0.Graphics.DrawString(geventArgs7_0.method_0().method_5(), base.imethod_3(), solidBrush, r, base.method_4());
 			}
 		}
 	}

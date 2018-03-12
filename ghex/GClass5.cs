@@ -21,11 +21,11 @@ public class GClass5 : GClass3
 		{
 			if (geventArgs8_0.method_16())
 			{
-				geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_3(), r, base.method_4());
+				geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.imethod_3(), base.method_3(), r, base.method_4());
 			}
 			else
 			{
-				geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_13(), r, base.method_4());
+				geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.imethod_3(), base.method_13(), r, base.method_4());
 			}
 		}
 		if (geventArgs8_0.method_10() && geventArgs8_0.method_16())

@@ -8,7 +8,7 @@ public class GClass125 : PropertyDescriptor
 		this.gclass153_0 = gclass153_1;
 	}
 
-	public virtual Type ComponentType
+	public override Type ComponentType
 	{
 		get
 		{
@@ -16,7 +16,7 @@ public class GClass125 : PropertyDescriptor
 		}
 	}
 
-	public virtual bool IsReadOnly
+	public override bool IsReadOnly
 	{
 		get
 		{
@@ -24,7 +24,7 @@ public class GClass125 : PropertyDescriptor
 		}
 	}
 
-	public virtual Type PropertyType
+	public override Type PropertyType
 	{
 		get
 		{
@@ -32,26 +32,26 @@ public class GClass125 : PropertyDescriptor
 		}
 	}
 
-	public virtual bool CanResetValue(object component)
+	public override bool CanResetValue(object component)
 	{
 		return true;
 	}
 
-	public virtual object GetValue(object component)
+	public override object GetValue(object component)
 	{
 		return this.gclass153_0.method_8();
 	}
 
-	public virtual void ResetValue(object component)
+	public override void ResetValue(object component)
 	{
 	}
 
-	public virtual void SetValue(object component, object value)
+	public override void SetValue(object component, object value)
 	{
 		this.gclass153_0.method_9(value);
 	}
 
-	public virtual bool ShouldSerializeValue(object component)
+	public override bool ShouldSerializeValue(object component)
 	{
 		return false;
 	}

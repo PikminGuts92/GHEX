@@ -11,7 +11,7 @@ public class GClass62 : IDisposable
 
 	public GClass62(int int_0, GClass94 gclass94_0, int int_1, int int_2, GDelegate1 gdelegate1_1)
 	{
-		this.byte_0 = ((gclass94_0.short_3 == 8) ? 128 : 0);
+		this.byte_0 = (byte)((gclass94_0.short_3 == 8) ? 128 : 0);
 		this.gdelegate1_0 = gdelegate1_1;
 		Class11.smethod_0(Class47.waveOutOpen(out this.intptr_0, int_0, gclass94_0, this.delegate1_0, 0, 196608));
 		this.method_1(int_1, int_2);
@@ -19,9 +19,9 @@ public class GClass62 : IDisposable
 		this.thread_0.Start();
 	}
 
-	virtual ~GClass62()
+	~GClass62()
 	{
-		this.System.IDisposable.Dispose();
+		this.Dispose();
 	}
 
 	public void Dispose()
@@ -110,7 +110,7 @@ public class GClass62 : IDisposable
 			do
 			{
 				Class12 class3 = class2.class12_0;
-				class2.System.IDisposable.Dispose();
+				class2.Dispose();
 				class2 = class3;
 			}
 			while (class2 != @class);

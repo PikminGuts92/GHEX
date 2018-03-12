@@ -147,7 +147,7 @@ public class GClass12 : GClass2
 
 	public override void imethod_20(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_20(geventArgs10_0);
+		base.imethod_20(geventArgs10_0);
 		if ((this.method_23() || this.method_20(geventArgs10_0.method_1(), geventArgs10_0.method_5())) && geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass92 gclass = this.method_19(geventArgs10_0.method_0());
@@ -178,7 +178,7 @@ public class GClass12 : GClass2
 
 	public override void imethod_21(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_21(geventArgs10_0);
+		base.imethod_21(geventArgs10_0);
 		if ((this.method_23() || this.method_20(geventArgs10_0.method_1(), geventArgs10_0.method_5())) && geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass92 gclass = this.method_19(geventArgs10_0.method_0());
@@ -212,7 +212,7 @@ public class GClass12 : GClass2
 
 	public override void imethod_22(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_22(geventArgs10_0);
+		base.imethod_22(geventArgs10_0);
 		if ((this.method_23() || this.method_20(geventArgs10_0.method_1(), geventArgs10_0.method_5())) && geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass92 gclass = this.method_19(geventArgs10_0.method_0());
@@ -320,7 +320,7 @@ public class GClass12 : GClass2
 			this.method_28(100m);
 			this.method_30(0m);
 		}
-		base.GInterface2.imethod_13(geventArgs8_0);
+		base.imethod_13(geventArgs8_0);
 	}
 
 	protected override void vmethod_0(GEventArgs8 geventArgs8_0)
@@ -368,11 +368,11 @@ public class GClass12 : GClass2
 			}
 			if (geventArgs8_0.method_16())
 			{
-				geventArgs8_0.Graphics.DrawString(d.ToString(base.method_11()), base.GInterface1.imethod_3(), base.method_3(), r, base.method_4());
+				geventArgs8_0.Graphics.DrawString(d.ToString(base.method_11()), base.imethod_3(), base.method_3(), r, base.method_4());
 			}
 			else
 			{
-				geventArgs8_0.Graphics.DrawString(d.ToString(base.method_11()), base.GInterface1.imethod_3(), base.method_13(), r, base.method_4());
+				geventArgs8_0.Graphics.DrawString(d.ToString(base.method_11()), base.imethod_3(), base.method_13(), r, base.method_4());
 			}
 		}
 		if (geventArgs8_0.method_10() && geventArgs8_0.method_16())
