@@ -56,7 +56,7 @@ public class GClass87 : GClass86
 							{
 								gclass3 = (GClass143)gclass4;
 								list.Add(gclass4);
-								IL_92:
+
 								if (gclass3 != null)
 								{
 									base.method_3().Add(new GClass144(gclass2.int_0, gclass3.int_0 - gclass2.int_0, (int)gclass2.byte_0));
@@ -70,8 +70,14 @@ public class GClass87 : GClass86
 						IL_14A:
 						throw new Exception("No end found for trigger: " + gclass2.byte_0);
 						Block_6:
-						goto IL_92;
-					}
+                        if (gclass3 != null)
+                        {
+                            base.method_3().Add(new GClass144(gclass2.int_0, gclass3.int_0 - gclass2.int_0, (int)gclass2.byte_0));
+                            list.Add(gclass);
+                            goto IL_104;
+                        }
+                        goto IL_14A;
+                    }
 				}
 			}
 			else

@@ -402,7 +402,7 @@ class Class112
 							{
 								array[j] = array[j - 1] << 1;
 							}
-							IL_92:
+
 							int num3 = num + 1;
 							while (num3 < 33 && (ulong)((uint)array[num3] >> 1) == (ulong)((long)num2))
 							{
@@ -414,8 +414,16 @@ class Class112
 						}
 						array[j]++;
 					}
-					goto IL_92;
-				}
+
+                    int num3_0 = num + 1;
+                    while (num3_0 < 33 && (ulong)((uint)array[num3_0] >> 1) == (ulong)((long)num2))
+                    {
+                        num2 = array[num3_0];
+                        array[num3_0] = array[num3_0 - 1] << 1;
+                        num3_0++;
+                    }
+                    goto IL_C3;
+                }
 				return null;
 			}
 			IL_C3:;

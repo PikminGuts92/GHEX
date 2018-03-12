@@ -471,7 +471,7 @@ public class GClass47 : GClass46
 						{
 							this.class52_0.SelectedItem = color_3;
 							tabPage = this.webTabPage;
-							IL_7B:
+
 							if (tabPage == this.customTabPage)
 							{
 								for (int j = 0; j < this.method_8().Length; j++)
@@ -489,8 +489,23 @@ public class GClass47 : GClass46
 							goto IL_E8;
 						}
 					}
-					goto IL_7B;
-				}
+
+                    if (tabPage == this.customTabPage)
+                    {
+                        for (int j = 0; j < this.method_8().Length; j++)
+                        {
+                            if (this.method_8()[j].Equals(color_3))
+                            {
+                                this.class52_1.SelectedItem = color_3;
+                                tabPage = this.systemTabPage;
+                                break;
+                            }
+                        }
+                    }
+                    this.tabControl.SelectedTab = tabPage;
+                    this.control0_0.method_14(color_3);
+                    goto IL_E8;
+                }
 				IL_E8:
 				this.method_9(EventArgs.Empty);
 			}
@@ -785,13 +800,15 @@ public class GClass47 : GClass46
 								rect.Y += 8;
 							}
 							base.Invalidate(Rectangle.Inflate(rect, 5, 5));
-							IL_8E:
+
 							i++;
 							goto IL_92;
 						}
 					}
-					goto IL_8E;
-				}
+
+                    i++;
+                    goto IL_92;
+                }
 			}
 
 			void method_10()
@@ -1684,7 +1701,7 @@ public class GClass47 : GClass46
 						else
 						{
 							flag = true;
-							IL_54:
+
 							if (flag)
 							{
 								MessageBox.Show("Hex must be a hex value between 0x000000 and 0xFFFFFF");
@@ -1701,8 +1718,22 @@ public class GClass47 : GClass46
 							return;
 						}
 					}
-					goto IL_54;
-				}
+
+                    if (flag)
+                    {
+                        MessageBox.Show("Hex must be a hex value between 0x000000 and 0xFFFFFF");
+                        this.method_3(this.color_0);
+                        return;
+                    }
+                    this.color_0 = this.method_4(text);
+                    this.class50_0 = GClass47.ColorPicker.Control0.Class49.smethod_7(this.color_0);
+                    this.class51_0 = GClass47.ColorPicker.Control0.Class49.smethod_8(this.color_0);
+                    this.m_ctrl_BigBox.method_5(this.class50_0);
+                    this.m_ctrl_ThinBox.method_5(this.class50_0);
+                    this.m_lbl_Primary_Color.BackColor = this.color_0;
+                    this.method_5();
+                    return;
+                }
 
 				void m_lbl_Primary_Color_Click(object sender, EventArgs e)
 				{

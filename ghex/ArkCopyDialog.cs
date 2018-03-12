@@ -124,7 +124,7 @@ public partial class ArkCopyDialog : Form
 						MessageBox.Show("Failed to remove old files!\nPlease to it manually or select a\ndifferent folder.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 						return;
 					}
-					IL_118:
+
 					string directoryRoot = Directory.GetDirectoryRoot(this.folderBrowserDialog_0.SelectedPath);
 					DriveInfo[] drives = DriveInfo.GetDrives();
 					int k = 0;
@@ -142,7 +142,7 @@ public partial class ArkCopyDialog : Form
 								MessageBox.Show("There is not enough free space\nin the target location.\n" + Class109.smethod_3(this.long_0) + " is needed.", "Copy", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 								return;
 							}
-							IL_196:
+
 							Class61.smethod_0().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
 							this.lblTarget.Text = this.folderBrowserDialog_0.SelectedPath;
 							this.string_1 = this.lblTarget.Text;
@@ -154,13 +154,61 @@ public partial class ArkCopyDialog : Form
 							return;
 						}
 					}
-					goto IL_196;
-				}
+
+                    Class61.smethod_0().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
+                    this.lblTarget.Text = this.folderBrowserDialog_0.SelectedPath;
+                    this.string_1 = this.lblTarget.Text;
+                    if (this.cbDrives.Enabled)
+                    {
+                        this.btnOk.Enabled = true;
+                        return;
+                    }
+                    return;
+                }
 				return;
 			}
 		}
-		goto IL_118;
-	}
+
+        string directoryRoot_0 = Directory.GetDirectoryRoot(this.folderBrowserDialog_0.SelectedPath);
+        DriveInfo[] drives_0 = DriveInfo.GetDrives();
+        int k_0 = 0;
+        while (k_0 < drives_0.Length)
+        {
+            DriveInfo driveInfo = drives_0[k_0];
+            if (!(driveInfo.RootDirectory.Name == directoryRoot_0))
+            {
+                k_0++;
+            }
+            else
+            {
+                if (driveInfo.AvailableFreeSpace < this.long_0)
+                {
+                    MessageBox.Show("There is not enough free space\nin the target location.\n" + Class109.smethod_3(this.long_0) + " is needed.", "Copy", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
+
+                Class61.smethod_0().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
+                this.lblTarget.Text = this.folderBrowserDialog_0.SelectedPath;
+                this.string_1 = this.lblTarget.Text;
+                if (this.cbDrives.Enabled)
+                {
+                    this.btnOk.Enabled = true;
+                    return;
+                }
+                return;
+            }
+        }
+
+        Class61.smethod_0().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
+        this.lblTarget.Text = this.folderBrowserDialog_0.SelectedPath;
+        this.string_1 = this.lblTarget.Text;
+        if (this.cbDrives.Enabled)
+        {
+            this.btnOk.Enabled = true;
+            return;
+        }
+        return;
+    }
 
 	public long method_5()
 	{

@@ -117,7 +117,7 @@ public class GStream0 : Stream, IDisposable
 				{
 					this.int_0 = array[i];
 					this.gclass94_0 = gclass;
-					IL_DF:
+
 					if (this.int_0 < 0)
 					{
 						throw new ArgumentException("No PCM output found");
@@ -129,8 +129,13 @@ public class GStream0 : Stream, IDisposable
 					i++;
 				}
 			}
-			goto IL_DF;
-		}
+
+            if (this.int_0 < 0)
+            {
+                throw new ArgumentException("No PCM output found");
+            }
+            goto IL_116;
+        }
 		this.int_0 = array[0];
 		this.gclass94_0 = GStream0.smethod_2(this.ginterface27_0, this.uint_2, (uint)array[0]);
 		IL_116:

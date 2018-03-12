@@ -90,40 +90,38 @@ public class MidPreview : UserControl
 			else
 			{
 				this.cbDifficulty.SelectedIndex = j;
-				IL_45F:
-				GClass87 gclass3 = this.gclass120_0.method_4("EVENTS") as GClass87;
-				if (gclass3 != null)
-				{
-					this.cbSection.Items.Clear();
-					foreach (GClass139 gclass4 in gclass3.method_3())
-					{
-						GClass140 gclass5 = gclass4 as GClass140;
-						if (gclass5 != null && gclass5.string_0.StartsWith("section "))
-						{
-							MidPreview.GClass63 gclass6 = new MidPreview.GClass63();
-							gclass6.gclass140_0 = gclass5;
-							gclass6.string_0 = gclass5.string_0.Substring(8);
-							this.cbSection.Items.Add(gclass6);
-						}
-					}
-					if (this.cbSection.Items.Count > 0)
-					{
-						this.cbSection.SelectedIndex = 0;
-						this.cbSection.Enabled = true;
-					}
-				}
-				this.bool_0 = false;
-				this.method_18();
-				this.method_16();
-				if (this.cbTracks.Items.Count == 0)
-				{
-					throw new FileLoadException("Not a valid Guitar Hero MIDI file");
-				}
-				return;
 			}
 		}
-		goto IL_45F;
-	}
+
+        GClass87 gclass3 = this.gclass120_0.method_4("EVENTS") as GClass87;
+        if (gclass3 != null)
+        {
+            this.cbSection.Items.Clear();
+            foreach (GClass139 gclass4 in gclass3.method_3())
+            {
+                GClass140 gclass5 = gclass4 as GClass140;
+                if (gclass5 != null && gclass5.string_0.StartsWith("section "))
+                {
+                    MidPreview.GClass63 gclass6 = new MidPreview.GClass63();
+                    gclass6.gclass140_0 = gclass5;
+                    gclass6.string_0 = gclass5.string_0.Substring(8);
+                    this.cbSection.Items.Add(gclass6);
+                }
+            }
+            if (this.cbSection.Items.Count > 0)
+            {
+                this.cbSection.SelectedIndex = 0;
+                this.cbSection.Enabled = true;
+            }
+        }
+        this.bool_0 = false;
+        this.method_18();
+        this.method_16();
+        if (this.cbTracks.Items.Count == 0)
+        {
+            throw new FileLoadException("Not a valid Guitar Hero MIDI file");
+        }
+    }
 
 	public static int smethod_0(GClass120 gclass120_1, ComboBox comboBox_0, string string_0)
 	{

@@ -372,11 +372,13 @@ public partial class MainWindow : Form
 					list.Add(new MainWindow.Class67(gclass5, ex.Message));
 					goto IL_53F;
 				}
-				string text2;
+
+                IL_4C9:
+                string text2;
 				ProgressDialog.GClass73 obj4;
-				try
+                
+                try
 				{
-					IL_4C9:
 					gclass73_0.int_1 = (int)(num * 100L / num2);
 					gclass73_0.string_2 = string.Concat(new object[]
 					{
@@ -1275,14 +1277,17 @@ public partial class MainWindow : Form
 								MessageBox.Show("There is not enough free space\nin the target location.\n" + Class109.smethod_3(class3.long_0) + " is needed.", "Extract", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 								return;
 							}
-							IL_47D:
+
 							ProgressDialog progressDialog2 = new ProgressDialog(new ProgressDialog.GDelegate6(class3.method_1));
 							progressDialog2.ShowDialog();
 							return;
 						}
 					}
-					goto IL_47D;
-				}
+
+                    ProgressDialog progressDialog2_0 = new ProgressDialog(new ProgressDialog.GDelegate6(class3.method_1));
+                    progressDialog2_0.ShowDialog();
+                    return;
+                }
 				return;
 			}
 			MainWindow.Class79 class4 = new MainWindow.Class79();

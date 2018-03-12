@@ -4347,7 +4347,7 @@ public class GControl2 : Control, ISupportInitialize
 				if (num >= base.ClientRectangle.Width)
 				{
 					flag = false;
-					IL_1B2:
+
 					if (flag)
 					{
 						this.gclass13_0.imethod_2(new Rectangle(num, this.method_156(), base.ClientRectangle.Width - num + 2, this.method_192()));
@@ -4368,8 +4368,25 @@ public class GControl2 : Control, ISupportInitialize
 				}
 			}
 		}
-		goto IL_1B2;
-	}
+
+        if (flag)
+        {
+            this.gclass13_0.imethod_2(new Rectangle(num, this.method_156(), base.ClientRectangle.Width - num + 2, this.method_192()));
+            geventArgs.Graphics.SetClip(Rectangle.Intersect(paintEventArgs_0.ClipRectangle, this.gclass13_0.imethod_1()));
+            geventArgs.method_1(null);
+            geventArgs.method_5(-1);
+            geventArgs.method_3(this);
+            geventArgs.method_7(this.method_190());
+            geventArgs.method_9(this.gclass13_0.imethod_1());
+            this.vmethod_33(geventArgs);
+            if (!geventArgs.method_10())
+            {
+                this.gclass13_0.imethod_13(geventArgs);
+            }
+            this.vmethod_34(geventArgs);
+        }
+        return;
+    }
 
 	protected virtual void vmethod_33(GEventArgs7 geventArgs7_0)
 	{

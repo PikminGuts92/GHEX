@@ -502,7 +502,7 @@ public partial class VgsImportDialog : Form
 								if (num2 == num)
 								{
 									flag = true;
-									IL_219:
+
 									lock (gclass73_0)
 									{
 										gclass73_0.int_0 = (int)((1L + num2) * 100L / num);
@@ -510,8 +510,13 @@ public partial class VgsImportDialog : Form
 									goto IL_24E;
 								}
 							}
-							goto IL_219;
-						}
+
+                            lock (gclass73_0)
+                            {
+                                gclass73_0.int_0 = (int)((1L + num2) * 100L / num);
+                            }
+                            goto IL_24E;
+                        }
 					}
 					gclass = null;
 				}
