@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{A29E44B7-9936-4C9A-B9C7-6F38637D5AED}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ghex</RootNamespace>
+    <AssemblyName>ghex</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>ghex.ico</ApplicationIcon>
+    <StartupObject>Class29</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Management" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArkCopyDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArkCopyDialog.Designer.cs">
+      <DependentUpon>ArkCopyDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArkRelinkDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArkRelinkDialog.Designer.cs">
+      <DependentUpon>ArkRelinkDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArkShrinkDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArkShrinkDialog.Designer.cs">
+      <DependentUpon>ArkShrinkDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BadArkDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BadArkDialog.Designer.cs">
+      <DependentUpon>BadArkDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BatchExportChooseTracksDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchExportChooseTracksDialog.Designer.cs">
+      <DependentUpon>BatchExportChooseTracksDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BatchExportMidiDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchExportMidiDialog.Designer.cs">
+      <DependentUpon>BatchExportMidiDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BatchExportNewNameDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchExportNewNameDialog.Designer.cs">
+      <DependentUpon>BatchExportNewNameDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BitmapPreview.Designer.cs">
+      <DependentUpon>BitmapPreview.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BugReportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BugReportDialog.Designer.cs">
+      <DependentUpon>BugReportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangesDialog.Designer.cs">
+      <DependentUpon>ChangesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class0.cs" />
+    <Compile Include="Class10.cs" />
+    <Compile Include="Class101.cs" />
+    <Compile Include="Class102.cs" />
+    <Compile Include="Class106.cs" />
+    <Compile Include="Class107.cs" />
+    <Compile Include="Class108.cs" />
+    <Compile Include="Class109.cs" />
+    <Compile Include="Class11.cs" />
+    <Compile Include="Class110.cs" />
+    <Compile Include="Class111.cs" />
+    <Compile Include="Class112.cs" />
+    <Compile Include="Class113.cs" />
+    <Compile Include="Class114.cs" />
+    <Compile Include="Class115.cs" />
+    <Compile Include="Class119.cs" />
+    <Compile Include="Class12.cs" />
+    <Compile Include="Class120.cs" />
+    <Compile Include="Class15.cs" />
+    <Compile Include="Class16.cs" />
+    <Compile Include="Class17.cs" />
+    <Compile Include="Class18.cs" />
+    <Compile Include="Class19.cs" />
+    <Compile Include="Class2.cs" />
+    <Compile Include="Class20.cs" />
+    <Compile Include="Class21.cs" />
+    <Compile Include="Class25.cs" />
+    <Compile Include="Class26.cs" />
+    <Compile Include="Class27.cs" />
+    <Compile Include="Class29.cs" />
+    <Compile Include="Class3.cs" />
+    <Compile Include="Class32.cs" />
+    <Compile Include="Class33.cs" />
+    <Compile Include="Class34.cs" />
+    <Compile Include="Class35.cs" />
+    <Compile Include="Class36.cs" />
+    <Compile Include="Class37.cs" />
+    <Compile Include="Class38.cs" />
+    <Compile Include="Class39.cs" />
+    <Compile Include="Class4.cs" />
+    <Compile Include="Class40.cs" />
+    <Compile Include="Class41.cs" />
+    <Compile Include="Class42.cs" />
+    <Compile Include="Class43.cs" />
+    <Compile Include="Class44.cs" />
+    <Compile Include="Class45.cs" />
+    <Compile Include="Class46.cs" />
+    <Compile Include="Class47.cs" />
+    <Compile Include="Class48.Designer.cs">
+      <DependentUpon>Class48.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Class5.cs" />
+    <Compile Include="Class56.cs" />
+    <Compile Include="Class57.cs" />
+    <Compile Include="Class58.cs" />
+    <Compile Include="Class59.cs" />
+    <Compile Include="Class6.cs" />
+    <Compile Include="Class60.cs" />
+    <Compile Include="Class61.cs" />
+    <Compile Include="Class62.cs" />
+    <Compile Include="Class63.cs" />
+    <Compile Include="Class64.cs" />
+    <Compile Include="Class7.cs" />
+    <Compile Include="Class84.cs" />
+    <Compile Include="Class85.cs" />
+    <Compile Include="Class87.cs" />
+    <Compile Include="Class89.cs" />
+    <Compile Include="Class9.cs" />
+    <Compile Include="Class90.cs" />
+    <Compile Include="Class95.cs" />
+    <Compile Include="Class96.cs" />
+    <Compile Include="Class97.cs" />
+    <Compile Include="Class98.cs" />
+    <Compile Include="Class99.cs" />
+    <Compile Include="Enum0.cs" />
+    <Compile Include="Enum1.cs" />
+    <Compile Include="Enum11.cs" />
+    <Compile Include="Enum5.cs" />
+    <Compile Include="Enum7.cs" />
+    <Compile Include="Enum8.cs" />
+    <Compile Include="Enum9.cs" />
+    <Compile Include="ExceptionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExceptionDialog.Designer.cs">
+      <DependentUpon>ExceptionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GClass0.cs" />
+    <Compile Include="GClass1.cs" />
+    <Compile Include="GClass10.cs" />
+    <Compile Include="GClass100.cs" />
+    <Compile Include="GClass101.cs" />
+    <Compile Include="GClass102.cs" />
+    <Compile Include="GClass103.cs" />
+    <Compile Include="GClass104.cs" />
+    <Compile Include="GClass106.cs" />
+    <Compile Include="GClass107.cs" />
+    <Compile Include="GClass108.cs" />
+    <Compile Include="GClass109.cs" />
+    <Compile Include="GClass11.cs" />
+    <Compile Include="GClass110.cs" />
+    <Compile Include="GClass111.cs" />
+    <Compile Include="GClass112.cs" />
+    <Compile Include="GClass113.cs" />
+    <Compile Include="GClass114.cs" />
+    <Compile Include="GClass115.cs" />
+    <Compile Include="GClass116.cs" />
+    <Compile Include="GClass117.cs" />
+    <Compile Include="GClass118.cs" />
+    <Compile Include="GClass119.cs" />
+    <Compile Include="GClass12.cs" />
+    <Compile Include="GClass120.cs" />
+    <Compile Include="GClass121.cs" />
+    <Compile Include="GClass122.cs" />
+    <Compile Include="GClass123.cs" />
+    <Compile Include="GClass124.cs" />
+    <Compile Include="GClass125.cs" />
+    <Compile Include="GClass126.cs" />
+    <Compile Include="GClass127.cs" />
+    <Compile Include="GClass128.cs" />
+    <Compile Include="GClass129.cs" />
+    <Compile Include="GClass13.cs" />
+    <Compile Include="GClass130.cs" />
+    <Compile Include="GClass131.cs" />
+    <Compile Include="GClass132.cs" />
+    <Compile Include="GClass133.cs" />
+    <Compile Include="GClass134.cs" />
+    <Compile Include="GClass135.cs" />
+    <Compile Include="GClass136.cs" />
+    <Compile Include="GClass137.cs" />
+    <Compile Include="GClass138.cs" />
+    <Compile Include="GClass139.cs" />
+    <Compile Include="GClass14.cs" />
+    <Compile Include="GClass140.cs" />
+    <Compile Include="GClass141.cs" />
+    <Compile Include="GClass142.cs" />
+    <Compile Include="GClass143.cs" />
+    <Compile Include="GClass144.cs" />
+    <Compile Include="GClass145.cs" />
+    <Compile Include="GClass146.cs" />
+    <Compile Include="GClass147.cs" />
+    <Compile Include="GClass148.cs" />
+    <Compile Include="GClass149.cs" />
+    <Compile Include="GClass15.cs" />
+    <Compile Include="GClass150.cs" />
+    <Compile Include="GClass151.cs" />
+    <Compile Include="GClass152.cs" />
+    <Compile Include="GClass153.cs" />
+    <Compile Include="GClass154.cs" />
+    <Compile Include="GClass16.cs" />
+    <Compile Include="GClass17.cs" />
+    <Compile Include="GClass18.cs" />
+    <Compile Include="GClass19.cs" />
+    <Compile Include="GClass2.cs" />
+    <Compile Include="GClass20.cs" />
+    <Compile Include="GClass21.cs" />
+    <Compile Include="GClass22.cs" />
+    <Compile Include="GClass23.cs" />
+    <Compile Include="GClass24.cs" />
+    <Compile Include="GClass25.cs" />
+    <Compile Include="GClass26.cs" />
+    <Compile Include="GClass27.cs" />
+    <Compile Include="GClass28.cs" />
+    <Compile Include="GClass29.cs" />
+    <Compile Include="GClass3.cs" />
+    <Compile Include="GClass30.cs" />
+    <Compile Include="GClass31.cs" />
+    <Compile Include="GClass32.cs" />
+    <Compile Include="GClass33.cs" />
+    <Compile Include="GClass34.cs" />
+    <Compile Include="GClass35.cs" />
+    <Compile Include="GClass36.cs" />
+    <Compile Include="GClass37.cs" />
+    <Compile Include="GClass38.cs" />
+    <Compile Include="GClass39.cs" />
+    <Compile Include="GClass4.cs" />
+    <Compile Include="GClass40.cs" />
+    <Compile Include="GClass41.cs" />
+    <Compile Include="GClass42.cs" />
+    <Compile Include="GClass43.cs" />
+    <Compile Include="GClass44.cs" />
+    <Compile Include="GClass45.cs" />
+    <Compile Include="GClass46.cs" />
+    <Compile Include="GClass47.cs" />
+    <Compile Include="GClass48.cs" />
+    <Compile Include="GClass49.cs" />
+    <Compile Include="GClass5.cs" />
+    <Compile Include="GClass50.cs" />
+    <Compile Include="GClass51.cs" />
+    <Compile Include="GClass52.cs" />
+    <Compile Include="GClass53.cs" />
+    <Compile Include="GClass54.cs" />
+    <Compile Include="GClass55.cs" />
+    <Compile Include="GClass56.cs" />
+    <Compile Include="GClass57.cs" />
+    <Compile Include="GClass58.cs" />
+    <Compile Include="GClass59.cs" />
+    <Compile Include="GClass6.cs" />
+    <Compile Include="GClass60.cs" />
+    <Compile Include="GClass61.cs" />
+    <Compile Include="GClass62.cs" />
+    <Compile Include="GClass64.cs" />
+    <Compile Include="GClass66.cs" />
+    <Compile Include="GClass67.cs" />
+    <Compile Include="GClass68.cs" />
+    <Compile Include="GClass69.cs" />
+    <Compile Include="GClass7.cs" />
+    <Compile Include="GClass70.cs" />
+    <Compile Include="GClass71.cs" />
+    <Compile Include="GClass72.cs" />
+    <Compile Include="GClass74.cs" />
+    <Compile Include="GClass76.cs" />
+    <Compile Include="GClass77.cs" />
+    <Compile Include="GClass78.cs" />
+    <Compile Include="GClass79.cs" />
+    <Compile Include="GClass8.cs" />
+    <Compile Include="GClass80.cs" />
+    <Compile Include="GClass81.cs" />
+    <Compile Include="GClass82.cs" />
+    <Compile Include="GClass83.cs" />
+    <Compile Include="GClass84.cs" />
+    <Compile Include="GClass85.cs" />
+    <Compile Include="GClass86.cs" />
+    <Compile Include="GClass87.cs" />
+    <Compile Include="GClass88.cs" />
+    <Compile Include="GClass89.cs" />
+    <Compile Include="GClass9.cs" />
+    <Compile Include="GClass90.cs" />
+    <Compile Include="GClass91.cs" />
+    <Compile Include="GClass92.cs" />
+    <Compile Include="GClass93.cs" />
+    <Compile Include="GClass94.cs" />
+    <Compile Include="GClass95.cs" />
+    <Compile Include="GClass96.cs" />
+    <Compile Include="GClass97.cs" />
+    <Compile Include="GClass98.cs" />
+    <Compile Include="GClass99.cs" />
+    <Compile Include="GControl0.cs" />
+    <Compile Include="GControl1.cs" />
+    <Compile Include="GControl2.cs" />
+    <Compile Include="GDelegate0.cs" />
+    <Compile Include="GDelegate1.cs" />
+    <Compile Include="GDelegate10.cs" />
+    <Compile Include="GDelegate11.cs" />
+    <Compile Include="GDelegate12.cs" />
+    <Compile Include="GDelegate13.cs" />
+    <Compile Include="GDelegate14.cs" />
+    <Compile Include="GDelegate15.cs" />
+    <Compile Include="GDelegate16.cs" />
+    <Compile Include="GDelegate17.cs" />
+    <Compile Include="GDelegate18.cs" />
+    <Compile Include="GDelegate19.cs" />
+    <Compile Include="GDelegate20.cs" />
+    <Compile Include="GDelegate21.cs" />
+    <Compile Include="GDelegate23.cs" />
+    <Compile Include="GDelegate24.cs" />
+    <Compile Include="GDelegate25.cs" />
+    <Compile Include="GDelegate26.cs" />
+    <Compile Include="GDelegate27.cs" />
+    <Compile Include="GDelegate28.cs" />
+    <Compile Include="GDelegate29.cs" />
+    <Compile Include="GDelegate3.cs" />
+    <Compile Include="GDelegate4.cs" />
+    <Compile Include="GDelegate5.cs" />
+    <Compile Include="GDelegate7.cs" />
+    <Compile Include="GDelegate8.cs" />
+    <Compile Include="GDelegate9.cs" />
+    <Compile Include="GEnum0.cs" />
+    <Compile Include="GEnum1.cs" />
+    <Compile Include="GEnum10.cs" />
+    <Compile Include="GEnum11.cs" />
+    <Compile Include="GEnum12.cs" />
+    <Compile Include="GEnum13.cs" />
+    <Compile Include="GEnum14.cs" />
+    <Compile Include="GEnum15.cs" />
+    <Compile Include="GEnum16.cs" />
+    <Compile Include="GEnum17.cs" />
+    <Compile Include="GEnum18.cs" />
+    <Compile Include="GEnum19.cs" />
+    <Compile Include="GEnum2.cs" />
+    <Compile Include="GEnum20.cs" />
+    <Compile Include="GEnum21.cs" />
+    <Compile Include="GEnum22.cs" />
+    <Compile Include="GEnum23.cs" />
+    <Compile Include="GEnum24.cs" />
+    <Compile Include="GEnum25.cs" />
+    <Compile Include="GEnum26.cs" />
+    <Compile Include="GEnum27.cs" />
+    <Compile Include="GEnum28.cs" />
+    <Compile Include="GEnum29.cs" />
+    <Compile Include="GEnum3.cs" />
+    <Compile Include="GEnum30.cs" />
+    <Compile Include="GEnum31.cs" />
+    <Compile Include="GEnum32.cs" />
+    <Compile Include="GEnum34.cs" />
+    <Compile Include="GEnum35.cs" />
+    <Compile Include="GEnum36.cs" />
+    <Compile Include="GEnum37.cs" />
+    <Compile Include="GEnum38.cs" />
+    <Compile Include="GEnum39.cs" />
+    <Compile Include="GEnum4.cs" />
+    <Compile Include="GEnum40.cs" />
+    <Compile Include="GEnum41.cs" />
+    <Compile Include="GEnum42.cs" />
+    <Compile Include="GEnum43.cs" />
+    <Compile Include="GEnum44.cs" />
+    <Compile Include="GEnum45.cs" />
+    <Compile Include="GEnum46.cs" />
+    <Compile Include="GEnum47.cs" />
+    <Compile Include="GEnum48.cs" />
+    <Compile Include="GEnum49.cs" />
+    <Compile Include="GEnum5.cs" />
+    <Compile Include="GEnum50.cs" />
+    <Compile Include="GEnum51.cs" />
+    <Compile Include="GEnum52.cs" />
+    <Compile Include="GEnum53.cs" />
+    <Compile Include="GEnum54.cs" />
+    <Compile Include="GEnum55.cs" />
+    <Compile Include="GEnum56.cs" />
+    <Compile Include="GEnum58.cs" />
+    <Compile Include="GEnum59.cs" />
+    <Compile Include="GEnum6.cs" />
+    <Compile Include="GEnum60.cs" />
+    <Compile Include="GEnum61.cs" />
+    <Compile Include="GEnum62.cs" />
+    <Compile Include="GEnum63.cs" />
+    <Compile Include="GEnum64.cs" />
+    <Compile Include="GEnum65.cs" />
+    <Compile Include="GEnum66.cs" />
+    <Compile Include="GEnum67.cs" />
+    <Compile Include="GEnum7.cs" />
+    <Compile Include="GEnum8.cs" />
+    <Compile Include="GEventArgs0.cs" />
+    <Compile Include="GEventArgs1.cs" />
+    <Compile Include="GEventArgs10.cs" />
+    <Compile Include="GEventArgs11.cs" />
+    <Compile Include="GEventArgs12.cs" />
+    <Compile Include="GEventArgs13.cs" />
+    <Compile Include="GEventArgs14.cs" />
+    <Compile Include="GEventArgs15.cs" />
+    <Compile Include="GEventArgs16.cs" />
+    <Compile Include="GEventArgs17.cs" />
+    <Compile Include="GEventArgs2.cs" />
+    <Compile Include="GEventArgs3.cs" />
+    <Compile Include="GEventArgs4.cs" />
+    <Compile Include="GEventArgs5.cs" />
+    <Compile Include="GEventArgs6.cs" />
+    <Compile Include="GEventArgs7.cs" />
+    <Compile Include="GEventArgs8.cs" />
+    <Compile Include="GEventArgs9.cs" />
+    <Compile Include="GException0.cs" />
+    <Compile Include="GException1.cs" />
+    <Compile Include="GForm0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GForm0.Designer.cs">
+      <DependentUpon>GForm0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GInterface0.cs" />
+    <Compile Include="GInterface1.cs" />
+    <Compile Include="GInterface10.cs" />
+    <Compile Include="GInterface11.cs" />
+    <Compile Include="GInterface12.cs" />
+    <Compile Include="GInterface13.cs" />
+    <Compile Include="GInterface14.cs" />
+    <Compile Include="GInterface15.cs" />
+    <Compile Include="GInterface16.cs" />
+    <Compile Include="GInterface17.cs" />
+    <Compile Include="GInterface18.cs" />
+    <Compile Include="GInterface19.cs" />
+    <Compile Include="GInterface2.cs" />
+    <Compile Include="GInterface20.cs" />
+    <Compile Include="GInterface21.cs" />
+    <Compile Include="GInterface22.cs" />
+    <Compile Include="GInterface23.cs" />
+    <Compile Include="GInterface24.cs" />
+    <Compile Include="GInterface25.cs" />
+    <Compile Include="GInterface26.cs" />
+    <Compile Include="GInterface27.cs" />
+    <Compile Include="GInterface28.cs" />
+    <Compile Include="GInterface29.cs" />
+    <Compile Include="GInterface3.cs" />
+    <Compile Include="GInterface30.cs" />
+    <Compile Include="GInterface31.cs" />
+    <Compile Include="GInterface32.cs" />
+    <Compile Include="GInterface33.cs" />
+    <Compile Include="GInterface34.cs" />
+    <Compile Include="GInterface35.cs" />
+    <Compile Include="GInterface36.cs" />
+    <Compile Include="GInterface37.cs" />
+    <Compile Include="GInterface38.cs" />
+    <Compile Include="GInterface39.cs" />
+    <Compile Include="GInterface4.cs" />
+    <Compile Include="GInterface40.cs" />
+    <Compile Include="GInterface41.cs" />
+    <Compile Include="GInterface42.cs" />
+    <Compile Include="GInterface43.cs" />
+    <Compile Include="GInterface44.cs" />
+    <Compile Include="GInterface45.cs" />
+    <Compile Include="GInterface46.cs" />
+    <Compile Include="GInterface47.cs" />
+    <Compile Include="GInterface48.cs" />
+    <Compile Include="GInterface49.cs" />
+    <Compile Include="GInterface5.cs" />
+    <Compile Include="GInterface50.cs" />
+    <Compile Include="GInterface6.cs" />
+    <Compile Include="GInterface7.cs" />
+    <Compile Include="GInterface8.cs" />
+    <Compile Include="GInterface9.cs" />
+    <Compile Include="GStream0.cs" />
+    <Compile Include="GStream1.cs" />
+    <Compile Include="GStream2.cs" />
+    <Compile Include="GStruct0.cs" />
+    <Compile Include="GStruct1.cs" />
+    <Compile Include="GStruct10.cs" />
+    <Compile Include="GStruct11.cs" />
+    <Compile Include="GStruct12.cs" />
+    <Compile Include="GStruct13.cs" />
+    <Compile Include="GStruct2.cs" />
+    <Compile Include="GStruct3.cs" />
+    <Compile Include="GStruct4.cs" />
+    <Compile Include="GStruct5.cs" />
+    <Compile Include="GStruct6.cs" />
+    <Compile Include="GStruct7.cs" />
+    <Compile Include="GStruct8.cs" />
+    <Compile Include="GStruct9.cs" />
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MidImportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MidImportDialog.Designer.cs">
+      <DependentUpon>MidImportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MidPreview.Designer.cs">
+      <DependentUpon>MidPreview.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressDialog.Designer.cs">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongEditorControl.Designer.cs">
+      <DependentUpon>SongEditorControl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SongPreview.Designer.cs">
+      <DependentUpon>SongPreview.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Struct1.cs" />
+    <Compile Include="Struct5.cs" />
+    <Compile Include="Struct6.cs" />
+    <Compile Include="Struct7.cs" />
+    <Compile Include="Struct8.cs" />
+    <Compile Include="VgsImportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VgsImportDialog.Designer.cs">
+      <DependentUpon>VgsImportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VgsImportSourceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VgsImportSourceDialog.Designer.cs">
+      <DependentUpon>VgsImportSourceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VgsPreview.Designer.cs">
+      <DependentUpon>VgsPreview.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ZoomControl.Designer.cs">
+      <DependentUpon>ZoomControl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArkCopyDialog.resx">
+      <DependentUpon>ArkCopyDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArkRelinkDialog.resx">
+      <DependentUpon>ArkRelinkDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArkShrinkDialog.resx">
+      <DependentUpon>ArkShrinkDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BadArkDialog.resx">
+      <DependentUpon>BadArkDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchExportChooseTracksDialog.resx">
+      <DependentUpon>BatchExportChooseTracksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchExportMidiDialog.resx">
+      <DependentUpon>BatchExportMidiDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchExportNewNameDialog.resx">
+      <DependentUpon>BatchExportNewNameDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BitmapPreview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BitmapPreview.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BugReportDialog.resx">
+      <DependentUpon>BugReportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangesDialog.resx">
+      <DependentUpon>ChangesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class48.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Class48.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExceptionDialog.resx">
+      <DependentUpon>ExceptionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GForm0.resx">
+      <DependentUpon>GForm0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gh.notation.ttf" />
+    <EmbeddedResource Include="gh.ZoomMax.ico" />
+    <EmbeddedResource Include="gh.ZoomMin.ico" />
+    <EmbeddedResource Include="gh.ZoomMinus.ico" />
+    <EmbeddedResource Include="gh.ZoomNorm.ico" />
+    <EmbeddedResource Include="gh.ZoomPlus.ico" />
+    <EmbeddedResource Include="gh\XPTable\models\Table.resx" />
+    <EmbeddedResource Include="gh\XPTable\models\TableModel.resx" />
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MidImportDialog.resx">
+      <DependentUpon>MidImportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MidPreview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MidPreview.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressDialog.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SongEditorControl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SongEditorControl.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SongPreview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SongPreview.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VgsImportDialog.resx">
+      <DependentUpon>VgsImportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VgsImportSourceDialog.resx">
+      <DependentUpon>VgsImportSourceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VgsPreview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>VgsPreview.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZoomControl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ZoomControl.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
