@@ -96,7 +96,7 @@ public class GClass87 : GClass86
 			}
 			return;
 		}
-		goto IL_14A;
+		//goto IL_14A; TODO: Figure out if this was needed?
 	}
 
 	protected void method_9(GClass139 gclass139_0, List<GClass139> list_1, GEnum54 genum54_0)

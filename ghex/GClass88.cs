@@ -52,7 +52,7 @@ public class GClass88 : GClass87
 							if (gclass5.vmethod_2() == GEnum63.const_4)
 							{
 								gclass4 = (gclass5 as GClass145);
-								IL_119:
+
 								int num2 = base.method_0().method_1() / 3;
 								if (gclass4 != null)
 								{
@@ -69,12 +69,27 @@ public class GClass88 : GClass87
 									}
 									goto IL_229;
 								}
-								goto IL_1A1;
 							}
 						}
-						goto IL_119;
-					}
-					IL_1A1:
+
+                        int num2_0 = base.method_0().method_1() / 3;
+                        if (gclass4 != null)
+                        {
+                                    num2_0 = Math.Min(gclass4.int_0 - gclass3.int_0, num2_0);
+                        }
+                        using (List<GEnum51>.Enumerator enumerator2 = (gclass3 as GClass145).list_0.GetEnumerator())
+                        {
+                            while (enumerator2.MoveNext())
+                            {
+                                GEnum51 genum2 = enumerator2.Current;
+                                gclass2.int_0 = gclass3.int_0;
+                                gclass2.vmethod_1(num2_0);
+                                base.method_4(gclass2, (int)(num + genum2), list_2);
+                            }
+                            goto IL_229;
+                        }
+                    }
+
 					GClass145 gclass6 = gclass3 as GClass145;
 					if (gclass6.bool_0)
 					{

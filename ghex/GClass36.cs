@@ -213,14 +213,17 @@ public class GClass36 : GClass34
 								{
 									gclass.genum66_0 |= GEnum66.const_0;
 								}
-								IL_1A0:
+
 								this.list_1.Add(gclass);
 								i += base.method_0().method_9();
 								goto IL_1BA;
 							}
 						}
-						goto IL_1A0;
-					}
+
+                        this.list_1.Add(gclass);
+                        i += base.method_0().method_9();
+                        goto IL_1BA;
+                    }
 				}
 				else if (gclass2.method_2() < gclass.int_1 + base.method_0().method_9())
 				{
