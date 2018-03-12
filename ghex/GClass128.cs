@@ -230,7 +230,7 @@ public class GClass128
 			{
 				string[] array3;
 				IntPtr intPtr;
-				(array3 = array2)[(int)(intPtr = (IntPtr)((UIntPtr)num6))] = array3[(int)intPtr] + binaryReader.ReadChar();
+				(array3 = array2)[(int)(intPtr = ((IntPtr)num6))] = array3[(int)intPtr] + binaryReader.ReadChar();
 			}
 			num6 += 1u;
 		}
