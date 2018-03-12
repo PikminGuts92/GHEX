@@ -3149,7 +3149,7 @@ public class GControl2 : Control, ISupportInitialize
 		{
 			if (this.method_197() != null)
 			{
-				this.method_197().GInterface8.imethod_14(geventArgs16_0);
+				this.method_197().imethod_14(geventArgs16_0);
 			}
 			if (this.gdelegate28_0 != null)
 			{
@@ -3178,7 +3178,7 @@ public class GControl2 : Control, ISupportInitialize
 		{
 			if (this.method_197() != null)
 			{
-				this.method_197().GInterface8.imethod_15(geventArgs16_0);
+				this.method_197().imethod_15(geventArgs16_0);
 			}
 			if (this.gdelegate28_1 != null)
 			{
@@ -3207,7 +3207,7 @@ public class GControl2 : Control, ISupportInitialize
 		{
 			if (this.method_197() != null)
 			{
-				this.method_197().GInterface8.imethod_16(geventArgs16_0);
+				this.method_197().imethod_16(geventArgs16_0);
 			}
 			if (this.gdelegate28_3 != null)
 			{
@@ -3265,7 +3265,7 @@ public class GControl2 : Control, ISupportInitialize
 		{
 			if (this.method_197() != null)
 			{
-				this.method_197().GInterface8.imethod_18(geventArgs16_0);
+				this.method_197().imethod_18(geventArgs16_0);
 			}
 			if (this.gdelegate28_4 != null)
 			{
@@ -3328,7 +3328,7 @@ public class GControl2 : Control, ISupportInitialize
 		{
 			if (this.method_197() != null)
 			{
-				this.method_197().GInterface8.imethod_20(geventArgs16_0);
+				this.method_197().imethod_20(geventArgs16_0);
 			}
 			if (this.gdelegate28_7 != null)
 			{
@@ -4326,16 +4326,16 @@ public class GControl2 : Control, ISupportInitialize
 				if (paintEventArgs_0.ClipRectangle.IntersectsWith(rect))
 				{
 					this.gclass13_0.imethod_2(new Rectangle(num, this.method_156(), this.method_166().method_23().method_8(i).method_9(), this.method_192()));
-					geventArgs.Graphics.SetClip(Rectangle.Intersect(paintEventArgs_0.ClipRectangle, this.gclass13_0.GInterface1.imethod_1()));
+					geventArgs.Graphics.SetClip(Rectangle.Intersect(paintEventArgs_0.ClipRectangle, this.gclass13_0.imethod_1()));
 					geventArgs.method_1(this.method_166().method_23().method_8(i));
 					geventArgs.method_5(i);
 					geventArgs.method_3(this);
 					geventArgs.method_7(this.method_190());
-					geventArgs.method_9(this.gclass13_0.GInterface1.imethod_1());
+					geventArgs.method_9(this.gclass13_0.imethod_1());
 					this.vmethod_33(geventArgs);
 					if (!geventArgs.method_10())
 					{
-						this.gclass13_0.GInterface8.imethod_13(geventArgs);
+						this.gclass13_0.imethod_13(geventArgs);
 					}
 					this.vmethod_34(geventArgs);
 				}
@@ -4351,16 +4351,16 @@ public class GControl2 : Control, ISupportInitialize
 					if (flag)
 					{
 						this.gclass13_0.imethod_2(new Rectangle(num, this.method_156(), base.ClientRectangle.Width - num + 2, this.method_192()));
-						geventArgs.Graphics.SetClip(Rectangle.Intersect(paintEventArgs_0.ClipRectangle, this.gclass13_0.GInterface1.imethod_1()));
+						geventArgs.Graphics.SetClip(Rectangle.Intersect(paintEventArgs_0.ClipRectangle, this.gclass13_0.imethod_1()));
 						geventArgs.method_1(null);
 						geventArgs.method_5(-1);
 						geventArgs.method_3(this);
 						geventArgs.method_7(this.method_190());
-						geventArgs.method_9(this.gclass13_0.GInterface1.imethod_1());
+						geventArgs.method_9(this.gclass13_0.imethod_1());
 						this.vmethod_33(geventArgs);
 						if (!geventArgs.method_10())
 						{
-							this.gclass13_0.GInterface8.imethod_13(geventArgs);
+							this.gclass13_0.imethod_13(geventArgs);
 						}
 						this.vmethod_34(geventArgs);
 					}

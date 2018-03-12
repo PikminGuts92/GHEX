@@ -16,7 +16,7 @@ public class GClass72 : IEnumerable<GClass71>
 
 	IEnumerator IEnumerable.GetEnumerator()
 	{
-		return this.System.Collections.Generic.IEnumerable<GClass71>.GetEnumerator();
+		return this.GetEnumerator();
 	}
 
 	public int method_0()
@@ -162,7 +162,7 @@ public class GClass72 : IEnumerable<GClass71>
 						{
 							byte[] array13 = array[n];
 							IntPtr intPtr = checked((IntPtr)(unchecked(num5 * 16L + 1L)));
-							array13[(int)intPtr] = (array13[(int)intPtr] | 128);
+							array13[(int)intPtr] = (byte)(array13[(int)intPtr] | 128);
 						}
 					}
 				}

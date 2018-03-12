@@ -207,7 +207,7 @@ public class GClass7 : GClass2
 
 	public override void imethod_20(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_20(geventArgs10_0);
+		base.imethod_20(geventArgs10_0);
 		if (geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass124 gclass = this.method_17(geventArgs10_0.method_0());
@@ -245,7 +245,7 @@ public class GClass7 : GClass2
 
 	public override void imethod_21(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_21(geventArgs10_0);
+		base.imethod_21(geventArgs10_0);
 		if (geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass124 gclass = this.method_17(geventArgs10_0.method_0());
@@ -270,7 +270,7 @@ public class GClass7 : GClass2
 
 	public override void imethod_22(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_22(geventArgs10_0);
+		base.imethod_22(geventArgs10_0);
 		if (geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass124 gclass = this.method_17(geventArgs10_0.method_0());
@@ -354,7 +354,7 @@ public class GClass7 : GClass2
 			this.size_0 = new Size(13, 13);
 			this.bool_0 = true;
 		}
-		base.GInterface2.imethod_13(geventArgs8_0);
+		base.imethod_13(geventArgs8_0);
 	}
 
 	protected override void vmethod_1(GEventArgs8 geventArgs8_0)
@@ -364,7 +364,7 @@ public class GClass7 : GClass2
 		{
 			return;
 		}
-		Rectangle rectangle_ = this.method_16(base.GInterface1.imethod_11(), base.GInterface1.imethod_9());
+		Rectangle rectangle_ = this.method_16(base.imethod_11(), base.imethod_9());
 		GEnum60 genum = this.method_17(geventArgs8_0.method_0()).method_0();
 		if (!geventArgs8_0.method_16())
 		{
@@ -414,11 +414,11 @@ public class GClass7 : GClass2
 				r.Width -= rectangle_.Width + 1;
 				if (geventArgs8_0.method_16())
 				{
-					geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_3(), r, base.method_4());
+					geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.imethod_3(), base.method_3(), r, base.method_4());
 				}
 				else
 				{
-					geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_13(), r, base.method_4());
+					geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.imethod_3(), base.method_13(), r, base.method_4());
 				}
 			}
 		}

@@ -25,12 +25,12 @@ public class GClass132 : GInterface7
 	public void imethod_2(GClass122 gclass122_0)
 	{
 		this.gclass123_0 = (gclass122_0 as GClass123);
-		this.GInterface7.imethod_4();
+		this.imethod_4();
 	}
 
 	public void imethod_3()
 	{
-		this.GInterface7.imethod_4();
+		this.imethod_4();
 	}
 
 	public void imethod_4()

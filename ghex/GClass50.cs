@@ -33,7 +33,7 @@ public class GClass50 : GClass45
 	{
 		this.method_12().KeyPress += this.vmethod_9;
 		this.method_12().LostFocus += this.vmethod_10;
-		base.GInterface3.imethod_1();
+		base.imethod_1();
 		this.method_12().Focus();
 	}
 
@@ -41,7 +41,7 @@ public class GClass50 : GClass45
 	{
 		this.method_12().KeyPress -= this.vmethod_9;
 		this.method_12().LostFocus -= this.vmethod_10;
-		base.GInterface3.imethod_2();
+		base.imethod_2();
 	}
 
 	public override void imethod_3()

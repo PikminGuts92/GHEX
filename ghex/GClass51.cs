@@ -59,7 +59,7 @@ public class GClass51 : GClass45, GInterface6
 		this.method_19().KeyDown += this.vmethod_11;
 		this.method_19().KeyPress += this.vmethod_12;
 		this.method_19().LostFocus += this.vmethod_13;
-		base.GInterface3.imethod_1();
+		base.imethod_1();
 		this.method_19().Focus();
 	}
 
@@ -69,7 +69,7 @@ public class GClass51 : GClass45, GInterface6
 		this.method_19().KeyDown -= this.vmethod_11;
 		this.method_19().KeyPress -= this.vmethod_12;
 		this.method_19().LostFocus -= this.vmethod_13;
-		base.GInterface3.imethod_2();
+		base.imethod_2();
 	}
 
 	public override void imethod_3()

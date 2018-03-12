@@ -58,13 +58,13 @@ public class GClass47 : GClass46
 	{
 		this.colorPicker_0.method_0(new EventHandler(this.method_37));
 		base.method_12().SelectionLength = 0;
-		base.GInterface3.imethod_1();
+		base.imethod_1();
 	}
 
 	public override void imethod_2()
 	{
 		this.colorPicker_0.method_1(new EventHandler(this.method_37));
-		base.GInterface3.imethod_2();
+		base.imethod_2();
 	}
 
 	public override void imethod_3()

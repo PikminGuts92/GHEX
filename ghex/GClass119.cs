@@ -56,11 +56,11 @@ public class GClass119
 			byte b2 = byte_3[i];
 			if (b >= 65)
 			{
-				b = b - 65 + 97;
+				b = (byte)(b - 65 + 97);
 			}
 			if (b2 >= 65)
 			{
-				b2 = b2 - 65 + 97;
+				b2 = (byte)(b2 - 65 + 97);
 			}
 			if (b != b2)
 			{

@@ -63,7 +63,7 @@ public class GClass80
 	public static void smethod_3(ref byte[] byte_0, long long_0, ref float[] float_0, long long_1, ref long long_2, ref long long_3)
 	{
 		byte b = byte_0[(int)(checked((IntPtr)long_0))];
-		byte b2 = b & 15;
+		byte b2 = (byte)(b & 15);
 		b = (byte)(b >> 4);
 		for (int i = 0; i < 14; i++)
 		{

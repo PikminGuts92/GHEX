@@ -144,7 +144,7 @@ public class GClass83 : IDisposable
 				{
 					GClass97 gclass = this.gclass70_0.method_9(i);
 					gclass.method_49(null);
-					gclass.System.IDisposable.Dispose();
+					gclass.Dispose();
 				}
 				this.gclass70_0 = null;
 			}

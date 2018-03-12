@@ -9,7 +9,7 @@ public class GClass130 : GInterface36
 	public GClass130()
 	{
 		this.list_0 = new List<GInterface35>();
-		this.GInterface36.imethod_9();
+		this.imethod_9();
 	}
 
 	public string imethod_0()

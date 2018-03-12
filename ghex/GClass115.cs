@@ -55,7 +55,7 @@ public class GClass115 : GClass114, IEnumerable<GEnum51>
 
 	IEnumerator IEnumerable.GetEnumerator()
 	{
-		return this.System.Collections.Generic.IEnumerable<GEnum51>.GetEnumerator();
+		return this.GetEnumerator();
 	}
 
 	List<GEnum51> list_0 = new List<GEnum51>();

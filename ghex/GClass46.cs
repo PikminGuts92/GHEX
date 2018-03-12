@@ -35,7 +35,7 @@ public abstract class GClass46 : GClass45, GInterface6
 	{
 		this.method_12().KeyPress += this.vmethod_12;
 		this.method_12().LostFocus += this.vmethod_13;
-		base.GInterface3.imethod_1();
+		base.imethod_1();
 		this.form_0 = base.method_9().FindForm();
 		if (this.method_14())
 		{
@@ -48,7 +48,7 @@ public abstract class GClass46 : GClass45, GInterface6
 	{
 		this.method_12().KeyPress -= this.vmethod_12;
 		this.method_12().LostFocus -= this.vmethod_13;
-		base.GInterface3.imethod_2();
+		base.imethod_2();
 		this.method_15(false);
 		this.form_0 = null;
 	}

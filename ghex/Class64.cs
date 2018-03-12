@@ -610,7 +610,7 @@ class Class64 : GClass106
 				graphics_0.DrawString(double_.ToString(), this.font_0, this.brush_0, (float)(left + 8), (float)(rectangle_6.Top + 6));
 				graphics_0.DrawString(num2.ToString(), this.font_0, this.brush_0, (float)(left + 8), (float)(rectangle_6.Top + 6 + 12));
 			}
-			using (IEnumerator<GEnum51> enumerator3 = class2.gclass115_0.System.Collections.Generic.IEnumerable<GEnum51>.GetEnumerator())
+			using (IEnumerator<GEnum51> enumerator3 = class2.gclass115_0.GetEnumerator())
 			{
 				while (enumerator3.MoveNext())
 				{

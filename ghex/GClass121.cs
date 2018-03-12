@@ -109,7 +109,7 @@ public class GClass121 : ICollection<GClass122>
 
 	public void method_4(bool bool_0)
 	{
-		this.System.Collections.Generic.ICollection<GClass122>.Clear();
+		this.Clear();
 	}
 
 	List<GClass122> list_0 = new List<GClass122>();

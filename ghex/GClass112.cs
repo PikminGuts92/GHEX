@@ -212,7 +212,7 @@ public class GClass112 : GClass111
 
 	protected override void OnRemove(int index, object value)
 	{
-		base.System.Collections.CollectionBase.OnRemove(index, value);
+		base.OnRemove(index, value);
 		GClass98 gclass = value as GClass98;
 		gclass.method_1(new EventHandler(this.vmethod_15));
 		this.vmethod_4(new CollectionChangeEventArgs(CollectionChangeAction.Remove, value));

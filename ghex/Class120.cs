@@ -4,13 +4,13 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [CompilerGenerated]
-class Class120
+public class Class120
 {
 	static Class120.Struct9 struct9_0;
 
 	static Class120.Struct10 struct10_0;
 
-	static Dictionary<string, int> dictionary_0;
+	public static Dictionary<string, int> dictionary_0;
 
 	static Class120.Struct9 struct9_1;
 
@@ -30,11 +30,11 @@ class Class120
 
 	static Class120.Struct11 struct11_1;
 
-	static Dictionary<string, int> dictionary_1;
+    public static Dictionary<string, int> dictionary_1;
 
-	static Dictionary<string, int> dictionary_2;
+    public static Dictionary<string, int> dictionary_2;
 
-	static Dictionary<string, int> dictionary_3;
+    public static Dictionary<string, int> dictionary_3;
 
 	static Class120.Struct10 struct10_1;
 

@@ -87,7 +87,7 @@ public class GClass31 : GClass28
 
 	protected override CollectionEditor.CollectionForm CreateCollectionForm()
 	{
-		CollectionEditor.CollectionForm collectionForm = base.System.ComponentModel.Design.CollectionEditor.CreateCollectionForm();
+		CollectionEditor.CollectionForm collectionForm = base.CreateCollectionForm();
 		collectionForm.Width += 140;
 		foreach (object obj in collectionForm.Controls)
 		{

@@ -53,7 +53,7 @@ public class GClass6 : GClass3
 			this.method_24(false);
 			this.method_26(true);
 		}
-		base.GInterface2.imethod_13(geventArgs8_0);
+		base.imethod_13(geventArgs8_0);
 	}
 
 	protected override void vmethod_1(GEventArgs8 geventArgs8_0)
@@ -96,7 +96,7 @@ public class GClass6 : GClass3
 								graphics.FillRectangle(solidBrush, 0, 0, rect.Width, rect.Height);
 								graphics.DrawRectangle(SystemPens.ControlText, 0, 0, rect.Width - 1, rect.Height - 1);
 							}
-							ControlPaint.DrawImageDisabled(geventArgs8_0.Graphics, bitmap, rect.X, rect.Y, base.GInterface1.imethod_7());
+							ControlPaint.DrawImageDisabled(geventArgs8_0.Graphics, bitmap, rect.X, rect.Y, base.imethod_7());
 						}
 					}
 				}
@@ -134,11 +134,11 @@ public class GClass6 : GClass3
 			}
 			if (geventArgs8_0.method_16())
 			{
-				geventArgs8_0.Graphics.DrawString(text, base.GInterface1.imethod_3(), base.method_3(), rectangle2, base.method_4());
+				geventArgs8_0.Graphics.DrawString(text, base.imethod_3(), base.method_3(), rectangle2, base.method_4());
 			}
 			else
 			{
-				geventArgs8_0.Graphics.DrawString(text, base.GInterface1.imethod_3(), base.method_13(), rectangle2, base.method_4());
+				geventArgs8_0.Graphics.DrawString(text, base.imethod_3(), base.method_13(), rectangle2, base.method_4());
 			}
 		}
 		if (geventArgs8_0.method_10() && geventArgs8_0.method_16())

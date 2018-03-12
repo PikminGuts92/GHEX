@@ -69,7 +69,7 @@ public abstract class GClass3 : GClass2
 
 	public override void imethod_20(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_20(geventArgs10_0);
+		base.imethod_20(geventArgs10_0);
 		if ((this.method_20() || (geventArgs10_0.method_1().method_175() && GStruct9.smethod_0(geventArgs10_0.method_5(), geventArgs10_0.method_1().method_176()))) && geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass60 gclass = this.method_17(geventArgs10_0.method_0());
@@ -83,7 +83,7 @@ public abstract class GClass3 : GClass2
 
 	public override void imethod_21(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_21(geventArgs10_0);
+		base.imethod_21(geventArgs10_0);
 		if ((this.method_20() || (geventArgs10_0.method_1().method_175() && GStruct9.smethod_0(geventArgs10_0.method_5(), geventArgs10_0.method_1().method_176()))) && geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass60 gclass = this.method_17(geventArgs10_0.method_0());
@@ -106,7 +106,7 @@ public abstract class GClass3 : GClass2
 
 	public override void imethod_22(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_22(geventArgs10_0);
+		base.imethod_22(geventArgs10_0);
 		if ((this.method_20() || (geventArgs10_0.method_1().method_175() && GStruct9.smethod_0(geventArgs10_0.method_5(), geventArgs10_0.method_1().method_176()))) && geventArgs10_0.method_1().method_125(geventArgs10_0.method_5()))
 		{
 			GClass60 gclass = this.method_17(geventArgs10_0.method_0());
@@ -144,7 +144,7 @@ public abstract class GClass3 : GClass2
 		{
 			this.bool_0 = true;
 		}
-		base.GInterface2.imethod_13(geventArgs8_0);
+		base.imethod_13(geventArgs8_0);
 	}
 
 	protected override void vmethod_0(GEventArgs8 geventArgs8_0)

@@ -163,7 +163,7 @@ public class SongEditorControl : Control, GInterface37
 	{
 		this.list_0.Remove(gclass106_2);
 		gclass106_2.method_7(new GDelegate17(this.method_1));
-		gclass106_2.System.IDisposable.Dispose();
+		gclass106_2.Dispose();
 		this.method_9(false);
 	}
 
@@ -247,7 +247,7 @@ public class SongEditorControl : Control, GInterface37
 
 	void vScrollBar1_ValueChanged(object sender, EventArgs e)
 	{
-		this.int_0 = this.gclass136_0.method_11().method_22(this.GInterface37.imethod_0());
+		this.int_0 = this.gclass136_0.method_11().method_22(this.imethod_0());
 		this.method_9(true);
 	}
 
@@ -445,7 +445,7 @@ public class SongEditorControl : Control, GInterface37
 		int num2 = -1;
 		if (mouseEventArgs_2.X >= base.ClientRectangle.Left)
 		{
-			num = this.GInterface37.imethod_0() + this.imethod_9(mouseEventArgs_2.X - base.ClientRectangle.Left);
+			num = this.imethod_0() + this.imethod_9(mouseEventArgs_2.X - base.ClientRectangle.Left);
 			num2 = this.gclass136_0.method_11().method_22(num);
 		}
 		if (num2 != this.int_1 || num != this.double_0)

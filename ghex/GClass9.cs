@@ -12,7 +12,7 @@ public class GClass9 : GClass2
 
 	public Rectangle method_16()
 	{
-		Rectangle result = base.GClass1.imethod_0();
+		Rectangle result = base.imethod_0();
 		result.Inflate(-1, -1);
 		return result;
 	}
@@ -37,7 +37,7 @@ public class GClass9 : GClass2
 		{
 			this.bool_0 = false;
 		}
-		base.GInterface2.imethod_13(geventArgs8_0);
+		base.imethod_13(geventArgs8_0);
 	}
 
 	protected override void vmethod_0(GEventArgs8 geventArgs8_0)
@@ -114,7 +114,7 @@ public class GClass9 : GClass2
 		{
 			base.imethod_10(GEnum39.const_1);
 			base.imethod_12(GEnum38.const_1);
-			Font font = new Font(base.GInterface1.imethod_3().FontFamily, base.GInterface1.imethod_3().SizeInPoints, FontStyle.Bold);
+			Font font = new Font(base.imethod_3().FontFamily, base.imethod_3().SizeInPoints, FontStyle.Bold);
 			if (geventArgs8_0.method_16())
 			{
 				geventArgs8_0.Graphics.DrawString("" + num + "%", font, SystemBrushes.ControlText, this.method_16(), base.method_4());

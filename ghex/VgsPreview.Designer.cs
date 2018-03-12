@@ -458,7 +458,7 @@ public class VgsPreview : UserControl
 	{
 		if (this.gclass62_0 != null)
 		{
-			this.gclass62_0.System.IDisposable.Dispose();
+			this.gclass62_0.Dispose();
 		}
 		this.bool_1 = false;
 		this.btnStop.Enabled = false;

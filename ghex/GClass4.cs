@@ -38,7 +38,7 @@ public class GClass4 : GClass3
 			this.method_23(DateTimePickerFormat.Long);
 			base.method_12("");
 		}
-		base.GInterface2.imethod_13(geventArgs8_0);
+		base.imethod_13(geventArgs8_0);
 	}
 
 	protected override void vmethod_1(GEventArgs8 geventArgs8_0)
@@ -91,7 +91,7 @@ public class GClass4 : GClass3
 				break;
 			}
 		}
-		graphics_0.DrawString(dateTime_0.ToString(text), base.GInterface1.imethod_3(), brush_0, rectangle_1, base.method_4());
+		graphics_0.DrawString(dateTime_0.ToString(text), base.imethod_3(), brush_0, rectangle_1, base.method_4());
 	}
 
 	DateTimePickerFormat dateTimePickerFormat_0;

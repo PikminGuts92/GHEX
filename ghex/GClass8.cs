@@ -80,7 +80,7 @@ public class GClass8 : GClass2
 		{
 			this.bool_0 = true;
 		}
-		base.GInterface2.imethod_13(geventArgs8_0);
+		base.imethod_13(geventArgs8_0);
 	}
 
 	protected override void vmethod_1(GEventArgs8 geventArgs8_0)
@@ -88,7 +88,7 @@ public class GClass8 : GClass2
 		base.vmethod_1(geventArgs8_0);
 		if (geventArgs8_0.method_0() != null && geventArgs8_0.method_0().method_33() != null)
 		{
-			Rectangle rectangle_ = this.method_16(geventArgs8_0.method_0().method_33(), geventArgs8_0.method_0().method_35(), base.GInterface1.imethod_11(), base.GInterface1.imethod_9());
+			Rectangle rectangle_ = this.method_16(geventArgs8_0.method_0().method_33(), geventArgs8_0.method_0().method_35(), base.imethod_11(), base.imethod_9());
 			bool bool_ = this.method_17() || geventArgs8_0.method_0().method_35() != GEnum34.const_0;
 			this.method_18(geventArgs8_0.Graphics, geventArgs8_0.method_0().method_33(), rectangle_, bool_, geventArgs8_0.method_2().Enabled);
 			if (this.method_17() && geventArgs8_0.method_0().method_5() != null && geventArgs8_0.method_0().method_5().Length != 0)
@@ -100,11 +100,11 @@ public class GClass8 : GClass2
 				{
 					if (geventArgs8_0.method_16())
 					{
-						geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_3(), r, base.method_4());
+						geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.imethod_3(), base.method_3(), r, base.method_4());
 					}
 					else
 					{
-						geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_13(), r, base.method_4());
+						geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.imethod_3(), base.method_13(), r, base.method_4());
 					}
 				}
 			}

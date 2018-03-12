@@ -81,7 +81,7 @@ public partial class MainWindow : Form
 		{
 			return;
 		}
-		this.gclass121_0.System.Collections.Generic.ICollection<GClass122>.Remove(gclass);
+		this.gclass121_0.Remove(gclass);
 	}
 
 	GClass98 method_2(GClass122 gclass122_1)
@@ -105,7 +105,7 @@ public partial class MainWindow : Form
 		{
 			this.tsDocuments.method_32(false);
 		}
-		gclass122_1.System.IDisposable.Dispose();
+		gclass122_1.Dispose();
 	}
 
 	void method_4(GClass122 gclass122_1)
@@ -1481,7 +1481,7 @@ public partial class MainWindow : Form
 	void tsmiFileNewSong_Click(object sender, EventArgs e)
 	{
 		GClass123 item = new GClass123();
-		this.gclass121_0.System.Collections.Generic.ICollection<GClass122>.Add(item);
+		this.gclass121_0.Add(item);
 	}
 
 	void tsmiFileOpenSong_Click(object sender, EventArgs e)
@@ -1522,7 +1522,7 @@ public partial class MainWindow : Form
 				return;
 			}
 		}
-		this.gclass121_0.System.Collections.Generic.ICollection<GClass122>.Clear();
+		this.gclass121_0.Clear();
 	}
 
 	void method_26(object sender, GEventArgs15 e)

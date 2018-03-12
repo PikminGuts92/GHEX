@@ -85,13 +85,13 @@ public class GClass49 : GClass46
 	public override void imethod_1()
 	{
 		this.listBox_0.SelectedIndexChanged += this.listBox_0_SelectedIndexChanged;
-		base.GInterface3.imethod_1();
+		base.imethod_1();
 	}
 
 	public override void imethod_2()
 	{
 		this.listBox_0.SelectedIndexChanged -= this.listBox_0_SelectedIndexChanged;
-		base.GInterface3.imethod_2();
+		base.imethod_2();
 	}
 
 	public override void imethod_3()

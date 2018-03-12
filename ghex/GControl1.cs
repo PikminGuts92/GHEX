@@ -633,7 +633,7 @@ public class GControl1 : GControl0, IDisposable, ISupportInitialize
 
 	public GControl1()
 	{
-		this.System.ComponentModel.ISupportInitialize.BeginInit();
+		this.BeginInit();
 		base.SetStyle(ControlStyles.ContainerControl, true);
 		base.SetStyle(ControlStyles.UserPaint, true);
 		base.SetStyle(ControlStyles.ResizeRedraw, true);
@@ -651,7 +651,7 @@ public class GControl1 : GControl0, IDisposable, ISupportInitialize
 		this.class15_0 = new Class15(base.method_3());
 		this.Font = GControl1.font_0;
 		this.stringFormat_0 = new StringFormat();
-		this.System.ComponentModel.ISupportInitialize.EndInit();
+		this.EndInit();
 		this.method_27();
 	}
 
