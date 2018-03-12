@@ -119,13 +119,13 @@ public class GClass10 : GClass2
 
 	public override void imethod_14(GEventArgs3 geventArgs3_0)
 	{
-		base.GInterface2.imethod_14(geventArgs3_0);
+		base.imethod_14(geventArgs3_0);
 		geventArgs3_0.method_6().Invalidate(geventArgs3_0.method_7());
 	}
 
 	public override void imethod_15(GEventArgs3 geventArgs3_0)
 	{
-		base.GInterface2.imethod_15(geventArgs3_0);
+		base.imethod_15(geventArgs3_0);
 		geventArgs3_0.method_6().Invalidate(geventArgs3_0.method_7());
 	}
 
@@ -154,7 +154,7 @@ public class GClass10 : GClass2
 
 	public override void imethod_18(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_18(geventArgs10_0);
+		base.imethod_18(geventArgs10_0);
 		GClass76 gclass = this.method_16(geventArgs10_0.method_0());
 		if (this.vmethod_3().Contains(geventArgs10_0.X, geventArgs10_0.Y))
 		{
@@ -185,7 +185,7 @@ public class GClass10 : GClass2
 
 	public override void imethod_20(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_20(geventArgs10_0);
+		base.imethod_20(geventArgs10_0);
 		GClass76 gclass = this.method_16(geventArgs10_0.method_0());
 		if (geventArgs10_0.Button == MouseButtons.Left)
 		{
@@ -210,7 +210,7 @@ public class GClass10 : GClass2
 
 	public override void imethod_21(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_21(geventArgs10_0);
+		base.imethod_21(geventArgs10_0);
 		GClass76 gclass = this.method_16(geventArgs10_0.method_0());
 		if (geventArgs10_0.Button == MouseButtons.Left)
 		{
@@ -225,7 +225,7 @@ public class GClass10 : GClass2
 
 	public override void imethod_22(GEventArgs10 geventArgs10_0)
 	{
-		base.GInterface2.imethod_22(geventArgs10_0);
+		base.imethod_22(geventArgs10_0);
 		GClass76 gclass = this.method_16(geventArgs10_0.method_0());
 		Rectangle rectangle = this.vmethod_3();
 		if (geventArgs10_0.Button == MouseButtons.Left)
@@ -275,7 +275,7 @@ public class GClass10 : GClass2
 		{
 			this.method_19(ContentAlignment.MiddleLeft);
 		}
-		base.GInterface2.imethod_13(geventArgs8_0);
+		base.imethod_13(geventArgs8_0);
 	}
 
 	protected override void vmethod_0(GEventArgs8 geventArgs8_0)
@@ -328,13 +328,13 @@ public class GClass10 : GClass2
 				}
 				if (geventArgs8_0.method_8())
 				{
-					base.GInterface1.imethod_6(geventArgs8_0.method_0().method_18());
+					base.imethod_6(geventArgs8_0.method_0().method_18());
 				}
-				geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_3(), r, base.method_4());
+				geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.imethod_3(), base.method_3(), r, base.method_4());
 			}
 			else
 			{
-				geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.GInterface1.imethod_3(), base.method_13(), r, base.method_4());
+				geventArgs8_0.Graphics.DrawString(geventArgs8_0.method_0().method_5(), base.imethod_3(), base.method_13(), r, base.method_4());
 			}
 		}
 		if (geventArgs8_0.method_10() && geventArgs8_0.method_16())
@@ -364,7 +364,7 @@ public class GClass10 : GClass2
 			graphics_0.DrawImageUnscaled(image_0, rectangle_1);
 			return;
 		}
-		ControlPaint.DrawImageDisabled(graphics_0, image_0, rectangle_1.X, rectangle_1.Y, base.GInterface1.imethod_7());
+		ControlPaint.DrawImageDisabled(graphics_0, image_0, rectangle_1.X, rectangle_1.Y, base.imethod_7());
 	}
 
 	ContentAlignment contentAlignment_0;

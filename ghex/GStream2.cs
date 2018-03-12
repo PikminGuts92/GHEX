@@ -10,23 +10,23 @@ public class GStream2 : Stream
 		this.fileStream_0.Seek(this.gclass126_0.method_11(), SeekOrigin.Begin);
 	}
 
-	public virtual void Close()
+	public override void Close()
 	{
 		base.Close();
 		this.fileStream_0.Close();
 	}
 
-	public virtual IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+	public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
 	{
 		return this.fileStream_0.BeginRead(buffer, offset, count, callback, state);
 	}
 
-	public virtual IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+	public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
 	{
 		return null;
 	}
 
-	public virtual bool CanRead
+	public override bool CanRead
 	{
 		get
 		{
@@ -34,7 +34,7 @@ public class GStream2 : Stream
 		}
 	}
 
-	public virtual bool CanSeek
+	public override bool CanSeek
 	{
 		get
 		{
@@ -42,7 +42,7 @@ public class GStream2 : Stream
 		}
 	}
 
-	public virtual bool CanTimeout
+	public override bool CanTimeout
 	{
 		get
 		{
@@ -50,7 +50,7 @@ public class GStream2 : Stream
 		}
 	}
 
-	public virtual bool CanWrite
+	public override bool CanWrite
 	{
 		get
 		{
@@ -58,7 +58,7 @@ public class GStream2 : Stream
 		}
 	}
 
-	public virtual long Length
+	public override long Length
 	{
 		get
 		{
@@ -66,7 +66,7 @@ public class GStream2 : Stream
 		}
 	}
 
-	public virtual long Position
+	public override long Position
 	{
 		get
 		{
@@ -78,12 +78,12 @@ public class GStream2 : Stream
 		}
 	}
 
-	public virtual void Flush()
+	public override void Flush()
 	{
 		this.fileStream_0.Flush();
 	}
 
-	public virtual long Seek(long offset, SeekOrigin origin)
+	public override long Seek(long offset, SeekOrigin origin)
 	{
 		switch (origin)
 		{
@@ -98,16 +98,16 @@ public class GStream2 : Stream
 		}
 	}
 
-	public virtual void SetLength(long value)
+	public override void SetLength(long value)
 	{
 	}
 
-	public virtual int Read(byte[] buffer, int offset, int count)
+	public override int Read(byte[] buffer, int offset, int count)
 	{
 		return this.fileStream_0.Read(buffer, offset, count);
 	}
 
-	public virtual void Write(byte[] buffer, int offset, int count)
+	public override void Write(byte[] buffer, int offset, int count)
 	{
 	}
 

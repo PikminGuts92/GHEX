@@ -84,7 +84,7 @@ public class GStream1 : Stream, IDisposable
 		GC.SuppressFinalize(this);
 	}
 
-	public virtual bool CanRead
+	public override bool CanRead
 	{
 		get
 		{
@@ -92,7 +92,7 @@ public class GStream1 : Stream, IDisposable
 		}
 	}
 
-	public virtual bool CanSeek
+	public override bool CanSeek
 	{
 		get
 		{
@@ -100,7 +100,7 @@ public class GStream1 : Stream, IDisposable
 		}
 	}
 
-	public virtual bool CanWrite
+	public override bool CanWrite
 	{
 		get
 		{
@@ -108,7 +108,7 @@ public class GStream1 : Stream, IDisposable
 		}
 	}
 
-	public virtual long Length
+	public override long Length
 	{
 		get
 		{
@@ -116,7 +116,7 @@ public class GStream1 : Stream, IDisposable
 		}
 	}
 
-	public virtual long Position
+	public override long Position
 	{
 		get
 		{
@@ -128,21 +128,21 @@ public class GStream1 : Stream, IDisposable
 		}
 	}
 
-	public virtual void Close()
+	public override void Close()
 	{
 		this.Dispose();
 	}
 
-	public virtual void Flush()
+	public override void Flush()
 	{
 	}
 
-	public virtual void SetLength(long value)
+	public override void SetLength(long value)
 	{
 		throw new InvalidOperationException();
 	}
 
-	public virtual long Seek(long offset, SeekOrigin origin)
+	public override long Seek(long offset, SeekOrigin origin)
 	{
 		switch (origin)
 		{
@@ -159,13 +159,13 @@ public class GStream1 : Stream, IDisposable
 		return this.Position;
 	}
 
-	public virtual int Read(byte[] buffer, int offset, int count)
+	public override int Read(byte[] buffer, int offset, int count)
 	{
 		int count2 = (int)Math.Min((long)count, this.long_1 - this.Position);
 		return this.stream_0.Read(buffer, offset, count2);
 	}
 
-	public virtual void Write(byte[] buffer, int offset, int count)
+	public override void Write(byte[] buffer, int offset, int count)
 	{
 		throw new InvalidOperationException();
 	}

@@ -270,7 +270,7 @@ public class GStream0 : Stream, IDisposable
 		return gclass;
 	}
 
-	public virtual void Close()
+	public override void Close()
 	{
 		if (this.ginterface27_0 != null)
 		{
@@ -280,7 +280,7 @@ public class GStream0 : Stream, IDisposable
 		base.Close();
 	}
 
-	public virtual int Read(byte[] buffer, int offset, int count)
+	public override int Read(byte[] buffer, int offset, int count)
 	{
 		if (this.ginterface27_0 != null)
 		{
@@ -340,12 +340,12 @@ public class GStream0 : Stream, IDisposable
 		throw new ObjectDisposedException(this.ToString());
 	}
 
-	public virtual void Write(byte[] buffer, int offset, int count)
+	public override void Write(byte[] buffer, int offset, int count)
 	{
 		throw new NotSupportedException();
 	}
 
-	public virtual long Seek(long offset, SeekOrigin origin)
+	public override long Seek(long offset, SeekOrigin origin)
 	{
 		if (!this.CanSeek)
 		{
@@ -379,16 +379,16 @@ public class GStream0 : Stream, IDisposable
 		return offset;
 	}
 
-	public virtual void Flush()
+	public override void Flush()
 	{
 	}
 
-	public virtual void SetLength(long value)
+	public override void SetLength(long value)
 	{
 		throw new NotSupportedException();
 	}
 
-	public virtual bool CanRead
+	public override bool CanRead
 	{
 		get
 		{
@@ -400,7 +400,7 @@ public class GStream0 : Stream, IDisposable
 		}
 	}
 
-	public virtual bool CanSeek
+	public override bool CanSeek
 	{
 		get
 		{
@@ -412,7 +412,7 @@ public class GStream0 : Stream, IDisposable
 		}
 	}
 
-	public virtual bool CanWrite
+	public override bool CanWrite
 	{
 		get
 		{
@@ -420,7 +420,7 @@ public class GStream0 : Stream, IDisposable
 		}
 	}
 
-	public virtual long Length
+	public override long Length
 	{
 		get
 		{
@@ -436,7 +436,7 @@ public class GStream0 : Stream, IDisposable
 		}
 	}
 
-	public virtual long Position
+	public override long Position
 	{
 		get
 		{
