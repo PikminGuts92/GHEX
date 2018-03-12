@@ -58,13 +58,12 @@ class Class109
 			if (num < 1024f)
 			{
 				str = text;
-				IL_3A:
 				return num.ToString("#,###.##") + str;
 			}
 			num /= 1024f;
 		}
-		goto IL_3A;
-	}
+        return num.ToString("#,###.##") + str;
+    }
 
 	public static Color smethod_4(int int_0, Color color_2, Color color_3)
 	{

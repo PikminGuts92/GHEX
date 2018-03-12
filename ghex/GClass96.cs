@@ -83,7 +83,7 @@ public class GClass96
 				if (this.byte_0[num + 1 + j] == 79)
 				{
 					num4 = num + 1 + j;
-					IL_108:
+
 					if (num4 == 0)
 					{
 						num4 = this.int_1;
@@ -92,8 +92,14 @@ public class GClass96
 					return -(num4 - num);
 				}
 			}
-			goto IL_108;
-		}
+
+            if (num4 == 0)
+            {
+                num4 = this.int_1;
+            }
+            this.int_2 = num4;
+            return -(num4 - num);
+        }
 		IL_11E:
 		if (this.int_5 + this.int_4 > num2)
 		{
@@ -148,7 +154,7 @@ public class GClass96
 			if (this.byte_0[num + 1 + k] == 79)
 			{
 				num4 = num + 1 + k;
-				IL_32C:
+
 				if (num4 == 0)
 				{
 					num4 = this.int_1;
@@ -157,8 +163,14 @@ public class GClass96
 				return -(num4 - num);
 			}
 		}
-		goto IL_32C;
-	}
+
+        if (num4 == 0)
+        {
+            num4 = this.int_1;
+        }
+        this.int_2 = num4;
+        return -(num4 - num);
+    }
 
 	public int method_4(GClass74 gclass74_1)
 	{
