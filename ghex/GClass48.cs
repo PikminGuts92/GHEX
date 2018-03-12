@@ -79,13 +79,13 @@ public class GClass48 : GClass46
 	{
 		this.monthCalendar_0.DateSelected += this.monthCalendar_0_DateSelected;
 		base.method_12().SelectionLength = 0;
-		base.GInterface3.imethod_1();
+		base.imethod_1();
 	}
 
 	public override void imethod_2()
 	{
 		this.monthCalendar_0.DateSelected -= this.monthCalendar_0_DateSelected;
-		base.GInterface3.imethod_2();
+		base.imethod_2();
 	}
 
 	public override void imethod_3()

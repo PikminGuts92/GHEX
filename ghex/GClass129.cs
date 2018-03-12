@@ -148,17 +148,17 @@ public class GClass129
 	public ulong method_3(byte[] byte_0)
 	{
 		ulong num = this.ulong_6;
-		foreach (ulong num2 in byte_0)
+        for (int i = 0; i < byte_0.Length; i++)
 		{
 			if (this.int_2 != 0)
 			{
-				num2 = this.method_6(num2, 8);
+                byte_0[i] = (byte)this.method_6(byte_0[i], 8);
 			}
 			for (ulong num3 = 128UL; num3 != 0UL; num3 >>= 1)
 			{
 				ulong num4 = num & this.ulong_4;
 				num <<= 1;
-				if ((num2 & num3) != 0UL)
+				if ((byte_0[i] & num3) != 0UL)
 				{
 					num |= 1UL;
 				}
@@ -188,17 +188,17 @@ public class GClass129
 	public ulong method_4(byte[] byte_0)
 	{
 		ulong num = this.ulong_5;
-		foreach (ulong num2 in byte_0)
-		{
+        for (int i = 0; i < byte_0.Length; i++)
+        {
 			if (this.int_2 != 0)
 			{
-				num2 = this.method_6(num2, 8);
+                byte_0[i] = (byte)this.method_6(byte_0[i], 8);
 			}
 			for (ulong num3 = 128UL; num3 > 0UL; num3 >>= 1)
 			{
 				ulong num4 = num & this.ulong_4;
 				num <<= 1;
-				if ((num2 & num3) > 0UL)
+				if ((byte_0[i] & num3) > 0UL)
 				{
 					num4 ^= this.ulong_4;
 				}

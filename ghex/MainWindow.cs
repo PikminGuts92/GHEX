@@ -822,15 +822,9 @@ public partial class MainWindow : Form
 				{
 					this.lvPreviewProperties.Columns.Add("", this.lvPreviewProperties.Columns[1].Width);
 				}
-				using (IEnumerator enumerator2 = array.GetEnumerator())
-				{
-					while (enumerator2.MoveNext())
-					{
-						object obj = enumerator2.Current;
-						listViewItem.SubItems.Add(obj.ToString());
-					}
-					continue;
-				}
+
+                foreach (var a in array) listViewItem.SubItems.Add(a.ToString());
+                continue;
 			}
 			listViewItem.SubItems.Add(gclass.method_1().ToString());
 		}
