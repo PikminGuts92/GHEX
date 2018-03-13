@@ -141,7 +141,7 @@ public class GClass32 : Component
 		return this.method_9(num);
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		base.Dispose(disposing);
 	}

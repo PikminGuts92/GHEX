@@ -125,7 +125,7 @@ public class GClass134 : ToolStrip
 		base.Invalidate();
 	}
 
-	protected virtual Padding DefaultPadding
+	protected override Padding DefaultPadding
 	{
 		get
 		{
@@ -207,7 +207,7 @@ public class GClass134 : ToolStrip
 		}
 	}
 
-	protected virtual void OnItemAdded(ToolStripItemEventArgs toolStripItemEventArgs_0)
+	protected override void OnItemAdded(ToolStripItemEventArgs toolStripItemEventArgs_0)
 	{
 		base.OnItemAdded(toolStripItemEventArgs_0);
 		if (toolStripItemEventArgs_0.Item is GClass135)
@@ -216,7 +216,7 @@ public class GClass134 : ToolStrip
 		}
 	}
 
-	protected virtual void OnItemClicked(ToolStripItemClickedEventArgs toolStripItemClickedEventArgs_0)
+	protected override void OnItemClicked(ToolStripItemClickedEventArgs toolStripItemClickedEventArgs_0)
 	{
 		GClass135 gclass = toolStripItemClickedEventArgs_0.ClickedItem as GClass135;
 		if (gclass != null)

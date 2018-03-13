@@ -43,7 +43,7 @@ public class GClass77 : ContextMenu
 		this.bool_0 = bool_1;
 	}
 
-	protected virtual void OnPopup(EventArgs eventArgs_0)
+	protected override void OnPopup(EventArgs eventArgs_0)
 	{
 		if (this.gclass32_0.method_23().Count > 0)
 		{
@@ -204,7 +204,7 @@ public class GClass77 : ContextMenu
 			base.ResumeLayout(false);
 		}
 
-		protected virtual void Dispose(bool disposing)
+		protected override void Dispose(bool disposing)
 		{
 			if (disposing && this.container_0 != null)
 			{

@@ -1768,7 +1768,7 @@ public class MidPreview : UserControl
 
 	public class GClass63
 	{
-		public virtual string ToString()
+		public override string ToString()
 		{
 			return this.string_0;
 		}

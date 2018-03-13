@@ -6,12 +6,12 @@ using System.Reflection;
 
 public class GClass110 : TypeConverter
 {
-	public virtual bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+	public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
 	{
 		return destinationType == typeof(InstanceDescriptor) || base.CanConvertTo(context, destinationType);
 	}
 
-	public virtual object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+	public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
 	{
 		if (destinationType == typeof(InstanceDescriptor) && value is GClass83)
 		{

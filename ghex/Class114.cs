@@ -7,17 +7,17 @@ using System.Reflection;
 
 class Class114 : TypeConverter
 {
-	public virtual bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+	public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
 	{
 		return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
 	}
 
-	public virtual bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+	public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
 	{
 		return destinationType == typeof(InstanceDescriptor) || base.CanConvertTo(context, destinationType);
 	}
 
-	public virtual object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+	public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
 	{
 		if (!(value is string))
 		{
@@ -41,7 +41,7 @@ class Class114 : TypeConverter
 		return new GStruct13(int.Parse(array[0]), int.Parse(array[1]), int.Parse(array[2]), int.Parse(array[3]));
 	}
 
-	public virtual object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+	public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
 	{
 		if (destinationType == null)
 		{
@@ -84,17 +84,17 @@ class Class114 : TypeConverter
 		return base.ConvertTo(context, culture, value, destinationType);
 	}
 
-	public virtual object CreateInstance(ITypeDescriptorContext context, IDictionary propertyValues)
+	public override object CreateInstance(ITypeDescriptorContext context, IDictionary propertyValues)
 	{
 		return new GStruct13((int)propertyValues["Left"], (int)propertyValues["Top"], (int)propertyValues["Right"], (int)propertyValues["Bottom"]);
 	}
 
-	public virtual bool GetCreateInstanceSupported(ITypeDescriptorContext context)
+	public override bool GetCreateInstanceSupported(ITypeDescriptorContext context)
 	{
 		return true;
 	}
 
-	public virtual PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes)
+	public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes)
 	{
 		PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(GStruct13), attributes);
 		return properties.Sort(new string[]
@@ -106,7 +106,7 @@ class Class114 : TypeConverter
 		});
 	}
 
-	public virtual bool GetPropertiesSupported(ITypeDescriptorContext context)
+	public override bool GetPropertiesSupported(ITypeDescriptorContext context)
 	{
 		return true;
 	}

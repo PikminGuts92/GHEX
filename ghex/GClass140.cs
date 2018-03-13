@@ -36,7 +36,7 @@ public class GClass140 : GClass139
 		return GEnum63.const_0;
 	}
 
-	public virtual string ToString()
+	public override string ToString()
 	{
 		return this.int_0.ToString() + ": \"" + this.string_0 + "\"";
 	}

@@ -33,7 +33,7 @@ public class GClass31 : GClass28
 		this.label_0.Location = new Point(247, 8);
 	}
 
-	public virtual object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
+	public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
 	{
 		this.gclass85_0 = (GClass85)value;
 		for (int i = 0; i < this.gclass85_0.Count; i++)
@@ -50,7 +50,7 @@ public class GClass31 : GClass28
 		return result;
 	}
 
-	protected virtual Type[] CreateNewItemTypes()
+	protected override Type[] CreateNewItemTypes()
 	{
 		return new Type[]
 		{
@@ -66,7 +66,7 @@ public class GClass31 : GClass28
 		};
 	}
 
-	protected virtual object CreateInstance(Type itemType)
+	protected override object CreateInstance(Type itemType)
 	{
 		GClass17 gclass = (GClass17)base.CreateInstance(itemType);
 		this.gclass85_0.method_0(gclass);
@@ -74,7 +74,7 @@ public class GClass31 : GClass28
 		return gclass;
 	}
 
-	protected virtual void DestroyInstance(object instance)
+	protected override void DestroyInstance(object instance)
 	{
 		if (instance != null && instance is GClass17)
 		{

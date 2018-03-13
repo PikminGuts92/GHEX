@@ -790,7 +790,7 @@ public class GControl1 : GControl0, IDisposable, ISupportInitialize
 		this.bool_1 = false;
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing)
 		{

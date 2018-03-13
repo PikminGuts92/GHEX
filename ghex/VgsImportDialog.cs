@@ -787,7 +787,7 @@ public partial class VgsImportDialog : Form
 		this.btnOk.Enabled = enabled;
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{
@@ -816,7 +816,7 @@ public partial class VgsImportDialog : Form
 
 	class Class13
 	{
-		public virtual string ToString()
+		public override string ToString()
 		{
 			return string.Concat(new object[]
 			{

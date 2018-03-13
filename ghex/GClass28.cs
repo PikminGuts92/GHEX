@@ -8,7 +8,7 @@ public class GClass28 : CollectionEditor
 	{
 	}
 
-	protected virtual CollectionEditor.CollectionForm CreateCollectionForm()
+	protected override CollectionEditor.CollectionForm CreateCollectionForm()
 	{
 		CollectionEditor.CollectionForm collectionForm = base.CreateCollectionForm();
 		foreach (object obj in collectionForm.Controls)

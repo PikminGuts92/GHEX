@@ -96,7 +96,7 @@ public abstract class GClass86
 		return GClass86.smethod_0(this.list_0, int_0, int_1, GEnum63.const_9);
 	}
 
-	public virtual string ToString()
+	public override string ToString()
 	{
 		return this.method_1();
 	}

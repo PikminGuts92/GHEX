@@ -13,7 +13,7 @@ public struct GStruct13
 		this.int_3 = int_7;
 	}
 
-	public bool Equals(object object_0)
+	public override bool Equals(object object_0)
 	{
 		if (!(object_0 is GStruct13))
 		{
@@ -23,7 +23,7 @@ public struct GStruct13
 		return gstruct.method_0() == this.method_0() && gstruct.method_4() == this.method_4() && gstruct.method_2() == this.method_2() && gstruct.method_6() == this.method_6();
 	}
 
-	public int GetHashCode()
+	public override int GetHashCode()
 	{
 		return this.method_0() ^ (this.method_4() << 13 | this.method_4() >> 19) ^ (this.method_2() << 26 | this.method_2() >> 6) ^ (this.method_6() << 7 | this.method_6() >> 25);
 	}

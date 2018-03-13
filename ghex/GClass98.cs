@@ -208,7 +208,7 @@ public class GClass98 : Panel
 		}
 	}
 
-	public virtual string ToString()
+	public override string ToString()
 	{
 		return this.method_18();
 	}

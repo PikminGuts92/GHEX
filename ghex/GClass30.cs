@@ -8,7 +8,7 @@ public class GClass30 : GClass28
 		this.gclass82_0 = null;
 	}
 
-	public virtual object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
+	public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
 	{
 		this.gclass82_0 = (GClass82)value;
 		object result = base.EditValue(context, provider, value);
@@ -21,14 +21,14 @@ public class GClass30 : GClass28
 		return result;
 	}
 
-	protected virtual object CreateInstance(Type itemType)
+	protected override object CreateInstance(Type itemType)
 	{
 		GClass83 gclass = (GClass83)base.CreateInstance(itemType);
 		this.gclass82_0.method_0(gclass);
 		return gclass;
 	}
 
-	protected virtual void DestroyInstance(object instance)
+	protected override void DestroyInstance(object instance)
 	{
 		if (instance != null && instance is GClass83)
 		{

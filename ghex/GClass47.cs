@@ -278,7 +278,7 @@ public class GClass47 : GClass46
 			this.method_4();
 		}
 
-		protected virtual void Dispose(bool disposing)
+		protected override void Dispose(bool disposing)
 		{
 			if (disposing && this.container_0 != null)
 			{
@@ -529,7 +529,7 @@ public class GClass47 : GClass46
 			return this.color_1;
 		}
 
-		protected virtual Size DefaultSize
+		protected override Size DefaultSize
 		{
 			get
 			{
@@ -545,13 +545,13 @@ public class GClass47 : GClass46
 			}
 		}
 
-		protected virtual void OnFontChanged(EventArgs eventArgs_0)
+		protected override void OnFontChanged(EventArgs eventArgs_0)
 		{
 			base.OnFontChanged(eventArgs_0);
 			this.method_4();
 		}
 
-		protected virtual void OnGotFocus(EventArgs eventArgs_0)
+		protected override void OnGotFocus(EventArgs eventArgs_0)
 		{
 			base.OnGotFocus(eventArgs_0);
 			this.method_11(this, EventArgs.Empty);
@@ -852,7 +852,7 @@ public class GClass47 : GClass46
 				}
 			}
 
-			protected virtual bool IsInputKey(Keys keyData)
+			protected override bool IsInputKey(Keys keyData)
 			{
 				if (keyData != Keys.Return)
 				{
@@ -870,7 +870,7 @@ public class GClass47 : GClass46
 				return true;
 			}
 
-			protected virtual bool ProcessDialogKey(Keys keyData)
+			protected override bool ProcessDialogKey(Keys keyData)
 			{
 				if (keyData == Keys.F2)
 				{
@@ -928,7 +928,7 @@ public class GClass47 : GClass46
 				return this.point_0.X + this.point_0.Y * 8;
 			}
 
-			protected virtual void OnPaint(PaintEventArgs paintEventArgs_0)
+			protected override void OnPaint(PaintEventArgs paintEventArgs_0)
 			{
 				Rectangle rect = new Rectangle(8, 8, 16, 16);
 				bool flag = false;
@@ -963,19 +963,19 @@ public class GClass47 : GClass46
 				}
 			}
 
-			protected virtual void OnGotFocus(EventArgs eventArgs_0)
+			protected override void OnGotFocus(EventArgs eventArgs_0)
 			{
 				base.OnGotFocus(eventArgs_0);
 				this.method_10();
 			}
 
-			protected virtual void OnLostFocus(EventArgs eventArgs_0)
+			protected override void OnLostFocus(EventArgs eventArgs_0)
 			{
 				base.OnLostFocus(eventArgs_0);
 				this.method_10();
 			}
 
-			protected virtual void OnKeyDown(KeyEventArgs keyEventArgs_0)
+			protected override void OnKeyDown(KeyEventArgs keyEventArgs_0)
 			{
 				base.OnKeyDown(keyEventArgs_0);
 				if (keyEventArgs_0.KeyCode != Keys.Return)
@@ -1013,7 +1013,7 @@ public class GClass47 : GClass46
 				this.method_16(EventArgs.Empty);
 			}
 
-			protected virtual void OnMouseDown(MouseEventArgs mouseEventArgs_0)
+			protected override void OnMouseDown(MouseEventArgs mouseEventArgs_0)
 			{
 				base.Focus();
 				base.OnMouseDown(mouseEventArgs_0);
@@ -1027,7 +1027,7 @@ public class GClass47 : GClass46
 				}
 			}
 
-			protected virtual void OnMouseMove(MouseEventArgs mouseEventArgs_0)
+			protected override void OnMouseMove(MouseEventArgs mouseEventArgs_0)
 			{
 				base.OnMouseMove(mouseEventArgs_0);
 				if (mouseEventArgs_0.Button == MouseButtons.Left && base.Bounds.Contains(mouseEventArgs_0.X, mouseEventArgs_0.Y))
@@ -1040,7 +1040,7 @@ public class GClass47 : GClass46
 				}
 			}
 
-			protected virtual void OnMouseUp(MouseEventArgs mouseEventArgs_0)
+			protected override void OnMouseUp(MouseEventArgs mouseEventArgs_0)
 			{
 				base.OnMouseUp(mouseEventArgs_0);
 				if (mouseEventArgs_0.Button == MouseButtons.Left)
@@ -1200,7 +1200,7 @@ public class GClass47 : GClass46
 					this.method_3(this.color_0);
 				}
 
-				protected virtual void Dispose(bool disposing)
+				protected override void Dispose(bool disposing)
 				{
 					if (disposing && this.container_0 != null)
 					{
@@ -4092,7 +4092,7 @@ public class GClass47 : GClass46
 
 		internal class Class53 : TabPage
 		{
-			protected virtual void OnPaintBackground(PaintEventArgs paintEventArgs_0)
+			protected override void OnPaintBackground(PaintEventArgs paintEventArgs_0)
 			{
 				if (GClass69.smethod_29())
 				{

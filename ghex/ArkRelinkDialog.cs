@@ -76,7 +76,7 @@ public partial class ArkRelinkDialog : Form
 		this.btnOk_Click(sender, e);
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{

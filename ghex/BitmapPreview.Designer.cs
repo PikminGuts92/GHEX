@@ -6,9 +6,55 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
+[global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
 public class BitmapPreview : UserControl
 {
-	protected override void Dispose(bool disposing)
+    private static global::System.Resources.ResourceManager resourceMan;
+
+    private static global::System.Globalization.CultureInfo resourceCulture;
+
+    [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+    internal BitmapPreview()
+    {
+    }
+
+    /// <summary>
+    ///   Returns the cached ResourceManager instance used by this class.
+    /// </summary>
+    [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+    public static global::System.Resources.ResourceManager ResourceManager
+    {
+        get
+        {
+            if (object.ReferenceEquals(resourceMan, null))
+            {
+                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BitmapPreview", typeof(BitmapPreview).Assembly);
+                resourceMan = temp;
+            }
+            return resourceMan;
+        }
+    }
+
+    /// <summary>
+    ///   Overrides the current thread's CurrentUICulture property for all
+    ///   resource lookups using this strongly typed resource class.
+    /// </summary>
+    [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+    public static global::System.Globalization.CultureInfo Culture
+    {
+        get
+        {
+            return resourceCulture;
+        }
+        set
+        {
+            resourceCulture = value;
+        }
+    }
+
+    protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{
@@ -98,7 +144,7 @@ public class BitmapPreview : UserControl
 		list_0.Add(new GClass109("Width", num));
 		list_0.Add(new GClass109("Height", num2));
 		list_0.Add(new GClass109("BitsPerPixel", b));
-		this.bitmap_0 = new Bitmap(num, num2, PixelFormat.Format32bppRgb);
+		this.bitmap_0 = new Bitmap(num, num2, PixelFormat.Format32bppArgb);
 		Color[] array = new Color[1 << (int)b];
 		int num3 = 32;
 		if (b < 16)
@@ -106,7 +152,13 @@ public class BitmapPreview : UserControl
 			for (int i = 0; i < 1 << (int)b; i++)
 			{
 				int num4 = 32 + i * 4;
-				array[i] = Color.FromArgb((int)byte_0[num4], (int)byte_0[num4 + 1], (int)byte_0[num4 + 2]);
+
+                // NEW: Adds alpha channel
+                int alpha = byte_0[num4 + 3];
+                if (alpha >= 0x80) alpha = 0xFF;
+                else alpha = alpha << 1;
+
+                array[i] = Color.FromArgb(alpha, (int)byte_0[num4], (int)byte_0[num4 + 1], (int)byte_0[num4 + 2]);
 			}
 			if (b == 8)
 			{
@@ -122,7 +174,7 @@ public class BitmapPreview : UserControl
 			}
 			num3 += 4 << (int)b;
 		}
-		BitmapData bitmapData = this.bitmap_0.LockBits(new Rectangle(0, 0, num, num2), ImageLockMode.WriteOnly, PixelFormat.Format32bppRgb);
+		BitmapData bitmapData = this.bitmap_0.LockBits(new Rectangle(0, 0, num, num2), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
 		int num5 = num * num2 * (int)b >> 3;
 		byte b2 = b;
 		if (b2 <= 8)

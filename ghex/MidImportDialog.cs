@@ -10,7 +10,7 @@ using System.Xml;
 
 public partial class MidImportDialog : Form
 {
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{
@@ -2003,7 +2003,7 @@ public partial class MidImportDialog : Form
 
 	class Class30
 	{
-		public virtual string ToString()
+		public override string ToString()
 		{
 			return this.gclass88_0.method_1() + " - " + Class109.smethod_7(this.genum53_0);
 		}

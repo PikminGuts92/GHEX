@@ -644,7 +644,10 @@ public class GClass128
 	{
 		public void method_0(ref ProgressDialog.GClass73 gclass73_0)
 		{
-			string text = null;
+            // TODO: Actually fix goto IL_127
+            return;
+
+            string text = null;
 			int num = 0;
 			int num2 = 0;
 			GClass128.Class91 @class = null;
@@ -814,7 +817,7 @@ public class GClass128
 					}
 					IL_D5:;
 				}
-				goto IL_127;
+				//goto IL_127;
 			}
 		}
 

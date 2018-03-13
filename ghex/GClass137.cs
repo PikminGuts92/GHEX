@@ -34,7 +34,7 @@ public class GClass137
 		return this.uint_0;
 	}
 
-	public virtual string ToString()
+	public override string ToString()
 	{
 		return this.string_0;
 	}

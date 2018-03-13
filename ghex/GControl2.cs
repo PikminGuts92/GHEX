@@ -1073,7 +1073,7 @@ public class GControl2 : Control, ISupportInitialize
 		return this.method_115(point_0.X, point_0.Y);
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.container_0 != null)
 		{
@@ -1248,7 +1248,7 @@ public class GControl2 : Control, ISupportInitialize
 		return false;
 	}
 
-	protected virtual bool IsInputKey(Keys keyData)
+	protected override bool IsInputKey(Keys keyData)
 	{
 		if ((keyData & Keys.Alt) != Keys.Alt)
 		{
@@ -2044,7 +2044,7 @@ public class GControl2 : Control, ISupportInitialize
 		return this.method_186() != SystemColors.Control;
 	}
 
-	public virtual Color BackColor
+	public override Color BackColor
 	{
 		get
 		{
@@ -3413,7 +3413,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnGotFocus(EventArgs eventArgs_0)
+	protected override void OnGotFocus(EventArgs eventArgs_0)
 	{
 		if (this.method_159().method_5())
 		{
@@ -3434,7 +3434,7 @@ public class GControl2 : Control, ISupportInitialize
 		base.OnGotFocus(eventArgs_0);
 	}
 
-	protected virtual void OnLostFocus(EventArgs eventArgs_0)
+	protected override void OnLostFocus(EventArgs eventArgs_0)
 	{
 		if (!this.method_159().method_5())
 		{
@@ -3447,7 +3447,7 @@ public class GControl2 : Control, ISupportInitialize
 		base.OnLostFocus(eventArgs_0);
 	}
 
-	protected virtual void OnKeyDown(KeyEventArgs keyEventArgs_0)
+	protected override void OnKeyDown(KeyEventArgs keyEventArgs_0)
 	{
 		base.OnKeyDown(keyEventArgs_0);
 		if (this.method_102(this.method_159()))
@@ -3613,7 +3613,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnKeyUp(KeyEventArgs keyEventArgs_0)
+	protected override void OnKeyUp(KeyEventArgs keyEventArgs_0)
 	{
 		base.OnKeyUp(keyEventArgs_0);
 		if (!this.method_134(keyEventArgs_0.KeyData))
@@ -3626,7 +3626,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnLayout(LayoutEventArgs levent)
+	protected override void OnLayout(LayoutEventArgs levent)
 	{
 		if (base.IsHandleCreated && !this.bool_6)
 		{
@@ -3636,7 +3636,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnMouseUp(MouseEventArgs mouseEventArgs_0)
+	protected override void OnMouseUp(MouseEventArgs mouseEventArgs_0)
 	{
 		base.OnMouseUp(mouseEventArgs_0);
 		if (!this.method_246())
@@ -3698,7 +3698,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnMouseDown(MouseEventArgs mouseEventArgs_0)
+	protected override void OnMouseDown(MouseEventArgs mouseEventArgs_0)
 	{
 		base.OnMouseDown(mouseEventArgs_0);
 		if (!this.method_246())
@@ -3825,7 +3825,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnMouseMove(MouseEventArgs mouseEventArgs_0)
+	protected override void OnMouseMove(MouseEventArgs mouseEventArgs_0)
 	{
 		base.OnMouseMove(mouseEventArgs_0);
 		if (this.method_243() == GEnum45.const_3)
@@ -3998,7 +3998,7 @@ public class GControl2 : Control, ISupportInitialize
 		this.Cursor = Cursors.Default;
 	}
 
-	protected virtual void OnMouseLeave(EventArgs eventArgs_0)
+	protected override void OnMouseLeave(EventArgs eventArgs_0)
 	{
 		base.OnMouseLeave(eventArgs_0);
 		if (this.int_6 != -1)
@@ -4008,7 +4008,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnMouseWheel(MouseEventArgs mouseEventArgs_0)
+	protected override void OnMouseWheel(MouseEventArgs mouseEventArgs_0)
 	{
 		base.OnMouseWheel(mouseEventArgs_0);
 		if (!this.method_211() || (!this.method_213() && !this.method_214()))
@@ -4046,7 +4046,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnMouseHover(EventArgs eventArgs_0)
+	protected override void OnMouseHover(EventArgs eventArgs_0)
 	{
 		base.OnMouseHover(eventArgs_0);
 		if (this.method_102(this.method_157()))
@@ -4060,7 +4060,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnClick(EventArgs eventArgs_0)
+	protected override void OnClick(EventArgs eventArgs_0)
 	{
 		base.OnClick(eventArgs_0);
 		if (this.method_102(this.method_157()))
@@ -4074,7 +4074,7 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnDoubleClick(EventArgs eventArgs_0)
+	protected override void OnDoubleClick(EventArgs eventArgs_0)
 	{
 		base.OnDoubleClick(eventArgs_0);
 		if (this.method_102(this.method_157()))
@@ -4089,12 +4089,12 @@ public class GControl2 : Control, ISupportInitialize
 		}
 	}
 
-	protected virtual void OnPaintBackground(PaintEventArgs pevent)
+	protected override void OnPaintBackground(PaintEventArgs pevent)
 	{
 		base.OnPaintBackground(pevent);
 	}
 
-	protected virtual void OnPaint(PaintEventArgs paintEventArgs_0)
+	protected override void OnPaint(PaintEventArgs paintEventArgs_0)
 	{
 		if (base.Width != 0 && base.Height != 0)
 		{

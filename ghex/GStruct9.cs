@@ -15,7 +15,7 @@ public struct GStruct9
 		this.int_1 += int_3;
 	}
 
-	public bool Equals(object object_0)
+	public override bool Equals(object object_0)
 	{
 		if (!(object_0 is GStruct9))
 		{
@@ -25,12 +25,12 @@ public struct GStruct9
 		return gstruct.method_1() == this.method_1() && gstruct.method_3() == this.method_3();
 	}
 
-	public int GetHashCode()
+	public override int GetHashCode()
 	{
 		return this.method_1() ^ (this.method_3() << 13 | this.method_3() >> 19);
 	}
 
-	public string ToString()
+	public override string ToString()
 	{
 		return string.Concat(new object[]
 		{

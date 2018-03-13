@@ -34,7 +34,7 @@ public class GClass145 : GClass139
 		return GEnum63.const_4;
 	}
 
-	public virtual string ToString()
+	public override string ToString()
 	{
 		string text = this.int_0.ToString() + ": ";
 		foreach (GEnum51 genum in this.list_0)

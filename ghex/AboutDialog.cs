@@ -22,7 +22,7 @@ public partial class AboutDialog : Form
 		(Application.OpenForms["MainWindow"] as MainWindow).method_23();
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{

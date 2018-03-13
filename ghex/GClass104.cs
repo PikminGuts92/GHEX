@@ -85,7 +85,7 @@ public class GClass104 : Component
 		this.int_3 = GClass104.int_0;
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		base.Dispose(disposing);
 	}

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 public class SongEditorControl : Control, GInterface37
 {
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{
@@ -238,7 +238,7 @@ public class SongEditorControl : Control, GInterface37
 		base.ResumeLayout();
 	}
 
-	protected virtual void OnSizeChanged(EventArgs eventArgs_0)
+	protected override void OnSizeChanged(EventArgs eventArgs_0)
 	{
 		base.OnSizeChanged(eventArgs_0);
 		this.method_9(false);
@@ -271,7 +271,7 @@ public class SongEditorControl : Control, GInterface37
 		this.method_10();
 	}
 
-	protected virtual void OnPaintBackground(PaintEventArgs pevent)
+	protected override void OnPaintBackground(PaintEventArgs pevent)
 	{
 		base.OnPaintBackground(pevent);
 		foreach (GClass106 gclass in this.list_0)
@@ -284,7 +284,7 @@ public class SongEditorControl : Control, GInterface37
 		}
 	}
 
-	protected virtual void OnPaint(PaintEventArgs paintEventArgs_0)
+	protected override void OnPaint(PaintEventArgs paintEventArgs_0)
 	{
 		foreach (GClass106 gclass in this.list_0)
 		{
@@ -304,14 +304,14 @@ public class SongEditorControl : Control, GInterface37
 		}
 	}
 
-	protected virtual void OnResize(EventArgs eventArgs_0)
+	protected override void OnResize(EventArgs eventArgs_0)
 	{
 		base.OnResize(eventArgs_0);
 		this.method_9(false);
 		base.Invalidate(base.ClientRectangle);
 	}
 
-	protected virtual void OnKeyDown(KeyEventArgs keyEventArgs_2)
+	protected override void OnKeyDown(KeyEventArgs keyEventArgs_2)
 	{
 		base.OnKeyDown(keyEventArgs_2);
 		this.keyEventArgs_1 = keyEventArgs_2;
@@ -325,7 +325,7 @@ public class SongEditorControl : Control, GInterface37
 		}
 	}
 
-	protected virtual void OnKeyUp(KeyEventArgs keyEventArgs_2)
+	protected override void OnKeyUp(KeyEventArgs keyEventArgs_2)
 	{
 		base.OnKeyUp(keyEventArgs_2);
 		if (this.gclass106_0 != null)
@@ -339,7 +339,7 @@ public class SongEditorControl : Control, GInterface37
 		this.keyEventArgs_1 = this.keyEventArgs_0;
 	}
 
-	protected virtual void OnKeyPress(KeyPressEventArgs keyPressEventArgs_0)
+	protected override void OnKeyPress(KeyPressEventArgs keyPressEventArgs_0)
 	{
 		base.OnKeyPress(keyPressEventArgs_0);
 		if (this.gclass106_0 != null)
@@ -353,7 +353,7 @@ public class SongEditorControl : Control, GInterface37
 		this.keyEventArgs_1 = this.keyEventArgs_0;
 	}
 
-	protected virtual void OnMouseMove(MouseEventArgs mouseEventArgs_2)
+	protected override void OnMouseMove(MouseEventArgs mouseEventArgs_2)
 	{
 		base.OnMouseMove(mouseEventArgs_2);
 		this.method_12(mouseEventArgs_2);
@@ -387,7 +387,7 @@ public class SongEditorControl : Control, GInterface37
 		this.method_13(gclass);
 	}
 
-	protected virtual void OnMouseDown(MouseEventArgs mouseEventArgs_2)
+	protected override void OnMouseDown(MouseEventArgs mouseEventArgs_2)
 	{
 		base.OnMouseDown(mouseEventArgs_2);
 		this.method_12(mouseEventArgs_2);
@@ -401,7 +401,7 @@ public class SongEditorControl : Control, GInterface37
 		}
 	}
 
-	protected virtual void OnMouseUp(MouseEventArgs mouseEventArgs_2)
+	protected override void OnMouseUp(MouseEventArgs mouseEventArgs_2)
 	{
 		base.OnMouseUp(mouseEventArgs_2);
 		this.method_12(mouseEventArgs_2);
@@ -412,7 +412,7 @@ public class SongEditorControl : Control, GInterface37
 		}
 	}
 
-	protected virtual void OnMouseClick(MouseEventArgs mouseEventArgs_2)
+	protected override void OnMouseClick(MouseEventArgs mouseEventArgs_2)
 	{
 		base.OnMouseClick(mouseEventArgs_2);
 		base.Focus();
@@ -426,7 +426,7 @@ public class SongEditorControl : Control, GInterface37
 		}
 	}
 
-	protected virtual void OnMouseLeave(EventArgs eventArgs_0)
+	protected override void OnMouseLeave(EventArgs eventArgs_0)
 	{
 		base.OnMouseLeave(eventArgs_0);
 		this.method_12(this.mouseEventArgs_1);

@@ -26,7 +26,7 @@ public partial class BugReportDialog : Form
 		progressDialog.ShowDialog();
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{

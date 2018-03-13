@@ -69,7 +69,7 @@ public partial class GForm0 : Form
 		}
 	}
 
-	protected virtual CreateParams CreateParams
+	protected override CreateParams CreateParams
 	{
 		get
 		{

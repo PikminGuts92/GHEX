@@ -6,12 +6,12 @@ using System.Windows.Forms.Design;
 
 public class GClass133 : UITypeEditor
 {
-	public virtual UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
+	public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
 	{
 		return UITypeEditorEditStyle.Modal;
 	}
 
-	public virtual object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
+	public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
 	{
 		if (value.GetType() != typeof(string))
 		{

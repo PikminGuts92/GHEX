@@ -37,7 +37,7 @@ public partial class ArkShrinkDialog : Form
 		this.btnOk.Enabled = (this.cbSongs.Checked || this.cbMenuMusic.Checked || this.cbTutorials.Checked);
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{

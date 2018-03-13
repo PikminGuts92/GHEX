@@ -52,12 +52,12 @@ class Class102 : ToolStripRenderer
 		this.bool_1 = bool_2;
 	}
 
-	protected virtual void Initialize(ToolStrip toolStrip)
+	protected override void Initialize(ToolStrip toolStrip)
 	{
 		base.Initialize(toolStrip);
 	}
 
-	protected virtual void OnRenderToolStripBorder(ToolStripRenderEventArgs toolStripRenderEventArgs_0)
+	protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs toolStripRenderEventArgs_0)
 	{
 		Color color = SystemColors.AppWorkspace;
 		if (this.method_4())
@@ -122,7 +122,7 @@ class Class102 : ToolStripRenderer
 		}
 	}
 
-	protected virtual void OnRenderToolStripBackground(ToolStripRenderEventArgs toolStripRenderEventArgs_0)
+	protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs toolStripRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -132,7 +132,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderToolStripBackground(toolStripRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderButtonBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
+	protected override void OnRenderButtonBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
 	{
 		Graphics graphics = toolStripItemRenderEventArgs_0.Graphics;
 		GClass134 gclass = toolStripItemRenderEventArgs_0.ToolStrip as GClass134;
@@ -334,7 +334,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderButtonBackground(toolStripItemRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderItemImage(ToolStripItemImageRenderEventArgs toolStripItemImageRenderEventArgs_0)
+	protected override void OnRenderItemImage(ToolStripItemImageRenderEventArgs toolStripItemImageRenderEventArgs_0)
 	{
 		Rectangle imageRectangle = toolStripItemImageRenderEventArgs_0.ImageRectangle;
 		GClass135 gclass = toolStripItemImageRenderEventArgs_0.Item as GClass135;
@@ -359,7 +359,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderItemImage(e);
 	}
 
-	protected virtual void OnRenderItemText(ToolStripItemTextRenderEventArgs toolStripItemTextRenderEventArgs_0)
+	protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs toolStripItemTextRenderEventArgs_0)
 	{
 		Rectangle textRectangle = toolStripItemTextRenderEventArgs_0.TextRectangle;
 		GClass135 gclass = toolStripItemTextRenderEventArgs_0.Item as GClass135;
@@ -399,7 +399,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderItemText(toolStripItemTextRenderEventArgs);
 	}
 
-	protected virtual void OnRenderArrow(ToolStripArrowRenderEventArgs toolStripArrowRenderEventArgs_0)
+	protected override void OnRenderArrow(ToolStripArrowRenderEventArgs toolStripArrowRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -409,7 +409,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderArrow(toolStripArrowRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderDropDownButtonBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
+	protected override void OnRenderDropDownButtonBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -419,7 +419,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderDropDownButtonBackground(toolStripItemRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderGrip(ToolStripGripRenderEventArgs toolStripGripRenderEventArgs_0)
+	protected override void OnRenderGrip(ToolStripGripRenderEventArgs toolStripGripRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -429,7 +429,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderGrip(toolStripGripRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderImageMargin(ToolStripRenderEventArgs toolStripRenderEventArgs_0)
+	protected override void OnRenderImageMargin(ToolStripRenderEventArgs toolStripRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -439,7 +439,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderImageMargin(toolStripRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderItemBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
+	protected override void OnRenderItemBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -449,7 +449,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderItemBackground(toolStripItemRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderItemCheck(ToolStripItemImageRenderEventArgs toolStripItemImageRenderEventArgs_0)
+	protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs toolStripItemImageRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -459,7 +459,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderItemCheck(toolStripItemImageRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderLabelBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
+	protected override void OnRenderLabelBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -469,7 +469,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderLabelBackground(toolStripItemRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
+	protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -479,7 +479,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderMenuItemBackground(toolStripItemRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderOverflowButtonBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
+	protected override void OnRenderOverflowButtonBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -489,7 +489,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderOverflowButtonBackground(toolStripItemRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderSeparator(ToolStripSeparatorRenderEventArgs toolStripSeparatorRenderEventArgs_0)
+	protected override void OnRenderSeparator(ToolStripSeparatorRenderEventArgs toolStripSeparatorRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -499,7 +499,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderSeparator(toolStripSeparatorRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderSplitButtonBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
+	protected override void OnRenderSplitButtonBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -509,7 +509,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderSplitButtonBackground(toolStripItemRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderStatusStripSizingGrip(ToolStripRenderEventArgs toolStripRenderEventArgs_0)
+	protected override void OnRenderStatusStripSizingGrip(ToolStripRenderEventArgs toolStripRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -519,7 +519,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderStatusStripSizingGrip(toolStripRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderToolStripContentPanelBackground(ToolStripContentPanelRenderEventArgs toolStripContentPanelRenderEventArgs_0)
+	protected override void OnRenderToolStripContentPanelBackground(ToolStripContentPanelRenderEventArgs toolStripContentPanelRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -529,7 +529,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderToolStripContentPanelBackground(toolStripContentPanelRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderToolStripPanelBackground(ToolStripPanelRenderEventArgs toolStripPanelRenderEventArgs_0)
+	protected override void OnRenderToolStripPanelBackground(ToolStripPanelRenderEventArgs toolStripPanelRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{
@@ -539,7 +539,7 @@ class Class102 : ToolStripRenderer
 		base.OnRenderToolStripPanelBackground(toolStripPanelRenderEventArgs_0);
 	}
 
-	protected virtual void OnRenderToolStripStatusLabelBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
+	protected override void OnRenderToolStripStatusLabelBackground(ToolStripItemRenderEventArgs toolStripItemRenderEventArgs_0)
 	{
 		if (this.toolStripRenderer_0 != null)
 		{

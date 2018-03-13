@@ -21,7 +21,7 @@ public class GClass142 : GClass139
 		return GEnum63.const_2;
 	}
 
-	public virtual string ToString()
+	public override string ToString()
 	{
 		return this.int_0.ToString() + ": bpm=" + Class109.smethod_12(this.int_1);
 	}

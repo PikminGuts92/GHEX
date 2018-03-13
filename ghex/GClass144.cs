@@ -24,7 +24,7 @@ public class GClass144 : GClass139
 		return GEnum63.const_8;
 	}
 
-	public virtual string ToString()
+	public override string ToString()
 	{
 		return string.Concat(new object[]
 		{

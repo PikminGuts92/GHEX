@@ -34,7 +34,7 @@ public struct GStruct12
 		}
 	}
 
-	public string ToString()
+	public override string ToString()
 	{
 		return string.Format("{0} = {1}", this.string_0, this.object_0);
 	}

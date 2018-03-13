@@ -76,7 +76,7 @@ public partial class ProgressDialog : Form
 		this.thread_0.Start();
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{

@@ -53,7 +53,7 @@ public class GClass95
 		this.uint_0 = uint_1;
 	}
 
-	public virtual string ToString()
+	public override string ToString()
 	{
 		if (!this.bool_0)
 		{

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 public partial class BatchExportMidiDialog : Form
 {
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{

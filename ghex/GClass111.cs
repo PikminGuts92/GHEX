@@ -96,7 +96,7 @@ public abstract class GClass111 : CollectionBase
 		return this.int_0 > 0;
 	}
 
-	protected virtual void OnClear()
+	protected override void OnClear()
 	{
 		if (!this.method_14() && this.gdelegate20_0 != null)
 		{
@@ -104,7 +104,7 @@ public abstract class GClass111 : CollectionBase
 		}
 	}
 
-	protected virtual void OnClearComplete()
+	protected override void OnClearComplete()
 	{
 		if (!this.method_14() && this.gdelegate20_1 != null)
 		{
@@ -112,7 +112,7 @@ public abstract class GClass111 : CollectionBase
 		}
 	}
 
-	protected virtual void OnInsert(int index, object value)
+	protected override void OnInsert(int index, object value)
 	{
 		if (!this.method_14() && this.gdelegate21_0 != null)
 		{
@@ -120,7 +120,7 @@ public abstract class GClass111 : CollectionBase
 		}
 	}
 
-	protected virtual void OnInsertComplete(int index, object value)
+	protected override void OnInsertComplete(int index, object value)
 	{
 		if (!this.method_14() && this.gdelegate21_1 != null)
 		{
@@ -128,7 +128,7 @@ public abstract class GClass111 : CollectionBase
 		}
 	}
 
-	protected virtual void OnRemove(int index, object value)
+	protected override void OnRemove(int index, object value)
 	{
 		if (!this.method_14() && this.gdelegate21_2 != null)
 		{
@@ -136,7 +136,7 @@ public abstract class GClass111 : CollectionBase
 		}
 	}
 
-	protected virtual void OnRemoveComplete(int index, object value)
+	protected override void OnRemoveComplete(int index, object value)
 	{
 		if (!this.method_14() && this.gdelegate21_3 != null)
 		{

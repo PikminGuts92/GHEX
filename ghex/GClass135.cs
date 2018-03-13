@@ -41,7 +41,7 @@ public class GClass135 : ToolStripButton
 		this.font_0 = this.Font;
 	}
 
-	public virtual Size GetPreferredSize(Size constrainingSize)
+	public override Size GetPreferredSize(Size constrainingSize)
 	{
 		Size preferredSize = base.GetPreferredSize(constrainingSize);
 		if (base.Owner != null && base.Owner.Orientation == Orientation.Vertical)

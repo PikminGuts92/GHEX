@@ -40,7 +40,7 @@ public partial class VgsImportSourceDialog : Form
 		this.nudVolume.Value = (int)(float_0 * 100f);
 	}
 
-	protected virtual void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
 	{
 		if (disposing && this.icontainer_0 != null)
 		{
