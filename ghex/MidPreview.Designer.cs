@@ -579,7 +579,7 @@ public class MidPreview : UserControl
 				num2 -= num4;
 			}
 		}
-        return;
+
 		this.method_17(false);
 		if (this.genum9_0 == MidPreview.GEnum9.const_2)
 		{
@@ -613,7 +613,7 @@ public class MidPreview : UserControl
 		int height2 = this.font_0.Height;
 		int height3 = this.font_1.Height;
 		int height4 = this.font_2.Height;
-		bool @checked = this.cbLefty.Checked;
+		bool @checked = !this.cbLefty.Checked;
 		int num4 = 0;
 		int num5 = (int)this.nudTempoThreshold.Value;
 		int num6 = 0;
