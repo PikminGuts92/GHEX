@@ -18,34 +18,34 @@ public class VgsPreview : UserControl
 		list_0.Add(new GClass109("Channels", @struct.struct3_0.Length));
 		this.int_0 += 28 - this.int_0 % 28;
 		string[] array = new string[@struct.struct3_0.Length];
-		this.class87_0 = new Class87[@struct.struct3_0.Length];
+		this.pcmAudio = new Class87[@struct.struct3_0.Length];
 		for (int i = 0; i < @struct.struct3_0.Length; i++)
 		{
-			this.class87_0[i] = new Class87();
+			this.pcmAudio[i] = new Class87();
 			if (i % 2 == 1)
 			{
-				this.class87_0[i].genum47_0 = GEnum47.const_1;
+				this.pcmAudio[i].genum47_0 = GEnum47.const_1;
 			}
 			else
 			{
-				this.class87_0[i].genum47_0 = GEnum47.const_0;
+				this.pcmAudio[i].genum47_0 = GEnum47.const_0;
 			}
-			this.class87_0[i].int_0 = @struct.struct3_0[i].int_0;
-			this.class87_0[i].int_1 = @struct.struct3_0[i].int_1;
-			int num = (int)((float)this.class87_0[i].int_0 * 0.25f + 0.5f);
+			this.pcmAudio[i].int_0 = @struct.struct3_0[i].int_0;
+			this.pcmAudio[i].int_1 = @struct.struct3_0[i].int_1;
+			int num = (int)((float)this.pcmAudio[i].int_0 * 0.25f + 0.5f);
 			num += 28 - num % 28;
-			foreach (Class87.Class88 @class in this.class87_0[i].class88_0)
+			foreach (Class87.Class88 @class in this.pcmAudio[i].class88_0)
 			{
 				@class.float_0 = new float[num];
 			}
 			if (i == 0)
 			{
-				list_0.Add(new GClass109("Length", Class109.smethod_1((float)(28 * this.class87_0[i].int_1 / this.class87_0[i].int_0))));
+				list_0.Add(new GClass109("Length", Class109.smethod_1((float)(28 * this.pcmAudio[i].int_1 / this.pcmAudio[i].int_0))));
 			}
-			array[i] = this.class87_0[i].int_0 + "Hz";
+			array[i] = this.pcmAudio[i].int_0 + "Hz";
 		}
 		list_0.Add(new GClass109("SampleRate", array));
-		switch (this.class87_0.Length)
+		switch (this.pcmAudio.Length)
 		{
 		case 1:
 			this.class86_0 = new VgsPreview.Class86[]
@@ -55,7 +55,7 @@ public class VgsPreview : UserControl
 			this.class86_0[0].string_0 = "Mono";
 			this.class86_0[0].class87_0 = new Class87[]
 			{
-				this.class87_0[0]
+				this.pcmAudio[0]
 			};
 			goto IL_6B5;
 		case 2:
@@ -66,8 +66,8 @@ public class VgsPreview : UserControl
 			this.class86_0[0].string_0 = "Stereo";
 			this.class86_0[0].class87_0 = new Class87[]
 			{
-				this.class87_0[0],
-				this.class87_0[1]
+				this.pcmAudio[0],
+				this.pcmAudio[1]
 			};
 			goto IL_6B5;
 		case 4:
@@ -79,14 +79,14 @@ public class VgsPreview : UserControl
 			this.class86_0[0].string_0 = "Band";
 			this.class86_0[0].class87_0 = new Class87[]
 			{
-				this.class87_0[0],
-				this.class87_0[1]
+				this.pcmAudio[0],
+				this.pcmAudio[1]
 			};
 			this.class86_0[1].string_0 = "Lead";
 			this.class86_0[1].class87_0 = new Class87[]
 			{
-				this.class87_0[2],
-				this.class87_0[3]
+				this.pcmAudio[2],
+				this.pcmAudio[3]
 			};
 			goto IL_6B5;
 		case 5:
@@ -99,19 +99,19 @@ public class VgsPreview : UserControl
 			this.class86_0[0].string_0 = "Band";
 			this.class86_0[0].class87_0 = new Class87[]
 			{
-				this.class87_0[0],
-				this.class87_0[1]
+				this.pcmAudio[0],
+				this.pcmAudio[1]
 			};
 			this.class86_0[1].string_0 = "Lead";
 			this.class86_0[1].class87_0 = new Class87[]
 			{
-				this.class87_0[2],
-				this.class87_0[3]
+				this.pcmAudio[2],
+				this.pcmAudio[3]
 			};
 			this.class86_0[2].string_0 = "Co-op";
 			this.class86_0[2].class87_0 = new Class87[]
 			{
-				this.class87_0[4]
+				this.pcmAudio[4]
 			};
 			goto IL_6B5;
 		case 6:
@@ -124,20 +124,20 @@ public class VgsPreview : UserControl
 			this.class86_0[0].string_0 = "Band";
 			this.class86_0[0].class87_0 = new Class87[]
 			{
-				this.class87_0[0],
-				this.class87_0[1]
+				this.pcmAudio[0],
+				this.pcmAudio[1]
 			};
 			this.class86_0[1].string_0 = "Lead";
 			this.class86_0[1].class87_0 = new Class87[]
 			{
-				this.class87_0[2],
-				this.class87_0[3]
+				this.pcmAudio[2],
+				this.pcmAudio[3]
 			};
 			this.class86_0[2].string_0 = "Co-op";
 			this.class86_0[2].class87_0 = new Class87[]
 			{
-				this.class87_0[4],
-				this.class87_0[5]
+				this.pcmAudio[4],
+				this.pcmAudio[5]
 			};
 			goto IL_6B5;
 		case 7:
@@ -151,29 +151,29 @@ public class VgsPreview : UserControl
 			this.class86_0[0].string_0 = "Band";
 			this.class86_0[0].class87_0 = new Class87[]
 			{
-				this.class87_0[0],
-				this.class87_0[1]
+				this.pcmAudio[0],
+				this.pcmAudio[1]
 			};
 			this.class86_0[1].string_0 = "Lead";
 			this.class86_0[1].class87_0 = new Class87[]
 			{
-				this.class87_0[2],
-				this.class87_0[3]
+				this.pcmAudio[2],
+				this.pcmAudio[3]
 			};
 			this.class86_0[2].string_0 = "Co-op";
 			this.class86_0[2].class87_0 = new Class87[]
 			{
-				this.class87_0[4],
-				this.class87_0[5]
+				this.pcmAudio[4],
+				this.pcmAudio[5]
 			};
 			this.class86_0[3].string_0 = "Track";
 			this.class86_0[3].class87_0 = new Class87[]
 			{
-				this.class87_0[6]
+				this.pcmAudio[6]
 			};
 			goto IL_6B5;
 		}
-		throw new NotImplementedException(this.class87_0.Length + "ch");
+		throw new NotImplementedException(this.pcmAudio.Length + "ch");
 		IL_6B5:
 		base.HandleDestroyed += this.VgsPreview_HandleDestroyed;
 	}
@@ -183,9 +183,9 @@ public class VgsPreview : UserControl
 		return this.panel1.Height;
 	}
 
-	void method_1()
+	void ResetPCMAudio()
 	{
-		foreach (Class87 @class in this.class87_0)
+		foreach (Class87 @class in this.pcmAudio)
 		{
 			@class.long_0 = 0L;
 			@class.long_1 = 0L;
@@ -214,7 +214,7 @@ public class VgsPreview : UserControl
 
 	void VgsPreview_HandleDestroyed(object sender, EventArgs e)
 	{
-		if (this.bool_1)
+		if (this.isAudioInitialized)
 		{
 			this.btnStop_Click(sender, e);
 		}
@@ -226,49 +226,49 @@ public class VgsPreview : UserControl
 		long position = this.gstream2_0.Position;
 		byte[] array = new byte[16];
 		float[] array2 = new float[28];
-		foreach (Class87 @class in this.class87_0)
+		foreach (Class87 @class in this.pcmAudio)
 		{
 			@class.short_0 = new short[@class.int_1 * 28];
 		}
 		int j = 0;
-		while (j < this.class87_0.Length)
+		while (j < this.pcmAudio.Length)
 		{
 			this.gstream2_0.Read(array, 0, 16);
 			int num = (int)(array[1] & 15);
-			GClass80.smethod_3(ref array, 0L, ref array2, 0L, ref this.class87_0[num].long_0, ref this.class87_0[num].long_1);
+			GClass80.smethod_3(ref array, 0L, ref array2, 0L, ref this.pcmAudio[num].long_0, ref this.pcmAudio[num].long_1);
 			for (int k = 0; k < 28; k++)
 			{
 				float num2 = array2[k] / 32767f;
-				this.class87_0[num].short_0[this.class87_0[num].int_5++] = (short)(num2 * 32767f);
+				this.pcmAudio[num].short_0[this.pcmAudio[num].int_5++] = (short)(num2 * 32767f);
 			}
 			if ((array[1] & 128) == 128)
 			{
-				this.class87_0[num].bool_0 = true;
+				this.pcmAudio[num].bool_0 = true;
 				j++;
 			}
 		}
 		this.gstream2_0.Seek(position, SeekOrigin.Begin);
-		this.method_1();
+		this.ResetPCMAudio();
 	}
 
 	bool method_4(bool bool_4)
 	{
 		byte[] array = new byte[16];
-		int[] array2 = new int[this.class87_0.Length];
+		int[] array2 = new int[this.pcmAudio.Length];
 		int i = 0;
 		long num = this.gstream2_0.Length;
-		for (int j = 0; j < this.class87_0.Length; j++)
+		for (int j = 0; j < this.pcmAudio.Length; j++)
 		{
 			array2[j] = 0;
-			if (this.class87_0[j].method_0() && !this.class87_0[j].bool_0)
+			if (this.pcmAudio[j].method_0() && !this.pcmAudio[j].bool_0)
 			{
-				array2[j] += this.class87_0[j].class88_0[this.class87_0[j].int_4].float_0.Length / 28;
+				array2[j] += this.pcmAudio[j].class88_0[this.pcmAudio[j].int_4].float_0.Length / 28;
 				if (bool_4)
 				{
-					array2[j] *= Math.Min(this.class87_0[j].class88_0.Length - 1, 2);
+					array2[j] *= Math.Min(this.pcmAudio[j].class88_0.Length - 1, 2);
 				}
 				i += array2[j];
-				num = Math.Min(this.class87_0[j].long_2, num);
+				num = Math.Min(this.pcmAudio[j].long_2, num);
 			}
 		}
 		this.gstream2_0.Seek(num, SeekOrigin.Begin);
@@ -278,7 +278,7 @@ public class VgsPreview : UserControl
 			long position = this.gstream2_0.Position;
 			this.gstream2_0.Read(array, 0, 16);
 			int num3 = (int)(array[1] & 15);
-			Class87 @class = this.class87_0[num3];
+			Class87 @class = this.pcmAudio[num3];
 			if (@class.class88_0[@class.int_4].bool_0 && position >= @class.long_2)
 			{
 				@class.long_2 = this.gstream2_0.Position;
@@ -297,14 +297,14 @@ public class VgsPreview : UserControl
 				{
 					@class.bool_0 = true;
 					num2++;
-					if (num2 == this.class87_0.Length)
+					if (num2 == this.pcmAudio.Length)
 					{
 						break;
 					}
 				}
 			}
 		}
-		if (num2 == this.class87_0.Length)
+		if (num2 == this.pcmAudio.Length)
 		{
 			this.bool_0 = true;
 			return false;
@@ -323,12 +323,12 @@ public class VgsPreview : UserControl
 
 	public bool method_6()
 	{
-		return this.bool_1 && !this.bool_0;
+		return this.isAudioInitialized && !this.bool_0;
 	}
 
-	public bool method_7()
+	public bool IsAudioPlaying()
 	{
-		return this.bool_2;
+		return this.isAudioPlaying;
 	}
 
 	public bool method_8()
@@ -338,21 +338,21 @@ public class VgsPreview : UserControl
 
 	public float method_9()
 	{
-		return (float)this.class87_0[0].int_1 * 28f / (float)this.class87_0[0].int_0;
+		return (float)this.pcmAudio[0].int_1 * 28f / (float)this.pcmAudio[0].int_0;
 	}
 
 	public bool method_10(float float_2)
 	{
-		bool flag = this.bool_2;
-		this.bool_2 = true;
+		bool flag = this.isAudioPlaying;
+		this.isAudioPlaying = true;
 		float num = Math.Min(Math.Max(float_2 / this.method_9(), 0f), 1f);
-		int num2 = this.class87_0[0].class88_0[0].float_0.Length / 28;
-		int num3 = (int)((float)Math.Max(0, this.class87_0[0].int_1 - num2) * num);
+		int num2 = this.pcmAudio[0].class88_0[0].float_0.Length / 28;
+		int num3 = (int)((float)Math.Max(0, this.pcmAudio[0].int_1 - num2) * num);
 		bool result = false;
-		lock (this.class87_0)
+		lock (this.pcmAudio)
 		{
 			this.bool_3 = true;
-			this.method_1();
+			this.ResetPCMAudio();
 			this.gstream2_0.Seek(128L, SeekOrigin.Begin);
 			byte[] array = new byte[16];
 			bool flag2 = false;
@@ -363,7 +363,7 @@ public class VgsPreview : UserControl
 				int num4 = (int)(array[1] & 15);
 				if ((array[1] & 128) == 0)
 				{
-					Class87 @class = this.class87_0[num4];
+					Class87 @class = this.pcmAudio[num4];
 					@class.long_2 = this.gstream2_0.Position;
 					if (num4 != 0 || @class.int_2 < num3)
 					{
@@ -376,7 +376,7 @@ public class VgsPreview : UserControl
 			}
 		}
 		this.bool_3 = false;
-		this.bool_2 = flag;
+		this.isAudioPlaying = flag;
 		return result;
 	}
 
@@ -384,13 +384,13 @@ public class VgsPreview : UserControl
 	{
 		Array.Clear(gclass103_0.method_3(GEnum47.const_0), 0, gclass103_0.method_0());
 		Array.Clear(gclass103_0.method_3(GEnum47.const_1), 0, gclass103_0.method_0());
-		if (!this.bool_2 && !this.bool_3)
+		if (!this.isAudioPlaying && !this.bool_3)
 		{
-			lock (this.class87_0)
+			lock (this.pcmAudio)
 			{
 				bool flag = false;
 				int num = gclass103_0.method_0();
-				foreach (Class87 @class in this.class87_0)
+				foreach (Class87 @class in this.pcmAudio)
 				{
 					int num2 = @class.class88_0[@class.int_3].float_0.Length;
 					float num3 = this.float_0 * (float)@class.int_0 / (float)gclass103_0.method_2().int_0;
@@ -434,22 +434,25 @@ public class VgsPreview : UserControl
 
 	void btnPlay_Click(object sender, EventArgs e)
 	{
-		if (this.bool_1)
+		if (this.isAudioInitialized)
 		{
-			this.bool_2 = !this.bool_2;
-			this.btnPlay.ImageIndex = (this.bool_2 ? 1 : 2);
+            // Toggles playback
+			this.isAudioPlaying = !this.isAudioPlaying;
+			this.btnPlay.ImageIndex = (this.isAudioPlaying ? 1 : 2);
 			return;
 		}
 		if (!this.bool_3)
 		{
-			this.method_1();
+			this.ResetPCMAudio();
 		}
 		this.method_4(true);
 		this.dateTime_0 = DateTime.Now;
+
+        // Creates new VGS object
 		this.gclass62_0 = new GClass62(-1, new GClass94(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
 		this.bool_0 = false;
-		this.bool_2 = false;
-		this.bool_1 = true;
+		this.isAudioPlaying = false;
+		this.isAudioInitialized = true;
 		this.btnStop.Enabled = true;
 		this.btnPlay.ImageIndex = 2;
 	}
@@ -460,7 +463,7 @@ public class VgsPreview : UserControl
 		{
 			this.gclass62_0.Dispose();
 		}
-		this.bool_1 = false;
+		this.isAudioInitialized = false;
 		this.btnStop.Enabled = false;
 		this.btnPlay.ImageIndex = 1;
 	}
@@ -470,9 +473,9 @@ public class VgsPreview : UserControl
 		int result = 0;
 		int_1 = 0;
 		int_2 = 0;
-		for (int i = 0; i < this.class87_0.Length; i++)
+		for (int i = 0; i < this.pcmAudio.Length; i++)
 		{
-			Class87 @class = this.class87_0[i];
+			Class87 @class = this.pcmAudio[i];
 			if (@class.int_1 > int_1)
 			{
 				int_1 = @class.int_1;
@@ -486,7 +489,7 @@ public class VgsPreview : UserControl
 	public float method_13()
 	{
 		float num = 0f;
-		foreach (Class87 @class in this.class87_0)
+		foreach (Class87 @class in this.pcmAudio)
 		{
 			float num2 = (float)(this.int_0 * 3) / 44100f;
 			float num3 = @class.float_1 / (float)@class.int_0 - num2;
@@ -500,7 +503,7 @@ public class VgsPreview : UserControl
 
 	void timer_0_Tick(object sender, EventArgs e)
 	{
-		if (this.bool_1)
+		if (this.isAudioInitialized)
 		{
 			int num = 0;
 			int num2 = 0;
@@ -518,7 +521,7 @@ public class VgsPreview : UserControl
 		if (this.bool_0)
 		{
 			bool flag = true;
-			Class87[] array = this.class87_0;
+			Class87[] array = this.pcmAudio;
 			int i = 0;
 			while (i < array.Length)
 			{
@@ -567,7 +570,7 @@ public class VgsPreview : UserControl
 
 	void pbSong_MouseClick(object sender, MouseEventArgs e)
 	{
-		if (!this.bool_1)
+		if (!this.isAudioInitialized)
 		{
 			return;
 		}
@@ -713,13 +716,13 @@ public class VgsPreview : UserControl
 
 	VgsPreview.Class86[] class86_0;
 
-	Class87[] class87_0;
+	Class87[] pcmAudio;
 
 	bool bool_0;
 
-	bool bool_1;
+	bool isAudioInitialized;
 
-	bool bool_2;
+	bool isAudioPlaying;
 
 	DateTime dateTime_0;
 

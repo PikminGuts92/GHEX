@@ -81,7 +81,7 @@ public class SongPreview : UserControl
 			}
 			return;
 		}
-		if (!this.vgsPreview_0.method_7() && !this.vgsPreview_0.method_8() && !this.midPreview_0.method_21())
+		if (!this.vgsPreview_0.IsAudioPlaying() && !this.vgsPreview_0.method_8() && !this.midPreview_0.method_21())
 		{
 			float num = this.vgsPreview_0.method_13();
 			this.bool_0 = true;

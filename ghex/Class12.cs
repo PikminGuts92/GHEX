@@ -4,7 +4,7 @@ using System.Threading;
 
 class Class12 : IDisposable
 {
-	internal static void smethod_0(IntPtr intptr_1, int int_0, int int_1, ref Class47.Struct4 struct4_1, int int_2)
+	internal static void smethod_0(IntPtr intptr_1, int int_0, int int_1, ref WinMM.Struct4 struct4_1, int int_2)
 	{
 		if (int_0 == 957)
 		{
@@ -28,7 +28,7 @@ class Class12 : IDisposable
 		this.gchandle_1 = GCHandle.Alloc(this.byte_0, GCHandleType.Pinned);
 		this.struct4_0.intptr_0 = this.gchandle_1.AddrOfPinnedObject();
 		this.struct4_0.int_0 = int_0;
-		Class11.smethod_0(Class47.waveOutPrepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0)));
+		Class11.smethod_0(WinMM.waveOutPrepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0)));
 	}
 
 	~Class12()
@@ -40,7 +40,7 @@ class Class12 : IDisposable
 	{
 		if (this.struct4_0.intptr_0 != IntPtr.Zero)
 		{
-			Class47.waveOutUnprepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0));
+			WinMM.waveOutUnprepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0));
 			this.gchandle_0.Free();
 			this.struct4_0.intptr_0 = IntPtr.Zero;
 		}
@@ -68,7 +68,7 @@ class Class12 : IDisposable
 		lock (this)
 		{
 			this.autoResetEvent_0.Reset();
-			this.bool_0 = (Class47.waveOutWrite(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0)) == 0);
+			this.bool_0 = (WinMM.waveOutWrite(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0)) == 0);
 			result = this.bool_0;
 		}
 		return result;
@@ -96,7 +96,7 @@ class Class12 : IDisposable
 
 	IntPtr intptr_0;
 
-	Class47.Struct4 struct4_0;
+	WinMM.Struct4 struct4_0;
 
 	byte[] byte_0;
 

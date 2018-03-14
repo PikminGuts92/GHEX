@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-class Class47
+// Wrapper for WinMM audio library
+
+class WinMM
 {
 	[DllImport("winmm.dll")]
 	public static extern int waveOutGetNumDevs();
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutPrepareHeader(IntPtr intptr_0, ref Class47.Struct4 struct4_0, int int_8);
+	public static extern int waveOutPrepareHeader(IntPtr intptr_0, ref WinMM.Struct4 struct4_0, int int_8);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutUnprepareHeader(IntPtr intptr_0, ref Class47.Struct4 struct4_0, int int_8);
+	public static extern int waveOutUnprepareHeader(IntPtr intptr_0, ref WinMM.Struct4 struct4_0, int int_8);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutWrite(IntPtr intptr_0, ref Class47.Struct4 struct4_0, int int_8);
+	public static extern int waveOutWrite(IntPtr intptr_0, ref WinMM.Struct4 struct4_0, int int_8);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutOpen(out IntPtr intptr_0, int int_8, GClass94 gclass94_0, Class47.Delegate1 delegate1_0, int int_9, int int_10);
+	public static extern int waveOutOpen(out IntPtr intptr_0, int int_8, GClass94 gclass94_0, WinMM.Delegate1 delegate1_0, int int_9, int int_10);
 
 	[DllImport("winmm.dll")]
 	public static extern int waveOutReset(IntPtr intptr_0);
@@ -57,7 +59,7 @@ class Class47
 
 	const string string_0 = "winmm.dll";
 
-	public delegate void Delegate1(IntPtr intptr_0, int int_0, int int_1, ref Class47.Struct4 struct4_0, int int_2);
+	public delegate void Delegate1(IntPtr intptr_0, int int_0, int int_1, ref WinMM.Struct4 struct4_0, int int_2);
 
 	public struct Struct4
 	{

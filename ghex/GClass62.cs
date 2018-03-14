@@ -6,14 +6,14 @@ public class GClass62 : IDisposable
 {
 	public static int smethod_0()
 	{
-		return Class47.waveOutGetNumDevs();
+		return WinMM.waveOutGetNumDevs();
 	}
 
 	public GClass62(int int_0, GClass94 gclass94_0, int int_1, int int_2, GDelegate1 gdelegate1_1)
 	{
 		this.byte_0 = (byte)((gclass94_0.short_3 == 8) ? 128 : 0);
 		this.gdelegate1_0 = gdelegate1_1;
-		Class11.smethod_0(Class47.waveOutOpen(out this.intptr_0, int_0, gclass94_0, this.delegate1_0, 0, 196608));
+		Class11.smethod_0(WinMM.waveOutOpen(out this.intptr_0, int_0, gclass94_0, this.delegate1_0, 0, 196608));
 		this.method_1(int_1, int_2);
 		this.thread_0 = new Thread(new ThreadStart(this.method_0));
 		this.thread_0.Start();
@@ -33,14 +33,14 @@ public class GClass62 : IDisposable
 				this.bool_0 = true;
 				if (this.intptr_0 != IntPtr.Zero)
 				{
-					Class47.waveOutReset(this.intptr_0);
+					WinMM.waveOutReset(this.intptr_0);
 				}
 				this.thread_0.Join();
 				this.gdelegate1_0 = null;
 				this.method_2();
 				if (this.intptr_0 != IntPtr.Zero)
 				{
-					Class47.waveOutClose(this.intptr_0);
+					WinMM.waveOutClose(this.intptr_0);
 				}
 			}
 			finally
@@ -147,5 +147,5 @@ public class GClass62 : IDisposable
 
 	byte byte_0;
 
-	Class47.Delegate1 delegate1_0 = new Class47.Delegate1(Class12.smethod_0);
+	WinMM.Delegate1 delegate1_0 = new WinMM.Delegate1(Class12.smethod_0);
 }

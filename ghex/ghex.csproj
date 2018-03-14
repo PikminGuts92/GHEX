@@ -161,7 +161,7 @@
     <Compile Include="Class44.cs" />
     <Compile Include="Class45.cs" />
     <Compile Include="Class46.cs" />
-    <Compile Include="Class47.cs" />
+    <Compile Include="WinMM.cs" />
     <Compile Include="Class48.Designer.cs">
       <DependentUpon>Class48.resx</DependentUpon>
       <AutoGen>True</AutoGen>
