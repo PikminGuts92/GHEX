@@ -40,9 +40,12 @@ public class MidPreview : UserControl
 		this.printDocument_0.DefaultPageSettings.Margins = new Margins(10, 10, 20, 50);
 		this.gclass126_0 = gclass126_1;
 		byte[] buffer = gclass126_1.method_8();
-		this.gclass120_0 = new GClass120(new MemoryStream(buffer));
-		foreach (GClass86 gclass in this.gclass120_0.method_0())
+
+        // Loads MIDI file
+		this.midiFile = new MidiFile(new MemoryStream(buffer));
+		foreach (MidiTrack gclass in this.midiFile.GetTracks())
 		{
+            // Checks if guitar track
 			if (gclass is GClass88 && list_1 != null)
 			{
 				int[][] array = new int[][]
@@ -53,15 +56,19 @@ public class MidPreview : UserControl
 					new int[4]
 				};
 				float[] array2 = new float[4];
-				GClass88 gclass2 = gclass as GClass88;
+				GClass88 gclass2 = gclass as GClass88; // 4 difficulty tracks
 				for (int i = 0; i < 4; i++)
 				{
-					array[0][3 - i] = gclass2.method_17((GEnum53)i);
-					array[1][3 - i] = gclass2.method_18((GEnum53)i);
-					array[2][3 - i] = gclass2.method_19((GEnum53)i);
-					array[3][3 - i] = gclass2.method_20((GEnum53)i);
-					array2[3 - i] = (float)((int)gclass2.method_21(this.gclass120_0, (GEnum53)i));
+					array[0][3 - i] = gclass2.method_17((GEnum53)i); // Note count
+					array[1][3 - i] = gclass2.method_18((GEnum53)i); // Chord count
+					array[2][3 - i] = gclass2.method_19((GEnum53)i); // Sustain count
+					array[3][3 - i] = gclass2.method_20((GEnum53)i); // Invalid count
+
+                    // Calculates base score
+					array2[3 - i] = (float)((int)gclass2.method_21(this.midiFile, (GEnum53)i));
 				}
+
+                // Adds to list of name/value display
 				list_1.Add(new GClass109(gclass.method_1() + " Base Score", array2));
 				list_1.Add(new GClass109(gclass.method_1() + " Notes", array[0]));
 				list_1.Add(new GClass109(gclass.method_1() + " Chords", array[1]));
@@ -71,7 +78,7 @@ public class MidPreview : UserControl
 		}
 		this.bool_0 = true;
 		this.int_3 = 0;
-		this.int_4 = MidPreview.smethod_0(this.gclass120_0, this.cbTracks, "");
+		this.int_4 = MidPreview.smethod_0(this.midiFile, this.cbTracks, "");
 		this.genum53_0 = GEnum53.const_3;
 		this.cbTracks.SelectedIndex = 0;
 		if (this.cbTracks.Items.Count == 1)
@@ -83,7 +90,7 @@ public class MidPreview : UserControl
 		int j = 3;
 		while (j >= 0)
 		{
-			if ((this.gclass120_0.method_0()[this.int_3] as GClass88).method_13((GEnum53)j).Count <= 0)
+			if ((this.midiFile.GetTracks()[this.int_3] as GClass88).method_13((GEnum53)j).Count <= 0)
 			{
 				j--;
 			}
@@ -94,11 +101,11 @@ public class MidPreview : UserControl
 			}
 		}
 
-        GClass87 gclass3 = this.gclass120_0.method_4("EVENTS") as GClass87;
+        GClass87 gclass3 = this.midiFile.FindTrackByName("EVENTS") as GClass87;
         if (gclass3 != null)
         {
             this.cbSection.Items.Clear();
-            foreach (GClass139 gclass4 in gclass3.method_3())
+            foreach (MidiEvent gclass4 in gclass3.Events())
             {
                 GClass140 gclass5 = gclass4 as GClass140;
                 if (gclass5 != null && gclass5.string_0.StartsWith("section "))
@@ -124,14 +131,14 @@ public class MidPreview : UserControl
         }
     }
 
-	public static int smethod_0(GClass120 gclass120_1, ComboBox comboBox_0, string string_0)
+	public static int smethod_0(MidiFile gclass120_1, ComboBox comboBox_0, string string_0)
 	{
 		comboBox_0.Items.Clear();
-		for (int i = 0; i < gclass120_1.method_0().Count; i++)
+		for (int i = 0; i < gclass120_1.GetTracks().Count; i++)
 		{
-			if (gclass120_1.method_0()[i] is GClass88 && gclass120_1.method_0()[i].method_1() != string_0)
+			if (gclass120_1.GetTracks()[i] is GClass88 && gclass120_1.GetTracks()[i].method_1() != string_0)
 			{
-				comboBox_0.Items.Add(gclass120_1.method_0()[i].method_1());
+				comboBox_0.Items.Add(gclass120_1.GetTracks()[i].method_1());
 			}
 		}
 		if (comboBox_0.Items.Count > 0)
@@ -141,7 +148,7 @@ public class MidPreview : UserControl
 				comboBox_0.SelectedIndex = 0;
 			}
 			string string_ = comboBox_0.SelectedItem.ToString();
-			return gclass120_1.method_0().IndexOf(gclass120_1.method_4(string_));
+			return gclass120_1.GetTracks().IndexOf(gclass120_1.FindTrackByName(string_));
 		}
 		return 0;
 	}
@@ -194,9 +201,9 @@ public class MidPreview : UserControl
 		this.cbLefty.Checked = bool_4;
 	}
 
-	public GClass120 method_9()
+	public MidiFile method_9()
 	{
-		return this.gclass120_0;
+		return this.midiFile;
 	}
 
 	public bool method_10()
@@ -217,12 +224,12 @@ public class MidPreview : UserControl
 
 	public void method_13(string string_0, string string_1)
 	{
-		GClass86 gclass = this.gclass120_0.method_4(string_0);
+		MidiTrack gclass = this.midiFile.FindTrackByName(string_0);
 		if (gclass != null)
 		{
 			this.cbTracks.SelectedIndex = this.cbTracks.Items.IndexOf(gclass.method_1());
 		}
-		GClass86 gclass2 = this.gclass120_0.method_4(string_1);
+		MidiTrack gclass2 = this.midiFile.FindTrackByName(string_1);
 		if (gclass2 != null)
 		{
 			this.cbTracks2.SelectedIndex = this.cbTracks2.Items.IndexOf(gclass2.method_1());
@@ -352,14 +359,14 @@ public class MidPreview : UserControl
 	{
 		int num = 0;
 		int num2 = 1;
-		int num3 = (this.gclass120_0.method_3() == GEnum54.const_1) ? 9 : 10;
+		int num3 = (this.midiFile.method_3() == GEnum54.const_1) ? 9 : 10;
 		float[] array = null;
 		if (this.cbTrack2.Enabled)
 		{
 			array = new float[]
 			{
-				(this.gclass120_0.method_0()[this.int_3] as GClass88).method_21(this.gclass120_0, this.genum53_0),
-				(this.gclass120_0.method_0()[this.int_4] as GClass88).method_21(this.gclass120_0, this.genum53_0)
+				(this.midiFile.GetTracks()[this.int_3] as GClass88).method_21(this.midiFile, this.genum53_0),
+				(this.midiFile.GetTracks()[this.int_4] as GClass88).method_21(this.midiFile, this.genum53_0)
 			};
 			float num4 = array[0] + array[1];
 			array[0] = 0.5f / (array[0] / num4);
@@ -370,11 +377,11 @@ public class MidPreview : UserControl
 			for (int i = 0; i < 4; i++)
 			{
 				int num5 = 0;
-				int num6 = @class.gclass141_0.int_1 * this.gclass120_0.method_1();
+				int num6 = @class.gclass141_0.int_1 * this.midiFile.TicksPerQuarterNote();
 				int num7 = @class.int_1 + num6;
 				for (int j = 0; j < @class.list_1.Length; j++)
 				{
-					foreach (GClass139 gclass in @class.list_1[j][i])
+					foreach (MidiEvent gclass in @class.list_1[j][i])
 					{
 						if (gclass.vmethod_2() == GEnum63.const_4)
 						{
@@ -409,7 +416,7 @@ public class MidPreview : UserControl
 									{
 										num11++;
 									}
-									num5 += (int)((float)(num8 * (num10 - num9)) / (float)(2 * this.gclass120_0.method_1()));
+									num5 += (int)((float)(num8 * (num10 - num9)) / (float)(2 * this.midiFile.TicksPerQuarterNote()));
 								}
 							}
 						}
@@ -423,16 +430,16 @@ public class MidPreview : UserControl
 	void method_18()
 	{
 		this.list_0.Clear();
-		GClass88 gclass = this.gclass120_0.method_0()[this.int_3] as GClass88;
-		GClass88 gclass2 = this.cbTrack2.Enabled ? (this.gclass120_0.method_0()[this.int_4] as GClass88) : null;
-		GClass89 gclass3 = this.gclass120_0.method_0()[0] as GClass89;
-		GClass87 gclass4 = this.gclass120_0.method_4("EVENTS") as GClass87;
+		GClass88 gclass = this.midiFile.GetTracks()[this.int_3] as GClass88;
+		GClass88 gclass2 = this.cbTrack2.Enabled ? (this.midiFile.GetTracks()[this.int_4] as GClass88) : null;
+		GClass89 gclass3 = this.midiFile.GetTracks()[0] as GClass89;
+		GClass87 gclass4 = this.midiFile.FindTrackByName("EVENTS") as GClass87;
 		if (gclass3 == null || gclass == null || gclass4 == null)
 		{
 			return;
 		}
-		GClass139 gclass5 = null;
-		foreach (GClass139 gclass6 in gclass4.method_3())
+		MidiEvent gclass5 = null;
+		foreach (MidiEvent gclass6 in gclass4.Events())
 		{
 			if (gclass6.vmethod_2() == GEnum63.const_0 && ((GClass140)gclass6).string_0.Equals("end"))
 			{
@@ -455,9 +462,9 @@ public class MidPreview : UserControl
 		{
 			if (gclass8 == null)
 			{
-				while (i < gclass3.method_3().Count)
+				while (i < gclass3.Events().Count)
 				{
-					GClass141 gclass9 = gclass3.method_3()[i] as GClass141;
+					GClass141 gclass9 = gclass3.Events()[i] as GClass141;
 					if (gclass9 != null && gclass9.int_0 >= j)
 					{
 						gclass8 = gclass9;
@@ -481,10 +488,10 @@ public class MidPreview : UserControl
 				flag = true;
 				gclass7 = new GClass141(4, GEnum52.const_2, 24, 8);
 			}
-			int num3 = gclass7.int_1 * this.gclass120_0.method_1();
+			int num3 = gclass7.int_1 * this.midiFile.TicksPerQuarterNote();
 			num2 += num3;
 			j += num3;
-			int num4 = gclass7.int_1 * this.gclass120_0.method_1();
+			int num4 = gclass7.int_1 * this.midiFile.TicksPerQuarterNote();
 			if (num2 >= num4)
 			{
 				Class20 @class = new Class20();
@@ -502,17 +509,17 @@ public class MidPreview : UserControl
 				{
 					Class20 class3 = @class;
 					class3.rectangle_0.Height = class3.rectangle_0.Height + (this.size_2.Height + this.rectangle_0.Height);
-					@class.list_1 = new List<GClass139>[][]
+					@class.list_1 = new List<MidiEvent>[][]
 					{
-						new List<GClass139>[4],
-						new List<GClass139>[4]
+						new List<MidiEvent>[4],
+						new List<MidiEvent>[4]
 					};
 				}
 				else
 				{
-					@class.list_1 = new List<GClass139>[][]
+					@class.list_1 = new List<MidiEvent>[][]
 					{
-						new List<GClass139>[4]
+						new List<MidiEvent>[4]
 					};
 				}
 				for (int k = 0; k < 4; k++)
@@ -528,7 +535,7 @@ public class MidPreview : UserControl
 						int num6 = -1;
 						if (@class.list_1[l][k] != null)
 						{
-							foreach (GClass139 gclass10 in @class.list_1[l][k])
+							foreach (MidiEvent gclass10 in @class.list_1[l][k])
 							{
 								if (gclass10.vmethod_2() == GEnum63.const_4)
 								{
@@ -543,7 +550,7 @@ public class MidPreview : UserControl
 					}
 					if (num5 != 2147483647 && num5 != 0)
 					{
-						@class.int_2 = this.gclass120_0.method_1() / num5;
+						@class.int_2 = this.midiFile.TicksPerQuarterNote() / num5;
 					}
 					else
 					{
@@ -572,6 +579,7 @@ public class MidPreview : UserControl
 				num2 -= num4;
 			}
 		}
+        return;
 		this.method_17(false);
 		if (this.genum9_0 == MidPreview.GEnum9.const_2)
 		{
@@ -586,13 +594,13 @@ public class MidPreview : UserControl
 	void method_19(GEnum53 genum53_1, Graphics graphics_0, Rectangle rectangle_1, Rectangle rectangle_2)
 	{
 		int num = (!this.cbTrack2.Checked || !this.cbTrack2.Enabled) ? 1 : 2;
-		GClass86 gclass = this.gclass120_0.method_0()[0];
+		MidiTrack gclass = this.midiFile.GetTracks()[0];
 		GClass88[] array = new GClass88[]
 		{
-			this.gclass120_0.method_0()[this.int_3] as GClass88,
-			(num == 2) ? (this.gclass120_0.method_0()[this.int_4] as GClass88) : null
+			this.midiFile.GetTracks()[this.int_3] as GClass88,
+			(num == 2) ? (this.midiFile.GetTracks()[this.int_4] as GClass88) : null
 		};
-		GClass87 gclass2 = this.gclass120_0.method_4("EVENTS") as GClass87;
+		GClass87 gclass2 = this.midiFile.FindTrackByName("EVENTS") as GClass87;
 		int width = rectangle_1.Width;
 		int height = rectangle_1.Height;
 		new SolidBrush(this.BackColor);
@@ -624,7 +632,7 @@ public class MidPreview : UserControl
 				num8 = this.size_0.Width;
 				num9 += @class.rectangle_0.Height + this.size_1.Height;
 			}
-			int num11 = @class.gclass141_0.int_1 * this.gclass120_0.method_1();
+			int num11 = @class.gclass141_0.int_1 * this.midiFile.TicksPerQuarterNote();
 			int num12 = @class.int_1 + num11;
 			Rectangle rect = new Rectangle(num8, num9, num10, @class.rectangle_0.Height);
 			if (!this.bool_3)
@@ -682,10 +690,10 @@ public class MidPreview : UserControl
 					}
 					graphics_0.DrawLine(black2, rectangle.Left, rectangle.Top, rectangle.Left, rectangle.Bottom);
 					graphics_0.DrawLine(black2, rectangle.Right, rectangle.Top, rectangle.Right, rectangle.Bottom);
-					List<GClass139>[] array4 = @class.list_1[i];
-					List<GClass139> list = (array4[(int)this.genum53_0] != null) ? array4[(int)this.genum53_0] : new List<GClass139>();
-					List<GClass139> list2 = GClass86.smethod_0(list, @class.int_1, num11, GEnum63.const_5);
-					foreach (GClass139 gclass3 in list)
+					List<MidiEvent>[] array4 = @class.list_1[i];
+					List<MidiEvent> list = (array4[(int)this.genum53_0] != null) ? array4[(int)this.genum53_0] : new List<MidiEvent>();
+					List<MidiEvent> list2 = MidiTrack.smethod_0(list, @class.int_1, num11, GEnum63.const_5);
+					foreach (MidiEvent gclass3 in list)
 					{
 						int num15 = gclass3.int_0 + gclass3.vmethod_0();
 						if ((gclass3.int_0 >= @class.int_1 && gclass3.int_0 < num12) || (num15 >= @class.int_1 && num15 <= num12) || (gclass3.int_0 < @class.int_1 && num15 >= num12))
@@ -734,7 +742,7 @@ public class MidPreview : UserControl
 									bool flag = false;
 									if (list2 != null)
 									{
-										foreach (GClass139 gclass6 in list2)
+										foreach (MidiEvent gclass6 in list2)
 										{
 											GClass146 gclass7 = (GClass146)gclass6;
 											if (gclass5.int_0 >= gclass7.int_0 && gclass5.int_0 < gclass7.int_0 + gclass7.vmethod_0())
@@ -823,8 +831,8 @@ public class MidPreview : UserControl
 					}
 				}
 			}
-			List<GClass139> list3 = @class.list_0;
-			foreach (GClass139 gclass9 in list3)
+			List<MidiEvent> list3 = @class.list_0;
+			foreach (MidiEvent gclass9 in list3)
 			{
 				if (gclass9.vmethod_2() == GEnum63.const_2)
 				{
@@ -861,7 +869,7 @@ public class MidPreview : UserControl
 		}
 		foreach (Class20 class2 in this.list_0)
 		{
-			int num36 = class2.gclass141_0.int_1 * this.gclass120_0.method_1();
+			int num36 = class2.gclass141_0.int_1 * this.midiFile.TicksPerQuarterNote();
 			int num37 = num36 / class2.rectangle_1.Width;
 			int num38 = class2.int_1 + num36;
 			if (this.class19_0 != null)
@@ -940,9 +948,10 @@ public class MidPreview : UserControl
 		{
 			return;
 		}
+        
 		this.genum53_0 = (GEnum53)this.cbDifficulty.SelectedIndex;
-		GClass88 gclass = this.gclass120_0.method_0()[this.int_3] as GClass88;
-		GClass88 gclass2 = (!this.cbTrack2.Enabled || !this.cbTrack2.Checked) ? null : (this.gclass120_0.method_0()[this.int_4] as GClass88);
+		GClass88 gclass = this.midiFile.GetTracks()[this.int_3] as GClass88;
+		GClass88 gclass2 = (!this.cbTrack2.Enabled || !this.cbTrack2.Checked) ? null : (this.midiFile.GetTracks()[this.int_4] as GClass88);
 		this.cbShowInvalid.Enabled = (gclass.method_20(this.genum53_0) > 0 || (gclass2 != null && gclass2.method_20(this.genum53_0) > 0));
 		if (!this.cbShowInvalid.Enabled)
 		{
@@ -958,10 +967,10 @@ public class MidPreview : UserControl
 			return;
 		}
 		string string_ = this.cbTracks.SelectedItem.ToString();
-		this.int_3 = this.gclass120_0.method_0().IndexOf(this.gclass120_0.method_4(string_));
+		this.int_3 = this.midiFile.GetTracks().IndexOf(this.midiFile.FindTrackByName(string_));
 		if (this.cbTrack2.Enabled)
 		{
-			this.int_4 = MidPreview.smethod_0(this.gclass120_0, this.cbTracks2, string_);
+			this.int_4 = MidPreview.smethod_0(this.midiFile, this.cbTracks2, string_);
 		}
 		if (!this.bool_0)
 		{
@@ -976,7 +985,7 @@ public class MidPreview : UserControl
 		{
 			return;
 		}
-		this.int_4 = this.gclass120_0.method_0().IndexOf(this.gclass120_0.method_4(this.cbTracks2.SelectedItem.ToString()));
+		this.int_4 = this.midiFile.GetTracks().IndexOf(this.midiFile.FindTrackByName(this.cbTracks2.SelectedItem.ToString()));
 		if (!this.bool_0)
 		{
 			this.method_18();
@@ -1004,7 +1013,7 @@ public class MidPreview : UserControl
 
 	public string method_24(ref string string_0)
 	{
-		GClass88 gclass = this.gclass120_0.method_0()[this.int_3] as GClass88;
+		GClass88 gclass = this.midiFile.GetTracks()[this.int_3] as GClass88;
 		string text = this.gclass126_0.method_6().Substring(0, this.gclass126_0.method_6().LastIndexOf('.')).ToLower();
 		string text2 = gclass.method_1().ToLower();
 		string text3 = Class109.smethod_7(this.genum53_0).ToLower();
@@ -1019,7 +1028,7 @@ public class MidPreview : UserControl
 		string text4 = "";
 		if (this.cbTrack2.Enabled && this.cbTrack2.Checked)
 		{
-			GClass88 gclass2 = this.gclass120_0.method_0()[this.int_4] as GClass88;
+			GClass88 gclass2 = this.midiFile.GetTracks()[this.int_4] as GClass88;
 			string text5 = gclass2.method_1().ToLower();
 			text4 = "+" + text5.Substring(text5.IndexOf(' ') + 1);
 		}
@@ -1092,7 +1101,7 @@ public class MidPreview : UserControl
 	{
 		if (this.cbTrack2.Checked)
 		{
-			this.int_4 = MidPreview.smethod_0(this.gclass120_0, this.cbTracks2, this.gclass120_0.method_0()[this.int_3].method_1());
+			this.int_4 = MidPreview.smethod_0(this.midiFile, this.cbTracks2, this.midiFile.GetTracks()[this.int_3].method_1());
 			this.cbTracks2.SelectedIndex = 0;
 		}
 		this.cbTracks2.Enabled = this.cbTrack2.Checked;
@@ -1224,7 +1233,7 @@ public class MidPreview : UserControl
 
 	int method_28(Class20 class20_0, Point point_0)
 	{
-		int num = class20_0.gclass141_0.int_1 * this.gclass120_0.method_1();
+		int num = class20_0.gclass141_0.int_1 * this.midiFile.TicksPerQuarterNote();
 		return Math.Max(class20_0.int_1, class20_0.int_1 + (point_0.X - class20_0.rectangle_1.X) * num / class20_0.rectangle_1.Width);
 	}
 
@@ -1233,7 +1242,7 @@ public class MidPreview : UserControl
 		Rectangle rectangle = this.method_20();
 		foreach (Class20 @class in this.list_0)
 		{
-			int num = @class.gclass141_0.int_1 * this.gclass120_0.method_1();
+			int num = @class.gclass141_0.int_1 * this.midiFile.TicksPerQuarterNote();
 			if (int_12 >= @class.int_1 && int_12 < @class.int_1 + num)
 			{
 				class20_0 = @class;
@@ -1264,7 +1273,7 @@ public class MidPreview : UserControl
 		Class20 @class;
 		if (!this.method_29(int_12, out @class) && @class != null)
 		{
-			int num = @class.gclass141_0.int_1 * this.gclass120_0.method_1();
+			int num = @class.gclass141_0.int_1 * this.midiFile.TicksPerQuarterNote();
 			region.Union(@class.rectangle_2);
 			int num2 = this.list_0.IndexOf(@class);
 			if (num2 - 1 >= 0)
@@ -1279,7 +1288,7 @@ public class MidPreview : UserControl
 			int num4 = @class.int_1;
 			for (int i = 0; i < @class.list_1.Length; i++)
 			{
-				foreach (GClass139 gclass in @class.list_1[i][(int)this.genum53_0])
+				foreach (MidiEvent gclass in @class.list_1[i][(int)this.genum53_0])
 				{
 					if (gclass.vmethod_2() == GEnum63.const_4)
 					{
@@ -1298,7 +1307,7 @@ public class MidPreview : UserControl
 				while (enumerator2.MoveNext())
 				{
 					Class20 class2 = enumerator2.Current;
-					int num5 = Math.Min(num4, class2.int_1 + class2.gclass141_0.int_1 * this.gclass120_0.method_1()) - Math.Max(num3, class2.int_1);
+					int num5 = Math.Min(num4, class2.int_1 + class2.gclass141_0.int_1 * this.midiFile.TicksPerQuarterNote()) - Math.Max(num3, class2.int_1);
 					if (num5 > 0 && class2.rectangle_2.IntersectsWith(rect))
 					{
 						region.Union(class2.rectangle_2);
@@ -1349,7 +1358,7 @@ public class MidPreview : UserControl
 		}
 		int num = this.method_28(@class, e.Location);
 		this.int_11 = num;
-		if (this.mouseButtons_0 == MouseButtons.Left && (this.class19_0 != null || (this.class19_0 == null && Math.Abs(num - this.int_10) >= this.gclass120_0.method_1() / 16)))
+		if (this.mouseButtons_0 == MouseButtons.Left && (this.class19_0 != null || (this.class19_0 == null && Math.Abs(num - this.int_10) >= this.midiFile.TicksPerQuarterNote() / 16)))
 		{
 			this.class19_0 = new Class19();
 			this.class19_0.int_0 = Math.Min(num, this.int_10);
@@ -1652,7 +1661,7 @@ public class MidPreview : UserControl
 		base.ResumeLayout(false);
 	}
 
-	GClass120 gclass120_0;
+	MidiFile midiFile;
 
 	GClass126 gclass126_0;
 

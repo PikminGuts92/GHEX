@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 public partial class BatchExportChooseTracksDialog : Form
 {
-	public BatchExportChooseTracksDialog(GClass120 gclass120_1, string[] string_0)
+	public BatchExportChooseTracksDialog(MidiFile gclass120_1, string[] string_0)
 	{
 		this.InitializeComponent();
 		this.gclass120_0 = gclass120_1;
@@ -54,7 +54,7 @@ public partial class BatchExportChooseTracksDialog : Form
 		base.Dispose(disposing);
 	}
 
-	GClass120 gclass120_0;
+	MidiFile gclass120_0;
 
 	bool bool_0;
 

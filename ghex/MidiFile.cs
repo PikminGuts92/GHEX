@@ -2,52 +2,52 @@
 using System.Collections.Generic;
 using System.IO;
 
-public class GClass120
+public class MidiFile
 {
-	public GClass120()
+	public MidiFile()
 	{
 	}
 
-	public GClass120(Stream stream_0)
+	public MidiFile(Stream stream_0)
 	{
 		this.method_8(stream_0);
 	}
 
-	public List<GClass86> method_0()
+	public List<MidiTrack> GetTracks()
 	{
-		return this.list_0;
+		return this.tracks;
 	}
 
-	public int method_1()
+	public int TicksPerQuarterNote()
 	{
-		return this.int_0;
+		return this.ticksPerQuarterNote;
 	}
 
-	public void method_2(int int_1)
+	public void SetTicksPerQuarterNote(int int_1)
 	{
-		this.int_0 = int_1;
+		this.ticksPerQuarterNote = int_1;
 	}
 
 	public GEnum54 method_3()
 	{
-		if (this.method_4("T1 GEMS") != null)
+		if (this.FindTrackByName("T1 GEMS") != null)
 		{
 			return GEnum54.const_1;
 		}
-		if (this.method_4("PART GUITAR") != null)
+		if (this.FindTrackByName("PART GUITAR") != null)
 		{
 			return GEnum54.const_2;
 		}
 		return GEnum54.const_0;
 	}
 
-	public GClass86 method_4(string string_0)
+	public MidiTrack FindTrackByName(string string_0)
 	{
 		if (string_0 == null)
 		{
 			return null;
 		}
-		foreach (GClass86 gclass in this.list_0)
+		foreach (MidiTrack gclass in this.tracks)
 		{
 			if (string.Compare(gclass.method_1(), string_0, true) == 0)
 			{
@@ -59,10 +59,10 @@ public class GClass120
 
 	public double method_5(int int_1)
 	{
-		GClass89 gclass = this.method_0()[0] as GClass89;
+		GClass89 gclass = this.GetTracks()[0] as GClass89;
 		GClass141 gclass2 = null;
 		GClass142 gclass3 = null;
-		foreach (GClass139 gclass4 in gclass.method_3())
+		foreach (MidiEvent gclass4 in gclass.Events())
 		{
 			if (gclass3 == null && gclass4.vmethod_2() == GEnum63.const_2)
 			{
@@ -79,7 +79,7 @@ public class GClass120
 		}
 		double num = 0.0;
 		int num2 = 0;
-		foreach (GClass139 gclass5 in gclass.method_3())
+		foreach (MidiEvent gclass5 in gclass.Events())
 		{
 			if (gclass5.vmethod_2() == GEnum63.const_2)
 			{
@@ -88,24 +88,24 @@ public class GClass120
 					break;
 				}
 				int num3 = gclass5.int_0 - num2;
-				double num4 = (double)num3 * (double)gclass3.int_1 / (double)((float)this.method_1() * 1000000f);
+				double num4 = (double)num3 * (double)gclass3.int_1 / (double)((float)this.TicksPerQuarterNote() * 1000000f);
 				num += num4;
 				gclass3 = (gclass5 as GClass142);
 				num2 = gclass5.int_0;
 			}
 		}
 		int num5 = int_1 - num2;
-		double num6 = (double)num5 * (double)gclass3.int_1 / (double)((float)this.method_1() * 1000000f);
+		double num6 = (double)num5 * (double)gclass3.int_1 / (double)((float)this.TicksPerQuarterNote() * 1000000f);
 		num += num6;
 		return num;
 	}
 
 	public int method_6(double double_0)
 	{
-		GClass89 gclass = this.method_0()[0] as GClass89;
+		GClass89 gclass = this.GetTracks()[0] as GClass89;
 		GClass141 gclass2 = null;
 		GClass142 gclass3 = null;
-		foreach (GClass139 gclass4 in gclass.method_3())
+		foreach (MidiEvent gclass4 in gclass.Events())
 		{
 			if (gclass3 == null && gclass4.vmethod_2() == GEnum63.const_2)
 			{
@@ -122,12 +122,12 @@ public class GClass120
 		}
 		double num = 0.0;
 		int num2 = 0;
-		foreach (GClass139 gclass5 in gclass.method_3())
+		foreach (MidiEvent gclass5 in gclass.Events())
 		{
 			int num3 = gclass5.int_0 - num2;
 			if (gclass5.vmethod_2() == GEnum63.const_2)
 			{
-				double num4 = (double)num3 * (double)gclass3.int_1 / (double)((float)this.method_1() * 1000000f);
+				double num4 = (double)num3 * (double)gclass3.int_1 / (double)((float)this.TicksPerQuarterNote() * 1000000f);
 				if (num + num4 >= double_0)
 				{
 					break;
@@ -139,7 +139,7 @@ public class GClass120
 			int num5 = gclass5.int_0;
 		}
 		double num6 = double_0 - num;
-		double num7 = num6 * (double)this.method_1() * 1000000.0 / (double)gclass3.int_1;
+		double num7 = num6 * (double)this.TicksPerQuarterNote() * 1000000.0 / (double)gclass3.int_1;
 		return num2 + (int)num7;
 	}
 
@@ -149,22 +149,22 @@ public class GClass120
 		binaryWriter.Write(1684558925u);
 		binaryWriter.Write((uint)Class109.smethod_8(6u));
 		binaryWriter.Write((ushort)Class109.smethod_9(1));
-		binaryWriter.Write((ushort)Class109.smethod_9((ushort)this.method_0().Count));
-		binaryWriter.Write((ushort)Class109.smethod_9((ushort)this.method_1()));
+		binaryWriter.Write((ushort)Class109.smethod_9((ushort)this.GetTracks().Count));
+		binaryWriter.Write((ushort)Class109.smethod_9((ushort)this.TicksPerQuarterNote()));
 		BinaryWriter binaryWriter2 = new BinaryWriter(new MemoryStream(1024));
 		BinaryWriter binaryWriter3 = new BinaryWriter(new MemoryStream(4));
-		foreach (GClass86 gclass in this.method_0())
+		foreach (MidiTrack gclass in this.GetTracks())
 		{
 			binaryWriter.Write(1802654797u);
 			binaryWriter.Write(0u);
 			long position = binaryWriter.BaseStream.Position;
-			List<GClass139> list = new List<GClass139>();
+			List<MidiEvent> list = new List<MidiEvent>();
 			gclass.vmethod_1(list);
 			list.Sort(new GClass138());
 			list.Insert(0, new GClass140(0, GEnum64.const_2, (gclass.method_1() != string.Empty) ? gclass.method_1() : "untitled"));
 			byte b = 0;
 			int num = 0;
-			foreach (GClass139 gclass2 in list)
+			foreach (MidiEvent gclass2 in list)
 			{
 				binaryWriter2.Seek(0, SeekOrigin.Begin);
 				int num2 = 0;
@@ -265,16 +265,16 @@ public class GClass120
 		Class109.smethod_9(binaryReader.ReadUInt16());
 		int num = Class109.smethod_9(binaryReader.ReadUInt16());
 		int int_ = Class109.smethod_9(binaryReader.ReadUInt16());
-		this.method_2(int_);
+		this.SetTicksPerQuarterNote(int_);
 		for (int i = 0; i < num; i++)
 		{
 			Class109.smethod_8(binaryReader.ReadUInt32());
 			int num2 = Class109.smethod_8(binaryReader.ReadUInt32());
 			byte b = 0;
 			long position = binaryReader.BaseStream.Position;
-			GClass86 gclass = null;
+			MidiTrack gclass = null;
 			bool flag = false;
-			List<GClass139> list = new List<GClass139>();
+			List<MidiEvent> list = new List<MidiEvent>();
 			if (i == 0)
 			{
 				gclass = new GClass89(this);
@@ -316,7 +316,7 @@ public class GClass120
 				{
 					num5 = ((int)b3 << 8 | (int)binaryReader.ReadByte());
 				}
-				GClass139 gclass2 = null;
+				MidiEvent gclass2 = null;
 				byte b5 = flag2 ? b4 : binaryReader.ReadByte();
 				int num6 = num5;
 				if (num6 <= 65286)
@@ -567,7 +567,7 @@ public class GClass120
 				{
 					gclass.method_2(string.Empty);
 				}
-				this.method_0().Add(gclass);
+				this.GetTracks().Add(gclass);
 				list.Sort(new GClass138());
 				gclass.vmethod_0(list);
 			}
@@ -575,7 +575,7 @@ public class GClass120
 		}
 	}
 
-	List<GClass86> list_0 = new List<GClass86>();
+	List<MidiTrack> tracks = new List<MidiTrack>();
 
-	int int_0;
+	int ticksPerQuarterNote;
 }

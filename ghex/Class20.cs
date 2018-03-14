@@ -32,7 +32,7 @@ class Class20
 
 	public int[] int_4 = new int[4];
 
-	public List<GClass139> list_0 = new List<GClass139>();
+	public List<MidiEvent> list_0 = new List<MidiEvent>();
 
-	public List<GClass139>[][] list_1;
+	public List<MidiEvent>[][] list_1;
 }

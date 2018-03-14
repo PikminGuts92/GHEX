@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public abstract class GClass86
+public abstract class MidiTrack
 {
-	public GClass86(GClass120 gclass120_1)
+	public MidiTrack(MidiFile parent)
 	{
-		this.list_0 = new List<GClass139>();
-		this.gclass120_0 = gclass120_1;
+		this.events = new List<MidiEvent>();
+		this.parent = parent;
 	}
 
-	public GClass86(GClass120 gclass120_1, string string_1) : this(gclass120_1)
+	public MidiTrack(MidiFile parent, string string_1) : this(parent)
 	{
 		this.string_0 = string_1;
 	}
 
-	public GClass120 method_0()
+	public MidiFile Parent()
 	{
-		return this.gclass120_0;
+		return this.parent;
 	}
 
 	public string method_1()
@@ -29,16 +29,16 @@ public abstract class GClass86
 		this.string_0 = string_1;
 	}
 
-	public List<GClass139> method_3()
+	public List<MidiEvent> Events()
 	{
-		return this.list_0;
+		return this.events;
 	}
 
-	public abstract void vmethod_0(List<GClass139> list_1);
+	public abstract void vmethod_0(List<MidiEvent> list_1);
 
-	public abstract void vmethod_1(List<GClass139> list_1);
+	public abstract void vmethod_1(List<MidiEvent> list_1);
 
-	protected void method_4(GClass139 gclass139_0, int int_0, List<GClass139> list_1)
+	protected void method_4(MidiEvent gclass139_0, int int_0, List<MidiEvent> list_1)
 	{
 		list_1.Add(new GClass143
 		{
@@ -59,11 +59,11 @@ public abstract class GClass86
 		}
 	}
 
-	internal static List<GClass139> smethod_0(List<GClass139> list_1, int int_0, int int_1, GEnum63 genum63_0)
+	internal static List<MidiEvent> smethod_0(List<MidiEvent> list_1, int int_0, int int_1, GEnum63 genum63_0)
 	{
 		int num = int_0 + int_1;
-		List<GClass139> list = new List<GClass139>(list_1.Count);
-		foreach (GClass139 gclass in list_1)
+		List<MidiEvent> list = new List<MidiEvent>(list_1.Count);
+		foreach (MidiEvent gclass in list_1)
 		{
 			GEnum63 genum = gclass.vmethod_2();
 			if (genum == genum63_0 || genum63_0 == GEnum63.const_9)
@@ -86,14 +86,14 @@ public abstract class GClass86
 		return list;
 	}
 
-	public List<GClass139> method_5(int int_0, int int_1, GEnum63 genum63_0)
+	public List<MidiEvent> method_5(int int_0, int int_1, GEnum63 genum63_0)
 	{
-		return GClass86.smethod_0(this.list_0, int_0, int_1, genum63_0);
+		return MidiTrack.smethod_0(this.events, int_0, int_1, genum63_0);
 	}
 
-	public List<GClass139> method_6(int int_0, int int_1)
+	public List<MidiEvent> method_6(int int_0, int int_1)
 	{
-		return GClass86.smethod_0(this.list_0, int_0, int_1, GEnum63.const_9);
+		return MidiTrack.smethod_0(this.events, int_0, int_1, GEnum63.const_9);
 	}
 
 	public override string ToString()
@@ -101,9 +101,9 @@ public abstract class GClass86
 		return this.method_1();
 	}
 
-	GClass120 gclass120_0;
+	MidiFile parent;
 
 	string string_0;
 
-	List<GClass139> list_0;
+	List<MidiEvent> events;
 }

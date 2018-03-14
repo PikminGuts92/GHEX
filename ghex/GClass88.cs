@@ -3,23 +3,23 @@ using System.Collections.Generic;
 
 public class GClass88 : GClass87
 {
-	public GClass88(GClass120 gclass120_1) : this(gclass120_1, "NO NAME")
+	public GClass88(MidiFile gclass120_1) : this(gclass120_1, "NO NAME")
 	{
 	}
 
-	public GClass88(GClass120 gclass120_1, string string_1) : base(gclass120_1, string_1)
+	public GClass88(MidiFile gclass120_1, string string_1) : base(gclass120_1, string_1)
 	{
-		this.list_1 = new List<GClass139>[4];
+		this.list_1 = new List<MidiEvent>[4];
 		for (int i = 0; i < 4; i++)
 		{
-			this.list_1[i] = new List<GClass139>();
+			this.list_1[i] = new List<MidiEvent>();
 		}
 	}
 
-	public override void vmethod_1(List<GClass139> list_2)
+	public override void vmethod_1(List<MidiEvent> list_2)
 	{
-		GEnum54 genum54_ = base.method_0().method_3();
-		foreach (GClass139 gclass in base.method_3())
+		GEnum54 genum54_ = base.Parent().method_3();
+		foreach (MidiEvent gclass in base.Events())
 		{
 			GEnum63 genum = gclass.vmethod_2();
 			if (genum == GEnum63.const_7)
@@ -38,7 +38,7 @@ public class GClass88 : GClass87
 			int j = 0;
 			while (j < this.list_1[i].Count)
 			{
-				GClass139 gclass3 = this.list_1[i][j];
+				MidiEvent gclass3 = this.list_1[i][j];
 				switch (gclass3.vmethod_2())
 				{
 				case GEnum63.const_4:
@@ -48,12 +48,12 @@ public class GClass88 : GClass87
 						GClass145 gclass4 = null;
 						for (int k = j + 1; k < this.list_1[i].Count; k++)
 						{
-							GClass139 gclass5 = this.list_1[i][k];
+							MidiEvent gclass5 = this.list_1[i][k];
 							if (gclass5.vmethod_2() == GEnum63.const_4)
 							{
 								gclass4 = (gclass5 as GClass145);
 
-								int num2 = base.method_0().method_1() / 3;
+								int num2 = base.Parent().TicksPerQuarterNote() / 3;
 								if (gclass4 != null)
 								{
 									num2 = Math.Min(gclass4.int_0 - gclass3.int_0, num2);
@@ -72,7 +72,7 @@ public class GClass88 : GClass87
 							}
 						}
 
-                        int num2_0 = base.method_0().method_1() / 3;
+                        int num2_0 = base.Parent().TicksPerQuarterNote() / 3;
                         if (gclass4 != null)
                         {
                                     num2_0 = Math.Min(gclass4.int_0 - gclass3.int_0, num2_0);
@@ -124,18 +124,18 @@ public class GClass88 : GClass87
 		}
 	}
 
-	public override void vmethod_0(List<GClass139> list_2)
+	public override void vmethod_0(List<MidiEvent> list_2)
 	{
-		GEnum54 genum = base.method_0().method_3();
+		GEnum54 genum = base.Parent().method_3();
 		for (int i = 0; i < 4; i++)
 		{
 			this.list_1[i].Capacity = list_2.Count;
 		}
-		List<GClass139> list = new List<GClass139>();
-		int num = (genum == GEnum54.const_1) ? 40 : (base.method_0().method_1() / 16);
+		List<MidiEvent> list = new List<MidiEvent>();
+		int num = (genum == GEnum54.const_1) ? 40 : (base.Parent().TicksPerQuarterNote() / 16);
 		for (int j = 0; j < list_2.Count; j++)
 		{
-			GClass139 gclass = list_2[j];
+			MidiEvent gclass = list_2[j];
 			if (gclass.vmethod_2() == GEnum63.const_3)
 			{
 				GClass143 gclass2 = (GClass143)gclass;
@@ -150,7 +150,7 @@ public class GClass88 : GClass87
 							GClass143 gclass3 = null;
 							for (int k = j + 1; k < list_2.Count; k++)
 							{
-								GClass139 gclass4 = list_2[k];
+								MidiEvent gclass4 = list_2[k];
 								if (gclass4.vmethod_2() == GEnum63.const_3 && ((GClass143)gclass4).byte_0 == gclass2.byte_0)
 								{
 									gclass3 = (GClass143)gclass4;
@@ -166,7 +166,7 @@ public class GClass88 : GClass87
 											{
 												bool_ = false;
 											}
-											if (num4 < base.method_0().method_1() / 3)
+											if (num4 < base.Parent().TicksPerQuarterNote() / 3)
 											{
 												num4 = 0;
 											}
@@ -195,7 +195,7 @@ public class GClass88 : GClass87
                                     {
                                         bool_0 = false;
                                     }
-                                    if (num4_0 < base.method_0().method_1() / 3)
+                                    if (num4_0 < base.Parent().TicksPerQuarterNote() / 3)
                                     {
                                         num4_0 = 0;
                                     }
@@ -243,7 +243,7 @@ public class GClass88 : GClass87
 					GClass148 gclass10 = new GClass148();
 					gclass10.int_0 = gclass2.int_0;
 					gclass10.vmethod_1(gclass9.int_0 - gclass2.int_0);
-					base.method_3().Add(gclass10);
+					base.Events().Add(gclass10);
 					list.Add(gclass2);
 					list.Add(gclass9);
 				}
@@ -251,7 +251,7 @@ public class GClass88 : GClass87
 			IL_32D:;
 		}
 		this.method_11();
-		foreach (GClass139 item in list)
+		foreach (MidiEvent item in list)
 		{
 			list_2.Remove(item);
 		}
@@ -304,7 +304,7 @@ public class GClass88 : GClass87
 			list2.Clear();
 			list.Clear();
 			int num = 0;
-			foreach (GClass139 gclass in this.list_1[i])
+			foreach (MidiEvent gclass in this.list_1[i])
 			{
 				GClass143 gclass2 = gclass as GClass143;
 				if (gclass2 != null)
@@ -334,7 +334,7 @@ public class GClass88 : GClass87
 			{
 				list2.Add(this.method_10(list));
 			}
-			this.list_1[i].RemoveAll(new Predicate<GClass139>(this.method_12));
+			this.list_1[i].RemoveAll(new Predicate<MidiEvent>(this.method_12));
 			foreach (GClass145 item in list2)
 			{
 				this.list_1[i].Add(item);
@@ -343,35 +343,35 @@ public class GClass88 : GClass87
 		}
 	}
 
-	bool method_12(GClass139 gclass139_0)
+	bool method_12(MidiEvent gclass139_0)
 	{
 		return gclass139_0 is GClass143;
 	}
 
-	public List<GClass139> method_13(GEnum53 genum53_0)
+	public List<MidiEvent> method_13(GEnum53 genum53_0)
 	{
 		return this.list_1[(int)genum53_0];
 	}
 
-	public List<GClass139> method_14(GEnum53 genum53_0, int int_0, int int_1, GEnum63 genum63_0)
+	public List<MidiEvent> method_14(GEnum53 genum53_0, int int_0, int int_1, GEnum63 genum63_0)
 	{
-		return GClass86.smethod_0(this.list_1[(int)genum53_0], int_0, int_1, genum63_0);
+		return MidiTrack.smethod_0(this.list_1[(int)genum53_0], int_0, int_1, genum63_0);
 	}
 
-	public List<GClass139> method_15(GEnum53 genum53_0, int int_0, int int_1)
+	public List<MidiEvent> method_15(GEnum53 genum53_0, int int_0, int int_1)
 	{
-		return GClass86.smethod_0(this.list_1[(int)genum53_0], int_0, int_1, GEnum63.const_9);
+		return MidiTrack.smethod_0(this.list_1[(int)genum53_0], int_0, int_1, GEnum63.const_9);
 	}
 
 	public bool method_16(GClass145 gclass145_0, GClass145 gclass145_1, GEnum54 genum54_0)
 	{
-		return gclass145_0 != null && (genum54_0 != GEnum54.const_1 || (!gclass145_1.method_1() && !gclass145_0.method_1())) && (!gclass145_1.method_1() && (!gclass145_0.method_1() || !gclass145_0.list_0.Contains(gclass145_1.list_0[0]))) && gclass145_0.list_0[0] != gclass145_1.list_0[0] && gclass145_1.int_0 - gclass145_0.int_0 <= base.method_0().method_1() / 3 && !gclass145_0.method_0();
+		return gclass145_0 != null && (genum54_0 != GEnum54.const_1 || (!gclass145_1.method_1() && !gclass145_0.method_1())) && (!gclass145_1.method_1() && (!gclass145_0.method_1() || !gclass145_0.list_0.Contains(gclass145_1.list_0[0]))) && gclass145_0.list_0[0] != gclass145_1.list_0[0] && gclass145_1.int_0 - gclass145_0.int_0 <= base.Parent().TicksPerQuarterNote() / 3 && !gclass145_0.method_0();
 	}
 
 	public int method_17(GEnum53 genum53_0)
 	{
 		int num = 0;
-		foreach (GClass139 gclass in this.list_1[(int)genum53_0])
+		foreach (MidiEvent gclass in this.list_1[(int)genum53_0])
 		{
 			if (gclass.vmethod_2() == GEnum63.const_4)
 			{
@@ -388,7 +388,7 @@ public class GClass88 : GClass87
 	public int method_18(GEnum53 genum53_0)
 	{
 		int num = 0;
-		foreach (GClass139 gclass in this.list_1[(int)genum53_0])
+		foreach (MidiEvent gclass in this.list_1[(int)genum53_0])
 		{
 			if (gclass.vmethod_2() == GEnum63.const_4)
 			{
@@ -405,7 +405,7 @@ public class GClass88 : GClass87
 	public int method_19(GEnum53 genum53_0)
 	{
 		int num = 0;
-		foreach (GClass139 gclass in this.list_1[(int)genum53_0])
+		foreach (MidiEvent gclass in this.list_1[(int)genum53_0])
 		{
 			if (gclass.vmethod_2() == GEnum63.const_4)
 			{
@@ -422,7 +422,7 @@ public class GClass88 : GClass87
 	public int method_20(GEnum53 genum53_0)
 	{
 		int num = 0;
-		foreach (GClass139 gclass in this.list_1[(int)genum53_0])
+		foreach (MidiEvent gclass in this.list_1[(int)genum53_0])
 		{
 			if (gclass.vmethod_2() == GEnum63.const_4 && !((GClass145)gclass).bool_0)
 			{
@@ -432,10 +432,10 @@ public class GClass88 : GClass87
 		return num;
 	}
 
-	public float method_21(GClass120 gclass120_1, GEnum53 genum53_0)
+	public float method_21(MidiFile gclass120_1, GEnum53 genum53_0)
 	{
 		float num = 0f;
-		foreach (GClass139 gclass in this.list_1[(int)genum53_0])
+		foreach (MidiEvent gclass in this.list_1[(int)genum53_0])
 		{
 			if (gclass.vmethod_2() == GEnum63.const_4)
 			{
@@ -445,7 +445,7 @@ public class GClass88 : GClass87
 					float num2 = (float)(50 * gclass2.list_0.Count);
 					if (gclass2.method_0())
 					{
-						num += (float)((int)(num2 * (float)gclass2.vmethod_0() / (float)(2 * gclass120_1.method_1())));
+						num += (float)((int)(num2 * (float)gclass2.vmethod_0() / (float)(2 * gclass120_1.TicksPerQuarterNote())));
 					}
 					num += num2;
 				}
@@ -454,5 +454,5 @@ public class GClass88 : GClass87
 		return num;
 	}
 
-	List<GClass139>[] list_1;
+	List<MidiEvent>[] list_1;
 }

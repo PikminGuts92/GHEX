@@ -9,7 +9,7 @@ public class GClass123 : GClass122
 {
 	public GClass123()
 	{
-		GClass120 gclass120_ = new GClass120(new FileStream("c:\\ghcustom\\freebird\\freebird.mid", FileMode.Open));
+		MidiFile gclass120_ = new MidiFile(new FileStream("c:\\ghcustom\\freebird\\freebird.mid", FileMode.Open));
 		this.gclass136_0 = GClass136.smethod_0(gclass120_);
 		base.method_4("Untitled Song");
 		this.songEditorControl_0 = new SongEditorControl(this.gclass136_0);

@@ -229,7 +229,7 @@
     <Compile Include="GClass118.cs" />
     <Compile Include="GClass119.cs" />
     <Compile Include="GClass12.cs" />
-    <Compile Include="GClass120.cs" />
+    <Compile Include="MidiFile.cs" />
     <Compile Include="GClass121.cs" />
     <Compile Include="GClass122.cs" />
     <Compile Include="GClass123.cs" />
@@ -253,7 +253,7 @@
     <Compile Include="GClass136.cs" />
     <Compile Include="GClass137.cs" />
     <Compile Include="GClass138.cs" />
-    <Compile Include="GClass139.cs" />
+    <Compile Include="MidiEvent.cs" />
     <Compile Include="GClass14.cs" />
     <Compile Include="GClass140.cs" />
     <Compile Include="GClass141.cs" />
@@ -370,7 +370,7 @@
     <Compile Include="GClass83.cs" />
     <Compile Include="GClass84.cs" />
     <Compile Include="GClass85.cs" />
-    <Compile Include="GClass86.cs" />
+    <Compile Include="MidiTrack.cs" />
     <Compile Include="GClass87.cs" />
     <Compile Include="GClass88.cs" />
     <Compile Include="GClass89.cs" />

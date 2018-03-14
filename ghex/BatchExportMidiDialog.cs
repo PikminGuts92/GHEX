@@ -54,7 +54,7 @@ public partial class BatchExportMidiDialog : Form
 		return (GEnum53)this.cbDifficulty.SelectedIndex;
 	}
 
-	public string method_6(GClass120 gclass120_0, GEnum53 genum53_0)
+	public string method_6(MidiFile gclass120_0, GEnum53 genum53_0)
 	{
 		int num = 1;
 		switch (gclass120_0.method_3())
@@ -70,7 +70,7 @@ public partial class BatchExportMidiDialog : Form
 			if (this.cbCoop.Checked)
 			{
 				num = 2;
-				if (gclass120_0.method_4("part guitar coop") != null)
+				if (gclass120_0.FindTrackByName("part guitar coop") != null)
 				{
 					this.string_0[0] = "part guitar coop";
 				}
@@ -78,7 +78,7 @@ public partial class BatchExportMidiDialog : Form
 				{
 					this.string_0[0] = "part guitar";
 				}
-				if (gclass120_0.method_4("part rhythm") != null)
+				if (gclass120_0.FindTrackByName("part rhythm") != null)
 				{
 					this.string_0[1] = "part rhythm";
 				}
@@ -106,7 +106,7 @@ public partial class BatchExportMidiDialog : Form
 			};
 			for (int i = 0; i < num; i++)
 			{
-				GClass88 gclass = gclass120_0.method_4(this.string_0[i]) as GClass88;
+				GClass88 gclass = gclass120_0.FindTrackByName(this.string_0[i]) as GClass88;
 				if (gclass == null)
 				{
 					BatchExportChooseTracksDialog batchExportChooseTracksDialog = new BatchExportChooseTracksDialog(gclass120_0, this.string_0);
@@ -118,7 +118,7 @@ public partial class BatchExportMidiDialog : Form
 							throw new NotImplementedException();
 						}
 						this.string_0 = batchExportChooseTracksDialog.method_1();
-						gclass = (gclass120_0.method_4(this.string_0[i]) as GClass88);
+						gclass = (gclass120_0.FindTrackByName(this.string_0[i]) as GClass88);
 					}
 				}
 				string text2 = gclass.method_1().ToLower();
@@ -139,9 +139,9 @@ public partial class BatchExportMidiDialog : Form
 			}
 		}
 		text = text.Replace("%d", Class109.smethod_7(genum53_0).ToLower());
-		if (gclass120_0.method_0()[0].method_1() != null && gclass120_0.method_0()[0].method_1().Length > 0)
+		if (gclass120_0.GetTracks()[0].method_1() != null && gclass120_0.GetTracks()[0].method_1().Length > 0)
 		{
-			text = text.Replace("%n", gclass120_0.method_0()[0].method_1().ToLower());
+			text = text.Replace("%n", gclass120_0.GetTracks()[0].method_1().ToLower());
 		}
 		else
 		{

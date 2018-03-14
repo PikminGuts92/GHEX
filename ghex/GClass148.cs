@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class GClass148 : GClass139
+public class GClass148 : MidiEvent
 {
 	public override int vmethod_0()
 	{

@@ -27,7 +27,7 @@ public partial class MidImportDialog : Form
 		this.tblTracks.method_56(new GDelegate27(this.method_2));
 		this.tblTracks.method_58(new GDelegate27(this.method_3));
 		this.string_0 = string_2;
-		GClass120 gclass = new GClass120(gclass126_1.method_9());
+		MidiFile gclass = new MidiFile(gclass126_1.method_9());
 		this.genum54_0 = gclass.method_3();
 		this.gclass126_0 = gclass126_1;
 		Stream stream = new FileStream(string_2, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -35,7 +35,7 @@ public partial class MidImportDialog : Form
 		{
 			if (string_2.EndsWith(".mid", StringComparison.CurrentCultureIgnoreCase))
 			{
-				this.gclass120_0 = new GClass120(stream);
+				this.gclass120_0 = new MidiFile(stream);
 				if (this.gclass120_0.method_3() == GEnum54.const_0)
 				{
 					throw new FileLoadException("Not a valid GH MIDI file!");
@@ -63,15 +63,15 @@ public partial class MidImportDialog : Form
 				{
 					throw new FileLoadException("Not a valid Freetar file (no Data)");
 				}
-				this.gclass120_0 = new GClass120();
-				this.gclass120_0.method_2(480);
+				this.gclass120_0 = new MidiFile();
+				this.gclass120_0.SetTicksPerQuarterNote(480);
 				GClass89 gclass2 = new GClass89(this.gclass120_0);
 				gclass2.method_2("temp");
-				gclass2.method_3().Add(new GClass142(float_));
-				gclass2.method_3().Add(new GClass141(4, GEnum52.const_2, 24, 8));
-				this.gclass120_0.method_0().Add(gclass2);
+				gclass2.Events().Add(new GClass142(float_));
+				gclass2.Events().Add(new GClass141(4, GEnum52.const_2, 24, 8));
+				this.gclass120_0.GetTracks().Add(gclass2);
 				GClass88 gclass3 = new GClass88(this.gclass120_0, "PART GUITAR");
-				this.gclass120_0.method_0().Add(gclass3);
+				this.gclass120_0.GetTracks().Add(gclass3);
 				GClass145 gclass4 = null;
 				float num2 = 0f;
 				foreach (object obj in xmlDocument["Song"]["Data"].ChildNodes)
@@ -102,8 +102,8 @@ public partial class MidImportDialog : Form
 					num = num2 + 0.05f;
 				}
 				GClass87 gclass5 = new GClass87(this.gclass120_0, "EVENTS");
-				gclass5.method_3().Add(new GClass140(this.gclass120_0.method_6((double)num), GEnum64.const_0, "end"));
-				this.gclass120_0.method_0().Add(gclass5);
+				gclass5.Events().Add(new GClass140(this.gclass120_0.method_6((double)num), GEnum64.const_0, "end"));
+				this.gclass120_0.GetTracks().Add(gclass5);
 			}
 			else
 			{
@@ -113,11 +113,11 @@ public partial class MidImportDialog : Form
 					string text = string.Empty;
 					int val = 0;
 					int num5 = 0;
-					this.gclass120_0 = new GClass120();
-					this.gclass120_0.method_2(192);
-					this.gclass120_0.method_0().Add(new GClass89(this.gclass120_0));
+					this.gclass120_0 = new MidiFile();
+					this.gclass120_0.SetTicksPerQuarterNote(192);
+					this.gclass120_0.GetTracks().Add(new GClass89(this.gclass120_0));
 					GClass87 gclass6 = new GClass87(this.gclass120_0, "EVENTS");
-					this.gclass120_0.method_0().Add(gclass6);
+					this.gclass120_0.GetTracks().Add(gclass6);
 					try
 					{
 						int num6 = 0;
@@ -176,7 +176,7 @@ public partial class MidImportDialog : Form
 									case "name":
 										if (string.Compare(text, "Song", true) == 0)
 										{
-											this.gclass120_0.method_0()[0].method_2(string.Join(" ", array, 1, array.Length - 1).Trim().Trim(new char[]
+											this.gclass120_0.GetTracks()[0].method_2(string.Join(" ", array, 1, array.Length - 1).Trim().Trim(new char[]
 											{
 												'"'
 											}));
@@ -192,9 +192,9 @@ public partial class MidImportDialog : Form
 										float num9 = float.Parse(array[1].Trim(), CultureInfo.InvariantCulture);
 										if (num9 > 0f)
 										{
-											this.gclass120_0.method_0()[0].method_3().Add(new GClass142(240f / num9));
-											this.gclass120_0.method_0()[0].method_3().Add(new GClass141(4, GEnum52.const_2, 24, 8));
-											num6 = this.gclass120_0.method_1() * 4;
+											this.gclass120_0.GetTracks()[0].Events().Add(new GClass142(240f / num9));
+											this.gclass120_0.GetTracks()[0].Events().Add(new GClass141(4, GEnum52.const_2, 24, 8));
+											num6 = this.gclass120_0.TicksPerQuarterNote() * 4;
 											continue;
 										}
 										continue;
@@ -209,7 +209,7 @@ public partial class MidImportDialog : Form
 									case "resolution":
 										if (string.Compare(text, "Song", true) == 0)
 										{
-											this.gclass120_0.method_2(int.Parse(array[1].Trim()));
+											this.gclass120_0.SetTicksPerQuarterNote(int.Parse(array[1].Trim()));
 											continue;
 										}
 										throw new FileLoadException("Didn't expect 'Resolution' here");
@@ -240,11 +240,11 @@ public partial class MidImportDialog : Form
 															if (!flag5)
 															{
 																string text4 = flag2 ? "PART GUITAR" : (flag3 ? "PART GUITAR COOP" : (flag4 ? (flag ? "PART BASS" : "PART RHYTHM") : ""));
-																gclass8 = (this.gclass120_0.method_4(text4) as GClass88);
+																gclass8 = (this.gclass120_0.FindTrackByName(text4) as GClass88);
 																if (gclass8 == null)
 																{
 																	gclass8 = new GClass88(this.gclass120_0, text4);
-																	this.gclass120_0.method_0().Add(gclass8);
+																	this.gclass120_0.GetTracks().Add(gclass8);
 																}
 																if (text.StartsWith("Easy", StringComparison.InvariantCultureIgnoreCase))
 																{
@@ -331,7 +331,7 @@ public partial class MidImportDialog : Form
 																		text5 = array[2];
 																	}
 																	GClass140 item3 = new GClass140(num12, GEnum64.const_0, text5.Trim());
-																	gclass9.method_3().Add(item3);
+																	gclass9.Events().Add(item3);
 																}
 															}
 														}
@@ -345,7 +345,7 @@ public partial class MidImportDialog : Form
 													}
 													GClass142 gclass12 = new GClass142(float.Parse(array[2].Trim(), CultureInfo.InvariantCulture) / 1000f);
 													gclass12.int_0 = num12;
-													this.gclass120_0.method_0()[0].method_3().Add(gclass12);
+													this.gclass120_0.GetTracks()[0].Events().Add(gclass12);
 												}
 											}
 											else
@@ -356,7 +356,7 @@ public partial class MidImportDialog : Form
 												}
 												GClass141 gclass13 = new GClass141(int.Parse(array[2].Trim()), GEnum52.const_2, 24, 8);
 												gclass13.int_0 = num12;
-												this.gclass120_0.method_0()[0].method_3().Add(gclass13);
+												this.gclass120_0.GetTracks()[0].Events().Add(gclass13);
 											}
 										}
 									}
@@ -426,19 +426,19 @@ public partial class MidImportDialog : Form
 					FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
 					try
 					{
-						GClass120 gclass14 = new GClass120(fileStream);
-						this.gclass120_0 = new GClass120();
-						this.gclass120_0.method_2(gclass14.method_1());
+						MidiFile gclass14 = new MidiFile(fileStream);
+						this.gclass120_0 = new MidiFile();
+						this.gclass120_0.SetTicksPerQuarterNote(gclass14.TicksPerQuarterNote());
 						GClass89 gclass15 = new GClass89(this.gclass120_0);
 						gclass15.method_2("tempFoF");
-						this.gclass120_0.method_0().Add(gclass15);
+						this.gclass120_0.GetTracks().Add(gclass15);
 						GClass88 gclass16 = new GClass88(this.gclass120_0, "PART GUITAR");
-						this.gclass120_0.method_0().Add(gclass16);
-						List<GClass139> list = new List<GClass139>();
-						List<GClass139> list2 = new List<GClass139>();
-						foreach (GClass86 gclass17 in gclass14.method_0())
+						this.gclass120_0.GetTracks().Add(gclass16);
+						List<MidiEvent> list = new List<MidiEvent>();
+						List<MidiEvent> list2 = new List<MidiEvent>();
+						foreach (MidiTrack gclass17 in gclass14.GetTracks())
 						{
-							foreach (GClass139 gclass18 in gclass17.method_3())
+							foreach (MidiEvent gclass18 in gclass17.Events())
 							{
 								switch (gclass18.vmethod_2())
 								{
@@ -454,7 +454,7 @@ public partial class MidImportDialog : Form
 						}
 						list.Sort(new GClass138());
 						list2.Sort(new GClass138());
-						gclass15.method_3().AddRange(list);
+						gclass15.Events().AddRange(list);
 						gclass16.vmethod_0(list2);
 					}
 					catch
@@ -465,7 +465,7 @@ public partial class MidImportDialog : Form
 				}
 			}
 			IL_1058:
-			foreach (GClass86 gclass19 in this.gclass120_0.method_0())
+			foreach (MidiTrack gclass19 in this.gclass120_0.GetTracks())
 			{
 				if (gclass19 is GClass88)
 				{
@@ -491,7 +491,7 @@ public partial class MidImportDialog : Form
 			this.gclass20_1.method_24(gclass20);
 			this.gclass20_2.method_24(gclass20);
 			this.gclass20_3.method_24(gclass20);
-			foreach (GClass86 gclass21 in gclass.method_0())
+			foreach (MidiTrack gclass21 in gclass.GetTracks())
 			{
 				if (gclass21 is GClass88)
 				{
@@ -667,9 +667,9 @@ public partial class MidImportDialog : Form
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			List<GClass139> list = gclass88_0.method_13((GEnum53)i);
+			List<MidiEvent> list = gclass88_0.method_13((GEnum53)i);
 			bool flag = false;
-			foreach (GClass139 gclass in list)
+			foreach (MidiEvent gclass in list)
 			{
 				if (gclass.vmethod_2() == GEnum63.const_4)
 				{
@@ -681,7 +681,7 @@ public partial class MidImportDialog : Form
 			{
 				GClass145 gclass2 = new GClass145(gclass88_0);
 				gclass2.int_0 = 0;
-				gclass2.vmethod_1(gclass88_0.method_0().method_1() / 4);
+				gclass2.vmethod_1(gclass88_0.Parent().TicksPerQuarterNote() / 4);
 				gclass2.bool_0 = true;
 				gclass2.list_0.Add(GEnum51.const_2);
 				list.Insert(0, gclass2);
@@ -696,11 +696,11 @@ public partial class MidImportDialog : Form
 		{
 			gclass73_0.string_1 = "Creating MIDI";
 		}
-		GClass120 gclass = new GClass120();
-		gclass.method_2(this.gclass120_0.method_1());
-		gclass.method_0().Add(this.gclass120_0.method_0()[0]);
+		MidiFile gclass = new MidiFile();
+		gclass.SetTicksPerQuarterNote(this.gclass120_0.TicksPerQuarterNote());
+		gclass.GetTracks().Add(this.gclass120_0.GetTracks()[0]);
 		@class.list_0 = new List<string>();
-		@class.list_0.Add(gclass.method_0()[0].method_1());
+		@class.list_0.Add(gclass.GetTracks()[0].method_1());
 		switch (this.genum54_0)
 		{
 		case GEnum54.const_1:
@@ -715,11 +715,11 @@ public partial class MidImportDialog : Form
 		foreach (object obj2 in this.tblTracks.method_239().method_12())
 		{
 			GClass83 gclass2 = (GClass83)obj2;
-			GClass88 gclass3 = gclass.method_4(gclass2.method_9().method_9(0).method_5()) as GClass88;
+			GClass88 gclass3 = gclass.FindTrackByName(gclass2.method_9().method_9(0).method_5()) as GClass88;
 			if (gclass3 == null)
 			{
 				gclass3 = new GClass88(gclass, gclass2.method_9().method_9(0).method_5());
-				gclass.method_0().Add(gclass3);
+				gclass.GetTracks().Add(gclass3);
 			}
 			GClass88 gclass4 = null;
 			foreach (object obj3 in gclass2.method_9())
@@ -728,7 +728,7 @@ public partial class MidImportDialog : Form
 				MidImportDialog.Class30 class2 = gclass5.method_9() as MidImportDialog.Class30;
 				if (class2 != null)
 				{
-					if (gclass4 == null && class2.gclass88_0.method_3().Count > 0)
+					if (gclass4 == null && class2.gclass88_0.Events().Count > 0)
 					{
 						gclass4 = class2.gclass88_0;
 					}
@@ -739,22 +739,22 @@ public partial class MidImportDialog : Form
 			}
 			if (gclass4 != null)
 			{
-				gclass3.method_3().AddRange(gclass4.method_3());
+				gclass3.Events().AddRange(gclass4.Events());
 			}
 		}
-		foreach (GClass86 gclass6 in this.gclass120_0.method_0())
+		foreach (MidiTrack gclass6 in this.gclass120_0.GetTracks())
 		{
-			if (this.gclass120_0.method_0().IndexOf(gclass6) != 0 && @class.list_0.Contains(gclass6.method_1()) && !(gclass6 is GClass88))
+			if (this.gclass120_0.GetTracks().IndexOf(gclass6) != 0 && @class.list_0.Contains(gclass6.method_1()) && !(gclass6 is GClass88))
 			{
-				gclass.method_0().Add(gclass6);
+				gclass.GetTracks().Add(gclass6);
 			}
 		}
 		lock (gclass73_0)
 		{
 			gclass73_0.int_0 = 33;
 		}
-		gclass.method_0().Sort(new Comparison<GClass86>(@class.method_0));
-		foreach (GClass86 gclass7 in gclass.method_0())
+		gclass.GetTracks().Sort(new Comparison<MidiTrack>(@class.method_0));
+		foreach (MidiTrack gclass7 in gclass.GetTracks())
 		{
 			if (gclass7 is GClass88)
 			{
@@ -795,13 +795,13 @@ public partial class MidImportDialog : Form
 		memoryStream.Close();
 	}
 
-	public static void smethod_0(GClass120 gclass120_1, List<MidImportDialog.GClass75> list_14)
+	public static void smethod_0(MidiFile gclass120_1, List<MidImportDialog.GClass75> list_14)
 	{
-		List<GClass139> list = new List<GClass139>();
-		GClass87 gclass = gclass120_1.method_4("ANIM") as GClass87;
+		List<MidiEvent> list = new List<MidiEvent>();
+		GClass87 gclass = gclass120_1.FindTrackByName("ANIM") as GClass87;
 		if (gclass != null)
 		{
-			foreach (GClass139 gclass2 in gclass.method_3())
+			foreach (MidiEvent gclass2 in gclass.Events())
 			{
 				GEnum63 genum = gclass2.vmethod_2();
 				if (genum != GEnum63.const_0)
@@ -856,13 +856,13 @@ public partial class MidImportDialog : Form
 		else
 		{
 			gclass = new GClass87(gclass120_1, "ANIM");
-			gclass120_1.method_0().Add(gclass);
+			gclass120_1.GetTracks().Add(gclass);
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_0, "Added empty \"ANIM\" track"));
 		}
-		GClass88 gclass5 = gclass120_1.method_4("T1 GEMS") as GClass88;
+		GClass88 gclass5 = gclass120_1.FindTrackByName("T1 GEMS") as GClass88;
 		if (gclass5 != null)
 		{
-			foreach (GClass139 gclass6 in gclass5.method_3())
+			foreach (MidiEvent gclass6 in gclass5.Events())
 			{
 				GEnum63 genum2 = gclass6.vmethod_2();
 				if (genum2 != GEnum63.const_0)
@@ -897,10 +897,10 @@ public partial class MidImportDialog : Form
 		{
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_2, "Missing notes track (\"T1 GEMS\")"));
 		}
-		GClass87 gclass7 = gclass120_1.method_4("TRIGGERS") as GClass87;
+		GClass87 gclass7 = gclass120_1.FindTrackByName("TRIGGERS") as GClass87;
 		if (gclass7 != null)
 		{
-			foreach (GClass139 gclass8 in gclass7.method_3())
+			foreach (MidiEvent gclass8 in gclass7.Events())
 			{
 				GEnum63 genum3 = gclass8.vmethod_2();
 				if (genum3 != GEnum63.const_0)
@@ -938,23 +938,23 @@ public partial class MidImportDialog : Form
 					list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_1, gclass7.method_1(), "Ignoring text event: \"" + (gclass8 as GClass140).string_0 + "\" at " + Class109.smethod_2((float)gclass120_1.method_5(gclass8.int_0))));
 				}
 			}
-			foreach (GClass139 item in list)
+			foreach (MidiEvent item in list)
 			{
-				gclass7.method_3().Remove(item);
+				gclass7.Events().Remove(item);
 			}
 			list.Clear();
 		}
 		else
 		{
 			gclass7 = new GClass87(gclass120_1, "TRIGGERS");
-			gclass120_1.method_0().Add(gclass7);
+			gclass120_1.GetTracks().Add(gclass7);
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_0, "Added empty \"TRIGGERS\" track"));
 		}
 		bool flag = true;
-		GClass87 gclass10 = gclass120_1.method_4("EVENTS") as GClass87;
+		GClass87 gclass10 = gclass120_1.FindTrackByName("EVENTS") as GClass87;
 		if (gclass10 != null)
 		{
-			foreach (GClass139 gclass11 in gclass10.method_3())
+			foreach (MidiEvent gclass11 in gclass10.Events())
 			{
 				GEnum63 genum4 = gclass11.vmethod_2();
 				if (genum4 != GEnum63.const_0)
@@ -998,27 +998,27 @@ public partial class MidImportDialog : Form
 					}
 				}
 			}
-			foreach (GClass139 item2 in list)
+			foreach (MidiEvent item2 in list)
 			{
-				gclass10.method_3().Remove(item2);
+				gclass10.Events().Remove(item2);
 			}
 			list.Clear();
 			return;
 		}
 		gclass10 = new GClass87(gclass120_1, "EVENTS");
-		gclass120_1.method_0().Add(gclass10);
+		gclass120_1.GetTracks().Add(gclass10);
 		list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_0, "Added empty \"EVENTS\" track"));
 	}
 
-	void method_6(GClass120 gclass120_1, List<MidImportDialog.GClass75> list_14)
+	void method_6(MidiFile gclass120_1, List<MidImportDialog.GClass75> list_14)
 	{
-		List<GClass139> list = new List<GClass139>();
-		GClass88 gclass = gclass120_1.method_4("T1 GEMS") as GClass88;
+		List<MidiEvent> list = new List<MidiEvent>();
+		GClass88 gclass = gclass120_1.FindTrackByName("T1 GEMS") as GClass88;
 		GClass145 gclass2 = null;
 		if (gclass != null)
 		{
 			gclass.method_2("PART GUITAR");
-			foreach (GClass139 gclass3 in gclass.method_3())
+			foreach (MidiEvent gclass3 in gclass.Events())
 			{
 				GEnum63 genum = gclass3.vmethod_2();
 				if (genum == GEnum63.const_7)
@@ -1026,14 +1026,14 @@ public partial class MidImportDialog : Form
 					list.Add(gclass3);
 				}
 			}
-			foreach (GClass139 item in list)
+			foreach (MidiEvent item in list)
 			{
-				gclass.method_3().Remove(item);
+				gclass.Events().Remove(item);
 			}
 			list.Clear();
 			for (int i = 0; i < 4; i++)
 			{
-				foreach (GClass139 gclass4 in gclass.method_13((GEnum53)i))
+				foreach (MidiEvent gclass4 in gclass.method_13((GEnum53)i))
 				{
 					if (gclass4.vmethod_2() == GEnum63.const_4 && (gclass2 == null || gclass4.int_0 < gclass2.int_0))
 					{
@@ -1042,10 +1042,10 @@ public partial class MidImportDialog : Form
 				}
 			}
 		}
-		GClass87 gclass5 = gclass120_1.method_4("ANIM") as GClass87;
+		GClass87 gclass5 = gclass120_1.FindTrackByName("ANIM") as GClass87;
 		if (gclass5 != null)
 		{
-			foreach (GClass139 gclass6 in gclass5.method_3())
+			foreach (MidiEvent gclass6 in gclass5.Events())
 			{
 				GEnum63 genum2 = gclass6.vmethod_2();
 				if (genum2 != GEnum63.const_0)
@@ -1055,7 +1055,7 @@ public partial class MidImportDialog : Form
 						GClass144 gclass7 = gclass6 as GClass144;
 						if (gclass7.int_2 >= 40 || gclass7.int_2 <= 59)
 						{
-							gclass.method_3().Add(gclass7);
+							gclass.Events().Add(gclass7);
 							list.Add(gclass7);
 						}
 					}
@@ -1065,25 +1065,25 @@ public partial class MidImportDialog : Form
 					GClass140 gclass8 = gclass6 as GClass140;
 					if (gclass8.string_0.StartsWith("HandMap_") && MidImportDialog.list_4.Contains(gclass8.string_0.Substring(8)))
 					{
-						gclass.method_3().Add(gclass8);
+						gclass.Events().Add(gclass8);
 						list.Add(gclass8);
 					}
 				}
 			}
-			foreach (GClass139 item2 in list)
+			foreach (MidiEvent item2 in list)
 			{
-				gclass5.method_3().Remove(item2);
+				gclass5.Events().Remove(item2);
 			}
 			list.Clear();
 		}
 		bool flag = true;
 		GClass140 gclass9 = null;
-		GClass87 gclass10 = gclass120_1.method_4("EVENTS") as GClass87;
+		GClass87 gclass10 = gclass120_1.FindTrackByName("EVENTS") as GClass87;
 		if (gclass10 != null)
 		{
 			List<GClass140> list2 = new List<GClass140>();
-			List<GClass139> list3 = new List<GClass139>();
-			foreach (GClass139 gclass11 in gclass10.method_3())
+			List<MidiEvent> list3 = new List<MidiEvent>();
+			foreach (MidiEvent gclass11 in gclass10.Events())
 			{
 				GClass140 gclass12 = gclass11 as GClass140;
 				if (gclass12 != null)
@@ -1100,47 +1100,47 @@ public partial class MidImportDialog : Form
 					else
 					{
 						int num = MidImportDialog.list_6.IndexOf(gclass12.string_0);
-						GClass86 gclass13 = null;
+						MidiTrack gclass13 = null;
 						if (num == -1)
 						{
 							list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_1, gclass10.method_1(), "Don't know how to translate \"" + gclass12.string_0 + "\""));
 						}
 						else if (gclass12.string_0.StartsWith("bass_"))
 						{
-							gclass13 = gclass120_1.method_4("BAND BASS");
+							gclass13 = gclass120_1.FindTrackByName("BAND BASS");
 							if (gclass13 == null)
 							{
 								gclass13 = new GClass87(gclass120_1, "BAND BASS");
-								gclass120_1.method_0().Add(gclass13);
+								gclass120_1.GetTracks().Add(gclass13);
 							}
 						}
 						else if (gclass12.string_0.StartsWith("drum_"))
 						{
-							gclass13 = gclass120_1.method_4("BAND DRUMS");
+							gclass13 = gclass120_1.FindTrackByName("BAND DRUMS");
 							if (gclass13 == null)
 							{
 								gclass13 = new GClass87(gclass120_1, "BAND DRUMS");
-								gclass120_1.method_0().Add(gclass13);
+								gclass120_1.GetTracks().Add(gclass13);
 							}
 						}
 						else if (!gclass12.string_0.StartsWith("gtr_") && !gclass12.string_0.StartsWith("solo_") && !gclass12.string_0.StartsWith("wail_"))
 						{
 							if (gclass12.string_0.StartsWith("keys_"))
 							{
-								gclass13 = gclass120_1.method_4("BAND KEYS");
+								gclass13 = gclass120_1.FindTrackByName("BAND KEYS");
 								if (gclass13 == null)
 								{
 									gclass13 = new GClass87(gclass120_1, "BAND KEYS");
-									gclass120_1.method_0().Add(gclass13);
+									gclass120_1.GetTracks().Add(gclass13);
 								}
 							}
 							else if (gclass12.string_0.StartsWith("sing_"))
 							{
-								gclass13 = gclass120_1.method_4("BAND SINGER");
+								gclass13 = gclass120_1.FindTrackByName("BAND SINGER");
 								if (gclass13 == null)
 								{
 									gclass13 = new GClass87(gclass120_1, "BAND SINGER");
-									gclass120_1.method_0().Add(gclass13);
+									gclass120_1.GetTracks().Add(gclass13);
 								}
 							}
 							else
@@ -1162,24 +1162,24 @@ public partial class MidImportDialog : Form
 						}
 						else
 						{
-							gclass13 = gclass120_1.method_4("PART GUITAR");
+							gclass13 = gclass120_1.FindTrackByName("PART GUITAR");
 						}
 						if (gclass13 != null)
 						{
-							gclass13.method_3().Add(new GClass140(gclass12.int_0, gclass12.genum64_0, MidImportDialog.string_1[num]));
+							gclass13.Events().Add(new GClass140(gclass12.int_0, gclass12.genum64_0, MidImportDialog.string_1[num]));
 						}
 						list.Add(gclass12);
 					}
 				}
 			}
-			foreach (GClass139 item3 in list)
+			foreach (MidiEvent item3 in list)
 			{
-				gclass10.method_3().Remove(item3);
+				gclass10.Events().Remove(item3);
 			}
 			list.Clear();
-			foreach (GClass139 item4 in list3)
+			foreach (MidiEvent item4 in list3)
 			{
-				gclass10.method_3().Add(item4);
+				gclass10.Events().Add(item4);
 			}
 			list3.Clear();
 			int[] array = new int[4];
@@ -1219,7 +1219,7 @@ public partial class MidImportDialog : Form
 					"_",
 					array2[num4]
 				}));
-				gclass10.method_3().Add(gclass18);
+				gclass10.Events().Add(gclass18);
 				if (gclass15 == null)
 				{
 					gclass15 = gclass18;
@@ -1238,16 +1238,16 @@ public partial class MidImportDialog : Form
 			}
 			if (gclass2 != null && gclass15 != null && gclass2.int_0 < gclass15.int_0)
 			{
-				GClass140 item5 = new GClass140(gclass2.int_0 / gclass120_1.method_1() * gclass120_1.method_1(), GEnum64.const_0, "section intro");
-				gclass10.method_3().Add(item5);
+				GClass140 item5 = new GClass140(gclass2.int_0 / gclass120_1.TicksPerQuarterNote() * gclass120_1.TicksPerQuarterNote(), GEnum64.const_0, "section intro");
+				gclass10.Events().Add(item5);
 			}
 		}
-		GClass87 gclass20 = gclass120_1.method_4("TRIGGERS") as GClass87;
+		GClass87 gclass20 = gclass120_1.FindTrackByName("TRIGGERS") as GClass87;
 		if (gclass20 != null)
 		{
-			GClass87 gclass21 = gclass120_1.method_4("BAND DRUMS") as GClass87;
-			GClass87 gclass22 = gclass120_1.method_4("BAND BASS") as GClass87;
-			foreach (GClass139 gclass23 in gclass20.method_3())
+			GClass87 gclass21 = gclass120_1.FindTrackByName("BAND DRUMS") as GClass87;
+			GClass87 gclass22 = gclass120_1.FindTrackByName("BAND BASS") as GClass87;
+			foreach (MidiEvent gclass23 in gclass20.Events())
 			{
 				GClass144 gclass24 = gclass23 as GClass144;
 				list.Add(gclass24);
@@ -1258,33 +1258,33 @@ public partial class MidImportDialog : Form
 						if (gclass21 == null)
 						{
 							gclass21 = new GClass87(gclass120_1, "BAND DRUMS");
-							gclass120_1.method_0().Add(gclass21);
+							gclass120_1.GetTracks().Add(gclass21);
 						}
-						gclass21.method_3().Add(new GClass144(gclass24.int_0, gclass24.vmethod_0(), 36));
+						gclass21.Events().Add(new GClass144(gclass24.int_0, gclass24.vmethod_0(), 36));
 					}
 					else if (gclass24.int_2 == 61)
 					{
 						if (gclass22 == null)
 						{
 							gclass22 = new GClass87(gclass120_1, "BAND BASS");
-							gclass120_1.method_0().Add(gclass22);
+							gclass120_1.GetTracks().Add(gclass22);
 						}
-						gclass22.method_3().Add(new GClass144(gclass24.int_0, gclass24.vmethod_0(), 36));
+						gclass22.Events().Add(new GClass144(gclass24.int_0, gclass24.vmethod_0(), 36));
 					}
 				}
 			}
-			foreach (GClass139 item6 in list)
+			foreach (MidiEvent item6 in list)
 			{
-				gclass20.method_3().Remove(item6);
+				gclass20.Events().Remove(item6);
 			}
-			gclass20.method_3().Clear();
+			gclass20.Events().Clear();
 		}
 		int j = 1;
-		while (j < gclass120_1.method_0().Count)
+		while (j < gclass120_1.GetTracks().Count)
 		{
-			if (!this.list_3.Contains(gclass120_1.method_0()[j].method_1()))
+			if (!this.list_3.Contains(gclass120_1.GetTracks()[j].method_1()))
 			{
-				gclass120_1.method_0().Remove(gclass120_1.method_0()[j]);
+				gclass120_1.GetTracks().Remove(gclass120_1.GetTracks()[j]);
 			}
 			else
 			{
@@ -1298,35 +1298,35 @@ public partial class MidImportDialog : Form
 		else
 		{
 			int num5 = MidImportDialog.smethod_2(gclass120_1);
-			if (gclass9.int_0 < num5 - gclass120_1.method_1() * 4)
+			if (gclass9.int_0 < num5 - gclass120_1.TicksPerQuarterNote() * 4)
 			{
 				list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_1, "An end event is present but maybe too early, at " + Class109.smethod_2((float)gclass120_1.method_5(gclass9.int_0)) + ", when actual end might be at " + Class109.smethod_2((float)gclass120_1.method_5(num5))));
 			}
 		}
-		foreach (GClass86 gclass25 in gclass120_1.method_0())
+		foreach (MidiTrack gclass25 in gclass120_1.GetTracks())
 		{
-			gclass25.method_3().Sort(new GClass138());
+			gclass25.Events().Sort(new GClass138());
 		}
 	}
 
-	public static void smethod_1(GClass120 gclass120_1, List<MidImportDialog.GClass75> list_14, bool bool_2)
+	public static void smethod_1(MidiFile gclass120_1, List<MidImportDialog.GClass75> list_14, bool bool_2)
 	{
-		List<GClass139> list = new List<GClass139>();
-		if (gclass120_1.method_0().Count == 0 || !(gclass120_1.method_0()[0] is GClass89))
+		List<MidiEvent> list = new List<MidiEvent>();
+		if (gclass120_1.GetTracks().Count == 0 || !(gclass120_1.GetTracks()[0] is GClass89))
 		{
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_2, "Missing tempo track"));
 			return;
 		}
-		if (gclass120_1.method_4("PART GUITAR") == null)
+		if (gclass120_1.FindTrackByName("PART GUITAR") == null)
 		{
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_2, "Missing \"PART GUITAR\" track"));
 			return;
 		}
-		foreach (GClass86 gclass in gclass120_1.method_0())
+		foreach (MidiTrack gclass in gclass120_1.GetTracks())
 		{
 			if (gclass.method_1().StartsWith("BAND "))
 			{
-				foreach (GClass139 gclass2 in gclass.method_3())
+				foreach (MidiEvent gclass2 in gclass.Events())
 				{
 					GEnum63 genum = gclass2.vmethod_2();
 					if (genum != GEnum63.const_0)
@@ -1390,18 +1390,18 @@ public partial class MidImportDialog : Form
 						list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_1, gclass.method_1(), "Ignoring unsupported text trigger: \"" + ((GClass140)gclass2).string_0 + "\" at " + Class109.smethod_2((float)gclass120_1.method_5(gclass2.int_0))));
 					}
 				}
-				foreach (GClass139 item in list)
+				foreach (MidiEvent item in list)
 				{
-					gclass.method_3().Remove(item);
+					gclass.Events().Remove(item);
 				}
 				list.Clear();
 			}
 		}
-		foreach (GClass86 gclass3 in gclass120_1.method_0())
+		foreach (MidiTrack gclass3 in gclass120_1.GetTracks())
 		{
 			if (gclass3.method_1().StartsWith("PART "))
 			{
-				foreach (GClass139 gclass4 in gclass3.method_3())
+				foreach (MidiEvent gclass4 in gclass3.Events())
 				{
 					GEnum63 genum2 = gclass4.vmethod_2();
 					if (genum2 != GEnum63.const_0)
@@ -1517,14 +1517,14 @@ public partial class MidImportDialog : Form
 						}
 					}
 				}
-				foreach (GClass139 item2 in list)
+				foreach (MidiEvent item2 in list)
 				{
-					gclass3.method_3().Remove(item2);
+					gclass3.Events().Remove(item2);
 				}
 				list.Clear();
 				for (int i = 0; i < 4; i++)
 				{
-					foreach (GClass139 gclass7 in ((GClass88)gclass3).method_13((GEnum53)i))
+					foreach (MidiEvent gclass7 in ((GClass88)gclass3).method_13((GEnum53)i))
 					{
 						switch (gclass7.vmethod_2())
 						{
@@ -1563,7 +1563,7 @@ public partial class MidImportDialog : Form
 							break;
 						}
 					}
-					foreach (GClass139 item3 in list)
+					foreach (MidiEvent item3 in list)
 					{
 						((GClass88)gclass3).method_13((GEnum53)i).Remove(item3);
 					}
@@ -1571,10 +1571,10 @@ public partial class MidImportDialog : Form
 				}
 			}
 		}
-		GClass87 gclass8 = gclass120_1.method_4("TRIGGERS") as GClass87;
+		GClass87 gclass8 = gclass120_1.FindTrackByName("TRIGGERS") as GClass87;
 		if (gclass8 != null)
 		{
-			foreach (GClass139 gclass9 in gclass8.method_3())
+			foreach (MidiEvent gclass9 in gclass8.Events())
 			{
 				GEnum63 genum3 = gclass9.vmethod_2();
 				if (genum3 != GEnum63.const_0)
@@ -1611,23 +1611,23 @@ public partial class MidImportDialog : Form
 					list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_1, gclass8.method_1(), "Ignoring unsupported text trigger \"" + ((GClass140)gclass9).string_0 + "\" at " + Class109.smethod_2((float)gclass120_1.method_5(gclass9.int_0))));
 				}
 			}
-			foreach (GClass139 item4 in list)
+			foreach (MidiEvent item4 in list)
 			{
-				gclass8.method_3().Remove(item4);
+				gclass8.Events().Remove(item4);
 			}
 			list.Clear();
 		}
 		else
 		{
-			gclass120_1.method_0().Add(new GClass87(gclass120_1, "TRIGGERS"));
+			gclass120_1.GetTracks().Add(new GClass87(gclass120_1, "TRIGGERS"));
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_0, "Added empty TRIGGERS track"));
 		}
-		GClass87 gclass10 = gclass120_1.method_4("EVENTS") as GClass87;
+		GClass87 gclass10 = gclass120_1.FindTrackByName("EVENTS") as GClass87;
 		bool flag2 = true;
 		GClass140 gclass11 = null;
 		if (gclass10 != null)
 		{
-			foreach (GClass139 gclass12 in gclass10.method_3())
+			foreach (MidiEvent gclass12 in gclass10.Events())
 			{
 				GEnum63 genum4 = gclass12.vmethod_2();
 				if (genum4 != GEnum63.const_0)
@@ -1683,16 +1683,16 @@ public partial class MidImportDialog : Form
 					}
 				}
 			}
-			foreach (GClass139 item5 in list)
+			foreach (MidiEvent item5 in list)
 			{
-				gclass10.method_3().Remove(item5);
+				gclass10.Events().Remove(item5);
 			}
 			list.Clear();
 		}
 		else
 		{
 			gclass10 = new GClass87(gclass120_1, "EVENTS");
-			gclass120_1.method_0().Add(gclass10);
+			gclass120_1.GetTracks().Add(gclass10);
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_0, "Added empty EVENTS track"));
 		}
 		if (gclass11 == null)
@@ -1701,18 +1701,18 @@ public partial class MidImportDialog : Form
 			return;
 		}
 		int num = MidImportDialog.smethod_2(gclass120_1);
-		if (gclass11.int_0 < num - gclass120_1.method_1() * 4)
+		if (gclass11.int_0 < num - gclass120_1.TicksPerQuarterNote() * 4)
 		{
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_1, "An end event is present but maybe too early, at " + Class109.smethod_2((float)gclass120_1.method_5(gclass11.int_0)) + ", when actual end might be at " + Class109.smethod_2((float)gclass120_1.method_5(num))));
 		}
 	}
 
-	static int smethod_2(GClass120 gclass120_1)
+	static int smethod_2(MidiFile gclass120_1)
 	{
 		int num = 0;
-		foreach (GClass86 gclass in gclass120_1.method_0())
+		foreach (MidiTrack gclass in gclass120_1.GetTracks())
 		{
-			foreach (GClass139 gclass2 in gclass.method_3())
+			foreach (MidiEvent gclass2 in gclass.Events())
 			{
 				num = Math.Max(num, gclass2.int_0 + gclass2.vmethod_0());
 			}
@@ -1720,7 +1720,7 @@ public partial class MidImportDialog : Form
 			{
 				for (int i = 0; i < 4; i++)
 				{
-					foreach (GClass139 gclass3 in ((GClass88)gclass).method_13((GEnum53)i))
+					foreach (MidiEvent gclass3 in ((GClass88)gclass).method_13((GEnum53)i))
 					{
 						num = Math.Max(num, gclass3.int_0 + gclass3.vmethod_0());
 					}
@@ -1730,13 +1730,13 @@ public partial class MidImportDialog : Form
 		return num;
 	}
 
-	static void smethod_3(GClass120 gclass120_1, List<MidImportDialog.GClass75> list_14, bool bool_2)
+	static void smethod_3(MidiFile gclass120_1, List<MidImportDialog.GClass75> list_14, bool bool_2)
 	{
 		int num = MidImportDialog.smethod_2(gclass120_1);
 		if (bool_2)
 		{
-			int int_ = num + gclass120_1.method_1() * 6;
-			gclass120_1.method_4("EVENTS").method_3().Add(new GClass140(int_, GEnum64.const_0, "end"));
+			int int_ = num + gclass120_1.TicksPerQuarterNote() * 6;
+			gclass120_1.FindTrackByName("EVENTS").Events().Add(new GClass140(int_, GEnum64.const_0, "end"));
 			list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_0, "Added missing end event at " + Class109.smethod_2((float)gclass120_1.method_5(int_))));
 			return;
 		}
@@ -1747,7 +1747,7 @@ public partial class MidImportDialog : Form
 
 	GEnum54 genum54_0;
 
-	GClass120 gclass120_0;
+	MidiFile gclass120_0;
 
 	string string_0;
 
@@ -2045,7 +2045,7 @@ public partial class MidImportDialog : Form
 	[CompilerGenerated]
 	sealed class Class31
 	{
-		public int method_0(GClass86 gclass86_0, GClass86 gclass86_1)
+		public int method_0(MidiTrack gclass86_0, MidiTrack gclass86_1)
 		{
 			int num = this.list_0.IndexOf(gclass86_0.method_1());
 			int num2 = this.list_0.IndexOf(gclass86_1.method_1());

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class GClass138 : IComparer<GClass139>
+public class GClass138 : IComparer<MidiEvent>
 {
-	public int Compare(GClass139 gclass139_0, GClass139 gclass139_1)
+	public int Compare(MidiEvent gclass139_0, MidiEvent gclass139_1)
 	{
 		if (gclass139_0.vmethod_2() == GEnum63.const_3 && gclass139_1.vmethod_2() == GEnum63.const_3)
 		{

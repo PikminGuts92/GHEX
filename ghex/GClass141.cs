@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class GClass141 : GClass139
+public class GClass141 : MidiEvent
 {
 	internal GClass141(int int_4, GEnum52 genum52_1, int int_5, int int_6)
 	{

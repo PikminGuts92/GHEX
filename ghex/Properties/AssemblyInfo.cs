@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("0.4.3.0")]
+[assembly: AssemblyVersion("0.4.3.1")]
 [assembly: AssemblyCopyright("Copyright © 2006-2007")]
 [assembly: AssemblyConfiguration("")]
 [assembly: ComVisible(false)]
@@ -15,4 +15,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Guitar Hero Explorer")]
 [assembly: CompilationRelaxations(8)]
 [assembly: RuntimeCompatibility(WrapNonExceptionThrows = true)]
-[assembly: AssemblyFileVersion("0.4.3.0")]
+[assembly: AssemblyFileVersion("0.4.3.1")]

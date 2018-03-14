@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class GClass145 : GClass139
+public class GClass145 : MidiEvent
 {
 	public GClass145(GClass88 gclass88_1)
 	{
@@ -11,7 +11,7 @@ public class GClass145 : GClass139
 
 	public bool method_0()
 	{
-		return this.vmethod_0() > this.gclass88_0.method_0().method_1() / 3;
+		return this.vmethod_0() > this.gclass88_0.Parent().TicksPerQuarterNote() / 3;
 	}
 
 	public bool method_1()

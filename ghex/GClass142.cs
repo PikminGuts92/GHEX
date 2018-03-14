@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class GClass142 : GClass139
+public class GClass142 : MidiEvent
 {
 	internal GClass142(float float_0)
 	{

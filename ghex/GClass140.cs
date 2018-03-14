@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class GClass140 : GClass139
+public class GClass140 : MidiEvent
 {
 	public GClass140()
 	{

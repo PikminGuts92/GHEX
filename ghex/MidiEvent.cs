@@ -1,6 +1,6 @@
 ﻿using System;
 
-public abstract class GClass139
+public abstract class MidiEvent
 {
 	public abstract int vmethod_0();
 

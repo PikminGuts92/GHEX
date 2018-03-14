@@ -8,10 +8,10 @@ public class GClass136
 	{
 	}
 
-	public static GClass136 smethod_0(GClass120 gclass120_0)
+	public static GClass136 smethod_0(MidiFile gclass120_0)
 	{
 		GClass136 gclass = new GClass136();
-		foreach (GClass86 gclass2 in gclass120_0.method_0())
+		foreach (MidiTrack gclass2 in gclass120_0.GetTracks())
 		{
 			if (gclass2 is GClass88)
 			{
@@ -30,7 +30,7 @@ public class GClass136
 				GClass36 gclass5 = new GClass36(gclass);
 				GClass89 gclass6 = gclass2 as GClass89;
 				gclass5.method_18("Tempo");
-				gclass.method_0(gclass120_0, gclass6.method_3(), GEnum50.const_4, gclass5);
+				gclass.method_0(gclass120_0, gclass6.Events(), GEnum50.const_4, gclass5);
 				gclass.list_0.Insert(0, gclass5);
 				gclass.gclass36_0 = gclass5;
 			}
@@ -55,9 +55,9 @@ public class GClass136
 		return gclass;
 	}
 
-	void method_0(GClass120 gclass120_0, List<GClass139> list_1, GEnum50 genum50_0, GClass34 gclass34_0)
+	void method_0(MidiFile gclass120_0, List<MidiEvent> list_1, GEnum50 genum50_0, GClass34 gclass34_0)
 	{
-		foreach (GClass139 gclass in list_1)
+		foreach (MidiEvent gclass in list_1)
 		{
 			int num = gclass.int_0;
 			int int_ = gclass.vmethod_0();

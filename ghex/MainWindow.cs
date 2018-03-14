@@ -324,7 +324,7 @@ public partial class MainWindow : Form
 					if (a == "mid")
 					{
 						List<MidImportDialog.GClass75> list4 = new List<MidImportDialog.GClass75>();
-						GClass120 gclass6 = new GClass120(stream);
+						MidiFile gclass6 = new MidiFile(stream);
 						if (gclass6.method_3() == GEnum54.const_1)
 						{
 							MidImportDialog.smethod_0(gclass6, list4);
