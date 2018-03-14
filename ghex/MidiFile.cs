@@ -361,7 +361,8 @@ public class MidiFile
 								break;
 							case 65281:
 							case 65282:
-							case 65283:
+							case 65283: // Fix for parsing 'instrument name' events
+                            case 65284:
 							case 65285:
 							case 65286:
 							{
@@ -478,8 +479,6 @@ public class MidiFile
 								}
 								break;
 							}
-							case 65284:
-								goto IL_5B8;
 							default:
 								goto IL_5B8;
 							}
