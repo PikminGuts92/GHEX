@@ -1625,7 +1625,7 @@ public class MidPreview : UserControl
 		this.printPreviewDialog.ClientSize = new Size(400, 300);
 		this.printPreviewDialog.Document = this.printDocument_0;
 		this.printPreviewDialog.Enabled = true;
-		this.printPreviewDialog.Icon = (Icon)componentResourceManager.GetObject("printPreviewDialog.Icon");
+		this.printPreviewDialog.Icon = (Icon)componentResourceManager.GetObject("printPreviewDialogIcon");
 		this.printPreviewDialog.Name = "printPreviewDialog";
 		this.printPreviewDialog.ShowIcon = false;
 		this.printPreviewDialog.UseAntiAlias = true;

@@ -676,7 +676,7 @@ public class VgsPreview : UserControl
 		this.btnStop.TabIndex = 2;
 		this.btnStop.UseVisualStyleBackColor = true;
 		this.btnStop.Click += this.btnStop_Click;
-		this.imageList_0.ImageStream = (ImageListStreamer)componentResourceManager.GetObject("ilToolbar.ImageStream");
+		this.imageList_0.ImageStream = (ImageListStreamer)componentResourceManager.GetObject("ilToolbarImageStream");
 		this.imageList_0.TransparentColor = Color.White;
 		this.imageList_0.Images.SetKeyName(0, "Stop.bmp");
 		this.imageList_0.Images.SetKeyName(1, "Play.bmp");
