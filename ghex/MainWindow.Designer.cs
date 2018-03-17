@@ -583,7 +583,7 @@
 		base.Controls.Add(this.menuStrip1);
 		base.Icon = (global::System.Drawing.Icon)componentResourceManager.GetObject("$this.Icon");
 		base.Name = "MainWindow";
-		this.Text = "GHEX Encore: Windows 10 Edition";
+		this.Text = "Guitar Hero Explorer";
 		base.FormClosed += new global::System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
 		base.Shown += new global::System.EventHandler(this.MainWindow_Shown);
 		base.FormClosing += new global::System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
