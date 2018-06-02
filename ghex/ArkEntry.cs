@@ -65,9 +65,9 @@ public class ArkEntry
 		return this.ark.method_25(this);
 	}
 
-	public GStream2 GetArkEntryStream()
+	public ArkEntryStream GetArkEntryStream()
 	{
-		return new GStream2(this, this.ark.GetArkStream());
+		return new ArkEntryStream(this, this.ark.GetArkStream());
 	}
 
 	public void method_10(ArkEntry gclass126_0, bool bool_0, bool bool_1)

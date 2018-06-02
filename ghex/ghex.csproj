@@ -567,7 +567,7 @@
     <Compile Include="GInterface9.cs" />
     <Compile Include="GStream0.cs" />
     <Compile Include="GStream1.cs" />
-    <Compile Include="GStream2.cs" />
+    <Compile Include="ArkEntryStream.cs" />
     <Compile Include="GStruct0.cs" />
     <Compile Include="GStruct1.cs" />
     <Compile Include="GStruct10.cs" />

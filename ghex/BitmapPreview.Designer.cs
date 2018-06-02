@@ -125,7 +125,7 @@ public class BitmapPreview : UserControl
 			this.method_0(gclass126_0.method_8(), list_0);
 			return;
 		}
-		GStream2 gstream = gclass126_0.GetArkEntryStream();
+		ArkEntryStream gstream = gclass126_0.GetArkEntryStream();
 		this.bitmap_0 = new Bitmap(gstream);
 		gstream.Close();
 	}

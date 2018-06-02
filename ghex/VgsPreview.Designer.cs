@@ -712,7 +712,7 @@ public class VgsPreview : UserControl
 
 	GClass62 gclass62_0;
 
-	GStream2 gstream2_0;
+	ArkEntryStream gstream2_0;
 
 	VgsPreview.Class86[] class86_0;
 
