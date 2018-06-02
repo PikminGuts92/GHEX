@@ -1,8 +1,0 @@
-﻿CHANGELOG
----------
-
-v0.4.3.1
-- Recompiled and targeted for newer .NET framework, 4.6.2
-- Fixed GH80s archive import
-- Fixed alpha channel display for PS2 textures
-- Inverted lefty-flip (i.e. Lower pitched notes are now shown at botton of tab by default)

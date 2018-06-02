@@ -1,0 +1,102 @@
+﻿=== 2018-03-17: Version 0.4.3.1 ===
+  - Change: Re-targeted for newer .NET framework, 4.6.2
+  - Change: Show alpha channel for PS2 textures
+  - Change: Inverted lefty-flip (i.e. Lower pitched notes are now shown at botton of tab by default)
+  - Fix: Updated MIDI parsing for 'Instrument Name' meta events (Now GH80s archives import)
+
+=== 2007-04-09: Version 0.4.3.0 ===
+  - Feature: Read-only support for GH2 Xbox 360 NTSC archive
+  - Change: When adding a read-only archive, ghex asks to make it writable
+  - Change: Better error handling in a few places
+  - Change: Time for events in .mid import now displayed as Minutes:Seconds
+  - Change: .mid import for FeedBack songs now support events in all tracks
+  - Fix: Didn't ignore unknown settings when importing FeedBack songs
+  - Fix: FeedBack songs could get very low BPM in the first measure on some systems
+  - Fix: Incorrectly showed greyed out Replace option for .mid/.vgs in read-only archive
+  - Fix: It wasn't possible to remove an archive from the list that ghex couldn't load
+  
+=== 2007-03-18: Version 0.4.2.0 ===
+  - Feature: Shrink archive
+  - Change: VGS import now supports .ogg as source
+  - Change: More information given for issues when importing to .mid
+  - Change: .mid import now supports Frets on Fire songs
+  - Change: .mid import now warns if an end event is present but set too early
+  - Change: Archive validation now lets you recover healthy files from bad archives
+  - Change: Change log dialog now shows all minor version changes
+  - Change: Copy From DVD now defaults to copying all files, not just the archive
+  - Fix: FeedBack songs with an offset could result in bad .mid
+  - Fix: Fixed some resource leaks when importing to .vgs
+  - Fix: Crash in "Copy From DVD"
+
+=== 2007-03-10: Version 0.4.1.0 ===
+  - Change: Better error handling when importing .mid
+  - Fix: Player and Star Power sections weren't validated
+
+=== 2007-03-10: Version 0.4.0.0 ===
+  - Feature: Import to .mid
+  - Feature: Copy archive from DVD to hard drive with some validation
+  - Change: All archives must now be validated before loaded the first time
+  - Change: VGS import now supports .vgs as source
+  - Change: Removed "Replace" support for .mid and .vgs
+  - Change: Remember previous directory for different purposes
+  - Change: VGS playback now between 25-100% (even better when synching!)
+  - Change: Disallow error reporting on old versions
+  - Change: Removed "Re-link" support as it is broken and somewhat obsolete
+  - Fix: Better support for XP64 and Vista (32 and 64-bit)
+  - Fix: HO/PO notes weren't determined correctly (Thunderhorse)
+  - Fix: Fixed MIDI event parsing errors (*Tripolette)
+  - Fix: Some notes weren't highlighted correctly during playback (Bad Reputation)
+  - Fix: Correct display of HO/PO notes between measures
+  - Fix: A backup of the settings file is now created and used if needed
+  - Fix: Error if missing event in EVENTS track when previewing .mid
+  - Fix: Ignore "Lyric" MIDI command
+
+=== 2006-12-30: Version 0.3.1.0 ===
+  - Change: Minor UI tweaks
+  - Change: Use PPQN as base for sustain and invalid note thresholds
+  - Change: Increased .vgs import offset max/min to +/- 10 seconds
+  - Fix: Negative offsets in .vgs import didn't work
+
+=== 2006-12-28: Version 0.3.0.0 ===
+  - Feature: Import to .vgs
+  - Feature: Speed control in VGS playback (changes pitch for now)
+  - Change: Correct calculation of CO-OP points
+  - Change: Sustained note threshold back to 160 (see Master of Puppets :)
+  - Change: Use the same measure width for all measures during playback
+  - Fix: Batch export of note charts disabled for read-only archives
+  - Fix: MIDI file parsing error on for some custom songs (code was 0)
+  - Fix: Ignore the "marker" MIDI command
+  - Fix: More accurate calculation of current song position during playback
+  
+=== 2006-12-17: Version 0.2.0.0 ===
+  - Feature: Support for viewing and extracting from .gh/.rnd/.milo files
+  - Feature: Song playback with note chart display
+  - Feature: Better error handling. Report bugs directly from ghex!
+  - Feature: Jump to directly to any song section
+  - Feature: Batch export of note charts
+  - Change: Adaptive (and hopefully better) measure widths
+  - Change: Note chart rows are justified
+  - Change: Volume in the VGS preview is remembered within a session
+  - Change: Show note counts as well as estimated base scores for all difficulties
+  - Change: Sustained note threshold is now 173 instead of 160 (see Master of Puppets)
+  - Fix: Some songs' note charts were cut off prematurely
+  - Fix: Extract file was disabled for read-only archives
+  - Fix: Optimized note chart rendering time a lot
+  - Fix: Exception thrown on resize
+  - Fix: Institutionalized and X-Stream were rendered incorrectly
+  - Fix: VGS playback was cut prematurely
+  - Fix: When replacing a file, other files were sometimes corrupted
+
+=== 2006-12-02: Version 0.1.2.0 ===
+  - Fix: Note chart didn't receive input focus when clicked
+  - Fix: Was checking for new version even when no network available
+  - Fix: Exception thrown when previewing custom songs
+  - Fix: Missing note in last measure of some songs
+
+=== 2006-11-04: Version 0.1.1.0 ===
+  - Info: Initial release
+  - Feature: Play .vgs files
+  - Feature: View .bmp/.bmp_ps2 and .png/.png_ps2 images
+  - Feature: View/print/export note charts from .mid files
+
+ghex, http://onreally.com/ghex/
