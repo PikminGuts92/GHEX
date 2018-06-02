@@ -67,19 +67,19 @@ public class GClass72 : IEnumerable<GClass71>
             if (string_0.EndsWith(".vgs"))
             {
                 BinaryReader binaryReader = new BinaryReader(new FileStream(string_0, FileMode.Open, FileAccess.Read, FileShare.Read));
-                Class39.Struct2 @struct = Class39.smethod_0(binaryReader);
-                array = new byte[@struct.struct3_0.Length][];
-                array2 = new int[@struct.struct3_0.Length];
-                array3 = new long[@struct.struct3_0.Length][];
-                for (int i = 0; i < @struct.struct3_0.Length; i++)
+                VgsHelper.VgsFile @struct = VgsHelper.ReadVgsFromStream(binaryReader);
+                array = new byte[@struct.channels.Length][];
+                array2 = new int[@struct.channels.Length];
+                array3 = new long[@struct.channels.Length][];
+                for (int i = 0; i < @struct.channels.Length; i++)
                 {
-                    array[i] = new byte[16 * @struct.struct3_0[i].int_1];
-                    array3[i] = new long[2 * @struct.struct3_0[i].int_1];
-                    array2[i] = @struct.struct3_0[i].int_0;
+                    array[i] = new byte[16 * @struct.channels[i].blockCount];
+                    array3[i] = new long[2 * @struct.channels[i].blockCount];
+                    array2[i] = @struct.channels[i].sampleRate;
                 }
                 byte[] array4 = new byte[16];
-                long[] array5 = new long[@struct.struct3_0.Length];
-                long[] array6 = new long[2 * @struct.struct3_0.Length];
+                long[] array5 = new long[@struct.channels.Length];
+                long[] array6 = new long[2 * @struct.channels.Length];
                 float[] array7 = new float[28];
                 while (binaryReader.BaseStream.Read(array4, 0, 16) != 0)
                 {

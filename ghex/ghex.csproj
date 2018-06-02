@@ -155,7 +155,7 @@
     <Compile Include="Class36.cs" />
     <Compile Include="Class37.cs" />
     <Compile Include="Class38.cs" />
-    <Compile Include="Class39.cs" />
+    <Compile Include="VgsHelper.cs" />
     <Compile Include="Class4.cs" />
     <Compile Include="Class40.cs" />
     <Compile Include="Class41.cs" />

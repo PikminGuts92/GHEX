@@ -359,8 +359,8 @@ public partial class MainWindow : Form
                     }
                     if (a == "vgs")
                     {
-                        Class39.Struct2 @struct = Class39.smethod_0(binaryReader);
-                        if (@struct.uint_0 != 559114070u || @struct.uint_1 != 2u)
+                        VgsHelper.VgsFile @struct = VgsHelper.ReadVgsFromStream(binaryReader);
+                        if (@struct.magic != 559114070u || @struct.version != 2u)
                         {
                             throw new Exception("Invalid VGS file");
                         }
@@ -2246,7 +2246,7 @@ public partial class MainWindow : Form
                     gclass73_0.int_1 = num * 100 / list.Count;
                 }
                 BinaryReader binaryReader = new BinaryReader(gclass.GetArkEntryStream());
-                Class39.Struct2 @struct = Class39.smethod_0(binaryReader);
+                VgsHelper.VgsFile @struct = VgsHelper.ReadVgsFromStream(binaryReader);
                 binaryReader.Close();
                 int num2 = 0;
                 if (gclass.GetDirectory().StartsWith("songs/"))
@@ -2254,33 +2254,33 @@ public partial class MainWindow : Form
                     num2 = this.arkShrinkDialog_0.method_3();
                 }
                 int num3 = 0;
-                for (int i = 0; i < @struct.struct3_0.Length; i++)
+                for (int i = 0; i < @struct.channels.Length; i++)
                 {
-                    long num4 = (long)(num2 * @struct.struct3_0[i].int_0);
-                    @struct.struct3_0[i].int_1 = Math.Max(2, (int)(num4 / 28L));
-                    num3 = Math.Max(num3, @struct.struct3_0[i].int_0);
+                    long num4 = (long)(num2 * @struct.channels[i].sampleRate);
+                    @struct.channels[i].blockCount = Math.Max(2, (int)(num4 / 28L));
+                    num3 = Math.Max(num3, @struct.channels[i].sampleRate);
                 }
                 int num5 = 128;
-                int[] array3 = new int[@struct.struct3_0.Length];
-                for (int j = 0; j < @struct.struct3_0.Length; j++)
+                int[] array3 = new int[@struct.channels.Length];
+                for (int j = 0; j < @struct.channels.Length; j++)
                 {
-                    array3[j] = (int)((float)(num3 / @struct.struct3_0[j].int_0) + 0.5f);
-                    num5 += @struct.struct3_0[j].int_1 * 16;
+                    array3[j] = (int)((float)(num3 / @struct.channels[j].sampleRate) + 0.5f);
+                    num5 += @struct.channels[j].blockCount * 16;
                 }
-                int[] array4 = new int[@struct.struct3_0.Length];
+                int[] array4 = new int[@struct.channels.Length];
                 int num6 = 0;
                 MemoryStream memoryStream = new MemoryStream(num5);
                 BinaryWriter binaryWriter = new BinaryWriter(memoryStream);
-                Class39.smethod_1(binaryWriter, @struct.struct3_0);
+                VgsHelper.WriteVgsToStream(binaryWriter, @struct.channels);
                 int k = 0;
-                while (k < @struct.struct3_0.Length)
+                while (k < @struct.channels.Length)
                 {
-                    for (int l = 0; l < @struct.struct3_0.Length; l++)
+                    for (int l = 0; l < @struct.channels.Length; l++)
                     {
                         if (array4[l] != -1 && num6 % array3[l] == 0)
                         {
                             byte b = (byte)l;
-                            if (array4[l] + 16 >= @struct.struct3_0[l].int_1 * 16)
+                            if (array4[l] + 16 >= @struct.channels[l].blockCount * 16)
                             {
                                 b |= 128;
                             }

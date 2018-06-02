@@ -14,12 +14,12 @@ public class VgsPreview : UserControl
         this.pbVolume.Value = (int)(100f * VgsPreview.float_1);
         this.gstream2_0 = gclass126_0.GetArkEntryStream();
         BinaryReader binaryReader_ = new BinaryReader(this.gstream2_0);
-        Class39.Struct2 @struct = Class39.smethod_0(binaryReader_);
-        list_0.Add(new GClass109("Channels", @struct.struct3_0.Length));
+        VgsHelper.VgsFile @struct = VgsHelper.ReadVgsFromStream(binaryReader_);
+        list_0.Add(new GClass109("Channels", @struct.channels.Length));
         this.int_0 += 28 - this.int_0 % 28;
-        string[] array = new string[@struct.struct3_0.Length];
-        this.pcmAudio = new Class87[@struct.struct3_0.Length];
-        for (int i = 0; i < @struct.struct3_0.Length; i++)
+        string[] array = new string[@struct.channels.Length];
+        this.pcmAudio = new Class87[@struct.channels.Length];
+        for (int i = 0; i < @struct.channels.Length; i++)
         {
             this.pcmAudio[i] = new Class87();
             if (i % 2 == 1)
@@ -30,8 +30,8 @@ public class VgsPreview : UserControl
             {
                 this.pcmAudio[i].genum47_0 = GEnum47.const_0;
             }
-            this.pcmAudio[i].int_0 = @struct.struct3_0[i].int_0;
-            this.pcmAudio[i].int_1 = @struct.struct3_0[i].int_1;
+            this.pcmAudio[i].int_0 = @struct.channels[i].sampleRate;
+            this.pcmAudio[i].int_1 = @struct.channels[i].blockCount;
             int num = (int)((float)this.pcmAudio[i].int_0 * 0.25f + 0.5f);
             num += 28 - num % 28;
             foreach (Class87.Class88 @class in this.pcmAudio[i].class88_0)
@@ -450,6 +450,7 @@ public class VgsPreview : UserControl
 
         // Creates new VGS object
         this.gclass62_0 = new GClass62(-1, new WaveFormat(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
+        //this.gclass62_0 = null;
         this.bool_0 = false;
         this.isAudioPlaying = false;
         this.isAudioInitialized = true;
