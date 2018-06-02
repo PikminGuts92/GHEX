@@ -12,11 +12,11 @@ class Class84 : IComparer
 		{
 			return -1;
 		}
-		if (treeNode.Tag == null && treeNode2.Tag is GClass128)
+		if (treeNode.Tag == null && treeNode2.Tag is ArkFile)
 		{
 			return -1;
 		}
-		if (treeNode2.Tag == null && treeNode.Tag is GClass128)
+		if (treeNode2.Tag == null && treeNode.Tag is ArkFile)
 		{
 			return 1;
 		}

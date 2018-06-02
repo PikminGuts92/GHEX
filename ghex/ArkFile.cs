@@ -6,11 +6,11 @@ using System.IO.Compression;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
-public class GClass128
+public class ArkFile
 {
-	public GClass128(string string_2)
+	public ArkFile(string hdrPath)
 	{
-		this.string_0 = string_2.ToLower().Replace('\\', '/');
+		this.string_0 = hdrPath.ToLower().Replace('\\', '/');
 		this.string_1 = this.string_0.Substring(0, this.string_0.LastIndexOf('.')) + "_0.ark";
 		this.gclass127_0 = new GClass127(this);
 		this.bool_0 = false;
@@ -88,10 +88,10 @@ public class GClass128
 
 	void method_11(string string_2)
 	{
-		GClass128.Class94 @class = new GClass128.Class94();
+		ArkFile.Class94 @class = new ArkFile.Class94();
 		@class.gclass128_0 = this;
 		MessageBox.Show("About to search for files.\nIt will take a few minutes.", "Archive", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-		@class.list_0 = new List<GClass128.Class91>();
+		@class.list_0 = new List<ArkFile.Class91>();
 		ProgressDialog progressDialog = new ProgressDialog(new ProgressDialog.GDelegate6(@class.method_0));
 		BufferedStream input = new BufferedStream(new FileStream(this.string_1, FileMode.Open, FileAccess.Read, FileShare.Read), 131072);
 		this.binaryReader_0 = new BinaryReader(input);
@@ -102,7 +102,7 @@ public class GClass128
 		MemoryStream memoryStream = new MemoryStream(40960);
 		BinaryWriter binaryWriter = new BinaryWriter(memoryStream);
 		binaryWriter.Write((uint)@class.list_0.Count);
-		foreach (GClass128.Class91 class2 in @class.list_0)
+		foreach (ArkFile.Class91 class2 in @class.list_0)
 		{
 			binaryWriter.Write(class2.uint_0);
 			binaryWriter.Write(class2.uint_1);
@@ -181,7 +181,7 @@ public class GClass128
 			this.gclass127_0.Add(item);
 		}
 		binaryReader2.Close();
-		this.gclass127_0.Sort(new GClass128.Class93());
+		this.gclass127_0.Sort(new ArkFile.Class93());
 		fileStream.Close();
 	}
 
@@ -253,7 +253,7 @@ public class GClass128
 			this.gclass127_0.Add(new GClass126(this, position2, num9, long_, array2[num11], array2[num10]));
 			num8 += 1u;
 		}
-		this.gclass127_0.Sort(new GClass128.Class93());
+		this.gclass127_0.Sort(new ArkFile.Class93());
 		fileStream.Close();
 	}
 
@@ -362,11 +362,11 @@ public class GClass128
 		}
 		List<GClass126> list = this.method_18().FindAll(new Predicate<GClass126>(this.method_20));
 		List<GClass126> list2 = list;
-		if (GClass128.comparison_0 == null)
+		if (ArkFile.comparison_0 == null)
 		{
-			GClass128.comparison_0 = new Comparison<GClass126>(GClass128.smethod_0);
+			ArkFile.comparison_0 = new Comparison<GClass126>(ArkFile.smethod_0);
 		}
-		list2.Sort(GClass128.comparison_0);
+		list2.Sort(ArkFile.comparison_0);
 		long num = 0L;
 		long num2 = stream_0.Length;
 		foreach (GClass126 gclass in list)
@@ -650,7 +650,7 @@ public class GClass128
             string text = null;
 			int num = 0;
 			int num2 = 0;
-			GClass128.Class91 @class = null;
+			ArkFile.Class91 @class = null;
 			long num3 = 0L;
 			lock (gclass73_0)
 			{
@@ -706,7 +706,7 @@ public class GClass128
 									text = new string(this.gclass128_0.binaryReader_0.ReadChars((int)count2));
 									this.gclass128_0.binaryReader_0.BaseStream.Seek(num4 + (long)num8, SeekOrigin.Begin);
 									num = 0;
-									GClass128.Class91 class2 = new GClass128.Class91();
+									ArkFile.Class91 class2 = new ArkFile.Class91();
 									class2.uint_0 = (uint)num4;
 									class2.uint_1 = (uint)num8;
 									if (text.ToLower().Contains("tutorial"))
@@ -760,7 +760,7 @@ public class GClass128
 								}
 								if (@class == null)
 								{
-									@class = new GClass128.Class91();
+									@class = new ArkFile.Class91();
 									if (num2 >= 9 && num2 < 100 && text != null)
 									{
 										@class.string_0 = "songs/" + text;
@@ -821,8 +821,8 @@ public class GClass128
 			}
 		}
 
-		public List<GClass128.Class91> list_0;
+		public List<ArkFile.Class91> list_0;
 
-		public GClass128 gclass128_0;
+		public ArkFile gclass128_0;
 	}
 }

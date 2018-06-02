@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 public class SongPreview : UserControl
 {
-	public SongPreview(GClass128 gclass128_0, string string_0, List<GClass109> list_0)
+	public SongPreview(ArkFile gclass128_0, string string_0, List<GClass109> list_0)
 	{
 		this.InitializeComponent();
 		GClass126 gclass126_ = gclass128_0.method_27(string.Concat(new string[]

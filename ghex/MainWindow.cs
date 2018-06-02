@@ -41,7 +41,8 @@ public partial class MainWindow : Form
 
 	void MainWindow_Shown(object sender, EventArgs e)
 	{
-		this.list_0 = new List<GClass128>();
+        // Reads in previously loaded HDR files?
+		this.list_0 = new List<ArkFile>();
 		Class58[] array = Class61.smethod_0().method_3().ToArray();
 		foreach (Class58 @class in array)
 		{
@@ -166,7 +167,7 @@ public partial class MainWindow : Form
 	void method_11(object object_0)
 	{
 		MainWindow.Class66 @class = object_0 as MainWindow.Class66;
-		GClass128 gclass128_ = @class.gclass128_0;
+		ArkFile gclass128_ = @class.gclass128_0;
 		try
 		{
 			gclass128_.method_13();
@@ -205,7 +206,7 @@ public partial class MainWindow : Form
 		}
 	}
 
-	List<MainWindow.Class67> method_13(GClass128 gclass128_0, ref ProgressDialog.GClass73 gclass73_0)
+	List<MainWindow.Class67> method_13(ArkFile gclass128_0, ref ProgressDialog.GClass73 gclass73_0)
 	{
 		List<MainWindow.Class67> list = new List<MainWindow.Class67>();
 		try
@@ -415,7 +416,7 @@ public partial class MainWindow : Form
 		return list;
 	}
 
-	void method_14(TreeNode treeNode_0, GClass128 gclass128_0)
+	void method_14(TreeNode treeNode_0, ArkFile gclass128_0)
 	{
 		treeNode_0.TreeView.BeginUpdate();
 		string text = Class109.smethod_6(treeNode_0);
@@ -587,7 +588,7 @@ public partial class MainWindow : Form
 		{
 			return true;
 		}
-		@class.gclass128_0 = (this.method_10(treeNode_0).Tag as GClass128);
+		@class.gclass128_0 = (this.method_10(treeNode_0).Tag as ArkFile);
 		if (@class.gclass128_0 == null)
 		{
 			return false;
@@ -711,7 +712,7 @@ public partial class MainWindow : Form
 		return true;
 	}
 
-	TreeNode method_16(GClass128 gclass128_0)
+	TreeNode method_16(ArkFile gclass128_0)
 	{
 		this.arkFileList.BeginUpdate();
 		TreeNode treeNode = this.arkFileList.Nodes.Add(gclass128_0.method_17());
@@ -739,14 +740,15 @@ public partial class MainWindow : Form
 		return treeNode;
 	}
 
-	GClass128 method_17(string string_2, bool bool_0, ulong ulong_0)
+	ArkFile method_17(string string_2, bool bool_0, ulong arkSize)
 	{
-		GClass128 gclass = null;
-		GClass128 result;
+        // Reads in ark archive from hdr file
+		ArkFile gclass = null;
+		ArkFile result;
 		try
 		{
-			gclass = new GClass128(string_2);
-			gclass.method_5(ulong_0 == gclass.method_14());
+			gclass = new ArkFile(string_2);
+			gclass.method_5(arkSize == gclass.method_14());
 			goto IL_33;
 		}
 		catch
@@ -852,9 +854,9 @@ public partial class MainWindow : Form
 
 	void method_20(TreeNode treeNode_0)
 	{
-		if (treeNode_0.Tag is GClass128)
+		if (treeNode_0.Tag is ArkFile)
 		{
-			GClass128 gclass = treeNode_0.Tag as GClass128;
+			ArkFile gclass = treeNode_0.Tag as ArkFile;
 			if (!Class61.smethod_0().method_3().method_2(gclass.method_16()))
 			{
 				return;
@@ -901,9 +903,9 @@ public partial class MainWindow : Form
 		{
 			return;
 		}
-		if (selectedNode.Tag is GClass128)
+		if (selectedNode.Tag is ArkFile)
 		{
-			GClass128 gclass = selectedNode.Tag as GClass128;
+			ArkFile gclass = selectedNode.Tag as ArkFile;
 			bool flag = gclass.method_7();
 			this.cmiFileListNA.Visible = false;
 			this.cmiFileListSave.Visible = true;
@@ -931,7 +933,7 @@ public partial class MainWindow : Form
 		}
 		if (selectedNode.Tag is GClass126)
 		{
-			GClass128 gclass2 = this.method_10(selectedNode).Tag as GClass128;
+			ArkFile gclass2 = this.method_10(selectedNode).Tag as ArkFile;
 			this.cmiFileListNA.Visible = false;
 			this.cmiFileListReplace.Visible = true;
 			this.cmiFileListExtract.Visible = true;
@@ -982,7 +984,7 @@ public partial class MainWindow : Form
 		e.Cancel = !this.method_15(e.Node);
 	}
 
-	void method_21(GClass128 gclass128_0)
+	void method_21(ArkFile gclass128_0)
 	{
 		if (!gclass128_0.method_0())
 		{
@@ -999,9 +1001,9 @@ public partial class MainWindow : Form
 		foreach (object obj in this.arkFileList.Nodes)
 		{
 			TreeNode treeNode = (TreeNode)obj;
-			if (treeNode.Tag is GClass128)
+			if (treeNode.Tag is ArkFile)
 			{
-				GClass128 gclass = treeNode.Tag as GClass128;
+				ArkFile gclass = treeNode.Tag as ArkFile;
 				if (gclass.method_18().Count > 0)
 				{
 					Class61.smethod_0().method_3().method_1(gclass.method_16()).bool_0 = treeNode.IsExpanded;
@@ -1017,7 +1019,7 @@ public partial class MainWindow : Form
 	void cmiFileListSave_Click(object sender, EventArgs e)
 	{
 		MainWindow.Class75 @class = new MainWindow.Class75();
-		@class.gclass128_0 = (this.arkFileList.SelectedNode.Tag as GClass128);
+		@class.gclass128_0 = (this.arkFileList.SelectedNode.Tag as ArkFile);
 		ProgressDialog progressDialog = new ProgressDialog(new ProgressDialog.GDelegate6(@class.method_0));
 		progressDialog.ShowDialog();
 	}
@@ -1045,7 +1047,7 @@ public partial class MainWindow : Form
 		}
 		Class61.smethod_0().method_8().method_2("FileReplace", Class109.smethod_5(@class.openFileDialog_0.FileName));
 		TreeNode selectedNode = this.arkFileList.SelectedNode;
-		@class.gclass128_0 = (this.method_10(selectedNode).Tag as GClass128);
+		@class.gclass128_0 = (this.method_10(selectedNode).Tag as ArkFile);
 		@class.list_0 = @class.gclass128_0.method_18().FindAll(new Predicate<GClass126>(@class.method_0));
 		if (@class.list_0.Count > 0)
 		{
@@ -1253,7 +1255,7 @@ public partial class MainWindow : Form
 					}
 					Class61.smethod_0().method_8().method_2("ExtractFile", class3.folderBrowserDialog_0.SelectedPath);
 					class3.long_0 = 0L;
-					GClass128 gclass = this.method_10(@class.treeNode_0).Tag as GClass128;
+					ArkFile gclass = this.method_10(@class.treeNode_0).Tag as ArkFile;
 					class3.list_0 = gclass.method_18().FindAll(new Predicate<GClass126>(class3.method_0));
 					string directoryRoot = Directory.GetDirectoryRoot(class3.folderBrowserDialog_0.SelectedPath);
 					DriveInfo[] drives = DriveInfo.GetDrives();
@@ -1364,7 +1366,7 @@ public partial class MainWindow : Form
 	void cmiFileListExportNoteCharts_Click(object sender, EventArgs e)
 	{
 		MainWindow.Class81 @class = new MainWindow.Class81();
-		GClass128 gclass = this.method_10(this.arkFileList.SelectedNode).Tag as GClass128;
+		ArkFile gclass = this.method_10(this.arkFileList.SelectedNode).Tag as ArkFile;
 		@class.batchExportMidiDialog_0 = new BatchExportMidiDialog();
 		GClass127 gclass2 = gclass.method_27("config/gen/gh2.dtb");
 		@class.batchExportMidiDialog_0.method_2(gclass2.Count > 0);
@@ -1571,7 +1573,7 @@ public partial class MainWindow : Form
 	void cmiFileListShrinkArchive_Click(object sender, EventArgs e)
 	{
 		MainWindow.Class83 @class = new MainWindow.Class83();
-		@class.gclass128_0 = (this.arkFileList.SelectedNode.Tag as GClass128);
+		@class.gclass128_0 = (this.arkFileList.SelectedNode.Tag as ArkFile);
 		if (@class.gclass128_0 == null)
 		{
 			return;
@@ -1587,7 +1589,7 @@ public partial class MainWindow : Form
 
 	void cmiFileListMakeWritable_Click(object sender, EventArgs e)
 	{
-		GClass128 gclass = this.arkFileList.SelectedNode.Tag as GClass128;
+		ArkFile gclass = this.arkFileList.SelectedNode.Tag as ArkFile;
 		if (gclass == null)
 		{
 			return;
@@ -1617,7 +1619,7 @@ public partial class MainWindow : Form
 		return -1;
 	}
 
-	List<GClass128> list_0;
+	List<ArkFile> list_0;
 
 	GClass121 gclass121_0 = new GClass121();
 
@@ -1644,13 +1646,13 @@ public partial class MainWindow : Form
 
 	class Class66
 	{
-		public Class66(GClass128 gclass128_1, TreeNode treeNode_1)
+		public Class66(ArkFile gclass128_1, TreeNode treeNode_1)
 		{
 			this.gclass128_0 = gclass128_1;
 			this.treeNode_0 = treeNode_1;
 		}
 
-		public GClass128 gclass128_0;
+		public ArkFile gclass128_0;
 
 		public TreeNode treeNode_0;
 	}
@@ -1677,7 +1679,7 @@ public partial class MainWindow : Form
 	[CompilerGenerated]
 	sealed class Class69
 	{
-		public GClass128 gclass128_0;
+		public ArkFile gclass128_0;
 
 		public MainWindow mainWindow_0;
 	}
@@ -1812,7 +1814,7 @@ public partial class MainWindow : Form
 			if (this.treeNode_0 != null)
 			{
 				TreeNode treeNode = this.mainWindow_0.method_10(this.treeNode_0);
-				if (treeNode != null && treeNode.Tag is GClass128 && !(treeNode.Tag as GClass128).method_3())
+				if (treeNode != null && treeNode.Tag is ArkFile && !(treeNode.Tag as ArkFile).method_3())
 				{
 					MessageBox.Show("Cannot access parts of the archive.\nPlease restart the program and try again!", "Preview", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 					return;
@@ -1844,7 +1846,7 @@ public partial class MainWindow : Form
 					}
 					catch (FileLoadException)
 					{
-						GClass128 gclass2 = treeNode.Tag as GClass128;
+						ArkFile gclass2 = treeNode.Tag as ArkFile;
 						if (gclass2 != null)
 						{
 							gclass2.method_5(false);
@@ -1878,7 +1880,7 @@ public partial class MainWindow : Form
 				}
 				if (this.treeNode_0.Tag == null && this.treeNode_0.ImageIndex == 13 && string.Compare(this.treeNode_0.Parent.Name, "Songs", true) == 0)
 				{
-					this.control_0 = new SongPreview(this.mainWindow_0.method_10(this.treeNode_0).Tag as GClass128, this.treeNode_0.Name, this.list_0);
+					this.control_0 = new SongPreview(this.mainWindow_0.method_10(this.treeNode_0).Tag as ArkFile, this.treeNode_0.Name, this.list_0);
 				}
 			}
 		}
@@ -1900,7 +1902,7 @@ public partial class MainWindow : Form
 			this.gclass128_0.method_15();
 		}
 
-		public GClass128 gclass128_0;
+		public ArkFile gclass128_0;
 	}
 
 	[CompilerGenerated]
@@ -1929,7 +1931,7 @@ public partial class MainWindow : Form
 
 		public OpenFileDialog openFileDialog_0;
 
-		public GClass128 gclass128_0;
+		public ArkFile gclass128_0;
 
 		public List<GClass126> list_0;
 	}
@@ -1952,7 +1954,7 @@ public partial class MainWindow : Form
 				gclass73_0.string_0 = "Extracting..";
 			}
 			FileStream fileStream = new FileStream(this.saveFileDialog_0.FileName, FileMode.Create, FileAccess.Write, FileShare.Read);
-			GClass128 gclass = this.class77_0.mainWindow_0.method_10(this.class77_0.treeNode_0).Tag as GClass128;
+			ArkFile gclass = this.class77_0.mainWindow_0.method_10(this.class77_0.treeNode_0).Tag as ArkFile;
 			gclass.method_24(this.gclass126_0, fileStream, ref gclass73_0);
 			fileStream.Close();
 		}
@@ -2310,7 +2312,7 @@ public partial class MainWindow : Form
 			return -1;
 		}
 
-		public GClass128 gclass128_0;
+		public ArkFile gclass128_0;
 
 		public ArkShrinkDialog arkShrinkDialog_0;
 

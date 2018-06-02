@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 public class GClass126
 {
-	internal GClass126(GClass128 gclass128_1, long long_3, long long_4, long long_5, string string_2, string string_3)
+	internal GClass126(ArkFile gclass128_1, long long_3, long long_4, long long_5, string string_2, string string_3)
 	{
 		this.long_0 = long_3;
 		this.gclass128_0 = gclass128_1;
@@ -24,7 +24,7 @@ public class GClass126
 		this.object_0 = object_1;
 	}
 
-	internal GClass128 method_2()
+	internal ArkFile method_2()
 	{
 		return this.gclass128_0;
 	}
@@ -119,7 +119,7 @@ public class GClass126
 
 	string string_1;
 
-	GClass128 gclass128_0;
+	ArkFile gclass128_0;
 
 	object object_0;
 }
