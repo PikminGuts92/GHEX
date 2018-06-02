@@ -7,7 +7,7 @@ class ManagedWave : IDisposable
 {
 	internal static void smethod_0(IntPtr intptr_1, int int_0, int int_1, ref WinMM.WaveHeader waveHeader, int int_2)
 	{
-		if (int_0 == 957)
+		if (int_0 == WinMM.WAVE_OUT_DONE)
 		{
 			try
 			{
@@ -23,13 +23,13 @@ class ManagedWave : IDisposable
 	public ManagedWave(IntPtr intptr_1, int int_0)
 	{
 		this.intptr_0 = intptr_1;
-		this.gchandle_0 = GCHandle.Alloc(this.struct4_0, GCHandleType.Pinned);
-		this.struct4_0.userData = (IntPtr)GCHandle.Alloc(this);
+		this.gchandle_0 = GCHandle.Alloc(this.waveHeader, GCHandleType.Pinned);
+		this.waveHeader.userData = (IntPtr)GCHandle.Alloc(this);
 		this.byte_0 = new byte[int_0];
 		this.gchandle_1 = GCHandle.Alloc(this.byte_0, GCHandleType.Pinned);
-		this.struct4_0.dataBuffer = this.gchandle_1.AddrOfPinnedObject();
-		this.struct4_0.bufferLength = int_0;
-		Class11.smethod_0(WinMM.waveOutPrepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0)));
+		this.waveHeader.dataBuffer = this.gchandle_1.AddrOfPinnedObject();
+		this.waveHeader.bufferLength = int_0;
+		Class11.smethod_0(WinMM.waveOutPrepareHeader(this.intptr_0, ref this.waveHeader, Marshal.SizeOf(this.waveHeader)));
 	}
 
 	~ManagedWave()
@@ -39,11 +39,11 @@ class ManagedWave : IDisposable
 
 	public void Dispose()
 	{
-		if (this.struct4_0.dataBuffer != IntPtr.Zero)
+		if (this.waveHeader.dataBuffer != IntPtr.Zero)
 		{
-			WinMM.waveOutUnprepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0));
+			WinMM.waveOutUnprepareHeader(this.intptr_0, ref this.waveHeader, Marshal.SizeOf(this.waveHeader));
 			this.gchandle_0.Free();
-			this.struct4_0.dataBuffer = IntPtr.Zero;
+			this.waveHeader.dataBuffer = IntPtr.Zero;
 		}
 		this.autoResetEvent_0.Close();
 		if (this.gchandle_1.IsAllocated)
@@ -55,12 +55,12 @@ class ManagedWave : IDisposable
 
 	public int method_0()
 	{
-		return this.struct4_0.bufferLength;
+		return this.waveHeader.bufferLength;
 	}
 
 	public IntPtr method_1()
 	{
-		return this.struct4_0.dataBuffer;
+		return this.waveHeader.dataBuffer;
 	}
 
 	public bool method_2()
@@ -69,7 +69,7 @@ class ManagedWave : IDisposable
 		lock (this)
 		{
 			this.autoResetEvent_0.Reset();
-			this.bool_0 = (WinMM.waveOutWrite(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0)) == 0);
+			this.bool_0 = (WinMM.waveOutWrite(this.intptr_0, ref this.waveHeader, Marshal.SizeOf(this.waveHeader)) == 0);
 			result = this.bool_0;
 		}
 		return result;
@@ -97,7 +97,7 @@ class ManagedWave : IDisposable
 
 	IntPtr intptr_0;
 
-	WinMM.WaveHeader struct4_0;
+	WinMM.WaveHeader waveHeader;
 
 	byte[] byte_0;
 
