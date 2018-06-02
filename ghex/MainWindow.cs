@@ -321,7 +321,7 @@ public partial class MainWindow : Form
 						throw new Exception("File is all zeroes");
 					}
 					stream.Seek(0L, SeekOrigin.Begin);
-					string a = gclass5.method_5();
+					string a = gclass5.GetFileExtension();
 					if (a == "mid")
 					{
 						List<MidImportDialog.GClass75> list4 = new List<MidImportDialog.GClass75>();
@@ -430,7 +430,7 @@ public partial class MainWindow : Form
 					treeNode.Tag = entry;
 					treeNode.Name = entry.GetFileName();
 					string key;
-					if ((key = entry.method_5()) == null)
+					if ((key = entry.GetFileExtension()) == null)
 					{
 						goto IL_1F7;
 					}
@@ -942,7 +942,7 @@ public partial class MainWindow : Form
 				this.cmiFileListReplace.Enabled = true;
 			}
 			ArkEntry gclass3 = selectedNode.Tag as ArkEntry;
-			string strA = gclass3.method_5();
+			string strA = gclass3.GetFileExtension();
 			if (string.Compare(strA, "mid", true) == 0 || string.Compare(strA, "vgs", true) == 0)
 			{
 				this.cmiFileListReplace.Enabled = false;
@@ -1039,7 +1039,7 @@ public partial class MainWindow : Form
 		@class.openFileDialog_0 = new OpenFileDialog();
 		@class.openFileDialog_0.Title = "Locate a file to replace \"" + @class.gclass126_0.GetFileName() + "\" with..";
 		@class.openFileDialog_0.FileName = @class.gclass126_0.GetFileName();
-		@class.openFileDialog_0.Filter = @class.gclass126_0.method_5().ToUpper() + " files|*." + @class.gclass126_0.method_5();
+		@class.openFileDialog_0.Filter = @class.gclass126_0.GetFileExtension().ToUpper() + " files|*." + @class.gclass126_0.GetFileExtension();
 		@class.openFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("FileReplace");
 		if (@class.openFileDialog_0.ShowDialog() != DialogResult.OK)
 		{
@@ -1219,7 +1219,7 @@ public partial class MainWindow : Form
 			class2.saveFileDialog_0.Title = "Extract \"" + class2.gclass126_0.GetFileName() + "\" as..";
 			class2.saveFileDialog_0.OverwritePrompt = true;
 			class2.saveFileDialog_0.FileName = class2.gclass126_0.GetFileName();
-			class2.saveFileDialog_0.Filter = class2.gclass126_0.method_5().ToUpper() + " files|*." + class2.gclass126_0.method_5();
+			class2.saveFileDialog_0.Filter = class2.gclass126_0.GetFileExtension().ToUpper() + " files|*." + class2.gclass126_0.GetFileExtension();
 			class2.saveFileDialog_0.ValidateNames = true;
 			class2.saveFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("ExtractFile");
 			if (class2.saveFileDialog_0.ShowDialog() != DialogResult.OK)
@@ -1400,7 +1400,7 @@ public partial class MainWindow : Form
 			return;
 		}
 		ArkEntry gclass = selectedNode.Tag as ArkEntry;
-		string strA = gclass.method_5();
+		string strA = gclass.GetFileExtension();
 		Form form = null;
 		ProgressDialog.GDelegate6 gdelegate6_ = null;
 		if (string.Compare(strA, "vgs", true) == 0)
@@ -1791,7 +1791,7 @@ public partial class MainWindow : Form
 				gclass73_0.string_0 = "Loading..";
 			}
 			string a;
-			if ((a = this.gclass126_0.method_5()) != null)
+			if ((a = this.gclass126_0.GetFileExtension()) != null)
 			{
 				if (!(a == "gh") && !(a == "rnd_ps2") && !(a == "milo_ps2"))
 				{
@@ -1825,7 +1825,7 @@ public partial class MainWindow : Form
 					{
 						ArkEntry gclass = this.treeNode_0.Tag as ArkEntry;
 						string key;
-						switch (key = gclass.method_5())
+						switch (key = gclass.GetFileExtension())
 						{
 						case "bmp_ps2":
 						case "png_ps2":

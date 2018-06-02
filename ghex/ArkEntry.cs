@@ -40,7 +40,7 @@ public class ArkEntry
 		return this.long_2;
 	}
 
-	public string method_5()
+	public string GetFileExtension()
 	{
 		int num = this.fileName.LastIndexOf('.');
 		if (num == -1)

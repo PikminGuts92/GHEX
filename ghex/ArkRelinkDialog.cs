@@ -54,7 +54,7 @@ public partial class ArkRelinkDialog : Form
 	void btnOk_Click(object sender, EventArgs e)
 	{
 		ArkEntry gclass = this.tvFiles.SelectedNode.Tag as ArkEntry;
-		if (gclass.method_5() != this.gclass126_0.method_5() && MessageBox.Show("Files do not share the same extension.\nAre you sure you want to do this?", this.gclass126_0.GetFileName(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+		if (gclass.GetFileExtension() != this.gclass126_0.GetFileExtension() && MessageBox.Show("Files do not share the same extension.\nAre you sure you want to do this?", this.gclass126_0.GetFileName(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
 		{
 			return;
 		}

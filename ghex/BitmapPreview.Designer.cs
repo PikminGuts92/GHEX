@@ -120,7 +120,7 @@ public class BitmapPreview : UserControl
 	public BitmapPreview(ArkEntry gclass126_0, List<GClass109> list_0)
 	{
 		this.InitializeComponent();
-		if (gclass126_0.method_5().CompareTo("bmp") != 0 && gclass126_0.method_5().CompareTo("png") != 0)
+		if (gclass126_0.GetFileExtension().CompareTo("bmp") != 0 && gclass126_0.GetFileExtension().CompareTo("png") != 0)
 		{
 			this.method_0(gclass126_0.method_8(), list_0);
 			return;
