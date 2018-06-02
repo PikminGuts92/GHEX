@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 [ComImport]
 public interface GInterface22
 {
-	void imethod_0([MarshalAs(UnmanagedType.LPWStr)] [In] string string_0);
+    void imethod_0([MarshalAs(UnmanagedType.LPWStr)] [In] string string_0);
 
-	void imethod_1();
+    void imethod_1();
 
-	void imethod_2();
+    void imethod_2();
 }

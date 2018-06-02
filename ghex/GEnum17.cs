@@ -2,6 +2,6 @@
 
 public enum GEnum17
 {
-	const_0,
-	const_1
+    const_0,
+    const_1
 }

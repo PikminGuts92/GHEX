@@ -2,5 +2,5 @@
 
 public enum GEnum28
 {
-	const_0 = 1
+    const_0 = 1
 }

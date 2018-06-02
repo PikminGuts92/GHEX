@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [ComImport]
 public interface GInterface17
 {
-	void imethod_0([MarshalAs(UnmanagedType.LPArray)] [Out] GStruct1[] gstruct1_0, [In] [Out] ref ushort ushort_0);
+    void imethod_0([MarshalAs(UnmanagedType.LPArray)] [Out] GStruct1[] gstruct1_0, [In] [Out] ref ushort ushort_0);
 
-	void imethod_1([MarshalAs(UnmanagedType.LPArray)] [In] GStruct1[] gstruct1_0, [In] ushort ushort_0);
+    void imethod_1([MarshalAs(UnmanagedType.LPArray)] [In] GStruct1[] gstruct1_0, [In] ushort ushort_0);
 }

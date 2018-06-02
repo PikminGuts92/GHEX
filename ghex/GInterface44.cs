@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [ComImport]
 public interface GInterface44
 {
-	void imethod_0(out ushort ushort_0);
+    void imethod_0(out ushort ushort_0);
 
-	void imethod_1([In] ushort ushort_0);
+    void imethod_1([In] ushort ushort_0);
 }

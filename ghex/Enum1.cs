@@ -2,5 +2,5 @@
 
 enum Enum1
 {
-	const_0 = 10
+    const_0 = 10
 }

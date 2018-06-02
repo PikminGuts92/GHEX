@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [ComImport]
 public interface GInterface50
 {
-	void imethod_0([In] uint uint_0, [MarshalAs(UnmanagedType.Interface)] out GInterface0 ginterface0_0);
+    void imethod_0([In] uint uint_0, [MarshalAs(UnmanagedType.Interface)] out GInterface0 ginterface0_0);
 
-	void imethod_1([In] uint uint_0, [MarshalAs(UnmanagedType.Interface)] out GInterface0 ginterface0_0);
+    void imethod_1([In] uint uint_0, [MarshalAs(UnmanagedType.Interface)] out GInterface0 ginterface0_0);
 }

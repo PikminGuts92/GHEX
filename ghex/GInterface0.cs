@@ -6,13 +6,13 @@ using System.Runtime.InteropServices;
 [ComImport]
 public interface GInterface0
 {
-	void imethod_0(out uint uint_0);
+    void imethod_0(out uint uint_0);
 
-	void imethod_1([In] uint uint_0);
+    void imethod_1([In] uint uint_0);
 
-	void imethod_2(out uint uint_0);
+    void imethod_2(out uint uint_0);
 
-	void imethod_3(out IntPtr intptr_0);
+    void imethod_3(out IntPtr intptr_0);
 
-	void imethod_4(out IntPtr intptr_0, out uint uint_0);
+    void imethod_4(out IntPtr intptr_0, out uint uint_0);
 }

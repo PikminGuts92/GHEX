@@ -6,5 +6,5 @@ using System.Runtime.InteropServices;
 [ComImport]
 public interface GInterface18
 {
-	void imethod_0([In] GEnum19 genum19_0, [In] IntPtr intptr_0, [In] GEnum15 genum15_0, [In] IntPtr intptr_1, [In] IntPtr intptr_2);
+    void imethod_0([In] GEnum19 genum19_0, [In] IntPtr intptr_0, [In] GEnum15 genum15_0, [In] IntPtr intptr_1, [In] IntPtr intptr_2);
 }

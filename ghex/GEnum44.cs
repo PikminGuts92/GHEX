@@ -2,5 +2,5 @@
 
 public enum GEnum44
 {
-	const_0 = 1
+    const_0 = 1
 }

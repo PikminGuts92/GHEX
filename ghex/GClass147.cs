@@ -2,22 +2,22 @@
 
 public class GClass147 : MidiEvent
 {
-	public override int vmethod_0()
-	{
-		return this.int_2;
-	}
+    public override int vmethod_0()
+    {
+        return this.int_2;
+    }
 
-	public override void vmethod_1(int int_3)
-	{
-		this.int_2 = int_3;
-	}
+    public override void vmethod_1(int int_3)
+    {
+        this.int_2 = int_3;
+    }
 
-	public override GEnum63 vmethod_2()
-	{
-		return GEnum63.const_6;
-	}
+    public override GEnum63 vmethod_2()
+    {
+        return GEnum63.const_6;
+    }
 
-	public int int_1;
+    public int int_1;
 
-	int int_2;
+    int int_2;
 }
