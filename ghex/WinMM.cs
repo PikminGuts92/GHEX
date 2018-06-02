@@ -10,13 +10,13 @@ class WinMM
 	public static extern int waveOutGetNumDevs();
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutPrepareHeader(IntPtr hWaveOut, ref Struct4 lpWaveOutHdr, int uSize);
+	public static extern int waveOutPrepareHeader(IntPtr hWaveOut, ref WaveHeader lpWaveOutHdr, int uSize);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutUnprepareHeader(IntPtr hWaveOut, ref Struct4 lpWaveOutHdr, int uSize);
+	public static extern int waveOutUnprepareHeader(IntPtr hWaveOut, ref WaveHeader lpWaveOutHdr, int uSize);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutWrite(IntPtr hWaveOut, ref Struct4 lpWaveOutHdr, int uSize);
+	public static extern int waveOutWrite(IntPtr hWaveOut, ref WaveHeader lpWaveOutHdr, int uSize);
 
 	[DllImport("winmm.dll")]
 	public static extern int waveOutOpen(out IntPtr hWaveOut, int uDeviceID, WaveFormat lpFormat, WaveCallback dwCallback, int dwInstance, int dwFlags);
@@ -58,24 +58,18 @@ class WinMM
 
 	const string DLL_FILE_NAME = "winmm.dll"; // Not even used?
 
-	public delegate void WaveCallback(IntPtr intptr_0, int int_0, int int_1, ref Struct4 struct4_0, int int_2);
-    
-    public struct Struct4
+	public delegate void WaveCallback(IntPtr intptr_0, int int_0, int int_1, ref WaveHeader struct4_0, int int_2);
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct WaveHeader
     {
-        public IntPtr intptr_0;
-
-        public int int_0;
-
-        public int int_1;
-
-        public IntPtr intptr_1;
-
-        public int int_2;
-
-        public int int_3;
-
-        public IntPtr intptr_2;
-
-        public int int_4;
+        public IntPtr dataBuffer;
+        public int bufferLength;
+        public int bytesRecorded;
+        public IntPtr userData;
+        public int flags;
+        public int loops;
+        public IntPtr next;
+        public int reserved;
     }
 }

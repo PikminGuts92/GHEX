@@ -81,13 +81,13 @@ public class GClass62 : IDisposable
 		this.method_2();
 		if (int_1 > 0)
 		{
-			this.class12_0 = new Class12(this.intptr_0, int_0);
-			Class12 @class = this.class12_0;
+			this.class12_0 = new ManagedWave(this.intptr_0, int_0);
+			ManagedWave @class = this.class12_0;
 			try
 			{
 				for (int i = 1; i < int_1; i++)
 				{
-					Class12 class2 = new Class12(this.intptr_0, int_0);
+					ManagedWave class2 = new ManagedWave(this.intptr_0, int_0);
 					@class.class12_0 = class2;
 					@class = class2;
 				}
@@ -104,12 +104,12 @@ public class GClass62 : IDisposable
 		this.class12_1 = null;
 		if (this.class12_0 != null)
 		{
-			Class12 @class = this.class12_0;
+			ManagedWave @class = this.class12_0;
 			this.class12_0 = null;
-			Class12 class2 = @class;
+			ManagedWave class2 = @class;
 			do
 			{
-				Class12 class3 = class2.class12_0;
+				ManagedWave class3 = class2.class12_0;
 				class2.Dispose();
 				class2 = class3;
 			}
@@ -125,7 +125,7 @@ public class GClass62 : IDisposable
 
 	void method_4()
 	{
-		Class12 @class = this.class12_0;
+		ManagedWave @class = this.class12_0;
 		while (@class.class12_0 != this.class12_0)
 		{
 			@class.method_3();
@@ -135,9 +135,9 @@ public class GClass62 : IDisposable
 
 	IntPtr intptr_0;
 
-	Class12 class12_0;
+	ManagedWave class12_0;
 
-	Class12 class12_1;
+	ManagedWave class12_1;
 
 	Thread thread_0;
 
@@ -147,5 +147,5 @@ public class GClass62 : IDisposable
 
 	byte byte_0;
 
-	WinMM.WaveCallback delegate1_0 = new WinMM.WaveCallback(Class12.smethod_0);
+	WinMM.WaveCallback delegate1_0 = new WinMM.WaveCallback(ManagedWave.smethod_0);
 }

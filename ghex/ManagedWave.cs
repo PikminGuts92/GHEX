@@ -2,15 +2,16 @@
 using System.Runtime.InteropServices;
 using System.Threading;
 
-class Class12 : IDisposable
+// Managed wave instance?
+class ManagedWave : IDisposable
 {
-	internal static void smethod_0(IntPtr intptr_1, int int_0, int int_1, ref WinMM.Struct4 struct4_1, int int_2)
+	internal static void smethod_0(IntPtr intptr_1, int int_0, int int_1, ref WinMM.WaveHeader waveHeader, int int_2)
 	{
 		if (int_0 == 957)
 		{
 			try
 			{
-				Class12 @class = (Class12)((GCHandle)struct4_1.intptr_1).Target;
+				ManagedWave @class = (ManagedWave)((GCHandle)waveHeader.userData).Target;
 				@class.method_4();
 			}
 			catch
@@ -19,30 +20,30 @@ class Class12 : IDisposable
 		}
 	}
 
-	public Class12(IntPtr intptr_1, int int_0)
+	public ManagedWave(IntPtr intptr_1, int int_0)
 	{
 		this.intptr_0 = intptr_1;
 		this.gchandle_0 = GCHandle.Alloc(this.struct4_0, GCHandleType.Pinned);
-		this.struct4_0.intptr_1 = (IntPtr)GCHandle.Alloc(this);
+		this.struct4_0.userData = (IntPtr)GCHandle.Alloc(this);
 		this.byte_0 = new byte[int_0];
 		this.gchandle_1 = GCHandle.Alloc(this.byte_0, GCHandleType.Pinned);
-		this.struct4_0.intptr_0 = this.gchandle_1.AddrOfPinnedObject();
-		this.struct4_0.int_0 = int_0;
+		this.struct4_0.dataBuffer = this.gchandle_1.AddrOfPinnedObject();
+		this.struct4_0.bufferLength = int_0;
 		Class11.smethod_0(WinMM.waveOutPrepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0)));
 	}
 
-	~Class12()
+	~ManagedWave()
 	{
 		this.Dispose();
 	}
 
 	public void Dispose()
 	{
-		if (this.struct4_0.intptr_0 != IntPtr.Zero)
+		if (this.struct4_0.dataBuffer != IntPtr.Zero)
 		{
 			WinMM.waveOutUnprepareHeader(this.intptr_0, ref this.struct4_0, Marshal.SizeOf(this.struct4_0));
 			this.gchandle_0.Free();
-			this.struct4_0.intptr_0 = IntPtr.Zero;
+			this.struct4_0.dataBuffer = IntPtr.Zero;
 		}
 		this.autoResetEvent_0.Close();
 		if (this.gchandle_1.IsAllocated)
@@ -54,12 +55,12 @@ class Class12 : IDisposable
 
 	public int method_0()
 	{
-		return this.struct4_0.int_0;
+		return this.struct4_0.bufferLength;
 	}
 
 	public IntPtr method_1()
 	{
-		return this.struct4_0.intptr_0;
+		return this.struct4_0.dataBuffer;
 	}
 
 	public bool method_2()
@@ -90,13 +91,13 @@ class Class12 : IDisposable
 		this.bool_0 = false;
 	}
 
-	public Class12 class12_0;
+	public ManagedWave class12_0;
 
 	AutoResetEvent autoResetEvent_0 = new AutoResetEvent(false);
 
 	IntPtr intptr_0;
 
-	WinMM.Struct4 struct4_0;
+	WinMM.WaveHeader struct4_0;
 
 	byte[] byte_0;
 

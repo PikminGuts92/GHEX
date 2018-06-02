@@ -130,7 +130,7 @@
     <Compile Include="Class114.cs" />
     <Compile Include="Class115.cs" />
     <Compile Include="Class119.cs" />
-    <Compile Include="Class12.cs" />
+    <Compile Include="ManagedWave.cs" />
     <Compile Include="Class120.cs" />
     <Compile Include="Class15.cs" />
     <Compile Include="Class16.cs" />
