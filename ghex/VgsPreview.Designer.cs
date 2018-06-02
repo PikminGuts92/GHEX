@@ -12,7 +12,7 @@ public class VgsPreview : UserControl
 	{
 		this.InitializeComponent();
 		this.pbVolume.Value = (int)(100f * VgsPreview.float_1);
-		this.gstream2_0 = gclass126_0.method_9();
+		this.gstream2_0 = gclass126_0.GetArkEntryStream();
 		BinaryReader binaryReader_ = new BinaryReader(this.gstream2_0);
 		Class39.Struct2 @struct = Class39.smethod_0(binaryReader_);
 		list_0.Add(new GClass109("Channels", @struct.struct3_0.Length));

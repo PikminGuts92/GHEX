@@ -27,7 +27,7 @@ public partial class MidImportDialog : Form
 		this.tblTracks.method_56(new GDelegate27(this.method_2));
 		this.tblTracks.method_58(new GDelegate27(this.method_3));
 		this.string_0 = string_2;
-		MidiFile gclass = new MidiFile(gclass126_1.method_9());
+		MidiFile gclass = new MidiFile(gclass126_1.GetArkEntryStream());
 		this.genum54_0 = gclass.method_3();
 		this.gclass126_0 = gclass126_1;
 		Stream stream = new FileStream(string_2, FileMode.Open, FileAccess.Read, FileShare.Read);

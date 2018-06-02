@@ -23,7 +23,7 @@ public partial class VgsImportDialog : Form
 			this.cbChannel6,
 			this.cbChannel7
 		};
-		BinaryReader binaryReader_ = new BinaryReader(gclass126_1.method_9());
+		BinaryReader binaryReader_ = new BinaryReader(gclass126_1.GetArkEntryStream());
 		this.struct2_0 = Class39.smethod_0(binaryReader_);
 		switch (this.struct2_0.struct3_0.Length)
 		{

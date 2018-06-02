@@ -476,7 +476,7 @@ public class ArkFile
 
 	public void method_24(ArkEntry gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0)
 	{
-		GStream2 gstream = gclass126_0.method_9();
+		GStream2 gstream = gclass126_0.GetArkEntryStream();
 		BinaryWriter binaryWriter = new BinaryWriter(stream_0);
 		int num = (int)Math.Min(gclass126_0.GetFileSize(), 262144L);
 		byte[] array = new byte[num];

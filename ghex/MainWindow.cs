@@ -263,7 +263,7 @@ public partial class MainWindow : Form
 					gclass73_0.string_1 = "Checking \"" + gclass5.GetFileName() + "\"";
 					gclass73_0.int_0 = -1;
 				}
-				Stream stream = gclass5.method_9();
+				Stream stream = gclass5.GetArkEntryStream();
 				BinaryReader binaryReader = new BinaryReader(stream);
 				try
 				{
@@ -2245,7 +2245,7 @@ public partial class MainWindow : Form
 					});
 					gclass73_0.int_1 = num * 100 / list.Count;
 				}
-				BinaryReader binaryReader = new BinaryReader(gclass.method_9());
+				BinaryReader binaryReader = new BinaryReader(gclass.GetArkEntryStream());
 				Class39.Struct2 @struct = Class39.smethod_0(binaryReader);
 				binaryReader.Close();
 				int num2 = 0;
