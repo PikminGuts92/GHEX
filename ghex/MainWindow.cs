@@ -676,13 +676,13 @@ public partial class MainWindow : Form
 		class5.gclass126_0 = (treeNode_0.Tag as ArkEntry);
 		ProgressDialog progressDialog3 = new ProgressDialog(new ProgressDialog.GDelegate6(class5.method_0));
 		progressDialog3.ShowDialog();
-		if (class5.gclass126_0.method_0() == null)
+		if (class5.gclass126_0.GetFileObject() == null)
 		{
 			return false;
 		}
-		if (class5.gclass126_0.method_0() is Class99)
+		if (class5.gclass126_0.GetFileObject() is Class99)
 		{
-			Class99 class6 = class5.gclass126_0.method_0() as Class99;
+			Class99 class6 = class5.gclass126_0.GetFileObject() as Class99;
 			foreach (Class98 class7 in class6.method_1())
 			{
 				TreeNode treeNode2 = treeNode_0.Nodes.Add(class7.method_0());
@@ -1797,7 +1797,7 @@ public partial class MainWindow : Form
 				{
 					return;
 				}
-				this.gclass126_0.method_1(Class99.smethod_0(this.gclass126_0.method_8(), ref gclass73_0));
+				this.gclass126_0.SetFileObject(Class99.smethod_0(this.gclass126_0.method_8(), ref gclass73_0));
 			}
 		}
 

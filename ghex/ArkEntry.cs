@@ -15,14 +15,14 @@ public class ArkEntry
 		this.directory = dir;
 	}
 
-	public object method_0()
+	public object GetFileObject()
 	{
 		return this.fileObject;
 	}
 
-	public void method_1(object object_1)
+	public void SetFileObject(object obj)
 	{
-		this.fileObject = object_1;
+		this.fileObject = obj;
 	}
 
 	internal ArkFile GetArk()
