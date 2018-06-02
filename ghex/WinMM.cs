@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 
 // Wrapper for WinMM audio library
+// Helpful: https://github.com/naudio/NAudio/blob/master/NAudio/Wave/MmeInterop/WaveInterop.cs
 
 class WinMM
 {
@@ -41,23 +42,21 @@ class WinMM
 	[DllImport("winmm.dll")]
 	public static extern int waveOutGetVolume(IntPtr intptr_0, out int int_8);
 
-	public const int int_0 = 0;
+	public const int int_0 = 0x00;
 
-	public const int int_1 = 955;
+    // WaveMessage
+	public const int WAVE_OUT_OPEN  = 0x3BB;
+	public const int WAVE_OUT_CLOSE = 0x3BC;
+	public const int WAVE_OUT_DONE  = 0x3BD;
 
-	public const int int_2 = 956;
+    // WaveInOutOpenFlags
+    public const int CALL_BACK_FUNCTION = 0x30000;
 
-	public const int int_3 = 957;
+    public const int int_5 = 0x01;
+	public const int int_6 = 0x02;
+	public const int int_7 = 0x04;
 
-	public const int int_4 = 196608;
-
-	public const int int_5 = 1;
-
-	public const int int_6 = 2;
-
-	public const int int_7 = 4;
-
-	const string string_0 = "winmm.dll";
+	const string DLL_FILE_NAME = "winmm.dll";
 
 	public delegate void Delegate1(IntPtr intptr_0, int int_0, int int_1, ref WinMM.Struct4 struct4_0, int int_2);
 
