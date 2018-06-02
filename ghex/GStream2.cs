@@ -7,7 +7,7 @@ public class GStream2 : Stream
 	{
 		this.gclass126_0 = gclass126_1;
 		this.fileStream_0 = fileStream_1;
-		this.fileStream_0.Seek(this.gclass126_0.method_11(), SeekOrigin.Begin);
+		this.fileStream_0.Seek(this.gclass126_0.GetFileOffset(), SeekOrigin.Begin);
 	}
 
 	public override void Close()
@@ -62,7 +62,7 @@ public class GStream2 : Stream
 	{
 		get
 		{
-			return this.gclass126_0.method_4();
+			return this.gclass126_0.GetFileSize();
 		}
 	}
 
@@ -70,11 +70,11 @@ public class GStream2 : Stream
 	{
 		get
 		{
-			return this.fileStream_0.Position - this.gclass126_0.method_11();
+			return this.fileStream_0.Position - this.gclass126_0.GetFileOffset();
 		}
 		set
 		{
-			this.fileStream_0.Position = this.gclass126_0.method_11() + value;
+			this.fileStream_0.Position = this.gclass126_0.GetFileOffset() + value;
 		}
 	}
 
@@ -88,11 +88,11 @@ public class GStream2 : Stream
 		switch (origin)
 		{
 		case SeekOrigin.Begin:
-			return this.fileStream_0.Seek(this.gclass126_0.method_11() + offset, SeekOrigin.Begin) - this.gclass126_0.method_11();
+			return this.fileStream_0.Seek(this.gclass126_0.GetFileOffset() + offset, SeekOrigin.Begin) - this.gclass126_0.GetFileOffset();
 		case SeekOrigin.Current:
-			return this.fileStream_0.Seek(offset, SeekOrigin.Current) - this.gclass126_0.method_11();
+			return this.fileStream_0.Seek(offset, SeekOrigin.Current) - this.gclass126_0.GetFileOffset();
 		case SeekOrigin.End:
-			return this.fileStream_0.Seek(this.gclass126_0.method_11() + this.gclass126_0.method_4() - offset, SeekOrigin.Begin) - this.gclass126_0.method_11();
+			return this.fileStream_0.Seek(this.gclass126_0.GetFileOffset() + this.gclass126_0.GetFileSize() - offset, SeekOrigin.Begin) - this.gclass126_0.GetFileOffset();
 		default:
 			return 0L;
 		}

@@ -249,7 +249,7 @@ public class ArkFile
 			int num10 = binaryReader.ReadInt32();
 			int num11 = binaryReader.ReadInt32();
 			long long_ = (long)binaryReader.ReadInt32();
-			binaryReader.ReadInt32();
+			binaryReader.ReadInt32(); // RIP inflated size - Did nobody preserve this?
 			this.arkEntries.Add(new ArkEntry(this, position2, num9, long_, array2[num11], array2[num10]));
 			num8 += 1u;
 		}
@@ -277,10 +277,10 @@ public class ArkFile
 		binaryWriter.Write((uint)this.fileStream_0.Length);
 		foreach (ArkEntry gclass in this.arkEntries)
 		{
-			binaryWriter.BaseStream.Seek(gclass.method_3(), SeekOrigin.Begin);
-			binaryWriter.Write((uint)gclass.method_11());
+			binaryWriter.BaseStream.Seek(gclass.GetHdrEntryOffset(), SeekOrigin.Begin);
+			binaryWriter.Write((uint)gclass.GetFileOffset());
 			binaryWriter.Seek(8, SeekOrigin.Current);
-			binaryWriter.Write((uint)gclass.method_4());
+			binaryWriter.Write((uint)gclass.GetFileSize());
 		}
 		fileStream.Close();
 		this.ulong_0 = 0UL;
@@ -310,7 +310,7 @@ public class ArkFile
 
 	bool method_20(ArkEntry gclass126_0)
 	{
-		return gclass126_0.method_11() > this.long_0;
+		return gclass126_0.GetFileOffset() > this.long_0;
 	}
 
 	public void method_21(ArkEntry gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0)
@@ -325,8 +325,8 @@ public class ArkFile
 		byte[] array = new byte[num];
 		DateTime now = DateTime.Now;
 		binaryWriter.BaseStream.Seek(0L, SeekOrigin.End);
-		gclass126_0.method_10(new ArkEntry(this, gclass126_0.method_3(), binaryWriter.BaseStream.Position, stream_0.Length, null, null), false, false);
-		binaryWriter.BaseStream.SetLength(gclass126_0.method_11() + gclass126_0.method_4());
+		gclass126_0.method_10(new ArkEntry(this, gclass126_0.GetHdrEntryOffset(), binaryWriter.BaseStream.Position, stream_0.Length, null, null), false, false);
+		binaryWriter.BaseStream.SetLength(gclass126_0.GetFileOffset() + gclass126_0.GetFileSize());
 		stream_0.Seek(0L, SeekOrigin.Begin);
 		while (stream_0.Position < stream_0.Length)
 		{
@@ -352,7 +352,7 @@ public class ArkFile
 	{
 		this.method_9();
 		BinaryWriter binaryWriter = new BinaryWriter(this.fileStream_0);
-		this.long_0 = gclass126_0.method_11();
+		this.long_0 = gclass126_0.GetFileOffset();
 		if (bool_3)
 		{
 			lock (gclass73_0)
@@ -371,12 +371,12 @@ public class ArkFile
 		long num2 = stream_0.Length;
 		foreach (ArkEntry gclass in list)
 		{
-			num2 += gclass.method_4();
+			num2 += gclass.GetFileSize();
 		}
-		int num3 = (int)Math.Min(gclass126_0.method_4(), 262144L);
+		int num3 = (int)Math.Min(gclass126_0.GetFileSize(), 262144L);
 		byte[] array = new byte[num3];
 		DateTime now = DateTime.Now;
-		long num4 = gclass126_0.method_11();
+		long num4 = gclass126_0.GetFileOffset();
 		foreach (ArkEntry gclass2 in list)
 		{
 			int num5 = list.IndexOf(gclass2);
@@ -387,12 +387,12 @@ public class ArkFile
 					gclass73_0.string_1 = "Moving \"" + gclass2.GetFileName() + "\"";
 				}
 			}
-			long num6 = gclass2.method_11();
-			gclass2.method_10(new ArkEntry(this, gclass2.method_3(), num4, gclass2.method_4(), null, null), false, false);
+			long num6 = gclass2.GetFileOffset();
+			gclass2.method_10(new ArkEntry(this, gclass2.GetHdrEntryOffset(), num4, gclass2.GetFileSize(), null, null), false, false);
 			long num7 = 0L;
-			while (num7 < gclass2.method_4())
+			while (num7 < gclass2.GetFileSize())
 			{
-				int count = Math.Min((int)(gclass2.method_4() - num7), array.Length);
+				int count = Math.Min((int)(gclass2.GetFileSize() - num7), array.Length);
 				this.binaryReader_0.BaseStream.Seek(num6, SeekOrigin.Begin);
 				int num8 = this.binaryReader_0.Read(array, 0, count);
 				binaryWriter.BaseStream.Seek(num4, SeekOrigin.Begin);
@@ -406,7 +406,7 @@ public class ArkFile
 				{
 					if (bool_3)
 					{
-						gclass73_0.int_0 = (int)(num7 * 100L / gclass2.method_4());
+						gclass73_0.int_0 = (int)(num7 * 100L / gclass2.GetFileSize());
 						gclass73_0.int_1 = (int)(num * 100L / num2);
 						gclass73_0.string_2 = string.Concat(new object[]
 						{
@@ -425,7 +425,7 @@ public class ArkFile
 			}
 		}
 		binaryWriter.BaseStream.Seek(this.long_0 + num, SeekOrigin.Begin);
-		gclass126_0.method_10(new ArkEntry(this, gclass126_0.method_3(), binaryWriter.BaseStream.Position, stream_0.Length, null, null), false, false);
+		gclass126_0.method_10(new ArkEntry(this, gclass126_0.GetHdrEntryOffset(), binaryWriter.BaseStream.Position, stream_0.Length, null, null), false, false);
 		if (stream_0.Length > 0L)
 		{
 			stream_0.Seek(0L, SeekOrigin.Begin);
@@ -478,7 +478,7 @@ public class ArkFile
 	{
 		GStream2 gstream = gclass126_0.method_9();
 		BinaryWriter binaryWriter = new BinaryWriter(stream_0);
-		int num = (int)Math.Min(gclass126_0.method_4(), 262144L);
+		int num = (int)Math.Min(gclass126_0.GetFileSize(), 262144L);
 		byte[] array = new byte[num];
 		DateTime now = DateTime.Now;
 		while (gstream.Position < gstream.Length)
@@ -501,8 +501,8 @@ public class ArkFile
 	public byte[] method_25(ArkEntry gclass126_0)
 	{
 		this.method_9();
-		this.binaryReader_0.BaseStream.Seek(gclass126_0.method_11(), SeekOrigin.Begin);
-		return this.binaryReader_0.ReadBytes((int)gclass126_0.method_4());
+		this.binaryReader_0.BaseStream.Seek(gclass126_0.GetFileOffset(), SeekOrigin.Begin);
+		return this.binaryReader_0.ReadBytes((int)gclass126_0.GetFileSize());
 	}
 
 	internal FileStream GetArkStream()
@@ -571,7 +571,7 @@ public class ArkFile
 	[CompilerGenerated]
 	static int smethod_0(ArkEntry gclass126_0, ArkEntry gclass126_1)
 	{
-		if (gclass126_0.method_11() >= gclass126_1.method_11())
+		if (gclass126_0.GetFileOffset() >= gclass126_1.GetFileOffset())
 		{
 			return 1;
 		}

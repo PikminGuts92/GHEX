@@ -27,7 +27,7 @@ public partial class BadArkDialog : Form
 			if (!list_3.Contains(gclass))
 			{
 				this.list_1.Add(gclass);
-				this.long_0 += gclass.method_4();
+				this.long_0 += gclass.GetFileSize();
 			}
 		}
 		this.method_0();
@@ -50,7 +50,7 @@ public partial class BadArkDialog : Form
 		this.long_1 = 0L;
 		foreach (ArkEntry gclass in this.list_2)
 		{
-			this.long_1 += gclass.method_4();
+			this.long_1 += gclass.GetFileSize();
 		}
 		this.lblInfo.Text = string.Concat(new object[]
 		{

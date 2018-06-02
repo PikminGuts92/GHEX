@@ -4,25 +4,25 @@ using System.Runtime.CompilerServices;
 
 public class ArkEntry
 {
-	internal ArkEntry(ArkFile ark, long long_3, long long_4, long long_5, string dir, string file)
+	internal ArkEntry(ArkFile ark, long hdrOffset, long fileOffset, long size, string dir, string file)
 	{
         // Typical ark entry here
-		this.long_0 = long_3;
+		this.hdrEntryOffset = hdrOffset;
 		this.ark = ark;
-		this.long_1 = long_4;
-		this.long_2 = long_5;
+		this.fileOffset = fileOffset;
+		this.fileSize = size;
 		this.fileName = file;
 		this.directory = dir;
 	}
 
 	public object method_0()
 	{
-		return this.object_0;
+		return this.fileObject;
 	}
 
 	public void method_1(object object_1)
 	{
-		this.object_0 = object_1;
+		this.fileObject = object_1;
 	}
 
 	internal ArkFile GetArk()
@@ -30,14 +30,14 @@ public class ArkEntry
 		return this.ark;
 	}
 
-	internal long method_3()
+	internal long GetHdrEntryOffset()
 	{
-		return this.long_0;
+		return this.hdrEntryOffset;
 	}
 
-	public long method_4()
+	public long GetFileSize()
 	{
-		return this.long_2;
+		return this.fileSize;
 	}
 
 	public string GetFileExtension()
@@ -73,12 +73,12 @@ public class ArkEntry
 	public void method_10(ArkEntry gclass126_0, bool bool_0, bool bool_1)
 	{
 		ProgressDialog.GDelegate6 gdelegate = null;
-		long num = gclass126_0.long_1;
-		long num2 = gclass126_0.long_2;
+		long num = gclass126_0.fileOffset;
+		long num2 = gclass126_0.fileSize;
 		if (bool_0)
 		{
-			gclass126_0.long_1 = this.long_1;
-			gclass126_0.long_2 = this.long_2;
+			gclass126_0.fileOffset = this.fileOffset;
+			gclass126_0.fileSize = this.fileSize;
 		}
 		else if (bool_1)
 		{
@@ -89,8 +89,8 @@ public class ArkEntry
 			ProgressDialog progressDialog = new ProgressDialog(gdelegate);
 			progressDialog.ShowDialog();
 		}
-		this.long_1 = num;
-		this.long_2 = num2;
+		this.fileOffset = num;
+		this.fileSize = num2;
 		this.ark.method_1(true);
 		if (bool_1)
 		{
@@ -98,9 +98,9 @@ public class ArkEntry
 		}
 	}
 
-	internal long method_11()
+	internal long GetFileOffset()
 	{
-		return this.long_1;
+		return this.fileOffset;
 	}
 
 	[CompilerGenerated]
@@ -110,11 +110,11 @@ public class ArkEntry
 		this.ark.method_22(this, stream_, ref gclass73_0);
 	}
 
-	long long_0;
+	long hdrEntryOffset;
 
-	long long_1;
+	long fileOffset;
 
-	long long_2;
+	long fileSize;
 
 	string fileName;
 
@@ -122,5 +122,9 @@ public class ArkEntry
 
 	ArkFile ark;
 
-	object object_0;
+	object fileObject; // Basically the unserialized file (e.g. milo, vgs, etc)
+
+    public string GetFullPath() => string.IsNullOrEmpty(directory) ? fileName : $"{directory}/{fileName}";
+
+    public override string ToString() => GetFullPath();
 }

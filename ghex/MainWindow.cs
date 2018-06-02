@@ -233,14 +233,14 @@ public partial class MainWindow : Form
 			long num2 = 0L;
 			foreach (ArkEntry gclass2 in list2)
 			{
-				num2 += gclass2.method_4();
+				num2 += gclass2.GetFileSize();
 			}
 			int i;
 			for (i = 0; i < list2.Count - 1; i++)
 			{
 				ArkEntry gclass3 = list2[i];
 				ArkEntry gclass4 = list2[i + 1];
-				if (gclass3.method_11() + gclass3.method_4() > gclass4.method_11() || gclass3.method_11() == gclass4.method_11())
+				if (gclass3.GetFileOffset() + gclass3.GetFileSize() > gclass4.GetFileOffset() || gclass3.GetFileOffset() == gclass4.GetFileOffset())
 				{
 					break;
 				}
@@ -1320,7 +1320,7 @@ public partial class MainWindow : Form
 		long num3 = 0L;
 		foreach (ArkEntry gclass in list_1)
 		{
-			num3 += gclass.method_4();
+			num3 += gclass.GetFileSize();
 		}
 		DateTime now = DateTime.Now;
 		foreach (ArkEntry gclass2 in list_1)
@@ -1352,7 +1352,7 @@ public partial class MainWindow : Form
 			catch
 			{
 			}
-			num2 += gclass2.method_4();
+			num2 += gclass2.GetFileSize();
 			num++;
 		}
 	}
@@ -1612,7 +1612,7 @@ public partial class MainWindow : Form
 	[CompilerGenerated]
 	static int smethod_0(ArkEntry gclass126_0, ArkEntry gclass126_1)
 	{
-		if (gclass126_0.method_11() >= gclass126_1.method_11())
+		if (gclass126_0.GetFileOffset() >= gclass126_1.GetFileOffset())
 		{
 			return 1;
 		}
@@ -1840,7 +1840,7 @@ public partial class MainWindow : Form
 							this.control_0 = new MidPreview(gclass, this.list_0);
 							goto IL_175;
 						}
-						this.list_0.Add(new GClass109("Size", gclass.method_4()));
+						this.list_0.Add(new GClass109("Size", gclass.GetFileSize()));
 						IL_175:
 						return;
 					}
@@ -1910,7 +1910,7 @@ public partial class MainWindow : Form
 	{
 		public bool method_0(ArkEntry gclass126_1)
 		{
-			return gclass126_1.method_11() == this.gclass126_0.method_11() && gclass126_1 != this.gclass126_0;
+			return gclass126_1.GetFileOffset() == this.gclass126_0.GetFileOffset() && gclass126_1 != this.gclass126_0;
 		}
 
 		public void method_1(ref ProgressDialog.GClass73 gclass73_0)
@@ -1994,7 +1994,7 @@ public partial class MainWindow : Form
 			{
 				return false;
 			}
-			this.long_0 += gclass126_0.method_4();
+			this.long_0 += gclass126_0.GetFileSize();
 			return true;
 		}
 
@@ -2305,7 +2305,7 @@ public partial class MainWindow : Form
 
 		static int smethod_0(ArkEntry gclass126_0, ArkEntry gclass126_1)
 		{
-			if (gclass126_0.method_11() >= gclass126_1.method_11())
+			if (gclass126_0.GetFileOffset() >= gclass126_1.GetFileOffset())
 			{
 				return 1;
 			}
