@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class GClass127 : List<GClass126>
+public class GClass127 : List<ArkEntry>
 {
 	internal GClass127(ArkFile gclass128_1)
 	{

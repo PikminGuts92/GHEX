@@ -221,25 +221,25 @@ public partial class MainWindow : Form
 			gclass128_0.method_13();
 			GClass127 gclass = gclass128_0.method_27("config/gen/gh2.dtb");
 			GEnum54 genum = (gclass.Count > 0 || gclass128_0.method_6()) ? GEnum54.const_2 : GEnum54.const_1;
-			List<GClass126> list2 = new List<GClass126>(gclass128_0.method_18().Count);
+			List<ArkEntry> list2 = new List<ArkEntry>(gclass128_0.method_18().Count);
 			list2.AddRange(gclass128_0.method_18());
-			List<GClass126> list3 = list2;
+			List<ArkEntry> list3 = list2;
 			if (MainWindow.comparison_0 == null)
 			{
-				MainWindow.comparison_0 = new Comparison<GClass126>(MainWindow.smethod_0);
+				MainWindow.comparison_0 = new Comparison<ArkEntry>(MainWindow.smethod_0);
 			}
 			list3.Sort(MainWindow.comparison_0);
 			long num = 0L;
 			long num2 = 0L;
-			foreach (GClass126 gclass2 in list2)
+			foreach (ArkEntry gclass2 in list2)
 			{
 				num2 += gclass2.method_4();
 			}
 			int i;
 			for (i = 0; i < list2.Count - 1; i++)
 			{
-				GClass126 gclass3 = list2[i];
-				GClass126 gclass4 = list2[i + 1];
+				ArkEntry gclass3 = list2[i];
+				ArkEntry gclass4 = list2[i + 1];
 				if (gclass3.method_11() + gclass3.method_4() > gclass4.method_11() || gclass3.method_11() == gclass4.method_11())
 				{
 					break;
@@ -247,8 +247,8 @@ public partial class MainWindow : Form
 			}
 			if (i != list2.Count - 1)
 			{
-				List<GClass126> range = list2.GetRange(i, list2.Count - i);
-				foreach (GClass126 gclass126_ in range)
+				List<ArkEntry> range = list2.GetRange(i, list2.Count - i);
+				foreach (ArkEntry gclass126_ in range)
 				{
 					list.Add(new MainWindow.Class67(gclass126_, "Preceeded by overlapping files"));
 				}
@@ -256,7 +256,7 @@ public partial class MainWindow : Form
 			}
 			DateTime now = DateTime.Now;
 			i = 0;
-			foreach (GClass126 gclass5 in list2)
+			foreach (ArkEntry gclass5 in list2)
 			{
 				lock (gclass73_0)
 				{
@@ -420,7 +420,7 @@ public partial class MainWindow : Form
 	{
 		treeNode_0.TreeView.BeginUpdate();
 		string text = Class109.smethod_6(treeNode_0);
-		foreach (GClass126 gclass in gclass128_0.method_18())
+		foreach (ArkEntry gclass in gclass128_0.method_18())
 		{
 			if (gclass.method_7().StartsWith(text, true, CultureInfo.CurrentUICulture))
 			{
@@ -562,8 +562,8 @@ public partial class MainWindow : Form
 					int imageIndex = 1;
 					if (treeNode_0.Name == "songs")
 					{
-						List<GClass126> list = gclass128_0.method_28("songs/" + text3, "*.vgs");
-						List<GClass126> list2 = gclass128_0.method_28("songs/" + text3, text3 + ".mid");
+						List<ArkEntry> list = gclass128_0.method_28("songs/" + text3, "*.vgs");
+						List<ArkEntry> list2 = gclass128_0.method_28("songs/" + text3, text3 + ".mid");
 						if (list2.Count == 1 && list.Count > 0)
 						{
 							imageIndex = 13;
@@ -619,7 +619,7 @@ public partial class MainWindow : Form
 							MainWindow.Class72 class3 = new MainWindow.Class72();
 							class3.class70_0 = class2;
 							class3.class69_0 = @class;
-							List<GClass126> list = new List<GClass126>(class2.list_0.Count);
+							List<ArkEntry> list = new List<ArkEntry>(class2.list_0.Count);
 							foreach (MainWindow.Class67 class4 in class2.list_0)
 							{
 								list.Add(class4.gclass126_0);
@@ -666,14 +666,14 @@ public partial class MainWindow : Form
 			this.thread_0.Start(new MainWindow.Class66(@class.gclass128_0, treeNode_0));
 			return false;
 		}
-		if (!(treeNode_0.Tag is GClass126))
+		if (!(treeNode_0.Tag is ArkEntry))
 		{
 			this.method_14(treeNode_0, @class.gclass128_0);
 			return true;
 		}
 		MainWindow.Class73 class5 = new MainWindow.Class73();
 		class5.class69_0 = @class;
-		class5.gclass126_0 = (treeNode_0.Tag as GClass126);
+		class5.gclass126_0 = (treeNode_0.Tag as ArkEntry);
 		ProgressDialog progressDialog3 = new ProgressDialog(new ProgressDialog.GDelegate6(class5.method_0));
 		progressDialog3.ShowDialog();
 		if (class5.gclass126_0.method_0() == null)
@@ -931,7 +931,7 @@ public partial class MainWindow : Form
 				this.cmiFileListRemove.Enabled = true;
 			}
 		}
-		if (selectedNode.Tag is GClass126)
+		if (selectedNode.Tag is ArkEntry)
 		{
 			ArkFile gclass2 = this.method_10(selectedNode).Tag as ArkFile;
 			this.cmiFileListNA.Visible = false;
@@ -941,7 +941,7 @@ public partial class MainWindow : Form
 			{
 				this.cmiFileListReplace.Enabled = true;
 			}
-			GClass126 gclass3 = selectedNode.Tag as GClass126;
+			ArkEntry gclass3 = selectedNode.Tag as ArkEntry;
 			string strA = gclass3.method_5();
 			if (string.Compare(strA, "mid", true) == 0 || string.Compare(strA, "vgs", true) == 0)
 			{
@@ -1035,7 +1035,7 @@ public partial class MainWindow : Form
 	void cmiFileListReplace_Click(object sender, EventArgs e)
 	{
 		MainWindow.Class76 @class = new MainWindow.Class76();
-		@class.gclass126_0 = (this.arkFileList.SelectedNode.Tag as GClass126);
+		@class.gclass126_0 = (this.arkFileList.SelectedNode.Tag as ArkEntry);
 		@class.openFileDialog_0 = new OpenFileDialog();
 		@class.openFileDialog_0.Title = "Locate a file to replace \"" + @class.gclass126_0.method_6() + "\" with..";
 		@class.openFileDialog_0.FileName = @class.gclass126_0.method_6();
@@ -1048,7 +1048,7 @@ public partial class MainWindow : Form
 		Class61.smethod_0().method_8().method_2("FileReplace", Class109.smethod_5(@class.openFileDialog_0.FileName));
 		TreeNode selectedNode = this.arkFileList.SelectedNode;
 		@class.gclass128_0 = (this.method_10(selectedNode).Tag as ArkFile);
-		@class.list_0 = @class.gclass128_0.method_18().FindAll(new Predicate<GClass126>(@class.method_0));
+		@class.list_0 = @class.gclass128_0.method_18().FindAll(new Predicate<ArkEntry>(@class.method_0));
 		if (@class.list_0.Count > 0)
 		{
 			if (MessageBox.Show(string.Concat(new object[]
@@ -1210,11 +1210,11 @@ public partial class MainWindow : Form
 		MainWindow.Class77 @class = new MainWindow.Class77();
 		@class.mainWindow_0 = this;
 		@class.treeNode_0 = this.arkFileList.SelectedNode;
-		if (@class.treeNode_0.Tag is GClass126)
+		if (@class.treeNode_0.Tag is ArkEntry)
 		{
 			MainWindow.Class78 class2 = new MainWindow.Class78();
 			class2.class77_0 = @class;
-			class2.gclass126_0 = (@class.treeNode_0.Tag as GClass126);
+			class2.gclass126_0 = (@class.treeNode_0.Tag as ArkEntry);
 			class2.saveFileDialog_0 = new SaveFileDialog();
 			class2.saveFileDialog_0.Title = "Extract \"" + class2.gclass126_0.method_6() + "\" as..";
 			class2.saveFileDialog_0.OverwritePrompt = true;
@@ -1256,7 +1256,7 @@ public partial class MainWindow : Form
 					Class61.smethod_0().method_8().method_2("ExtractFile", class3.folderBrowserDialog_0.SelectedPath);
 					class3.long_0 = 0L;
 					ArkFile gclass = this.method_10(@class.treeNode_0).Tag as ArkFile;
-					class3.list_0 = gclass.method_18().FindAll(new Predicate<GClass126>(class3.method_0));
+					class3.list_0 = gclass.method_18().FindAll(new Predicate<ArkEntry>(class3.method_0));
 					string directoryRoot = Directory.GetDirectoryRoot(class3.folderBrowserDialog_0.SelectedPath);
 					DriveInfo[] drives = DriveInfo.GetDrives();
 					int i = 0;
@@ -1313,17 +1313,17 @@ public partial class MainWindow : Form
 		}
 	}
 
-	void method_24(List<GClass126> list_1, string string_2, ref ProgressDialog.GClass73 gclass73_0)
+	void method_24(List<ArkEntry> list_1, string string_2, ref ProgressDialog.GClass73 gclass73_0)
 	{
 		int num = 0;
 		long num2 = 0L;
 		long num3 = 0L;
-		foreach (GClass126 gclass in list_1)
+		foreach (ArkEntry gclass in list_1)
 		{
 			num3 += gclass.method_4();
 		}
 		DateTime now = DateTime.Now;
-		foreach (GClass126 gclass2 in list_1)
+		foreach (ArkEntry gclass2 in list_1)
 		{
 			string text = Class109.smethod_0(now, num2, num3);
 			lock (gclass73_0)
@@ -1395,11 +1395,11 @@ public partial class MainWindow : Form
 	void cmiFileListImport_Click(object sender, EventArgs e)
 	{
 		TreeNode selectedNode = this.arkFileList.SelectedNode;
-		if (!(selectedNode.Tag is GClass126))
+		if (!(selectedNode.Tag is ArkEntry))
 		{
 			return;
 		}
-		GClass126 gclass = selectedNode.Tag as GClass126;
+		ArkEntry gclass = selectedNode.Tag as ArkEntry;
 		string strA = gclass.method_5();
 		Form form = null;
 		ProgressDialog.GDelegate6 gdelegate6_ = null;
@@ -1610,7 +1610,7 @@ public partial class MainWindow : Form
 	}
 
 	[CompilerGenerated]
-	static int smethod_0(GClass126 gclass126_0, GClass126 gclass126_1)
+	static int smethod_0(ArkEntry gclass126_0, ArkEntry gclass126_1)
 	{
 		if (gclass126_0.method_11() >= gclass126_1.method_11())
 		{
@@ -1638,7 +1638,7 @@ public partial class MainWindow : Form
 	GClass135 gclass135_0;
 
 	[CompilerGenerated]
-	static Comparison<GClass126> comparison_0;
+	static Comparison<ArkEntry> comparison_0;
 
 	class Class65
 	{
@@ -1661,13 +1661,13 @@ public partial class MainWindow : Form
 
 	class Class67
 	{
-		public Class67(GClass126 gclass126_1, string string_1)
+		public Class67(ArkEntry gclass126_1, string string_1)
 		{
 			this.gclass126_0 = gclass126_1;
 			this.string_0 = string_1;
 		}
 
-		public GClass126 gclass126_0;
+		public ArkEntry gclass126_0;
 
 		public string string_0;
 	}
@@ -1711,7 +1711,7 @@ public partial class MainWindow : Form
 						treeNode.SelectedImageIndex = 1;
 						treeNode2.ImageIndex = 1;
 					}
-					@class.gclass126_0 = (treeNode.Tag as GClass126);
+					@class.gclass126_0 = (treeNode.Tag as ArkEntry);
 					if (@class.gclass126_0 != null)
 					{
 						if (treeNode.ImageIndex == 12)
@@ -1758,7 +1758,7 @@ public partial class MainWindow : Form
 
 			public MainWindow.Class69 class69_0;
 
-			public GClass126 gclass126_0;
+			public ArkEntry gclass126_0;
 		}
 	}
 
@@ -1803,7 +1803,7 @@ public partial class MainWindow : Form
 
 		public MainWindow.Class69 class69_0;
 
-		public GClass126 gclass126_0;
+		public ArkEntry gclass126_0;
 	}
 
 	[CompilerGenerated]
@@ -1819,11 +1819,11 @@ public partial class MainWindow : Form
 					MessageBox.Show("Cannot access parts of the archive.\nPlease restart the program and try again!", "Preview", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 					return;
 				}
-				if (this.treeNode_0.Tag is GClass126)
+				if (this.treeNode_0.Tag is ArkEntry)
 				{
 					try
 					{
-						GClass126 gclass = this.treeNode_0.Tag as GClass126;
+						ArkEntry gclass = this.treeNode_0.Tag as ArkEntry;
 						string key;
 						switch (key = gclass.method_5())
 						{
@@ -1908,7 +1908,7 @@ public partial class MainWindow : Form
 	[CompilerGenerated]
 	sealed class Class76
 	{
-		public bool method_0(GClass126 gclass126_1)
+		public bool method_0(ArkEntry gclass126_1)
 		{
 			return gclass126_1.method_11() == this.gclass126_0.method_11() && gclass126_1 != this.gclass126_0;
 		}
@@ -1927,13 +1927,13 @@ public partial class MainWindow : Form
 			fileStream.Close();
 		}
 
-		public GClass126 gclass126_0;
+		public ArkEntry gclass126_0;
 
 		public OpenFileDialog openFileDialog_0;
 
 		public ArkFile gclass128_0;
 
-		public List<GClass126> list_0;
+		public List<ArkEntry> list_0;
 	}
 
 	[CompilerGenerated]
@@ -1961,7 +1961,7 @@ public partial class MainWindow : Form
 
 		public MainWindow.Class77 class77_0;
 
-		public GClass126 gclass126_0;
+		public ArkEntry gclass126_0;
 
 		public SaveFileDialog saveFileDialog_0;
 	}
@@ -1988,7 +1988,7 @@ public partial class MainWindow : Form
 	[CompilerGenerated]
 	sealed class Class80
 	{
-		public bool method_0(GClass126 gclass126_0)
+		public bool method_0(ArkEntry gclass126_0)
 		{
 			if (!gclass126_0.method_7().StartsWith(this.string_0, true, CultureInfo.CurrentUICulture))
 			{
@@ -2015,7 +2015,7 @@ public partial class MainWindow : Form
 
 		public long long_0;
 
-		public List<GClass126> list_0;
+		public List<ArkEntry> list_0;
 	}
 
 	[CompilerGenerated]
@@ -2034,7 +2034,7 @@ public partial class MainWindow : Form
 				num = (int)this.batchExportMidiDialog_0.method_5();
 				num2 = num;
 			}
-			foreach (GClass126 gclass in this.gclass127_0)
+			foreach (ArkEntry gclass in this.gclass127_0)
 			{
 				int num3 = this.gclass127_0.IndexOf(gclass);
 				lock (gclass73_0)
@@ -2203,7 +2203,7 @@ public partial class MainWindow : Form
 				gclass73_0.string_0 = "Shrinking..";
 				gclass73_0.string_1 = "Collecting files";
 			}
-			List<GClass126> list = new List<GClass126>();
+			List<ArkEntry> list = new List<ArkEntry>();
 			if (this.arkShrinkDialog_0.method_2())
 			{
 				list.AddRange(this.gclass128_0.method_28("songs/", "*.vgs"));
@@ -2217,10 +2217,10 @@ public partial class MainWindow : Form
 				list.AddRange(this.gclass128_0.method_28("sfx/", "*.vgs"));
 			}
 			DateTime now = DateTime.Now;
-			List<GClass126> list2 = list;
+			List<ArkEntry> list2 = list;
 			if (MainWindow.Class83.comparison_0 == null)
 			{
-				MainWindow.Class83.comparison_0 = new Comparison<GClass126>(MainWindow.Class83.smethod_0);
+				MainWindow.Class83.comparison_0 = new Comparison<ArkEntry>(MainWindow.Class83.smethod_0);
 			}
 			list2.Sort(MainWindow.Class83.comparison_0);
 			list.Reverse();
@@ -2228,7 +2228,7 @@ public partial class MainWindow : Form
 			array[0] = 12;
 			byte[] array2 = array;
 			int num = 0;
-			foreach (GClass126 gclass in list)
+			foreach (ArkEntry gclass in list)
 			{
 				string text = Class109.smethod_0(now, (long)num, (long)list.Count);
 				lock (gclass73_0)
@@ -2303,7 +2303,7 @@ public partial class MainWindow : Form
 			}
 		}
 
-		static int smethod_0(GClass126 gclass126_0, GClass126 gclass126_1)
+		static int smethod_0(ArkEntry gclass126_0, ArkEntry gclass126_1)
 		{
 			if (gclass126_0.method_11() >= gclass126_1.method_11())
 			{
@@ -2316,6 +2316,6 @@ public partial class MainWindow : Form
 
 		public ArkShrinkDialog arkShrinkDialog_0;
 
-		static Comparison<GClass126> comparison_0;
+		static Comparison<ArkEntry> comparison_0;
 	}
 }

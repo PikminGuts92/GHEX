@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 public class VgsPreview : UserControl
 {
-	public VgsPreview(GClass126 gclass126_0, object object_0, List<GClass109> list_0)
+	public VgsPreview(ArkEntry gclass126_0, object object_0, List<GClass109> list_0)
 	{
 		this.InitializeComponent();
 		this.pbVolume.Value = (int)(100f * VgsPreview.float_1);

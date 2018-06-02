@@ -177,7 +177,7 @@ public class ArkFile
 			uint num8 = binaryReader2.ReadUInt32();
 			string string_ = binaryReader2.ReadString();
 			string string_2 = binaryReader2.ReadString();
-			GClass126 item = new GClass126(this, -1L, (long)((ulong)num7), (long)((ulong)num8), string_, string_2);
+			ArkEntry item = new ArkEntry(this, -1L, (long)((ulong)num7), (long)((ulong)num8), string_, string_2);
 			this.gclass127_0.Add(item);
 		}
 		binaryReader2.Close();
@@ -250,7 +250,7 @@ public class ArkFile
 			int num11 = binaryReader.ReadInt32();
 			long long_ = (long)binaryReader.ReadInt32();
 			binaryReader.ReadInt32();
-			this.gclass127_0.Add(new GClass126(this, position2, num9, long_, array2[num11], array2[num10]));
+			this.gclass127_0.Add(new ArkEntry(this, position2, num9, long_, array2[num11], array2[num10]));
 			num8 += 1u;
 		}
 		this.gclass127_0.Sort(new ArkFile.Class93());
@@ -275,7 +275,7 @@ public class ArkFile
 		this.method_9();
 		binaryWriter.Seek(12, SeekOrigin.Begin);
 		binaryWriter.Write((uint)this.fileStream_0.Length);
-		foreach (GClass126 gclass in this.gclass127_0)
+		foreach (ArkEntry gclass in this.gclass127_0)
 		{
 			binaryWriter.BaseStream.Seek(gclass.method_3(), SeekOrigin.Begin);
 			binaryWriter.Write((uint)gclass.method_11());
@@ -303,17 +303,17 @@ public class ArkFile
 		return this.gclass127_0;
 	}
 
-	public void method_19(GClass126 gclass126_0, GClass126 gclass126_1, bool bool_3, bool bool_4)
+	public void method_19(ArkEntry gclass126_0, ArkEntry gclass126_1, bool bool_3, bool bool_4)
 	{
 		gclass126_0.method_10(gclass126_1, bool_3, bool_4);
 	}
 
-	bool method_20(GClass126 gclass126_0)
+	bool method_20(ArkEntry gclass126_0)
 	{
 		return gclass126_0.method_11() > this.long_0;
 	}
 
-	public void method_21(GClass126 gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0)
+	public void method_21(ArkEntry gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0)
 	{
 		this.method_9();
 		BinaryWriter binaryWriter = new BinaryWriter(this.fileStream_0);
@@ -325,7 +325,7 @@ public class ArkFile
 		byte[] array = new byte[num];
 		DateTime now = DateTime.Now;
 		binaryWriter.BaseStream.Seek(0L, SeekOrigin.End);
-		gclass126_0.method_10(new GClass126(this, gclass126_0.method_3(), binaryWriter.BaseStream.Position, stream_0.Length, null, null), false, false);
+		gclass126_0.method_10(new ArkEntry(this, gclass126_0.method_3(), binaryWriter.BaseStream.Position, stream_0.Length, null, null), false, false);
 		binaryWriter.BaseStream.SetLength(gclass126_0.method_11() + gclass126_0.method_4());
 		stream_0.Seek(0L, SeekOrigin.Begin);
 		while (stream_0.Position < stream_0.Length)
@@ -343,12 +343,12 @@ public class ArkFile
 		this.method_15();
 	}
 
-	public void method_22(GClass126 gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0)
+	public void method_22(ArkEntry gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0)
 	{
 		this.method_23(gclass126_0, stream_0, ref gclass73_0, true);
 	}
 
-	public void method_23(GClass126 gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0, bool bool_3)
+	public void method_23(ArkEntry gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0, bool bool_3)
 	{
 		this.method_9();
 		BinaryWriter binaryWriter = new BinaryWriter(this.fileStream_0);
@@ -360,16 +360,16 @@ public class ArkFile
 				gclass73_0.string_0 = "Replacing data for \"" + gclass126_0.method_6() + "\"";
 			}
 		}
-		List<GClass126> list = this.method_18().FindAll(new Predicate<GClass126>(this.method_20));
-		List<GClass126> list2 = list;
+		List<ArkEntry> list = this.method_18().FindAll(new Predicate<ArkEntry>(this.method_20));
+		List<ArkEntry> list2 = list;
 		if (ArkFile.comparison_0 == null)
 		{
-			ArkFile.comparison_0 = new Comparison<GClass126>(ArkFile.smethod_0);
+			ArkFile.comparison_0 = new Comparison<ArkEntry>(ArkFile.smethod_0);
 		}
 		list2.Sort(ArkFile.comparison_0);
 		long num = 0L;
 		long num2 = stream_0.Length;
-		foreach (GClass126 gclass in list)
+		foreach (ArkEntry gclass in list)
 		{
 			num2 += gclass.method_4();
 		}
@@ -377,7 +377,7 @@ public class ArkFile
 		byte[] array = new byte[num3];
 		DateTime now = DateTime.Now;
 		long num4 = gclass126_0.method_11();
-		foreach (GClass126 gclass2 in list)
+		foreach (ArkEntry gclass2 in list)
 		{
 			int num5 = list.IndexOf(gclass2);
 			if (bool_3)
@@ -388,7 +388,7 @@ public class ArkFile
 				}
 			}
 			long num6 = gclass2.method_11();
-			gclass2.method_10(new GClass126(this, gclass2.method_3(), num4, gclass2.method_4(), null, null), false, false);
+			gclass2.method_10(new ArkEntry(this, gclass2.method_3(), num4, gclass2.method_4(), null, null), false, false);
 			long num7 = 0L;
 			while (num7 < gclass2.method_4())
 			{
@@ -425,7 +425,7 @@ public class ArkFile
 			}
 		}
 		binaryWriter.BaseStream.Seek(this.long_0 + num, SeekOrigin.Begin);
-		gclass126_0.method_10(new GClass126(this, gclass126_0.method_3(), binaryWriter.BaseStream.Position, stream_0.Length, null, null), false, false);
+		gclass126_0.method_10(new ArkEntry(this, gclass126_0.method_3(), binaryWriter.BaseStream.Position, stream_0.Length, null, null), false, false);
 		if (stream_0.Length > 0L)
 		{
 			stream_0.Seek(0L, SeekOrigin.Begin);
@@ -474,7 +474,7 @@ public class ArkFile
 		this.method_15();
 	}
 
-	public void method_24(GClass126 gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0)
+	public void method_24(ArkEntry gclass126_0, Stream stream_0, ref ProgressDialog.GClass73 gclass73_0)
 	{
 		GStream2 gstream = gclass126_0.method_9();
 		BinaryWriter binaryWriter = new BinaryWriter(stream_0);
@@ -498,7 +498,7 @@ public class ArkFile
 		}
 	}
 
-	public byte[] method_25(GClass126 gclass126_0)
+	public byte[] method_25(ArkEntry gclass126_0)
 	{
 		this.method_9();
 		this.binaryReader_0.BaseStream.Seek(gclass126_0.method_11(), SeekOrigin.Begin);
@@ -513,7 +513,7 @@ public class ArkFile
 	public GClass127 method_27(string string_2)
 	{
 		GClass127 gclass = new GClass127(this);
-		foreach (GClass126 gclass2 in this.method_18())
+		foreach (ArkEntry gclass2 in this.method_18())
 		{
 			if (string.Compare(gclass2.method_7() + "/" + gclass2.method_6(), string_2, true) == 0)
 			{
@@ -534,11 +534,11 @@ public class ArkFile
 		string strB = (array.Length > 1) ? array[1] : "*";
 		if (string_2 == "/")
 		{
-			using (List<GClass126>.Enumerator enumerator = this.method_18().GetEnumerator())
+			using (List<ArkEntry>.Enumerator enumerator = this.method_18().GetEnumerator())
 			{
 				while (enumerator.MoveNext())
 				{
-					GClass126 gclass2 = enumerator.Current;
+					ArkEntry gclass2 = enumerator.Current;
 					string[] array2 = gclass2.method_7().Split(new char[]
 					{
 						'/'
@@ -551,7 +551,7 @@ public class ArkFile
 				return gclass;
 			}
 		}
-		foreach (GClass126 gclass3 in this.method_18())
+		foreach (ArkEntry gclass3 in this.method_18())
 		{
 			if (gclass3.method_7().StartsWith(string_2, true, CultureInfo.CurrentUICulture))
 			{
@@ -569,7 +569,7 @@ public class ArkFile
 	}
 
 	[CompilerGenerated]
-	static int smethod_0(GClass126 gclass126_0, GClass126 gclass126_1)
+	static int smethod_0(ArkEntry gclass126_0, ArkEntry gclass126_1)
 	{
 		if (gclass126_0.method_11() >= gclass126_1.method_11())
 		{
@@ -599,7 +599,7 @@ public class ArkFile
 	long long_0;
 
 	[CompilerGenerated]
-	static Comparison<GClass126> comparison_0;
+	static Comparison<ArkEntry> comparison_0;
 
 	enum Enum6
 	{
@@ -631,9 +631,9 @@ public class ArkFile
 		public bool bool_0;
 	}
 
-	class Class93 : IComparer<GClass126>
+	class Class93 : IComparer<ArkEntry>
 	{
-		public int Compare(GClass126 gclass126_0, GClass126 gclass126_1)
+		public int Compare(ArkEntry gclass126_0, ArkEntry gclass126_1)
 		{
 			return string.Compare(gclass126_0.method_7() + "/" + gclass126_0.method_6(), gclass126_1.method_7() + "/" + gclass126_1.method_6(), true);
 		}

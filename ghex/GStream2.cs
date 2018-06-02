@@ -3,7 +3,7 @@ using System.IO;
 
 public class GStream2 : Stream
 {
-	internal GStream2(GClass126 gclass126_1, FileStream fileStream_1)
+	internal GStream2(ArkEntry gclass126_1, FileStream fileStream_1)
 	{
 		this.gclass126_0 = gclass126_1;
 		this.fileStream_0 = fileStream_1;
@@ -111,7 +111,7 @@ public class GStream2 : Stream
 	{
 	}
 
-	GClass126 gclass126_0;
+	ArkEntry gclass126_0;
 
 	FileStream fileStream_0;
 }

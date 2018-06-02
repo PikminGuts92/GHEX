@@ -16,13 +16,13 @@ public partial class BadArkDialog : Form
 		base.Dispose(disposing);
 	}
 
-	public BadArkDialog(List<GClass126> list_3)
+	public BadArkDialog(List<ArkEntry> list_3)
 	{
 		this.InitializeComponent();
 		this.MinimumSize = base.Size;
 		this.MaximumSize = new Size(base.Size.Width, base.Size.Height * 2);
 		this.list_0 = list_3;
-		foreach (GClass126 gclass in list_3[0].method_2().method_18())
+		foreach (ArkEntry gclass in list_3[0].method_2().method_18())
 		{
 			if (!list_3.Contains(gclass))
 			{
@@ -48,7 +48,7 @@ public partial class BadArkDialog : Form
 			return;
 		}
 		this.long_1 = 0L;
-		foreach (GClass126 gclass in this.list_2)
+		foreach (ArkEntry gclass in this.list_2)
 		{
 			this.long_1 += gclass.method_4();
 		}
@@ -65,7 +65,7 @@ public partial class BadArkDialog : Form
 		this.btnOk.Enabled = true;
 	}
 
-	public List<GClass126> method_1()
+	public List<ArkEntry> method_1()
 	{
 		if (!this.cbAll.Checked)
 		{
@@ -154,7 +154,7 @@ public partial class BadArkDialog : Form
 			{
 				this.method_5(list_3, treeNode);
 			}
-			else if (treeNode.Tag != null && treeNode.Tag is GClass126)
+			else if (treeNode.Tag != null && treeNode.Tag is ArkEntry)
 			{
 				list_3.Add(treeNode);
 			}
@@ -164,7 +164,7 @@ public partial class BadArkDialog : Form
 	void tsmiRecover_Click(object sender, EventArgs e)
 	{
 		List<TreeNode> list = new List<TreeNode>();
-		if (!(this.tvFiles.SelectedNode.Tag is GClass126))
+		if (!(this.tvFiles.SelectedNode.Tag is ArkEntry))
 		{
 			this.method_5(list, this.tvFiles.SelectedNode);
 		}
@@ -174,7 +174,7 @@ public partial class BadArkDialog : Form
 		}
 		foreach (TreeNode treeNode in list)
 		{
-			GClass126 item = treeNode.Tag as GClass126;
+			ArkEntry item = treeNode.Tag as ArkEntry;
 			bool flag;
 			if (flag = this.list_2.Contains(item))
 			{
@@ -196,7 +196,7 @@ public partial class BadArkDialog : Form
 			e.Cancel = true;
 			return;
 		}
-		GClass126 gclass = this.tvFiles.SelectedNode.Tag as GClass126;
+		ArkEntry gclass = this.tvFiles.SelectedNode.Tag as ArkEntry;
 		if (gclass == null)
 		{
 			if (this.tvFiles.SelectedNode.ImageIndex != 1 || this.tvFiles.SelectedNode.ForeColor == Color.Red)
@@ -213,7 +213,7 @@ public partial class BadArkDialog : Form
 		if (e.Button == MouseButtons.Right)
 		{
 			TreeNode nodeAt = this.tvFiles.GetNodeAt(e.Location);
-			if (nodeAt != null && (nodeAt.Tag is GClass126 || nodeAt.ImageIndex == 1))
+			if (nodeAt != null && (nodeAt.Tag is ArkEntry || nodeAt.ImageIndex == 1))
 			{
 				this.tvFiles.SelectedNode = nodeAt;
 			}
@@ -241,15 +241,15 @@ public partial class BadArkDialog : Form
 		this.method_0();
 	}
 
-	List<GClass126> list_0;
+	List<ArkEntry> list_0;
 
-	List<GClass126> list_1 = new List<GClass126>();
+	List<ArkEntry> list_1 = new List<ArkEntry>();
 
 	long long_0;
 
 	long long_1;
 
-	List<GClass126> list_2 = new List<GClass126>();
+	List<ArkEntry> list_2 = new List<ArkEntry>();
 
 	string string_0 = "";
 

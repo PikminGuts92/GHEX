@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 public partial class ArkRelinkDialog : Form
 {
-	public ArkRelinkDialog(GClass126 gclass126_1)
+	public ArkRelinkDialog(ArkEntry gclass126_1)
 	{
 		this.InitializeComponent();
 		this.MinimumSize = base.Size;
@@ -21,7 +21,7 @@ public partial class ArkRelinkDialog : Form
 
 	void tvFiles_AfterSelect(object sender, TreeViewEventArgs e)
 	{
-		GClass126 gclass = e.Node.Tag as GClass126;
+		ArkEntry gclass = e.Node.Tag as ArkEntry;
 		bool flag = gclass != null && gclass != this.gclass126_0;
 		this.cbSwap.Enabled = flag;
 		this.btnOk.Enabled = flag;
@@ -35,7 +35,7 @@ public partial class ArkRelinkDialog : Form
 
 	void cbSwap_CheckedChanged(object sender, EventArgs e)
 	{
-		GClass126 gclass = this.tvFiles.SelectedNode.Tag as GClass126;
+		ArkEntry gclass = this.tvFiles.SelectedNode.Tag as ArkEntry;
 		if (this.cbSwap.Checked)
 		{
 			this.cbSwap.Text = string.Concat(new string[]
@@ -53,7 +53,7 @@ public partial class ArkRelinkDialog : Form
 
 	void btnOk_Click(object sender, EventArgs e)
 	{
-		GClass126 gclass = this.tvFiles.SelectedNode.Tag as GClass126;
+		ArkEntry gclass = this.tvFiles.SelectedNode.Tag as ArkEntry;
 		if (gclass.method_5() != this.gclass126_0.method_5() && MessageBox.Show("Files do not share the same extension.\nAre you sure you want to do this?", this.gclass126_0.method_6(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
 		{
 			return;
@@ -85,7 +85,7 @@ public partial class ArkRelinkDialog : Form
 		base.Dispose(disposing);
 	}
 
-	GClass126 gclass126_0;
+	ArkEntry gclass126_0;
 
 	IContainer icontainer_0;
 }

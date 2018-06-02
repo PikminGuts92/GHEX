@@ -9,7 +9,7 @@ public class SongPreview : UserControl
 	public SongPreview(ArkFile gclass128_0, string string_0, List<GClass109> list_0)
 	{
 		this.InitializeComponent();
-		GClass126 gclass126_ = gclass128_0.method_27(string.Concat(new string[]
+		ArkEntry gclass126_ = gclass128_0.method_27(string.Concat(new string[]
 		{
 			"songs/",
 			string_0,
@@ -24,7 +24,7 @@ public class SongPreview : UserControl
 		this.midPreview_0.method_11(false);
 		this.midPreview_0.method_1(MidPreview.GEnum9.const_2);
 		base.Controls.Add(this.midPreview_0);
-		List<GClass126> list = gclass128_0.method_27(string.Concat(new string[]
+		List<ArkEntry> list = gclass128_0.method_27(string.Concat(new string[]
 		{
 			"songs/",
 			string_0,

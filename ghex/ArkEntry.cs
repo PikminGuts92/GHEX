@@ -2,9 +2,9 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 
-public class GClass126
+public class ArkEntry
 {
-	internal GClass126(ArkFile gclass128_1, long long_3, long long_4, long long_5, string string_2, string string_3)
+	internal ArkEntry(ArkFile gclass128_1, long long_3, long long_4, long long_5, string string_2, string string_3)
 	{
         // Typical ark entry here
 		this.long_0 = long_3;
@@ -70,7 +70,7 @@ public class GClass126
 		return new GStream2(this, this.gclass128_0.GetArkStream());
 	}
 
-	public void method_10(GClass126 gclass126_0, bool bool_0, bool bool_1)
+	public void method_10(ArkEntry gclass126_0, bool bool_0, bool bool_1)
 	{
 		ProgressDialog.GDelegate6 gdelegate = null;
 		long num = gclass126_0.long_1;

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 public class MidPreview : UserControl
 {
-	public MidPreview(GClass126 gclass126_1, List<GClass109> list_1)
+	public MidPreview(ArkEntry gclass126_1, List<GClass109> list_1)
 	{
 		this.InitializeComponent();
 		this.int_5 = this.panel1.Height;
@@ -1663,7 +1663,7 @@ public class MidPreview : UserControl
 
 	MidiFile midiFile;
 
-	GClass126 gclass126_0;
+	ArkEntry gclass126_0;
 
 	Rectangle rectangle_0;
 

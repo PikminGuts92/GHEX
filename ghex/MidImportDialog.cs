@@ -19,7 +19,7 @@ public partial class MidImportDialog : Form
 		base.Dispose(disposing);
 	}
 
-	public MidImportDialog(GClass126 gclass126_1, string string_2)
+	public MidImportDialog(ArkEntry gclass126_1, string string_2)
 	{
 		this.InitializeComponent();
 		this.MinimumSize = base.Size;
@@ -1743,7 +1743,7 @@ public partial class MidImportDialog : Form
 		list_14.Add(new MidImportDialog.GClass75(MidImportDialog.GEnum33.const_2, "No end event found!"));
 	}
 
-	GClass126 gclass126_0;
+	ArkEntry gclass126_0;
 
 	GEnum54 genum54_0;
 

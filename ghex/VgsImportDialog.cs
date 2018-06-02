@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 public partial class VgsImportDialog : Form
 {
-	public VgsImportDialog(GClass126 gclass126_1)
+	public VgsImportDialog(ArkEntry gclass126_1)
 	{
 		this.InitializeComponent();
 		this.gclass126_0 = gclass126_1;
@@ -796,7 +796,7 @@ public partial class VgsImportDialog : Form
 		base.Dispose(disposing);
 	}
 
-	GClass126 gclass126_0;
+	ArkEntry gclass126_0;
 
 	Class39.Struct2 struct2_0;
 

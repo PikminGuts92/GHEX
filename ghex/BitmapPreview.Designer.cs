@@ -117,7 +117,7 @@ public class BitmapPreview : UserControl
 		base.ResumeLayout(false);
 	}
 
-	public BitmapPreview(GClass126 gclass126_0, List<GClass109> list_0)
+	public BitmapPreview(ArkEntry gclass126_0, List<GClass109> list_0)
 	{
 		this.InitializeComponent();
 		if (gclass126_0.method_5().CompareTo("bmp") != 0 && gclass126_0.method_5().CompareTo("png") != 0)
