@@ -236,7 +236,7 @@
     <Compile Include="GClass124.cs" />
     <Compile Include="GClass125.cs" />
     <Compile Include="ArkEntry.cs" />
-    <Compile Include="GClass127.cs" />
+    <Compile Include="ArkEntryCollection.cs" />
     <Compile Include="ArkFile.cs" />
     <Compile Include="GClass129.cs" />
     <Compile Include="GClass13.cs" />

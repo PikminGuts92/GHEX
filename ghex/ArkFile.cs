@@ -12,7 +12,7 @@ public class ArkFile
 	{
 		this.hdrPath = hdrPath.ToLower().Replace('\\', '/');
 		this.arkPath = this.hdrPath.Substring(0, this.hdrPath.LastIndexOf('.')) + "_0.ark";
-		this.gclass127_0 = new GClass127(this);
+		this.arkEntries = new ArkEntryCollection(this);
 		this.bool_0 = false;
 	}
 
@@ -178,16 +178,16 @@ public class ArkFile
 			string string_ = binaryReader2.ReadString();
 			string string_2 = binaryReader2.ReadString();
 			ArkEntry item = new ArkEntry(this, -1L, (long)((ulong)num7), (long)((ulong)num8), string_, string_2);
-			this.gclass127_0.Add(item);
+			this.arkEntries.Add(item);
 		}
 		binaryReader2.Close();
-		this.gclass127_0.Sort(new ArkFile.Class93());
+		this.arkEntries.Sort(new ArkFile.Class93());
 		fileStream.Close();
 	}
 
 	public void method_13()
 	{
-		if (this.gclass127_0.Count != 0)
+		if (this.arkEntries.Count != 0)
 		{
 			return;
 		}
@@ -236,7 +236,7 @@ public class ArkFile
 		}
 		binaryReader.BaseStream.Seek(position, SeekOrigin.Begin);
 		int num7 = binaryReader.ReadInt32();
-		this.gclass127_0.Capacity = num7;
+		this.arkEntries.Capacity = num7;
 		uint num8 = 0u;
 		while ((ulong)num8 < (ulong)((long)num7))
 		{
@@ -250,10 +250,10 @@ public class ArkFile
 			int num11 = binaryReader.ReadInt32();
 			long long_ = (long)binaryReader.ReadInt32();
 			binaryReader.ReadInt32();
-			this.gclass127_0.Add(new ArkEntry(this, position2, num9, long_, array2[num11], array2[num10]));
+			this.arkEntries.Add(new ArkEntry(this, position2, num9, long_, array2[num11], array2[num10]));
 			num8 += 1u;
 		}
-		this.gclass127_0.Sort(new ArkFile.Class93());
+		this.arkEntries.Sort(new ArkFile.Class93());
 		fileStream.Close();
 	}
 
@@ -275,7 +275,7 @@ public class ArkFile
 		this.method_9();
 		binaryWriter.Seek(12, SeekOrigin.Begin);
 		binaryWriter.Write((uint)this.fileStream_0.Length);
-		foreach (ArkEntry gclass in this.gclass127_0)
+		foreach (ArkEntry gclass in this.arkEntries)
 		{
 			binaryWriter.BaseStream.Seek(gclass.method_3(), SeekOrigin.Begin);
 			binaryWriter.Write((uint)gclass.method_11());
@@ -298,9 +298,9 @@ public class ArkFile
 		return text.Substring(0, text.LastIndexOf('.'));
 	}
 
-	public GClass127 method_18()
+	public ArkEntryCollection GetArkEntries()
 	{
-		return this.gclass127_0;
+		return this.arkEntries;
 	}
 
 	public void method_19(ArkEntry gclass126_0, ArkEntry gclass126_1, bool bool_3, bool bool_4)
@@ -360,7 +360,7 @@ public class ArkFile
 				gclass73_0.string_0 = "Replacing data for \"" + gclass126_0.method_6() + "\"";
 			}
 		}
-		List<ArkEntry> list = this.method_18().FindAll(new Predicate<ArkEntry>(this.method_20));
+		List<ArkEntry> list = this.GetArkEntries().FindAll(new Predicate<ArkEntry>(this.method_20));
 		List<ArkEntry> list2 = list;
 		if (ArkFile.comparison_0 == null)
 		{
@@ -510,10 +510,10 @@ public class ArkFile
 		return new FileStream(this.arkPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 	}
 
-	public GClass127 method_27(string string_2)
+	public ArkEntryCollection method_27(string string_2)
 	{
-		GClass127 gclass = new GClass127(this);
-		foreach (ArkEntry gclass2 in this.method_18())
+		ArkEntryCollection gclass = new ArkEntryCollection(this);
+		foreach (ArkEntry gclass2 in this.GetArkEntries())
 		{
 			if (string.Compare(gclass2.method_7() + "/" + gclass2.method_6(), string_2, true) == 0)
 			{
@@ -523,9 +523,9 @@ public class ArkFile
 		return gclass;
 	}
 
-	public GClass127 method_28(string string_2, string string_3)
+	public ArkEntryCollection method_28(string string_2, string string_3)
 	{
-		GClass127 gclass = new GClass127(this);
+		ArkEntryCollection gclass = new ArkEntryCollection(this);
 		string[] array = string_3.Split(new char[]
 		{
 			'.'
@@ -534,7 +534,7 @@ public class ArkFile
 		string strB = (array.Length > 1) ? array[1] : "*";
 		if (string_2 == "/")
 		{
-			using (List<ArkEntry>.Enumerator enumerator = this.method_18().GetEnumerator())
+			using (List<ArkEntry>.Enumerator enumerator = this.GetArkEntries().GetEnumerator())
 			{
 				while (enumerator.MoveNext())
 				{
@@ -551,7 +551,7 @@ public class ArkFile
 				return gclass;
 			}
 		}
-		foreach (ArkEntry gclass3 in this.method_18())
+		foreach (ArkEntry gclass3 in this.GetArkEntries())
 		{
 			if (gclass3.method_7().StartsWith(string_2, true, CultureInfo.CurrentUICulture))
 			{
@@ -578,7 +578,7 @@ public class ArkFile
 		return -1;
 	}
 
-	GClass127 gclass127_0;
+	ArkEntryCollection arkEntries;
 
 	string hdrPath;
 

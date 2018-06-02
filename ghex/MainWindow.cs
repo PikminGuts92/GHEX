@@ -219,10 +219,10 @@ public partial class MainWindow : Form
 				gclass73_0.int_1 = 0;
 			}
 			gclass128_0.method_13();
-			GClass127 gclass = gclass128_0.method_27("config/gen/gh2.dtb");
+			ArkEntryCollection gclass = gclass128_0.method_27("config/gen/gh2.dtb");
 			GEnum54 genum = (gclass.Count > 0 || gclass128_0.method_6()) ? GEnum54.const_2 : GEnum54.const_1;
-			List<ArkEntry> list2 = new List<ArkEntry>(gclass128_0.method_18().Count);
-			list2.AddRange(gclass128_0.method_18());
+			List<ArkEntry> list2 = new List<ArkEntry>(gclass128_0.GetArkEntries().Count);
+			list2.AddRange(gclass128_0.GetArkEntries());
 			List<ArkEntry> list3 = list2;
 			if (MainWindow.comparison_0 == null)
 			{
@@ -420,7 +420,7 @@ public partial class MainWindow : Form
 	{
 		treeNode_0.TreeView.BeginUpdate();
 		string text = Class109.smethod_6(treeNode_0);
-		foreach (ArkEntry gclass in gclass128_0.method_18())
+		foreach (ArkEntry gclass in gclass128_0.GetArkEntries())
 		{
 			if (gclass.method_7().StartsWith(text, true, CultureInfo.CurrentUICulture))
 			{
@@ -594,7 +594,7 @@ public partial class MainWindow : Form
 			return false;
 		}
 		treeNode_0.Nodes.Clear();
-		if (@class.gclass128_0.method_18().Count == 0)
+		if (@class.gclass128_0.GetArkEntries().Count == 0)
 		{
 			if (!@class.gclass128_0.method_4())
 			{
@@ -613,7 +613,7 @@ public partial class MainWindow : Form
 				{
 					if (class2.list_0 != null && class2.list_0.Count != 0)
 					{
-						if (class2.list_0.Count != @class.gclass128_0.method_18().Count)
+						if (class2.list_0.Count != @class.gclass128_0.GetArkEntries().Count)
 						{
 							ProgressDialog.GDelegate6 gdelegate = null;
 							MainWindow.Class72 class3 = new MainWindow.Class72();
@@ -911,7 +911,7 @@ public partial class MainWindow : Form
 			this.cmiFileListSave.Visible = true;
 			this.cmiFileListExportNoteCharts.Visible = true;
 			this.cmiFileListShrinkArchive.Visible = true;
-			if (gclass.method_18().Count > 0)
+			if (gclass.GetArkEntries().Count > 0)
 			{
 				if (!flag)
 				{
@@ -1004,7 +1004,7 @@ public partial class MainWindow : Form
 			if (treeNode.Tag is ArkFile)
 			{
 				ArkFile gclass = treeNode.Tag as ArkFile;
-				if (gclass.method_18().Count > 0)
+				if (gclass.GetArkEntries().Count > 0)
 				{
 					Class61.smethod_0().method_3().method_1(gclass.GetHdrPath()).bool_0 = treeNode.IsExpanded;
 					Class61.smethod_0().method_3().method_1(gclass.GetHdrPath()).ulong_0 = (gclass.method_4() ? gclass.method_14() : 0UL);
@@ -1048,7 +1048,7 @@ public partial class MainWindow : Form
 		Class61.smethod_0().method_8().method_2("FileReplace", Class109.smethod_5(@class.openFileDialog_0.FileName));
 		TreeNode selectedNode = this.arkFileList.SelectedNode;
 		@class.gclass128_0 = (this.method_10(selectedNode).Tag as ArkFile);
-		@class.list_0 = @class.gclass128_0.method_18().FindAll(new Predicate<ArkEntry>(@class.method_0));
+		@class.list_0 = @class.gclass128_0.GetArkEntries().FindAll(new Predicate<ArkEntry>(@class.method_0));
 		if (@class.list_0.Count > 0)
 		{
 			if (MessageBox.Show(string.Concat(new object[]
@@ -1256,7 +1256,7 @@ public partial class MainWindow : Form
 					Class61.smethod_0().method_8().method_2("ExtractFile", class3.folderBrowserDialog_0.SelectedPath);
 					class3.long_0 = 0L;
 					ArkFile gclass = this.method_10(@class.treeNode_0).Tag as ArkFile;
-					class3.list_0 = gclass.method_18().FindAll(new Predicate<ArkEntry>(class3.method_0));
+					class3.list_0 = gclass.GetArkEntries().FindAll(new Predicate<ArkEntry>(class3.method_0));
 					string directoryRoot = Directory.GetDirectoryRoot(class3.folderBrowserDialog_0.SelectedPath);
 					DriveInfo[] drives = DriveInfo.GetDrives();
 					int i = 0;
@@ -1368,7 +1368,7 @@ public partial class MainWindow : Form
 		MainWindow.Class81 @class = new MainWindow.Class81();
 		ArkFile gclass = this.method_10(this.arkFileList.SelectedNode).Tag as ArkFile;
 		@class.batchExportMidiDialog_0 = new BatchExportMidiDialog();
-		GClass127 gclass2 = gclass.method_27("config/gen/gh2.dtb");
+		ArkEntryCollection gclass2 = gclass.method_27("config/gen/gh2.dtb");
 		@class.batchExportMidiDialog_0.method_2(gclass2.Count > 0);
 		if (@class.batchExportMidiDialog_0.ShowDialog() != DialogResult.OK)
 		{
@@ -2096,7 +2096,7 @@ public partial class MainWindow : Form
 
 		public FolderBrowserDialog folderBrowserDialog_0;
 
-		public GClass127 gclass127_0;
+		public ArkEntryCollection gclass127_0;
 	}
 
 	[CompilerGenerated]
