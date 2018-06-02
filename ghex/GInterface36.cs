@@ -7,7 +7,7 @@ public interface GInterface36
 
     bool imethod_1();
 
-    GClass102 imethod_2();
+    AudioInfo imethod_2();
 
     [MethodImpl(MethodImplOptions.Synchronized)]
     void imethod_3(GDelegate12 gdelegate12_0);

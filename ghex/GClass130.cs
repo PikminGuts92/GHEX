@@ -22,7 +22,7 @@ public class GClass130 : GInterface36
         return this.bool_1;
     }
 
-    public GClass102 imethod_2()
+    public AudioInfo imethod_2()
     {
         return this.gclass102_0;
     }
@@ -63,8 +63,8 @@ public class GClass130 : GInterface36
 
     public void imethod_9()
     {
-        this.gclass102_0 = new GClass102(44100, 16, 2);
-        this.uint_0 = (uint)(30 * this.gclass102_0.int_0 / 1000);
+        this.gclass102_0 = new AudioInfo(44100, 16, 2);
+        this.uint_0 = (uint)(30 * this.gclass102_0.bitrate / 1000);
         this.int_0 = 5;
         this.bool_2 = true;
     }
@@ -107,9 +107,9 @@ public class GClass130 : GInterface36
         {
             GStruct5 gstruct = default(GStruct5);
             gstruct.ushort_0 = 1;
-            gstruct.ushort_1 = (ushort)this.gclass102_0.int_2;
-            gstruct.ushort_3 = (ushort)this.gclass102_0.int_1;
-            gstruct.uint_0 = (uint)this.gclass102_0.int_0;
+            gstruct.ushort_1 = (ushort)this.gclass102_0.channels;
+            gstruct.ushort_3 = (ushort)this.gclass102_0.bits;
+            gstruct.uint_0 = (uint)this.gclass102_0.bitrate;
             gstruct.ushort_2 = (ushort)(gstruct.ushort_1 * gstruct.ushort_3 >> 3);
             gstruct.uint_1 = gstruct.uint_0 * (uint)gstruct.ushort_2;
             gstruct.ushort_4 = 0;
@@ -293,7 +293,7 @@ public class GClass130 : GInterface36
 
     bool bool_1;
 
-    GClass102 gclass102_0;
+    AudioInfo gclass102_0;
 
     uint uint_0;
 

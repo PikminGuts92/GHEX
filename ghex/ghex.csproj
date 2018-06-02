@@ -211,7 +211,7 @@
     <Compile Include="GClass10.cs" />
     <Compile Include="GClass100.cs" />
     <Compile Include="GClass101.cs" />
-    <Compile Include="GClass102.cs" />
+    <Compile Include="AudioInfo.cs" />
     <Compile Include="GClass103.cs" />
     <Compile Include="GClass104.cs">
       <SubType>Component</SubType>

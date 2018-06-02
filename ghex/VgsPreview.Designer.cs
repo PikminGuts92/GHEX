@@ -5,6 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 public class VgsPreview : UserControl
 {
@@ -314,7 +316,8 @@ public class VgsPreview : UserControl
 
     void method_5(IntPtr intptr_0, int int_1)
     {
-        GClass103 gclass = new GClass103(new GClass102(44100, 16, 2), (uint)(int_1 / 4));
+        // Callback function
+        GClass103 gclass = new GClass103(new AudioInfo(44100, 16, 2), (uint)(int_1 / 4));
         this.method_11(gclass);
         int[] source = new int[gclass.method_0()];
         GClass80.smethod_2(gclass.method_3(GEnum47.const_0), gclass.method_3(GEnum47.const_1), ref source, gclass.method_0());
@@ -393,7 +396,7 @@ public class VgsPreview : UserControl
                 foreach (Class87 @class in this.pcmAudio)
                 {
                     int num2 = @class.class88_0[@class.int_3].float_0.Length;
-                    float num3 = this.float_0 * (float)@class.int_0 / (float)gclass103_0.method_2().int_0;
+                    float num3 = this.float_0 * (float)@class.int_0 / (float)gclass103_0.GetAudioInfo().bitrate;
                     for (int j = 0; j < num; j++)
                     {
                         float[] array2 = @class.class88_0[@class.int_3].float_0;
@@ -432,6 +435,8 @@ public class VgsPreview : UserControl
         Graphics graphics = e.Graphics;
     }
 
+    private WaveOutEvent outputDevice;
+
     void btnPlay_Click(object sender, EventArgs e)
     {
         if (this.isAudioInitialized)
@@ -448,6 +453,15 @@ public class VgsPreview : UserControl
         this.method_4(true);
         this.dateTime_0 = DateTime.Now;
 
+        if (outputDevice == null)
+        {
+            outputDevice = new WaveOutEvent();
+            outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
+        }
+
+        //outputDevice.Init()
+        
+
         // Creates new VGS object
         this.gclass62_0 = new GClass62(-1, new WaveFormat(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
         //this.gclass62_0 = null;
@@ -456,6 +470,26 @@ public class VgsPreview : UserControl
         this.isAudioInitialized = true;
         this.btnStop.Enabled = true;
         this.btnPlay.ImageIndex = 2;
+    }
+
+    class VgsProvider : IWaveProvider
+    {
+        
+
+        public NAudio.Wave.WaveFormat WaveFormat => throw new NotImplementedException();
+
+        public int Read(byte[] buffer, int offset, int count)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
+    {
+        if (outputDevice == null) return;
+
+        outputDevice.Dispose();
+        outputDevice = null;
     }
 
     void btnStop_Click(object sender, EventArgs e)
