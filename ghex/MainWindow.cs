@@ -633,7 +633,7 @@ public partial class MainWindow : Form
 							}
 							treeView.BeforeExpand += treeViewCancelEventHandler;
 							TreeNode treeNode = class3.badArkDialog_0.method_2().Nodes.Add(@class.gclass128_0.method_17());
-							treeNode.ToolTipText = @class.gclass128_0.method_16();
+							treeNode.ToolTipText = @class.gclass128_0.GetHdrPath();
 							treeNode.Tag = @class.gclass128_0;
 							treeNode.ImageIndex = 0;
 							this.method_9(treeNode);
@@ -658,7 +658,7 @@ public partial class MainWindow : Form
 				}
 				if (@class.gclass128_0.method_4())
 				{
-					Class61.smethod_0().method_3().method_1(@class.gclass128_0.method_16()).ulong_0 = @class.gclass128_0.method_14();
+					Class61.smethod_0().method_3().method_1(@class.gclass128_0.GetHdrPath()).ulong_0 = @class.gclass128_0.method_14();
 				}
 			}
 			treeNode_0.Text += " (Loading...)";
@@ -716,18 +716,18 @@ public partial class MainWindow : Form
 	{
 		this.arkFileList.BeginUpdate();
 		TreeNode treeNode = this.arkFileList.Nodes.Add(gclass128_0.method_17());
-		treeNode.ToolTipText = gclass128_0.method_16();
+		treeNode.ToolTipText = gclass128_0.GetHdrPath();
 		treeNode.Tag = gclass128_0;
 		treeNode.ImageIndex = 0;
-		if (gclass128_0.method_3())
+		if (gclass128_0.ArkExists())
 		{
 			this.method_9(treeNode);
 		}
 		this.arkFileList.EndUpdate();
 		this.list_0.Add(gclass128_0);
-		if (!Class61.smethod_0().method_3().method_0(gclass128_0.method_16()))
+		if (!Class61.smethod_0().method_3().method_0(gclass128_0.GetHdrPath()))
 		{
-			if (gclass128_0.method_3() && gclass128_0.method_7() && MessageBox.Show("The archive you're adding is read-only.\nWould you like to make it writable?", "Archive", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+			if (gclass128_0.ArkExists() && gclass128_0.method_7() && MessageBox.Show("The archive you're adding is read-only.\nWould you like to make it writable?", "Archive", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
 			{
 				gclass128_0.method_8();
 			}
@@ -735,7 +735,7 @@ public partial class MainWindow : Form
 			{
 				@class.bool_0 = false;
 			}
-			Class61.smethod_0().method_3().Add(new Class58(gclass128_0.method_16(), true, 0UL));
+			Class61.smethod_0().method_3().Add(new Class58(gclass128_0.GetHdrPath(), true, 0UL));
 		}
 		return treeNode;
 	}
@@ -857,7 +857,7 @@ public partial class MainWindow : Form
 		if (treeNode_0.Tag is ArkFile)
 		{
 			ArkFile gclass = treeNode_0.Tag as ArkFile;
-			if (!Class61.smethod_0().method_3().method_2(gclass.method_16()))
+			if (!Class61.smethod_0().method_3().method_2(gclass.GetHdrPath()))
 			{
 				return;
 			}
@@ -920,13 +920,13 @@ public partial class MainWindow : Form
 				}
 				this.cmiFileListExportNoteCharts.Enabled = true;
 			}
-			if (gclass.method_3() && flag && !gclass.method_6())
+			if (gclass.ArkExists() && flag && !gclass.method_6())
 			{
 				this.cmiFileListMakeWritable.Enabled = !gclass.method_2();
 				this.cmiFileListMakeWritable.Visible = true;
 			}
 			this.cmiFileListRemove.Visible = true;
-			if (selectedNode.Parent == null && Class61.smethod_0().method_3().method_0(gclass.method_16()))
+			if (selectedNode.Parent == null && Class61.smethod_0().method_3().method_0(gclass.GetHdrPath()))
 			{
 				this.cmiFileListRemove.Enabled = true;
 			}
@@ -990,7 +990,7 @@ public partial class MainWindow : Form
 		{
 			return;
 		}
-		if (MessageBox.Show("'" + gclass128_0.method_16() + "'\nhas some unsaved changes.\nWould you like to save now?", "Save?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+		if (MessageBox.Show("'" + gclass128_0.GetHdrPath() + "'\nhas some unsaved changes.\nWould you like to save now?", "Save?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
 		{
 			gclass128_0.method_15();
 		}
@@ -1006,8 +1006,8 @@ public partial class MainWindow : Form
 				ArkFile gclass = treeNode.Tag as ArkFile;
 				if (gclass.method_18().Count > 0)
 				{
-					Class61.smethod_0().method_3().method_1(gclass.method_16()).bool_0 = treeNode.IsExpanded;
-					Class61.smethod_0().method_3().method_1(gclass.method_16()).ulong_0 = (gclass.method_4() ? gclass.method_14() : 0UL);
+					Class61.smethod_0().method_3().method_1(gclass.GetHdrPath()).bool_0 = treeNode.IsExpanded;
+					Class61.smethod_0().method_3().method_1(gclass.GetHdrPath()).ulong_0 = (gclass.method_4() ? gclass.method_14() : 0UL);
 					this.method_21(gclass);
 				}
 			}
@@ -1594,7 +1594,7 @@ public partial class MainWindow : Form
 		{
 			return;
 		}
-		if (gclass.method_3() && gclass.method_7())
+		if (gclass.ArkExists() && gclass.method_7())
 		{
 			gclass.method_8();
 		}
@@ -1814,7 +1814,7 @@ public partial class MainWindow : Form
 			if (this.treeNode_0 != null)
 			{
 				TreeNode treeNode = this.mainWindow_0.method_10(this.treeNode_0);
-				if (treeNode != null && treeNode.Tag is ArkFile && !(treeNode.Tag as ArkFile).method_3())
+				if (treeNode != null && treeNode.Tag is ArkFile && !(treeNode.Tag as ArkFile).ArkExists())
 				{
 					MessageBox.Show("Cannot access parts of the archive.\nPlease restart the program and try again!", "Preview", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 					return;

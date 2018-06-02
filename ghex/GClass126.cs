@@ -6,6 +6,7 @@ public class GClass126
 {
 	internal GClass126(ArkFile gclass128_1, long long_3, long long_4, long long_5, string string_2, string string_3)
 	{
+        // Typical ark entry here
 		this.long_0 = long_3;
 		this.gclass128_0 = gclass128_1;
 		this.long_1 = long_4;
@@ -66,7 +67,7 @@ public class GClass126
 
 	public GStream2 method_9()
 	{
-		return new GStream2(this, this.gclass128_0.method_26());
+		return new GStream2(this, this.gclass128_0.GetArkStream());
 	}
 
 	public void method_10(GClass126 gclass126_0, bool bool_0, bool bool_1)

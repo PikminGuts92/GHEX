@@ -10,8 +10,8 @@ public class ArkFile
 {
 	public ArkFile(string hdrPath)
 	{
-		this.string_0 = hdrPath.ToLower().Replace('\\', '/');
-		this.string_1 = this.string_0.Substring(0, this.string_0.LastIndexOf('.')) + "_0.ark";
+		this.hdrPath = hdrPath.ToLower().Replace('\\', '/');
+		this.arkPath = this.hdrPath.Substring(0, this.hdrPath.LastIndexOf('.')) + "_0.ark";
 		this.gclass127_0 = new GClass127(this);
 		this.bool_0 = false;
 	}
@@ -31,9 +31,9 @@ public class ArkFile
 		return this.fileStream_0 != null;
 	}
 
-	internal bool method_3()
+	internal bool ArkExists()
 	{
-		return File.Exists(this.string_1);
+		return File.Exists(this.arkPath);
 	}
 
 	public bool method_4()
@@ -53,15 +53,15 @@ public class ArkFile
 
 	public bool method_7()
 	{
-		return !this.method_3() || this.bool_2 || (File.GetAttributes(this.string_1) & FileAttributes.ReadOnly) == FileAttributes.ReadOnly || (File.GetAttributes(this.string_0) & FileAttributes.ReadOnly) == FileAttributes.ReadOnly || (this.fileStream_0 != null && !this.fileStream_0.CanWrite);
+		return !this.ArkExists() || this.bool_2 || (File.GetAttributes(this.arkPath) & FileAttributes.ReadOnly) == FileAttributes.ReadOnly || (File.GetAttributes(this.hdrPath) & FileAttributes.ReadOnly) == FileAttributes.ReadOnly || (this.fileStream_0 != null && !this.fileStream_0.CanWrite);
 	}
 
 	public void method_8()
 	{
-		if (this.method_3() && !this.method_2())
+		if (this.ArkExists() && !this.method_2())
 		{
-			File.SetAttributes(this.string_0, File.GetAttributes(this.string_0) & ~FileAttributes.ReadOnly);
-			File.SetAttributes(this.string_1, File.GetAttributes(this.string_1) & ~FileAttributes.ReadOnly);
+			File.SetAttributes(this.hdrPath, File.GetAttributes(this.hdrPath) & ~FileAttributes.ReadOnly);
+			File.SetAttributes(this.arkPath, File.GetAttributes(this.arkPath) & ~FileAttributes.ReadOnly);
 			return;
 		}
 	}
@@ -72,7 +72,7 @@ public class ArkFile
 		{
 			return;
 		}
-		this.fileStream_0 = new FileStream(this.string_1, FileMode.Open, this.method_7() ? FileAccess.Read : FileAccess.ReadWrite, FileShare.Read);
+		this.fileStream_0 = new FileStream(this.arkPath, FileMode.Open, this.method_7() ? FileAccess.Read : FileAccess.ReadWrite, FileShare.Read);
 		this.binaryReader_0 = new BinaryReader(this.fileStream_0);
 	}
 
@@ -93,7 +93,7 @@ public class ArkFile
 		MessageBox.Show("About to search for files.\nIt will take a few minutes.", "Archive", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 		@class.list_0 = new List<ArkFile.Class91>();
 		ProgressDialog progressDialog = new ProgressDialog(new ProgressDialog.GDelegate6(@class.method_0));
-		BufferedStream input = new BufferedStream(new FileStream(this.string_1, FileMode.Open, FileAccess.Read, FileShare.Read), 131072);
+		BufferedStream input = new BufferedStream(new FileStream(this.arkPath, FileMode.Open, FileAccess.Read, FileShare.Read), 131072);
 		this.binaryReader_0 = new BinaryReader(input);
 		progressDialog.ShowDialog();
 		this.binaryReader_0.Close();
@@ -127,7 +127,7 @@ public class ArkFile
 	void method_12()
 	{
 		this.bool_2 = true;
-		string text = this.string_0.Substring(0, this.string_0.LastIndexOf('.')) + ".ghex";
+		string text = this.hdrPath.Substring(0, this.hdrPath.LastIndexOf('.')) + ".ghex";
 		if (!File.Exists(text))
 		{
 			this.method_11(text);
@@ -196,7 +196,7 @@ public class ArkFile
 			this.method_12();
 			return;
 		}
-		FileStream fileStream = new FileStream(this.string_0, FileMode.Open, FileAccess.Read, FileShare.Read);
+		FileStream fileStream = new FileStream(this.hdrPath, FileMode.Open, FileAccess.Read, FileShare.Read);
 		BinaryReader binaryReader = new BinaryReader(fileStream);
 		binaryReader.ReadUInt32();
 		binaryReader.ReadUInt32();
@@ -263,14 +263,14 @@ public class ArkFile
 		{
 			GClass129 gclass = new GClass129();
 			gclass.method_0(GClass129.GEnum57.const_2);
-			this.ulong_0 = gclass.method_1(File.ReadAllBytes(this.string_0));
+			this.ulong_0 = gclass.method_1(File.ReadAllBytes(this.hdrPath));
 		}
 		return this.ulong_0;
 	}
 
 	public void method_15()
 	{
-		FileStream fileStream = new FileStream(this.string_0.ToUpper(), FileMode.Open, FileAccess.Write, FileShare.Read);
+		FileStream fileStream = new FileStream(this.hdrPath.ToUpper(), FileMode.Open, FileAccess.Write, FileShare.Read);
 		BinaryWriter binaryWriter = new BinaryWriter(fileStream);
 		this.method_9();
 		binaryWriter.Seek(12, SeekOrigin.Begin);
@@ -287,14 +287,14 @@ public class ArkFile
 		this.bool_0 = false;
 	}
 
-	public string method_16()
+	public string GetHdrPath()
 	{
-		return this.string_0;
+		return this.hdrPath;
 	}
 
 	public string method_17()
 	{
-		string text = this.string_0.Substring(this.string_0.LastIndexOf('/') + 1);
+		string text = this.hdrPath.Substring(this.hdrPath.LastIndexOf('/') + 1);
 		return text.Substring(0, text.LastIndexOf('.'));
 	}
 
@@ -505,9 +505,9 @@ public class ArkFile
 		return this.binaryReader_0.ReadBytes((int)gclass126_0.method_4());
 	}
 
-	internal FileStream method_26()
+	internal FileStream GetArkStream()
 	{
-		return new FileStream(this.string_1, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+		return new FileStream(this.arkPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 	}
 
 	public GClass127 method_27(string string_2)
@@ -580,9 +580,9 @@ public class ArkFile
 
 	GClass127 gclass127_0;
 
-	string string_0;
+	string hdrPath;
 
-	string string_1;
+	string arkPath;
 
 	FileStream fileStream_0;
 
