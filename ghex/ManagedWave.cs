@@ -29,7 +29,7 @@ class ManagedWave : IDisposable
 		this.gchandle_1 = GCHandle.Alloc(this.byte_0, GCHandleType.Pinned);
 		this.waveHeader.dataBuffer = this.gchandle_1.AddrOfPinnedObject();
 		this.waveHeader.bufferLength = int_0;
-		Class11.smethod_0(WinMM.waveOutPrepareHeader(this.intptr_0, ref this.waveHeader, Marshal.SizeOf(this.waveHeader)));
+		PointerHelper.AssertNotNull(WinMM.waveOutPrepareHeader(this.intptr_0, ref this.waveHeader, Marshal.SizeOf(this.waveHeader)));
 	}
 
 	~ManagedWave()

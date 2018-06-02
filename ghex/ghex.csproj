@@ -122,7 +122,7 @@
     <Compile Include="Class107.cs" />
     <Compile Include="Class108.cs" />
     <Compile Include="Class109.cs" />
-    <Compile Include="Class11.cs" />
+    <Compile Include="PointerHelper.cs" />
     <Compile Include="Class110.cs" />
     <Compile Include="Class111.cs" />
     <Compile Include="Class112.cs" />

@@ -13,7 +13,7 @@ public class GClass62 : IDisposable
 	{
 		this.byte_0 = (byte)((gclass94_0.short_3 == 8) ? 128 : 0);
 		this.gdelegate1_0 = gdelegate1_1;
-		Class11.smethod_0(WinMM.waveOutOpen(out this.intptr_0, int_0, gclass94_0, this.delegate1_0, 0, 196608));
+		PointerHelper.AssertNotNull(WinMM.waveOutOpen(out this.intptr_0, int_0, gclass94_0, this.delegate1_0, 0, WinMM.CALL_BACK_FUNCTION));
 		this.method_1(int_1, int_2);
 		this.thread_0 = new Thread(new ThreadStart(this.method_0));
 		this.thread_0.Start();
