@@ -4,15 +4,15 @@ using System.Runtime.CompilerServices;
 
 public class ArkEntry
 {
-	internal ArkEntry(ArkFile gclass128_1, long long_3, long long_4, long long_5, string string_2, string string_3)
+	internal ArkEntry(ArkFile ark, long long_3, long long_4, long long_5, string dir, string file)
 	{
         // Typical ark entry here
 		this.long_0 = long_3;
-		this.gclass128_0 = gclass128_1;
+		this.ark = ark;
 		this.long_1 = long_4;
 		this.long_2 = long_5;
-		this.string_0 = string_3;
-		this.string_1 = string_2;
+		this.fileName = file;
+		this.directory = dir;
 	}
 
 	public object method_0()
@@ -25,9 +25,9 @@ public class ArkEntry
 		this.object_0 = object_1;
 	}
 
-	internal ArkFile method_2()
+	internal ArkFile GetArk()
 	{
-		return this.gclass128_0;
+		return this.ark;
 	}
 
 	internal long method_3()
@@ -42,32 +42,32 @@ public class ArkEntry
 
 	public string method_5()
 	{
-		int num = this.string_0.LastIndexOf('.');
+		int num = this.fileName.LastIndexOf('.');
 		if (num == -1)
 		{
 			return "";
 		}
-		return this.string_0.Substring(num + 1);
+		return this.fileName.Substring(num + 1);
 	}
 
-	public string method_6()
+	public string GetFileName()
 	{
-		return this.string_0;
+		return this.fileName;
 	}
 
-	public string method_7()
+	public string GetDirectory()
 	{
-		return this.string_1;
+		return this.directory;
 	}
 
 	public byte[] method_8()
 	{
-		return this.gclass128_0.method_25(this);
+		return this.ark.method_25(this);
 	}
 
 	public GStream2 method_9()
 	{
-		return new GStream2(this, this.gclass128_0.GetArkStream());
+		return new GStream2(this, this.ark.GetArkStream());
 	}
 
 	public void method_10(ArkEntry gclass126_0, bool bool_0, bool bool_1)
@@ -91,10 +91,10 @@ public class ArkEntry
 		}
 		this.long_1 = num;
 		this.long_2 = num2;
-		this.gclass128_0.method_1(true);
+		this.ark.method_1(true);
 		if (bool_1)
 		{
-			this.gclass128_0.method_15();
+			this.ark.method_15();
 		}
 	}
 
@@ -107,7 +107,7 @@ public class ArkEntry
 	void method_12(ref ProgressDialog.GClass73 gclass73_0)
 	{
 		MemoryStream stream_ = new MemoryStream();
-		this.gclass128_0.method_22(this, stream_, ref gclass73_0);
+		this.ark.method_22(this, stream_, ref gclass73_0);
 	}
 
 	long long_0;
@@ -116,11 +116,11 @@ public class ArkEntry
 
 	long long_2;
 
-	string string_0;
+	string fileName;
 
-	string string_1;
+	string directory;
 
-	ArkFile gclass128_0;
+	ArkFile ark;
 
 	object object_0;
 }

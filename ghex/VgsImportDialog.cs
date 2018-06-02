@@ -31,7 +31,7 @@ public partial class VgsImportDialog : Form
 			this.lMapping.Text = "0=Speech?";
 			goto IL_13F;
 		case 2:
-			if (gclass126_1.method_6().Contains("_p"))
+			if (gclass126_1.GetFileName().Contains("_p"))
 			{
 				this.lMapping.Text = "0=Guitar, 1=Rhythm/Bass";
 				goto IL_13F;
@@ -746,7 +746,7 @@ public partial class VgsImportDialog : Form
 			}
 			num26++;
 		}
-		this.gclass126_0.method_2().method_22(this.gclass126_0, memoryStream, ref gclass73_0);
+		this.gclass126_0.GetArk().method_22(this.gclass126_0, memoryStream, ref gclass73_0);
 		binaryWriter.Close();
 	}
 

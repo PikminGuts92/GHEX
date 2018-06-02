@@ -791,7 +791,7 @@ public partial class MidImportDialog : Form
 			gclass73_0.int_0 = 100;
 		}
 		memoryStream.Seek(0L, SeekOrigin.Begin);
-		this.gclass126_0.method_2().method_22(this.gclass126_0, memoryStream, ref gclass73_0);
+		this.gclass126_0.GetArk().method_22(this.gclass126_0, memoryStream, ref gclass73_0);
 		memoryStream.Close();
 	}
 

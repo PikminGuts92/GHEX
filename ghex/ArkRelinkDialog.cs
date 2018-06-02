@@ -10,7 +10,7 @@ public partial class ArkRelinkDialog : Form
 		this.InitializeComponent();
 		this.MinimumSize = base.Size;
 		this.gclass126_0 = gclass126_1;
-		this.Text = "Point \"" + gclass126_1.method_6() + "\" to..";
+		this.Text = "Point \"" + gclass126_1.GetFileName() + "\" to..";
 		this.tvFiles.Select();
 	}
 
@@ -41,9 +41,9 @@ public partial class ArkRelinkDialog : Form
 			this.cbSwap.Text = string.Concat(new string[]
 			{
 				"..and \"",
-				gclass.method_6(),
+				gclass.GetFileName(),
 				"\" to \"",
-				this.gclass126_0.method_6(),
+				this.gclass126_0.GetFileName(),
 				"\""
 			});
 			return;
@@ -54,14 +54,14 @@ public partial class ArkRelinkDialog : Form
 	void btnOk_Click(object sender, EventArgs e)
 	{
 		ArkEntry gclass = this.tvFiles.SelectedNode.Tag as ArkEntry;
-		if (gclass.method_5() != this.gclass126_0.method_5() && MessageBox.Show("Files do not share the same extension.\nAre you sure you want to do this?", this.gclass126_0.method_6(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+		if (gclass.method_5() != this.gclass126_0.method_5() && MessageBox.Show("Files do not share the same extension.\nAre you sure you want to do this?", this.gclass126_0.GetFileName(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
 		{
 			return;
 		}
 		bool bool_ = false;
 		if (!this.cbSwap.Checked)
 		{
-			bool_ = (MessageBox.Show("You have chosen to orphan a file.\nDo you really want do do this?\n(You will not be able to access it again!)", this.gclass126_0.method_6(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
+			bool_ = (MessageBox.Show("You have chosen to orphan a file.\nDo you really want do do this?\n(You will not be able to access it again!)", this.gclass126_0.GetFileName(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
 		}
 		this.gclass126_0.method_10(gclass, this.cbSwap.Checked, bool_);
 		base.DialogResult = DialogResult.OK;

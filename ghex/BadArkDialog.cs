@@ -22,7 +22,7 @@ public partial class BadArkDialog : Form
 		this.MinimumSize = base.Size;
 		this.MaximumSize = new Size(base.Size.Width, base.Size.Height * 2);
 		this.list_0 = list_3;
-		foreach (ArkEntry gclass in list_3[0].method_2().GetArkEntries())
+		foreach (ArkEntry gclass in list_3[0].GetArk().GetArkEntries())
 		{
 			if (!list_3.Contains(gclass))
 			{

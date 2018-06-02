@@ -260,7 +260,7 @@ public partial class MainWindow : Form
 			{
 				lock (gclass73_0)
 				{
-					gclass73_0.string_1 = "Checking \"" + gclass5.method_6() + "\"";
+					gclass73_0.string_1 = "Checking \"" + gclass5.GetFileName() + "\"";
 					gclass73_0.int_0 = -1;
 				}
 				Stream stream = gclass5.method_9();
@@ -416,21 +416,21 @@ public partial class MainWindow : Form
 		return list;
 	}
 
-	void method_14(TreeNode treeNode_0, ArkFile gclass128_0)
+	void method_14(TreeNode treeNode_0, ArkFile ark)
 	{
 		treeNode_0.TreeView.BeginUpdate();
 		string text = Class109.smethod_6(treeNode_0);
-		foreach (ArkEntry gclass in gclass128_0.GetArkEntries())
+		foreach (ArkEntry entry in ark.GetArkEntries())
 		{
-			if (gclass.method_7().StartsWith(text, true, CultureInfo.CurrentUICulture))
+			if (entry.GetDirectory().StartsWith(text, true, CultureInfo.CurrentUICulture))
 			{
-				if (string.Compare(text, gclass.method_7(), true) == 0)
+				if (string.Compare(text, entry.GetDirectory(), true) == 0)
 				{
-					TreeNode treeNode = treeNode_0.Nodes.Add(gclass.method_6());
-					treeNode.Tag = gclass;
-					treeNode.Name = gclass.method_6();
+					TreeNode treeNode = treeNode_0.Nodes.Add(entry.GetFileName());
+					treeNode.Tag = entry;
+					treeNode.Name = entry.GetFileName();
 					string key;
-					if ((key = gclass.method_5()) == null)
+					if ((key = entry.method_5()) == null)
 					{
 						goto IL_1F7;
 					}
@@ -545,7 +545,7 @@ public partial class MainWindow : Form
 					treeNode.ImageIndex = 2;
 					goto IL_1FE;
 				}
-				string text2 = gclass.method_7().Substring(text.Length);
+				string text2 = entry.GetDirectory().Substring(text.Length);
 				if (text2.StartsWith("/"))
 				{
 					text2 = text2.Remove(0, 1);
@@ -562,8 +562,8 @@ public partial class MainWindow : Form
 					int imageIndex = 1;
 					if (treeNode_0.Name == "songs")
 					{
-						List<ArkEntry> list = gclass128_0.method_28("songs/" + text3, "*.vgs");
-						List<ArkEntry> list2 = gclass128_0.method_28("songs/" + text3, text3 + ".mid");
+						List<ArkEntry> list = ark.method_28("songs/" + text3, "*.vgs");
+						List<ArkEntry> list2 = ark.method_28("songs/" + text3, text3 + ".mid");
 						if (list2.Count == 1 && list.Count > 0)
 						{
 							imageIndex = 13;
@@ -1037,8 +1037,8 @@ public partial class MainWindow : Form
 		MainWindow.Class76 @class = new MainWindow.Class76();
 		@class.gclass126_0 = (this.arkFileList.SelectedNode.Tag as ArkEntry);
 		@class.openFileDialog_0 = new OpenFileDialog();
-		@class.openFileDialog_0.Title = "Locate a file to replace \"" + @class.gclass126_0.method_6() + "\" with..";
-		@class.openFileDialog_0.FileName = @class.gclass126_0.method_6();
+		@class.openFileDialog_0.Title = "Locate a file to replace \"" + @class.gclass126_0.GetFileName() + "\" with..";
+		@class.openFileDialog_0.FileName = @class.gclass126_0.GetFileName();
 		@class.openFileDialog_0.Filter = @class.gclass126_0.method_5().ToUpper() + " files|*." + @class.gclass126_0.method_5();
 		@class.openFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("FileReplace");
 		if (@class.openFileDialog_0.ShowDialog() != DialogResult.OK)
@@ -1060,7 +1060,7 @@ public partial class MainWindow : Form
 				" other file",
 				(@class.list_0.Count == 1) ? "" : "s",
 				" that use the\ndata pointed to by '",
-				@class.gclass126_0.method_6(),
+				@class.gclass126_0.GetFileName(),
 				"'.\nThe new data will be appended to the archive so\nthe other file",
 				(@class.list_0.Count == 1) ? "" : "s",
 				" can remain valid."
@@ -1072,7 +1072,7 @@ public partial class MainWindow : Form
 		else if (MessageBox.Show(string.Concat(new string[]
 		{
 			"This will completely remove the data for \"",
-			@class.gclass126_0.method_6(),
+			@class.gclass126_0.GetFileName(),
 			"\"\nand replace it with the data from\n\"",
 			@class.openFileDialog_0.FileName,
 			"\".\nDo you want to continue?"
@@ -1216,9 +1216,9 @@ public partial class MainWindow : Form
 			class2.class77_0 = @class;
 			class2.gclass126_0 = (@class.treeNode_0.Tag as ArkEntry);
 			class2.saveFileDialog_0 = new SaveFileDialog();
-			class2.saveFileDialog_0.Title = "Extract \"" + class2.gclass126_0.method_6() + "\" as..";
+			class2.saveFileDialog_0.Title = "Extract \"" + class2.gclass126_0.GetFileName() + "\" as..";
 			class2.saveFileDialog_0.OverwritePrompt = true;
-			class2.saveFileDialog_0.FileName = class2.gclass126_0.method_6();
+			class2.saveFileDialog_0.FileName = class2.gclass126_0.GetFileName();
 			class2.saveFileDialog_0.Filter = class2.gclass126_0.method_5().ToUpper() + " files|*." + class2.gclass126_0.method_5();
 			class2.saveFileDialog_0.ValidateNames = true;
 			class2.saveFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("ExtractFile");
@@ -1338,15 +1338,15 @@ public partial class MainWindow : Form
 				});
 				gclass73_0.int_1 = num * 100 / list_1.Count;
 			}
-			string text2 = string_2 + "\\" + gclass2.method_7().Replace("/", "\\");
+			string text2 = string_2 + "\\" + gclass2.GetDirectory().Replace("/", "\\");
 			try
 			{
 				if (!Directory.Exists(text2))
 				{
 					Directory.CreateDirectory(text2);
 				}
-				FileStream fileStream = new FileStream(text2 + "\\" + gclass2.method_6(), FileMode.Create, FileAccess.Write, FileShare.Read);
-				gclass2.method_2().method_24(gclass2, fileStream, ref gclass73_0);
+				FileStream fileStream = new FileStream(text2 + "\\" + gclass2.GetFileName(), FileMode.Create, FileAccess.Write, FileShare.Read);
+				gclass2.GetArk().method_24(gclass2, fileStream, ref gclass73_0);
 				fileStream.Close();
 			}
 			catch
@@ -1424,7 +1424,7 @@ public partial class MainWindow : Form
 		{
 			return;
 		}
-		form.Text = "Importing to '" + gclass.method_6() + "'...";
+		form.Text = "Importing to '" + gclass.GetFileName() + "'...";
 		if (form.ShowDialog() != DialogResult.OK)
 		{
 			return;
@@ -1990,7 +1990,7 @@ public partial class MainWindow : Form
 	{
 		public bool method_0(ArkEntry gclass126_0)
 		{
-			if (!gclass126_0.method_7().StartsWith(this.string_0, true, CultureInfo.CurrentUICulture))
+			if (!gclass126_0.GetDirectory().StartsWith(this.string_0, true, CultureInfo.CurrentUICulture))
 			{
 				return false;
 			}
@@ -2039,7 +2039,7 @@ public partial class MainWindow : Form
 				int num3 = this.gclass127_0.IndexOf(gclass);
 				lock (gclass73_0)
 				{
-					gclass73_0.string_1 = "Exporting \"" + gclass.method_6() + "\"";
+					gclass73_0.string_1 = "Exporting \"" + gclass.GetFileName() + "\"";
 					gclass73_0.string_2 = string.Concat(new object[]
 					{
 						"File ",
@@ -2233,7 +2233,7 @@ public partial class MainWindow : Form
 				string text = Class109.smethod_0(now, (long)num, (long)list.Count);
 				lock (gclass73_0)
 				{
-					gclass73_0.string_1 = "Processing \"" + gclass.method_6() + "\"";
+					gclass73_0.string_1 = "Processing \"" + gclass.GetFileName() + "\"";
 					gclass73_0.int_0 = -1;
 					gclass73_0.string_2 = string.Concat(new object[]
 					{
@@ -2249,7 +2249,7 @@ public partial class MainWindow : Form
 				Class39.Struct2 @struct = Class39.smethod_0(binaryReader);
 				binaryReader.Close();
 				int num2 = 0;
-				if (gclass.method_7().StartsWith("songs/"))
+				if (gclass.GetDirectory().StartsWith("songs/"))
 				{
 					num2 = this.arkShrinkDialog_0.method_3();
 				}

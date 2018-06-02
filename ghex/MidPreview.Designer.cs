@@ -1014,7 +1014,7 @@ public class MidPreview : UserControl
 	public string method_24(ref string string_0)
 	{
 		GClass88 gclass = this.midiFile.GetTracks()[this.int_3] as GClass88;
-		string text = this.gclass126_0.method_6().Substring(0, this.gclass126_0.method_6().LastIndexOf('.')).ToLower();
+		string text = this.gclass126_0.GetFileName().Substring(0, this.gclass126_0.GetFileName().LastIndexOf('.')).ToLower();
 		string text2 = gclass.method_1().ToLower();
 		string text3 = Class109.smethod_7(this.genum53_0).ToLower();
 		if (string.Compare(text2, "t1 gems", true) == 0)

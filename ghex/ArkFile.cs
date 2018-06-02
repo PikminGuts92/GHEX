@@ -319,7 +319,7 @@ public class ArkFile
 		BinaryWriter binaryWriter = new BinaryWriter(this.fileStream_0);
 		lock (gclass73_0)
 		{
-			gclass73_0.string_0 = "Appending data for \"" + gclass126_0.method_6() + "\"";
+			gclass73_0.string_0 = "Appending data for \"" + gclass126_0.GetFileName() + "\"";
 		}
 		int num = (int)Math.Min(stream_0.Length, 131072L);
 		byte[] array = new byte[num];
@@ -337,7 +337,7 @@ public class ArkFile
 			lock (gclass73_0)
 			{
 				gclass73_0.int_0 = (int)(stream_0.Position * 100L / stream_0.Length);
-				gclass73_0.string_1 = "Writing \"" + gclass126_0.method_6() + "\"" + str;
+				gclass73_0.string_1 = "Writing \"" + gclass126_0.GetFileName() + "\"" + str;
 			}
 		}
 		this.method_15();
@@ -357,7 +357,7 @@ public class ArkFile
 		{
 			lock (gclass73_0)
 			{
-				gclass73_0.string_0 = "Replacing data for \"" + gclass126_0.method_6() + "\"";
+				gclass73_0.string_0 = "Replacing data for \"" + gclass126_0.GetFileName() + "\"";
 			}
 		}
 		List<ArkEntry> list = this.GetArkEntries().FindAll(new Predicate<ArkEntry>(this.method_20));
@@ -384,7 +384,7 @@ public class ArkFile
 			{
 				lock (gclass73_0)
 				{
-					gclass73_0.string_1 = "Moving \"" + gclass2.method_6() + "\"";
+					gclass73_0.string_1 = "Moving \"" + gclass2.GetFileName() + "\"";
 				}
 			}
 			long num6 = gclass2.method_11();
@@ -435,7 +435,7 @@ public class ArkFile
 			}
 			lock (gclass73_0)
 			{
-				gclass73_0.string_1 = "Writing \"" + gclass126_0.method_6() + "\"";
+				gclass73_0.string_1 = "Writing \"" + gclass126_0.GetFileName() + "\"";
 				goto IL_493;
 			}
 			IL_39B:
@@ -491,7 +491,7 @@ public class ArkFile
 			{
 				lock (gclass73_0)
 				{
-					gclass73_0.string_1 = "Writing \"" + gclass126_0.method_6() + "\"" + str;
+					gclass73_0.string_1 = "Writing \"" + gclass126_0.GetFileName() + "\"" + str;
 					gclass73_0.int_0 = (int)(gstream.Position * 100L / gstream.Length);
 				}
 			}
@@ -515,7 +515,7 @@ public class ArkFile
 		ArkEntryCollection gclass = new ArkEntryCollection(this);
 		foreach (ArkEntry gclass2 in this.GetArkEntries())
 		{
-			if (string.Compare(gclass2.method_7() + "/" + gclass2.method_6(), string_2, true) == 0)
+			if (string.Compare(gclass2.GetDirectory() + "/" + gclass2.GetFileName(), string_2, true) == 0)
 			{
 				gclass.Add(gclass2);
 			}
@@ -539,7 +539,7 @@ public class ArkFile
 				while (enumerator.MoveNext())
 				{
 					ArkEntry gclass2 = enumerator.Current;
-					string[] array2 = gclass2.method_7().Split(new char[]
+					string[] array2 = gclass2.GetDirectory().Split(new char[]
 					{
 						'/'
 					});
@@ -553,9 +553,9 @@ public class ArkFile
 		}
 		foreach (ArkEntry gclass3 in this.GetArkEntries())
 		{
-			if (gclass3.method_7().StartsWith(string_2, true, CultureInfo.CurrentUICulture))
+			if (gclass3.GetDirectory().StartsWith(string_2, true, CultureInfo.CurrentUICulture))
 			{
-				string[] array3 = gclass3.method_6().Split(new char[]
+				string[] array3 = gclass3.GetFileName().Split(new char[]
 				{
 					'.'
 				});
@@ -635,7 +635,7 @@ public class ArkFile
 	{
 		public int Compare(ArkEntry gclass126_0, ArkEntry gclass126_1)
 		{
-			return string.Compare(gclass126_0.method_7() + "/" + gclass126_0.method_6(), gclass126_1.method_7() + "/" + gclass126_1.method_6(), true);
+			return string.Compare(gclass126_0.GetDirectory() + "/" + gclass126_0.GetFileName(), gclass126_1.GetDirectory() + "/" + gclass126_1.GetFileName(), true);
 		}
 	}
 
