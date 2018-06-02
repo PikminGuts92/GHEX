@@ -379,7 +379,7 @@
     <Compile Include="GClass91.cs" />
     <Compile Include="GClass92.cs" />
     <Compile Include="GClass93.cs" />
-    <Compile Include="GClass94.cs" />
+    <Compile Include="WaveFormat.cs" />
     <Compile Include="GClass95.cs" />
     <Compile Include="GClass96.cs" />
     <Compile Include="GClass97.cs" />

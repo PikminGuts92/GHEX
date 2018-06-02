@@ -10,37 +10,37 @@ class WinMM
 	public static extern int waveOutGetNumDevs();
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutPrepareHeader(IntPtr intptr_0, ref WinMM.Struct4 struct4_0, int int_8);
+	public static extern int waveOutPrepareHeader(IntPtr hWaveOut, ref Struct4 lpWaveOutHdr, int uSize);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutUnprepareHeader(IntPtr intptr_0, ref WinMM.Struct4 struct4_0, int int_8);
+	public static extern int waveOutUnprepareHeader(IntPtr hWaveOut, ref Struct4 lpWaveOutHdr, int uSize);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutWrite(IntPtr intptr_0, ref WinMM.Struct4 struct4_0, int int_8);
+	public static extern int waveOutWrite(IntPtr hWaveOut, ref Struct4 lpWaveOutHdr, int uSize);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutOpen(out IntPtr intptr_0, int int_8, GClass94 gclass94_0, WinMM.Delegate1 delegate1_0, int int_9, int int_10);
+	public static extern int waveOutOpen(out IntPtr hWaveOut, int uDeviceID, WaveFormat lpFormat, WaveCallback dwCallback, int dwInstance, int dwFlags);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutReset(IntPtr intptr_0);
+	public static extern int waveOutReset(IntPtr hWaveOut);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutClose(IntPtr intptr_0);
+	public static extern int waveOutClose(IntPtr hWaveOut);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutPause(IntPtr intptr_0);
+	public static extern int waveOutPause(IntPtr hWaveOut);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutRestart(IntPtr intptr_0);
+	public static extern int waveOutRestart(IntPtr hWaveOut);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutGetPosition(IntPtr intptr_0, out int int_8, int int_9);
+	public static extern int waveOutGetPosition(IntPtr hWaveOut, out int mmTime, int uSize);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutSetVolume(IntPtr intptr_0, int int_8);
+	public static extern int waveOutSetVolume(IntPtr hWaveOut, int dwVolume);
 
 	[DllImport("winmm.dll")]
-	public static extern int waveOutGetVolume(IntPtr intptr_0, out int int_8);
+	public static extern int waveOutGetVolume(IntPtr hWaveOut, out int dwVolume);
 
 	public const int int_0 = 0x00;
 
@@ -56,26 +56,26 @@ class WinMM
 	public const int int_6 = 0x02;
 	public const int int_7 = 0x04;
 
-	const string DLL_FILE_NAME = "winmm.dll";
+	const string DLL_FILE_NAME = "winmm.dll"; // Not even used?
 
-	public delegate void Delegate1(IntPtr intptr_0, int int_0, int int_1, ref WinMM.Struct4 struct4_0, int int_2);
+	public delegate void WaveCallback(IntPtr intptr_0, int int_0, int int_1, ref Struct4 struct4_0, int int_2);
+    
+    public struct Struct4
+    {
+        public IntPtr intptr_0;
 
-	public struct Struct4
-	{
-		public IntPtr intptr_0;
+        public int int_0;
 
-		public int int_0;
+        public int int_1;
 
-		public int int_1;
+        public IntPtr intptr_1;
 
-		public IntPtr intptr_1;
+        public int int_2;
 
-		public int int_2;
+        public int int_3;
 
-		public int int_3;
+        public IntPtr intptr_2;
 
-		public IntPtr intptr_2;
-
-		public int int_4;
-	}
+        public int int_4;
+    }
 }

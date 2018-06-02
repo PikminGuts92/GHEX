@@ -47,7 +47,7 @@ public class GClass72 : IEnumerable<GClass71>
 		{
 			byte[][] array = null;
 			Stream stream = null;
-			GClass94 gclass = null;
+			WaveFormat gclass = null;
 			int[] array2 = null;
 			long[][] array3 = null;
 			if (string_0.EndsWith(".wav"))

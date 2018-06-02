@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [DefaultMember("Attributes")]
 public class GStream0 : Stream, IDisposable
 {
-	public GStream0(string string_0, GClass94 gclass94_1)
+	public GStream0(string string_0, WaveFormat gclass94_1)
 	{
 		this.ginterface27_0 = GClass54.smethod_1(GEnum23.flag_0);
 		try
@@ -38,9 +38,9 @@ public class GStream0 : Stream, IDisposable
 		this.method_9(false);
 	}
 
-	public GClass94 method_0()
+	public WaveFormat method_0()
 	{
-		return new GClass94(this.gclass94_0.int_0, (int)this.gclass94_0.short_3, (int)this.gclass94_0.short_1);
+		return new WaveFormat(this.gclass94_0.int_0, (int)this.gclass94_0.short_3, (int)this.gclass94_0.short_1);
 	}
 
 	public GInterface41 method_1()
@@ -94,7 +94,7 @@ public class GStream0 : Stream, IDisposable
 		return result;
 	}
 
-	void method_8(GClass94 gclass94_1)
+	void method_8(WaveFormat gclass94_1)
 	{
 		this.uint_2 = GStream0.smethod_0(this.ginterface27_0);
 		if (this.uint_2 == 4294967295u)
@@ -112,7 +112,7 @@ public class GStream0 : Stream, IDisposable
 			int i = 0;
 			while (i < array.Length)
 			{
-				GClass94 gclass = GStream0.smethod_2(this.ginterface27_0, this.uint_2, (uint)array[i]);
+				WaveFormat gclass = GStream0.smethod_2(this.ginterface27_0, this.uint_2, (uint)array[i]);
 				if (gclass.short_0 == gclass94_1.short_0 && gclass.int_1 == gclass94_1.int_1 && gclass.short_2 == gclass94_1.short_2 && gclass.short_1 == gclass94_1.short_1 && gclass.int_0 == gclass94_1.int_0 && gclass.short_3 == gclass94_1.short_3)
 				{
 					this.int_0 = array[i];
@@ -216,7 +216,7 @@ public class GStream0 : Stream, IDisposable
 		ArrayList arrayList = new ArrayList();
 		uint num = 0u;
 		ginterface27_1.imethod_14(uint_4, out num);
-		int num2 = Marshal.SizeOf(typeof(GStruct2)) + Marshal.SizeOf(typeof(GClass94));
+		int num2 = Marshal.SizeOf(typeof(GStruct2)) + Marshal.SizeOf(typeof(WaveFormat));
 		IntPtr intPtr = Marshal.AllocCoTaskMem(num2);
 		try
 		{
@@ -249,14 +249,14 @@ public class GStream0 : Stream, IDisposable
 		return (int[])arrayList.ToArray(typeof(int));
 	}
 
-	static GClass94 smethod_2(GInterface27 ginterface27_1, uint uint_4, uint uint_5)
+	static WaveFormat smethod_2(GInterface27 ginterface27_1, uint uint_4, uint uint_5)
 	{
 		GInterface12 ginterface = null;
 		uint val = 0u;
-		GClass94 gclass = null;
+		WaveFormat gclass = null;
 		ginterface27_1.imethod_15(uint_4, uint_5, out ginterface);
 		ginterface.imethod_4(IntPtr.Zero, ref val);
-		IntPtr intPtr = Marshal.AllocCoTaskMem(Math.Max((int)val, Marshal.SizeOf(typeof(GStruct2)) + Marshal.SizeOf(typeof(GClass94))));
+		IntPtr intPtr = Marshal.AllocCoTaskMem(Math.Max((int)val, Marshal.SizeOf(typeof(GStruct2)) + Marshal.SizeOf(typeof(WaveFormat))));
 		try
 		{
 			ginterface.imethod_4(intPtr, ref val);
@@ -265,7 +265,7 @@ public class GStream0 : Stream, IDisposable
 			{
 				throw new ArgumentException(string.Format("The format {0} of the output {1} is not a valid PCM format", uint_5, uint_4));
 			}
-			gclass = new GClass94(44100, 16, 2);
+			gclass = new WaveFormat(44100, 16, 2);
 			Marshal.PtrToStructure(gstruct.intptr_1, gclass);
 		}
 		finally
@@ -491,7 +491,7 @@ public class GStream0 : Stream, IDisposable
 
 	uint uint_3;
 
-	GClass94 gclass94_0;
+	WaveFormat gclass94_0;
 
 	GClass0 gclass0_0;
 }

@@ -449,7 +449,7 @@ public class VgsPreview : UserControl
 		this.dateTime_0 = DateTime.Now;
 
         // Creates new VGS object
-		this.gclass62_0 = new GClass62(-1, new GClass94(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
+		this.gclass62_0 = new GClass62(-1, new WaveFormat(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
 		this.bool_0 = false;
 		this.isAudioPlaying = false;
 		this.isAudioInitialized = true;

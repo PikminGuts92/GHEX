@@ -9,7 +9,7 @@ public class GClass62 : IDisposable
 		return WinMM.waveOutGetNumDevs();
 	}
 
-	public GClass62(int int_0, GClass94 gclass94_0, int int_1, int int_2, GDelegate1 gdelegate1_1)
+	public GClass62(int int_0, WaveFormat gclass94_0, int int_1, int int_2, GDelegate1 gdelegate1_1)
 	{
 		this.byte_0 = (byte)((gclass94_0.short_3 == 8) ? 128 : 0);
 		this.gdelegate1_0 = gdelegate1_1;
@@ -147,5 +147,5 @@ public class GClass62 : IDisposable
 
 	byte byte_0;
 
-	WinMM.Delegate1 delegate1_0 = new WinMM.Delegate1(Class12.smethod_0);
+	WinMM.WaveCallback delegate1_0 = new WinMM.WaveCallback(Class12.smethod_0);
 }

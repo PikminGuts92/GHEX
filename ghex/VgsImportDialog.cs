@@ -142,7 +142,7 @@ public partial class VgsImportDialog : Form
 				VgsImportDialog.Class14 @class = new VgsImportDialog.Class14();
 				@class.string_0 = text;
 				string text2 = "";
-				GClass94 gclass = new GClass94(44100, 16, 1);
+				WaveFormat gclass = new WaveFormat(44100, 16, 1);
 				try
 				{
 					if (text.EndsWith(".ogg", StringComparison.CurrentCultureIgnoreCase))
@@ -176,7 +176,7 @@ public partial class VgsImportDialog : Form
 						}
 						num++;
 						@class.class13_0 = list.ToArray();
-						gclass = new GClass94(flag2 ? 0 : array[0].int_9, 16, list.Count);
+						gclass = new WaveFormat(flag2 ? 0 : array[0].int_9, 16, list.Count);
 						text2 = "OGG";
 					}
 					else if (text.EndsWith(".vgs", StringComparison.CurrentCultureIgnoreCase))
@@ -245,7 +245,7 @@ public partial class VgsImportDialog : Form
 								flag3 = true;
 							}
 						}
-						gclass = new GClass94(flag3 ? 0 : @struct.struct3_0[0].int_0, 16, @struct.struct3_0.Length);
+						gclass = new WaveFormat(flag3 ? 0 : @struct.struct3_0[0].int_0, 16, @struct.struct3_0.Length);
 						text2 = "VGS";
 						binaryReader.Close();
 					}
@@ -372,7 +372,7 @@ public partial class VgsImportDialog : Form
 								}
 								if (gstruct.guid_2 == GClass67.smethod_18())
 								{
-									gclass = (GClass94)Marshal.PtrToStructure(gstruct.intptr_1, gclass.GetType());
+									gclass = (WaveFormat)Marshal.PtrToStructure(gstruct.intptr_1, gclass.GetType());
 									for (int m = 0; m < (int)gclass.short_1; m++)
 									{
 										VgsImportDialog.Class13 class6 = new VgsImportDialog.Class13();
@@ -578,7 +578,7 @@ public partial class VgsImportDialog : Form
 				else
 				{
 					Stream stream;
-					GClass94 gclass3;
+					WaveFormat gclass3;
 					if (@class.class14_0.string_0.EndsWith(".wav", StringComparison.CurrentCultureIgnoreCase))
 					{
 						stream = new GStream1(@class.class14_0.string_0);

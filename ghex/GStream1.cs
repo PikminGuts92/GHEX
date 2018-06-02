@@ -4,7 +4,7 @@ using System.Text;
 
 public class GStream1 : Stream, IDisposable
 {
-	public GClass94 method_0()
+	public WaveFormat method_0()
 	{
 		return this.gclass94_0;
 	}
@@ -37,7 +37,7 @@ public class GStream1 : Stream, IDisposable
 		{
 			throw new Exception("Invalid file format");
 		}
-		this.gclass94_0 = new GClass94(22050, 16, 2);
+		this.gclass94_0 = new WaveFormat(22050, 16, 2);
 		this.gclass94_0.short_0 = binaryReader.ReadInt16();
 		this.gclass94_0.short_1 = binaryReader.ReadInt16();
 		this.gclass94_0.int_0 = binaryReader.ReadInt32();
@@ -176,5 +176,5 @@ public class GStream1 : Stream, IDisposable
 
 	long long_1;
 
-	GClass94 gclass94_0;
+	WaveFormat gclass94_0;
 }

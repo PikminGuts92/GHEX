@@ -2,13 +2,13 @@
 using System.Runtime.InteropServices;
 
 [StructLayout(LayoutKind.Sequential)]
-public class GClass94
+public class WaveFormat
 {
-	public GClass94()
+	public WaveFormat()
 	{
 	}
 
-	public GClass94(int int_2, int int_3, int int_4)
+	public WaveFormat(int int_2, int int_3, int int_4)
 	{
 		this.short_0 = 1;
 		this.short_1 = (short)int_4;
