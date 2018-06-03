@@ -5,6 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 public class VgsPreview : UserControl
 {
@@ -14,12 +16,12 @@ public class VgsPreview : UserControl
         this.pbVolume.Value = (int)(100f * VgsPreview.float_1);
         this.gstream2_0 = gclass126_0.GetArkEntryStream();
         BinaryReader binaryReader_ = new BinaryReader(this.gstream2_0);
-        Class39.Struct2 @struct = Class39.smethod_0(binaryReader_);
-        list_0.Add(new GClass109("Channels", @struct.struct3_0.Length));
+        VgsHelper.VgsFile @struct = VgsHelper.ReadVgsFromStream(binaryReader_);
+        list_0.Add(new GClass109("Channels", @struct.channels.Length));
         this.int_0 += 28 - this.int_0 % 28;
-        string[] array = new string[@struct.struct3_0.Length];
-        this.pcmAudio = new Class87[@struct.struct3_0.Length];
-        for (int i = 0; i < @struct.struct3_0.Length; i++)
+        string[] array = new string[@struct.channels.Length];
+        this.pcmAudio = new Class87[@struct.channels.Length];
+        for (int i = 0; i < @struct.channels.Length; i++)
         {
             this.pcmAudio[i] = new Class87();
             if (i % 2 == 1)
@@ -30,8 +32,8 @@ public class VgsPreview : UserControl
             {
                 this.pcmAudio[i].genum47_0 = GEnum47.const_0;
             }
-            this.pcmAudio[i].int_0 = @struct.struct3_0[i].int_0;
-            this.pcmAudio[i].int_1 = @struct.struct3_0[i].int_1;
+            this.pcmAudio[i].int_0 = @struct.channels[i].sampleRate;
+            this.pcmAudio[i].int_1 = @struct.channels[i].blockCount;
             int num = (int)((float)this.pcmAudio[i].int_0 * 0.25f + 0.5f);
             num += 28 - num % 28;
             foreach (Class87.Class88 @class in this.pcmAudio[i].class88_0)
@@ -314,11 +316,26 @@ public class VgsPreview : UserControl
 
     void method_5(IntPtr intptr_0, int int_1)
     {
-        GClass103 gclass = new GClass103(new GClass102(44100, 16, 2), (uint)(int_1 / 4));
+        // Callback function
+        GClass103 gclass = new GClass103(new AudioInfo(44100, 16, 2), (uint)(int_1 / 4));
         this.method_11(gclass);
         int[] source = new int[gclass.method_0()];
         GClass80.smethod_2(gclass.method_3(GEnum47.const_0), gclass.method_3(GEnum47.const_1), ref source, gclass.method_0());
         Marshal.Copy(source, 0, intptr_0, gclass.method_0());
+    }
+
+    public int method_5_alt(byte[] buffer, int int_1)
+    {
+        // Callback function
+        GClass103 gclass = new GClass103(new AudioInfo(44100, 16, 2), (uint)(int_1 / 4));
+        this.method_11(gclass);
+        int[] source = new int[gclass.method_0()];
+        GClass80.smethod_2(gclass.method_3(GEnum47.const_0), gclass.method_3(GEnum47.const_1), ref source, gclass.method_0());
+        //Marshal.Copy(source, 0, intptr_0, gclass.method_0());
+
+        // Copies int array to byte array buffer
+        Buffer.BlockCopy(source, 0, buffer, 0, buffer.Length);
+        return buffer.Length;
     }
 
     public bool method_6()
@@ -393,7 +410,7 @@ public class VgsPreview : UserControl
                 foreach (Class87 @class in this.pcmAudio)
                 {
                     int num2 = @class.class88_0[@class.int_3].float_0.Length;
-                    float num3 = this.float_0 * (float)@class.int_0 / (float)gclass103_0.method_2().int_0;
+                    float num3 = this.float_0 * (float)@class.int_0 / (float)gclass103_0.GetAudioInfo().bitrate;
                     for (int j = 0; j < num; j++)
                     {
                         float[] array2 = @class.class88_0[@class.int_3].float_0;
@@ -432,6 +449,8 @@ public class VgsPreview : UserControl
         Graphics graphics = e.Graphics;
     }
 
+    private WaveOutEvent outputDevice;
+
     void btnPlay_Click(object sender, EventArgs e)
     {
         if (this.isAudioInitialized)
@@ -448,13 +467,49 @@ public class VgsPreview : UserControl
         this.method_4(true);
         this.dateTime_0 = DateTime.Now;
 
+        if (outputDevice == null)
+        {
+            outputDevice = new WaveOutEvent();
+            outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
+            outputDevice.DesiredLatency = 100; // Default = 300
+        }
+
+        outputDevice.Init(new VgsProvider(this));
+        outputDevice.Play();
+
         // Creates new VGS object
-        this.gclass62_0 = new GClass62(-1, new WaveFormat(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
+        //this.gclass62_0 = new GClass62(-1, new WaveFormat(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
+        this.gclass62_0 = null;
         this.bool_0 = false;
         this.isAudioPlaying = false;
         this.isAudioInitialized = true;
         this.btnStop.Enabled = true;
         this.btnPlay.ImageIndex = 2;
+    }
+
+    class VgsProvider : IWaveProvider
+    {
+        private NAudio.Wave.WaveFormat _format;
+        private VgsPreview _preview;
+
+        public VgsProvider(VgsPreview preview)
+        {
+            _preview = preview;
+            _format = new NAudio.Wave.WaveFormat(44100, 2);
+        }
+
+        public NAudio.Wave.WaveFormat WaveFormat => _format;
+        
+        public int Read(byte[] buffer, int offset, int count)
+            => _preview.method_5_alt(buffer, count);
+    }
+
+    private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
+    {
+        if (outputDevice == null) return;
+
+        outputDevice.Dispose();
+        outputDevice = null;
     }
 
     void btnStop_Click(object sender, EventArgs e)
@@ -463,6 +518,9 @@ public class VgsPreview : UserControl
         {
             this.gclass62_0.Dispose();
         }
+
+        outputDevice?.Dispose();
+
         this.isAudioInitialized = false;
         this.btnStop.Enabled = false;
         this.btnPlay.ImageIndex = 1;
@@ -635,9 +693,10 @@ public class VgsPreview : UserControl
         this.pbVolume.Value = 50;
         this.pbVolume.MouseDown += this.pbVolume_MouseMove;
         this.pbVolume.MouseMove += this.pbVolume_MouseMove;
+        // Playback speed label
         this.lSpeed.AutoSize = true;
         this.lSpeed.Font = new Font("Microsoft Sans Serif", 7f, FontStyle.Regular, GraphicsUnit.Point, 0);
-        this.lSpeed.Location = new Point(267, 3);
+        this.lSpeed.Location = new Point(317, 3);
         this.lSpeed.Name = "lSpeed";
         this.lSpeed.Size = new Size(34, 13);
         this.lSpeed.TabIndex = 5;
@@ -657,13 +716,14 @@ public class VgsPreview : UserControl
         this.pbSong.Style = ProgressBarStyle.Continuous;
         this.pbSong.TabIndex = 3;
         this.pbSong.MouseClick += this.pbSong_MouseClick;
+        // Playback speed slider
         this.tbSpeed.AutoSize = false;
         this.tbSpeed.LargeChange = 25;
         this.tbSpeed.Location = new Point(234, 15);
-        this.tbSpeed.Maximum = 100;
+        this.tbSpeed.Maximum = 200; // Because why just limit to only 100?
         this.tbSpeed.Minimum = 25;
         this.tbSpeed.Name = "tbSpeed";
-        this.tbSpeed.Size = new Size(100, 15);
+        this.tbSpeed.Size = new Size(200, 15);
         this.tbSpeed.SmallChange = 5;
         this.tbSpeed.TabIndex = 0;
         this.tbSpeed.TickFrequency = 10;

@@ -38,6 +38,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NAudio, Version=1.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.4\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System" />
@@ -152,7 +155,7 @@
     <Compile Include="Class36.cs" />
     <Compile Include="Class37.cs" />
     <Compile Include="Class38.cs" />
-    <Compile Include="Class39.cs" />
+    <Compile Include="VgsHelper.cs" />
     <Compile Include="Class4.cs" />
     <Compile Include="Class40.cs" />
     <Compile Include="Class41.cs" />
@@ -208,7 +211,7 @@
     <Compile Include="GClass10.cs" />
     <Compile Include="GClass100.cs" />
     <Compile Include="GClass101.cs" />
-    <Compile Include="GClass102.cs" />
+    <Compile Include="AudioInfo.cs" />
     <Compile Include="GClass103.cs" />
     <Compile Include="GClass104.cs">
       <SubType>Component</SubType>
@@ -735,6 +738,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ChangeLog.txt">

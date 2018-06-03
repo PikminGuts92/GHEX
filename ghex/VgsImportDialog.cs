@@ -24,8 +24,8 @@ public partial class VgsImportDialog : Form
             this.cbChannel7
         };
         BinaryReader binaryReader_ = new BinaryReader(gclass126_1.GetArkEntryStream());
-        this.struct2_0 = Class39.smethod_0(binaryReader_);
-        switch (this.struct2_0.struct3_0.Length)
+        this.struct2_0 = VgsHelper.ReadVgsFromStream(binaryReader_);
+        switch (this.struct2_0.channels.Length)
         {
         case 1:
             this.lMapping.Text = "0=Speech?";
@@ -50,7 +50,7 @@ public partial class VgsImportDialog : Form
         }
         this.lMapping.Text = "..";
         IL_13F:
-        for (int i = 0; i < this.struct2_0.struct3_0.Length; i++)
+        for (int i = 0; i < this.struct2_0.channels.Length; i++)
         {
             this.comboBox_0[i].Enabled = true;
         }
@@ -182,9 +182,9 @@ public partial class VgsImportDialog : Form
                     else if (text.EndsWith(".vgs", StringComparison.CurrentCultureIgnoreCase))
                     {
                         BinaryReader binaryReader = new BinaryReader(new FileStream(text, FileMode.Open, FileAccess.Read, FileShare.Read));
-                        Class39.Struct2 @struct = Class39.smethod_0(binaryReader);
+                        VgsHelper.VgsFile @struct = VgsHelper.ReadVgsFromStream(binaryReader);
                         string[] array3;
-                        switch (@struct.struct3_0.Length)
+                        switch (@struct.channels.Length)
                         {
                         case 2:
                             array3 = new string[]
@@ -224,28 +224,28 @@ public partial class VgsImportDialog : Form
                             };
                             goto IL_384;
                         }
-                        array3 = new string[@struct.struct3_0.Length];
+                        array3 = new string[@struct.channels.Length];
                         IL_384:
                         VgsImportDialog.Class14 class2 = @class;
                         int[] int_ = new int[1];
                         class2.int_1 = int_;
-                        @class.class13_0 = new VgsImportDialog.Class13[@struct.struct3_0.Length];
+                        @class.class13_0 = new VgsImportDialog.Class13[@struct.channels.Length];
                         bool flag3 = false;
-                        for (int k = 0; k < @struct.struct3_0.Length; k++)
+                        for (int k = 0; k < @struct.channels.Length; k++)
                         {
                             VgsImportDialog.Class13 class3 = new VgsImportDialog.Class13();
                             class3.int_1 = k;
                             class3.class14_0 = @class;
                             class3.int_0 = 0;
                             class3.string_0 = array3[k];
-                            class3.int_2 = @struct.struct3_0[k].int_0;
+                            class3.int_2 = @struct.channels[k].sampleRate;
                             @class.class13_0[k] = class3;
-                            if (@struct.struct3_0[k].int_0 != @struct.struct3_0[0].int_0)
+                            if (@struct.channels[k].sampleRate != @struct.channels[0].sampleRate)
                             {
                                 flag3 = true;
                             }
                         }
-                        gclass = new WaveFormat(flag3 ? 0 : @struct.struct3_0[0].int_0, 16, @struct.struct3_0.Length);
+                        gclass = new WaveFormat(flag3 ? 0 : @struct.channels[0].sampleRate, 16, @struct.channels.Length);
                         text2 = "VGS";
                         binaryReader.Close();
                     }
@@ -524,23 +524,23 @@ public partial class VgsImportDialog : Form
                 {
                     FileStream fileStream = new FileStream(@class.class14_0.string_0, FileMode.Open, FileAccess.Read, FileShare.Read);
                     BinaryReader binaryReader = new BinaryReader(fileStream);
-                    Class39.Struct2 @struct = Class39.smethod_0(binaryReader);
+                    VgsHelper.VgsFile @struct = VgsHelper.ReadVgsFromStream(binaryReader);
                     int num6 = 0;
                     long num7 = 0L;
-                    @class.class14_0.short_0 = new short[@struct.struct3_0.Length][];
-                    long[] array4 = new long[@struct.struct3_0.Length];
-                    long[] array5 = new long[@struct.struct3_0.Length];
-                    long[] array6 = new long[@struct.struct3_0.Length];
-                    for (int m = 0; m < @struct.struct3_0.Length; m++)
+                    @class.class14_0.short_0 = new short[@struct.channels.Length][];
+                    long[] array4 = new long[@struct.channels.Length];
+                    long[] array5 = new long[@struct.channels.Length];
+                    long[] array6 = new long[@struct.channels.Length];
+                    for (int m = 0; m < @struct.channels.Length; m++)
                     {
-                        @class.class14_0.short_0[m] = new short[@struct.struct3_0[m].int_1 * 28];
-                        @class.int_2 = @struct.struct3_0[m].int_0;
+                        @class.class14_0.short_0[m] = new short[@struct.channels[m].blockCount * 28];
+                        @class.int_2 = @struct.channels[m].sampleRate;
                         array4[m] = 0L;
                         array5[m] = 0L;
                         array6[m] = 0L;
-                        if ((long)@struct.struct3_0[m].int_1 > num7)
+                        if ((long)@struct.channels[m].blockCount > num7)
                         {
-                            num7 = (long)@struct.struct3_0[m].int_1;
+                            num7 = (long)@struct.channels[m].blockCount;
                             num6 = m;
                         }
                     }
@@ -643,29 +643,29 @@ public partial class VgsImportDialog : Form
         {
             gclass73_0.string_1 = "Creating VGS";
         }
-        VgsImportDialog.Class13[] array12 = new VgsImportDialog.Class13[this.struct2_0.struct3_0.Length];
-        Class39.Struct2.Struct3[] array13 = new Class39.Struct2.Struct3[array12.Length];
+        VgsImportDialog.Class13[] array12 = new VgsImportDialog.Class13[this.struct2_0.channels.Length];
+        VgsHelper.VgsFile.VgsChannel[] array13 = new VgsHelper.VgsFile.VgsChannel[array12.Length];
         int num21 = 0;
         int num22 = 0;
         for (int num23 = 0; num23 < array12.Length; num23++)
         {
             VgsImportDialog.Class13 class2 = this.comboBox_0[num23].SelectedItem as VgsImportDialog.Class13;
-            array13[num23].int_0 = this.struct2_0.struct3_0[num23].int_0;
+            array13[num23].sampleRate = this.struct2_0.channels[num23].sampleRate;
             if (class2 != null)
             {
                 array12[num23] = class2;
-                array13[num23].int_1 = (int)(((long)class2.class14_0.short_0[class2.int_1].Length * (long)array13[num23].int_0 / (long)class2.int_2 + 27L) / 28L);
-                num21 = Math.Max(array13[num23].int_1, num21);
-                num22 = Math.Max(array13[num23].int_0, num22);
+                array13[num23].blockCount = (int)(((long)class2.class14_0.short_0[class2.int_1].Length * (long)array13[num23].sampleRate / (long)class2.int_2 + 27L) / 28L);
+                num21 = Math.Max(array13[num23].blockCount, num21);
+                num22 = Math.Max(array13[num23].sampleRate, num22);
             }
         }
         int num24 = 128;
         int[] array14 = new int[array12.Length];
         for (int num25 = 0; num25 < array12.Length; num25++)
         {
-            array14[num25] = (int)((float)(num22 / array13[num25].int_0) + 0.5f);
-            array13[num25].int_1 = (int)((float)(num21 / array14[num25]) + 0.5f);
-            num24 += array13[num25].int_1 * 16;
+            array14[num25] = (int)((float)(num22 / array13[num25].sampleRate) + 0.5f);
+            array13[num25].blockCount = (int)((float)(num21 / array14[num25]) + 0.5f);
+            num24 += array13[num25].blockCount * 16;
         }
         int[] array15 = new int[array12.Length];
         long[] array16 = new long[array12.Length];
@@ -680,7 +680,7 @@ public partial class VgsImportDialog : Form
         int num26 = 0;
         MemoryStream memoryStream = new MemoryStream(num24);
         BinaryWriter binaryWriter = new BinaryWriter(memoryStream);
-        Class39.smethod_1(binaryWriter, array13);
+        VgsHelper.WriteVgsToStream(binaryWriter, array13);
         int num27 = 0;
         while (num27 < array12.Length)
         {
@@ -689,14 +689,14 @@ public partial class VgsImportDialog : Form
                 if (array15[num28] != -1 && num26 % array14[num28] == 0)
                 {
                     byte b2 = (byte)num28;
-                    if (array15[num28] + 16 >= array13[num28].int_1 * 16)
+                    if (array15[num28] + 16 >= array13[num28].blockCount * 16)
                     {
                         b2 |= 128;
                     }
                     if (array12[num28] != null && array16[num28] < (long)array12[num28].class14_0.short_0[array12[num28].int_1].Length)
                     {
                         float float_ = array12[num28].class14_0.float_0;
-                        double num29 = (double)array12[num28].int_2 / (double)array13[num28].int_0;
+                        double num29 = (double)array12[num28].int_2 / (double)array13[num28].sampleRate;
                         short[] array24 = array12[num28].class14_0.short_0[array12[num28].int_1];
                         Array.Clear(array22, 0, 28);
                         for (int num30 = 0; num30 < 28; num30++)
@@ -798,7 +798,7 @@ public partial class VgsImportDialog : Form
 
     ArkEntry gclass126_0;
 
-    Class39.Struct2 struct2_0;
+    VgsHelper.VgsFile struct2_0;
 
     ComboBox[] comboBox_0;
 

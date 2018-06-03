@@ -4,10 +4,10 @@ using System.Reflection;
 [DefaultMember("Item")]
 public class GClass103
 {
-    public GClass103(GClass102 gclass102_1, uint uint_0)
+    public GClass103(AudioInfo info, uint uint_0)
     {
         this.method_1((int)uint_0);
-        this.gclass102_0 = gclass102_1;
+        this.audioInfo = info;
     }
 
     public int method_0()
@@ -21,9 +21,9 @@ public class GClass103
         this.float_1 = new float[int_0];
     }
 
-    public GClass102 method_2()
+    public AudioInfo GetAudioInfo()
     {
-        return this.gclass102_0;
+        return this.audioInfo;
     }
 
     public float[] method_3(GEnum47 genum47_0)
@@ -54,5 +54,5 @@ public class GClass103
 
     float[] float_1;
 
-    GClass102 gclass102_0;
+    AudioInfo audioInfo;
 }

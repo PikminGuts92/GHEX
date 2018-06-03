@@ -9,11 +9,11 @@ public class GClass62 : IDisposable
         return WinMM.waveOutGetNumDevs();
     }
 
-    public GClass62(int int_0, WaveFormat gclass94_0, int int_1, int int_2, GDelegate1 gdelegate1_1)
+    public GClass62(int deviceId, WaveFormat gclass94_0, int int_1, int int_2, GDelegate1 gdelegate1_1)
     {
         this.byte_0 = (byte)((gclass94_0.short_3 == 8) ? 128 : 0);
         this.gdelegate1_0 = gdelegate1_1;
-        PointerHelper.AssertNotNull(WinMM.waveOutOpen(out this.intptr_0, int_0, gclass94_0, this.delegate1_0, 0, WinMM.CALL_BACK_FUNCTION));
+        PointerHelper.AssertNotNull(WinMM.waveOutOpen(out this.intptr_0, deviceId, gclass94_0, this.delegate1_0, 0, WinMM.CALL_BACK_FUNCTION));
         this.method_1(int_1, int_2);
         this.thread_0 = new Thread(new ThreadStart(this.method_0));
         this.thread_0.Start();
