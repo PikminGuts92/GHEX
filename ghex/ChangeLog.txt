@@ -1,6 +1,7 @@
 ﻿=== TBA: Version 0.4.3.2 ===
   - Change: Updated audio API library
   - Change: Increased maximum playback speed to 200%
+  - Change: Preserve fullscreen state in settings
   - Fix: Audio playback now works on Windows 10
 
 === 2018-03-17: Version 0.4.3.1 ===

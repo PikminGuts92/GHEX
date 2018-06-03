@@ -21,6 +21,8 @@ class Settings
         return Application.UserAppDataPath.Substring(0, Application.UserAppDataPath.LastIndexOf('\\')) + "\\Settings.xml";
     }
 
+    public bool FullScreen { get; set; }
+
     public void LoadXML()
     {
         if (!File.Exists(this.GetXMLFileLocation()))
@@ -56,11 +58,19 @@ class Settings
             string name;
             if ((name = xmlNode.Name) != null)
             {
-                if (!(name == "ArchiveSource"))
+                // Checks if fullscreen
+                if (name == "Fullscreen")
                 {
-                    if (!(name == "WindowRect"))
+                    bool.TryParse(xmlNode.Attributes["Enabled"]?.Value, out bool set);
+                    this.FullScreen = set;
+                    continue;
+                }
+
+                if (name != "ArchiveSource")
+                {
+                    if (name != "WindowRect")
                     {
-                        if (!(name == "AlertVersion"))
+                        if (name != "AlertVersion")
                         {
                             if (name == "PreviousDir")
                             {
@@ -95,6 +105,12 @@ class Settings
         XmlDocument xmlDocument = new XmlDocument();
         xmlDocument.LoadXml("<Settings/>");
         XmlNode xmlNode = xmlDocument["Settings"];
+
+        // Hotfix for saving fullscreen (TODO: Implement better)
+        XmlElement xmlElement0 = xmlDocument.CreateElement("Fullscreen");
+        xmlElement0.SetAttribute("Enabled", this.FullScreen.ToString());
+        xmlNode.AppendChild(xmlElement0);
+
         foreach (ArchiveSource @class in this.archiveSources)
         {
             XmlElement xmlElement = xmlDocument.CreateElement("ArchiveSource");

@@ -24,6 +24,10 @@ public partial class MainWindow : Form
         this.tsbPropertyGrid.Tag = this.propertyGrid1;
         this.tsLeft.method_17(this.tsbPropertyGrid);
         this.tsLeft.method_17(this.tsbExplorer);
+        this.Resize += MainWindow_Resize;
+
+        if (Settings.GlobalSettings.FullScreen) this.WindowState = FormWindowState.Maximized;
+
         if (Settings.GetGlobalSettings().method_4().ContainsKey("MainWindow"))
         {
             base.Bounds = Settings.GetGlobalSettings().method_4()["MainWindow"];
@@ -34,6 +38,10 @@ public partial class MainWindow : Form
             this.splitContainer1.SplitterDistance = rectangle.Width;
         }
     }
+
+    // Sets fullscreen in settings
+    private void MainWindow_Resize(object sender, EventArgs e) =>
+        Settings.GlobalSettings.FullScreen = this.WindowState == FormWindowState.Maximized;
 
     void MainWindow_Load(object sender, EventArgs e)
     {
