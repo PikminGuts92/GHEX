@@ -324,6 +324,20 @@ public class VgsPreview : UserControl
         Marshal.Copy(source, 0, intptr_0, gclass.method_0());
     }
 
+    public int method_5_alt(byte[] buffer, int int_1)
+    {
+        // Callback function
+        GClass103 gclass = new GClass103(new AudioInfo(44100, 16, 2), (uint)(int_1 / 4));
+        this.method_11(gclass);
+        int[] source = new int[gclass.method_0()];
+        GClass80.smethod_2(gclass.method_3(GEnum47.const_0), gclass.method_3(GEnum47.const_1), ref source, gclass.method_0());
+        //Marshal.Copy(source, 0, intptr_0, gclass.method_0());
+
+        // Copies int array to byte array buffer
+        Buffer.BlockCopy(source, 0, buffer, 0, buffer.Length);
+        return buffer.Length;
+    }
+
     public bool method_6()
     {
         return this.isAudioInitialized && !this.bool_0;
@@ -457,14 +471,15 @@ public class VgsPreview : UserControl
         {
             outputDevice = new WaveOutEvent();
             outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
+            outputDevice.DesiredLatency = 100; // Default = 300
         }
 
-        //outputDevice.Init()
-        
+        outputDevice.Init(new VgsProvider(this));
+        outputDevice.Play();
 
         // Creates new VGS object
-        this.gclass62_0 = new GClass62(-1, new WaveFormat(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
-        //this.gclass62_0 = null;
+        //this.gclass62_0 = new GClass62(-1, new WaveFormat(44100, 16, 2), this.int_0 * 4, 4, new GDelegate1(this.method_5));
+        this.gclass62_0 = null;
         this.bool_0 = false;
         this.isAudioPlaying = false;
         this.isAudioInitialized = true;
@@ -474,14 +489,19 @@ public class VgsPreview : UserControl
 
     class VgsProvider : IWaveProvider
     {
-        
+        private NAudio.Wave.WaveFormat _format;
+        private VgsPreview _preview;
 
-        public NAudio.Wave.WaveFormat WaveFormat => throw new NotImplementedException();
-
-        public int Read(byte[] buffer, int offset, int count)
+        public VgsProvider(VgsPreview preview)
         {
-            throw new NotImplementedException();
+            _preview = preview;
+            _format = new NAudio.Wave.WaveFormat(44100, 2);
         }
+
+        public NAudio.Wave.WaveFormat WaveFormat => _format;
+        
+        public int Read(byte[] buffer, int offset, int count)
+            => _preview.method_5_alt(buffer, count);
     }
 
     private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
