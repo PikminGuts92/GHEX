@@ -24,13 +24,13 @@ public partial class MainWindow : Form
         this.tsbPropertyGrid.Tag = this.propertyGrid1;
         this.tsLeft.method_17(this.tsbPropertyGrid);
         this.tsLeft.method_17(this.tsbExplorer);
-        if (Class61.smethod_0().method_4().ContainsKey("MainWindow"))
+        if (Settings.smethod_0().method_4().ContainsKey("MainWindow"))
         {
-            base.Bounds = Class61.smethod_0().method_4()["MainWindow"];
+            base.Bounds = Settings.smethod_0().method_4()["MainWindow"];
         }
-        if (Class61.smethod_0().method_4().ContainsKey("MainWindowSplit"))
+        if (Settings.smethod_0().method_4().ContainsKey("MainWindowSplit"))
         {
-            Rectangle rectangle = Class61.smethod_0().method_4()["MainWindowSplit"];
+            Rectangle rectangle = Settings.smethod_0().method_4()["MainWindowSplit"];
             this.splitContainer1.SplitterDistance = rectangle.Width;
         }
     }
@@ -43,7 +43,7 @@ public partial class MainWindow : Form
     {
         // Reads in previously loaded HDR files?
         this.list_0 = new List<ArkFile>();
-        Class58[] array = Class61.smethod_0().method_3().ToArray();
+        Class58[] array = Settings.smethod_0().method_3().ToArray();
         foreach (Class58 @class in array)
         {
             this.method_17(@class.string_0, @class.bool_0, @class.ulong_0);
@@ -658,7 +658,7 @@ public partial class MainWindow : Form
                 }
                 if (@class.gclass128_0.method_4())
                 {
-                    Class61.smethod_0().method_3().method_1(@class.gclass128_0.GetHdrPath()).ulong_0 = @class.gclass128_0.method_14();
+                    Settings.smethod_0().method_3().method_1(@class.gclass128_0.GetHdrPath()).ulong_0 = @class.gclass128_0.method_14();
                 }
             }
             treeNode_0.Text += " (Loading...)";
@@ -725,17 +725,17 @@ public partial class MainWindow : Form
         }
         this.arkFileList.EndUpdate();
         this.list_0.Add(gclass128_0);
-        if (!Class61.smethod_0().method_3().method_0(gclass128_0.GetHdrPath()))
+        if (!Settings.smethod_0().method_3().method_0(gclass128_0.GetHdrPath()))
         {
             if (gclass128_0.ArkExists() && gclass128_0.method_7() && MessageBox.Show("The archive you're adding is read-only.\nWould you like to make it writable?", "Archive", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
                 gclass128_0.method_8();
             }
-            foreach (Class58 @class in Class61.smethod_0().method_3())
+            foreach (Class58 @class in Settings.smethod_0().method_3())
             {
                 @class.bool_0 = false;
             }
-            Class61.smethod_0().method_3().Add(new Class58(gclass128_0.GetHdrPath(), true, 0UL));
+            Settings.smethod_0().method_3().Add(new Class58(gclass128_0.GetHdrPath(), true, 0UL));
         }
         return treeNode;
     }
@@ -771,18 +771,18 @@ public partial class MainWindow : Form
 
     void tsmiFileLocateArk_Click(object sender, EventArgs e)
     {
-        this.openFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("LocateArchive");
+        this.openFileDialog_0.InitialDirectory = Settings.smethod_0().method_8().method_1("LocateArchive");
         DialogResult dialogResult = this.openFileDialog_0.ShowDialog();
         if (dialogResult != DialogResult.OK)
         {
             return;
         }
-        if (Class61.smethod_0().method_3().method_0(this.openFileDialog_0.FileName))
+        if (Settings.smethod_0().method_3().method_0(this.openFileDialog_0.FileName))
         {
             MessageBox.Show("Archive already in list");
             return;
         }
-        Class61.smethod_0().method_8().method_2("LocateArchive", Class109.smethod_5(this.openFileDialog_0.FileName));
+        Settings.smethod_0().method_8().method_2("LocateArchive", Class109.smethod_5(this.openFileDialog_0.FileName));
         this.method_17(this.openFileDialog_0.FileName, true, 0UL);
     }
 
@@ -857,7 +857,7 @@ public partial class MainWindow : Form
         if (treeNode_0.Tag is ArkFile)
         {
             ArkFile gclass = treeNode_0.Tag as ArkFile;
-            if (!Class61.smethod_0().method_3().method_2(gclass.GetHdrPath()))
+            if (!Settings.smethod_0().method_3().method_2(gclass.GetHdrPath()))
             {
                 return;
             }
@@ -866,7 +866,7 @@ public partial class MainWindow : Form
         }
         else if (treeNode_0.Tag == null && treeNode_0.Text.ToLower().Contains(".hdr"))
         {
-            Class61.smethod_0().method_3().method_2(treeNode_0.Text);
+            Settings.smethod_0().method_3().method_2(treeNode_0.Text);
         }
         this.arkFileList.Nodes.Remove(treeNode_0);
     }
@@ -926,7 +926,7 @@ public partial class MainWindow : Form
                 this.cmiFileListMakeWritable.Visible = true;
             }
             this.cmiFileListRemove.Visible = true;
-            if (selectedNode.Parent == null && Class61.smethod_0().method_3().method_0(gclass.GetHdrPath()))
+            if (selectedNode.Parent == null && Settings.smethod_0().method_3().method_0(gclass.GetHdrPath()))
             {
                 this.cmiFileListRemove.Enabled = true;
             }
@@ -1006,14 +1006,14 @@ public partial class MainWindow : Form
                 ArkFile gclass = treeNode.Tag as ArkFile;
                 if (gclass.GetArkEntries().Count > 0)
                 {
-                    Class61.smethod_0().method_3().method_1(gclass.GetHdrPath()).bool_0 = treeNode.IsExpanded;
-                    Class61.smethod_0().method_3().method_1(gclass.GetHdrPath()).ulong_0 = (gclass.method_4() ? gclass.method_14() : 0UL);
+                    Settings.smethod_0().method_3().method_1(gclass.GetHdrPath()).bool_0 = treeNode.IsExpanded;
+                    Settings.smethod_0().method_3().method_1(gclass.GetHdrPath()).ulong_0 = (gclass.method_4() ? gclass.method_14() : 0UL);
                     this.method_21(gclass);
                 }
             }
         }
-        Class61.smethod_0().method_4()["MainWindow"] = base.Bounds;
-        Class61.smethod_0().method_4()["MainWindowSplit"] = new Rectangle(0, 0, this.splitContainer1.SplitterDistance, this.scPreview.SplitterDistance);
+        Settings.smethod_0().method_4()["MainWindow"] = base.Bounds;
+        Settings.smethod_0().method_4()["MainWindowSplit"] = new Rectangle(0, 0, this.splitContainer1.SplitterDistance, this.scPreview.SplitterDistance);
     }
 
     void cmiFileListSave_Click(object sender, EventArgs e)
@@ -1040,12 +1040,12 @@ public partial class MainWindow : Form
         @class.openFileDialog_0.Title = "Locate a file to replace \"" + @class.gclass126_0.GetFileName() + "\" with..";
         @class.openFileDialog_0.FileName = @class.gclass126_0.GetFileName();
         @class.openFileDialog_0.Filter = @class.gclass126_0.GetFileExtension().ToUpper() + " files|*." + @class.gclass126_0.GetFileExtension();
-        @class.openFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("FileReplace");
+        @class.openFileDialog_0.InitialDirectory = Settings.smethod_0().method_8().method_1("FileReplace");
         if (@class.openFileDialog_0.ShowDialog() != DialogResult.OK)
         {
             return;
         }
-        Class61.smethod_0().method_8().method_2("FileReplace", Class109.smethod_5(@class.openFileDialog_0.FileName));
+        Settings.smethod_0().method_8().method_2("FileReplace", Class109.smethod_5(@class.openFileDialog_0.FileName));
         TreeNode selectedNode = this.arkFileList.SelectedNode;
         @class.gclass128_0 = (this.method_10(selectedNode).Tag as ArkFile);
         @class.list_0 = @class.gclass128_0.GetArkEntries().FindAll(new Predicate<ArkEntry>(@class.method_0));
@@ -1117,14 +1117,14 @@ public partial class MainWindow : Form
             string value = xmlNode.Attributes["Version"].Value;
             if (value.CompareTo(Application.ProductVersion) > 0)
             {
-                Class61.smethod_0().method_7(value);
+                Settings.smethod_0().method_7(value);
                 this.tslVersion.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 this.tslVersion.ToolTipText = "Version " + value + " is available!\nDouble-click to download";
                 this.tslVersion.IsLink = true;
             }
-            if (Class61.smethod_0().method_6().CompareTo(Application.ProductVersion) == 0)
+            if (Settings.smethod_0().method_6().CompareTo(Application.ProductVersion) == 0)
             {
-                Class61.smethod_0().method_7("");
+                Settings.smethod_0().method_7("");
                 if (this.changesDialog_0 == null)
                 {
                     this.changesDialog_0 = new ChangesDialog();
@@ -1221,12 +1221,12 @@ public partial class MainWindow : Form
             class2.saveFileDialog_0.FileName = class2.gclass126_0.GetFileName();
             class2.saveFileDialog_0.Filter = class2.gclass126_0.GetFileExtension().ToUpper() + " files|*." + class2.gclass126_0.GetFileExtension();
             class2.saveFileDialog_0.ValidateNames = true;
-            class2.saveFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("ExtractFile");
+            class2.saveFileDialog_0.InitialDirectory = Settings.smethod_0().method_8().method_1("ExtractFile");
             if (class2.saveFileDialog_0.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
-            Class61.smethod_0().method_8().method_2("ExtractFile", Class109.smethod_5(class2.saveFileDialog_0.FileName));
+            Settings.smethod_0().method_8().method_2("ExtractFile", Class109.smethod_5(class2.saveFileDialog_0.FileName));
             ProgressDialog progressDialog = new ProgressDialog(new ProgressDialog.GDelegate6(class2.method_0));
             progressDialog.ShowDialog();
             return;
@@ -1248,12 +1248,12 @@ public partial class MainWindow : Form
                     class3.folderBrowserDialog_0 = new FolderBrowserDialog();
                     class3.folderBrowserDialog_0.Description = "Extract \"" + class3.string_0 + "\" to..";
                     class3.folderBrowserDialog_0.ShowNewFolderButton = true;
-                    class3.folderBrowserDialog_0.SelectedPath = Class61.smethod_0().method_8().method_1("ExtractFile");
+                    class3.folderBrowserDialog_0.SelectedPath = Settings.smethod_0().method_8().method_1("ExtractFile");
                     if (class3.folderBrowserDialog_0.ShowDialog() != DialogResult.OK)
                     {
                         return;
                     }
-                    Class61.smethod_0().method_8().method_2("ExtractFile", class3.folderBrowserDialog_0.SelectedPath);
+                    Settings.smethod_0().method_8().method_2("ExtractFile", class3.folderBrowserDialog_0.SelectedPath);
                     class3.long_0 = 0L;
                     ArkFile gclass = this.method_10(@class.treeNode_0).Tag as ArkFile;
                     class3.list_0 = gclass.GetArkEntries().FindAll(new Predicate<ArkEntry>(class3.method_0));
@@ -1301,12 +1301,12 @@ public partial class MainWindow : Form
             class4.saveFileDialog_0.FileName = class4.class98_0.method_0();
             class4.saveFileDialog_0.Filter = class4.class98_0.method_1().ToUpper() + " files|*." + class4.class98_0.method_1();
             class4.saveFileDialog_0.ValidateNames = true;
-            class4.saveFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("ExtractFile");
+            class4.saveFileDialog_0.InitialDirectory = Settings.smethod_0().method_8().method_1("ExtractFile");
             if (class4.saveFileDialog_0.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
-            Class61.smethod_0().method_8().method_2("ExtractFile", Class109.smethod_5(class4.saveFileDialog_0.FileName));
+            Settings.smethod_0().method_8().method_2("ExtractFile", Class109.smethod_5(class4.saveFileDialog_0.FileName));
             ProgressDialog progressDialog3 = new ProgressDialog(new ProgressDialog.GDelegate6(class4.method_0));
             progressDialog3.ShowDialog();
             return;
@@ -1375,12 +1375,12 @@ public partial class MainWindow : Form
             return;
         }
         @class.folderBrowserDialog_0 = new FolderBrowserDialog();
-        @class.folderBrowserDialog_0.SelectedPath = Class61.smethod_0().method_8().method_1("BatchExport");
+        @class.folderBrowserDialog_0.SelectedPath = Settings.smethod_0().method_8().method_1("BatchExport");
         if (@class.folderBrowserDialog_0.ShowDialog() != DialogResult.OK)
         {
             return;
         }
-        Class61.smethod_0().method_8().method_2("BatchExport", @class.folderBrowserDialog_0.SelectedPath);
+        Settings.smethod_0().method_8().method_2("BatchExport", @class.folderBrowserDialog_0.SelectedPath);
         @class.gclass127_0 = gclass.method_28("songs/", "*.mid");
         ProgressDialog progressDialog = new ProgressDialog(new ProgressDialog.GDelegate6(@class.method_0));
         progressDialog.ShowDialog();
@@ -1411,11 +1411,11 @@ public partial class MainWindow : Form
         else if (string.Compare(strA, "mid", true) == 0)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Class61.smethod_0().method_8().method_1("MidImport");
+            openFileDialog.InitialDirectory = Settings.smethod_0().method_8().method_1("MidImport");
             openFileDialog.Filter = "Supported files|*.mid;*.sng;*.chart;song.ini";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Class61.smethod_0().method_8().method_2("MidImport", Class109.smethod_5(openFileDialog.FileName));
+                Settings.smethod_0().method_8().method_2("MidImport", Class109.smethod_5(openFileDialog.FileName));
                 form = new MidImportDialog(gclass, openFileDialog.FileName);
                 gdelegate6_ = new ProgressDialog.GDelegate6((form as MidImportDialog).method_5);
             }

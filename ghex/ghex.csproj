@@ -177,7 +177,7 @@
     <Compile Include="Class59.cs" />
     <Compile Include="Class6.cs" />
     <Compile Include="Class60.cs" />
-    <Compile Include="Class61.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Class62.cs" />
     <Compile Include="Class63.cs" />
     <Compile Include="Class64.cs" />

@@ -422,7 +422,7 @@ public class VgsPreview : UserControl
                             num5 = array2[num6];
                         }
                         float num7 = (float)((double)@class.float_0 - Math.Truncate((double)@class.float_0));
-                        gclass103_0.method_3(@class.genum47_0)[j] += (num4 + (num5 - num4) * num7) * @class.float_2 * VgsPreview.float_1;
+                        gclass103_0.method_3(@class.genum47_0)[j] += (num4 + (num5 - num4) * num7) * @class.float_2 * VgsPreview.float_1; // Updates float array
                         @class.float_0 += num3;
                         @class.float_1 = (float)@class.class88_0[@class.int_3].int_0 + @class.float_0;
                         if (@class.float_0 >= (float)num2)

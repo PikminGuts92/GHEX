@@ -5,16 +5,16 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
-class Class61
+class Settings
 {
-    public Class61()
+    public Settings()
     {
         Class109.smethod_14(Color.White);
     }
 
-    public static Class61 smethod_0()
+    public static Settings smethod_0()
     {
-        return Class61.class61_0;
+        return Settings.class61_0;
     }
 
     public string method_0()
@@ -169,7 +169,7 @@ class Class61
         return this.class60_0;
     }
 
-    static Class61 class61_0 = new Class61();
+    static Settings class61_0 = new Settings();
 
     Class59 class59_0 = new Class59();
 

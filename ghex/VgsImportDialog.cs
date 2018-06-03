@@ -117,12 +117,12 @@ public partial class VgsImportDialog : Form
 
     void tsmiSourceAdd_Click(object sender, EventArgs e)
     {
-        this.openFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("VgsImport");
+        this.openFileDialog_0.InitialDirectory = Settings.smethod_0().method_8().method_1("VgsImport");
         if (this.openFileDialog_0.ShowDialog() != DialogResult.OK)
         {
             return;
         }
-        Class61.smethod_0().method_8().method_2("VgsImport", Class109.smethod_5(this.openFileDialog_0.FileNames[0]));
+        Settings.smethod_0().method_8().method_2("VgsImport", Class109.smethod_5(this.openFileDialog_0.FileNames[0]));
         VgsImportDialog.Class13[] class13_ = this.method_0();
         this.lvSources.BeginUpdate();
         foreach (string text in this.openFileDialog_0.FileNames)

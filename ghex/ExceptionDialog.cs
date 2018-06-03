@@ -58,9 +58,9 @@ public partial class ExceptionDialog : Form
         StackTrace stackTrace2 = new StackTrace(true);
         TextBox textBox7 = this.textBox1;
         textBox7.Text += ExceptionDialog.smethod_0(stackTrace2, 3, stackTrace2.FrameCount);
-        if (Class61.smethod_0().method_6().CompareTo(Application.ProductVersion) > 0)
+        if (Settings.smethod_0().method_6().CompareTo(Application.ProductVersion) > 0)
         {
-            this.lblNote.Text = "Please try the new version (" + Class61.smethod_0().method_6() + ") before reporting!";
+            this.lblNote.Text = "Please try the new version (" + Settings.smethod_0().method_6() + ") before reporting!";
             this.cbReport.Enabled = false;
             this.tbDescription.Enabled = false;
         }

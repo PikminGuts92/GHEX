@@ -1088,12 +1088,12 @@ public class MidPreview : UserControl
             string_ = this.tbTitle.Text;
         }
         this.saveFileDialog_0.FileName = fileName;
-        this.saveFileDialog_0.InitialDirectory = Class61.smethod_0().method_8().method_1("MidExport");
+        this.saveFileDialog_0.InitialDirectory = Settings.smethod_0().method_8().method_1("MidExport");
         if (this.saveFileDialog_0.ShowDialog() != DialogResult.OK)
         {
             return;
         }
-        Class61.smethod_0().method_8().method_2("MidExport", Class109.smethod_5(this.saveFileDialog_0.FileName));
+        Settings.smethod_0().method_8().method_2("MidExport", Class109.smethod_5(this.saveFileDialog_0.FileName));
         this.method_25(this.saveFileDialog_0.FileName, string_);
     }
 
