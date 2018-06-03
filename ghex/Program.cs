@@ -7,7 +7,7 @@ static class Program
     [STAThread]
     static void Main()
     {
-        Settings.smethod_0().method_1();
+        Settings.GetGlobalSettings().LoadXML();
         Class109.smethod_16();
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
@@ -16,7 +16,7 @@ static class Program
             Program.gdelegate22_0 = new ExceptionDialog.GDelegate22(Program.smethod_0);
         }
         ExceptionDialog.smethod_3(Program.gdelegate22_0);
-        Settings.smethod_0().method_2();
+        Settings.GetGlobalSettings().SaveXML();
     }
 
     [CompilerGenerated]

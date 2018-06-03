@@ -7,40 +7,39 @@ using System.Xml;
 
 class Settings
 {
+    public static Settings GlobalSettings = new Settings();
+
     public Settings()
     {
         Class109.smethod_14(Color.White);
     }
 
-    public static Settings smethod_0()
-    {
-        return Settings.class61_0;
-    }
+    public static Settings GetGlobalSettings() => GlobalSettings;
 
-    public string method_0()
+    public string GetXMLFileLocation()
     {
         return Application.UserAppDataPath.Substring(0, Application.UserAppDataPath.LastIndexOf('\\')) + "\\Settings.xml";
     }
 
-    public void method_1()
+    public void LoadXML()
     {
-        if (!File.Exists(this.method_0()))
+        if (!File.Exists(this.GetXMLFileLocation()))
         {
-            this.string_0 = Application.ProductVersion;
+            this.productVersion = Application.ProductVersion;
             return;
         }
         XmlDocument xmlDocument = new XmlDocument();
         try
         {
-            xmlDocument.Load(this.method_0());
+            xmlDocument.Load(this.GetXMLFileLocation());
         }
         catch
         {
             try
             {
-                if (File.Exists(this.method_0() + ".bak"))
+                if (File.Exists(this.GetXMLFileLocation() + ".bak"))
                 {
-                    xmlDocument.Load(this.method_0() + ".bak");
+                    xmlDocument.Load(this.GetXMLFileLocation() + ".bak");
                 }
             }
             catch
@@ -70,7 +69,7 @@ class Settings
                         }
                         else
                         {
-                            this.string_0 = xmlNode.Attributes["New"].Value;
+                            this.productVersion = xmlNode.Attributes["New"].Value;
                         }
                     }
                     else
@@ -85,23 +84,23 @@ class Settings
                     {
                         ulong.TryParse(xmlNode.Attributes["Verified"].Value, out ulong_);
                     }
-                    this.class59_0.Add(new Class58(xmlNode.Attributes["Path"].Value, bool.Parse(xmlNode.Attributes["Active"].Value), ulong_));
+                    this.archiveSources.Add(new ArchiveSource(xmlNode.Attributes["Path"].Value, bool.Parse(xmlNode.Attributes["Active"].Value), ulong_));
                 }
             }
         }
     }
 
-    public void method_2()
+    public void SaveXML()
     {
         XmlDocument xmlDocument = new XmlDocument();
         xmlDocument.LoadXml("<Settings/>");
         XmlNode xmlNode = xmlDocument["Settings"];
-        foreach (Class58 @class in this.class59_0)
+        foreach (ArchiveSource @class in this.archiveSources)
         {
             XmlElement xmlElement = xmlDocument.CreateElement("ArchiveSource");
-            xmlElement.SetAttribute("Path", @class.string_0);
-            xmlElement.SetAttribute("Active", @class.bool_0.ToString());
-            xmlElement.SetAttribute("Verified", @class.ulong_0.ToString());
+            xmlElement.SetAttribute("Path", @class.Path);
+            xmlElement.SetAttribute("Active", @class.Active.ToString());
+            xmlElement.SetAttribute("Verified", @class.Verified.ToString());
             xmlNode.AppendChild(xmlElement);
         }
         foreach (KeyValuePair<string, Rectangle> keyValuePair in this.sortedList_0)
@@ -114,11 +113,11 @@ class Settings
             xmlElement2.SetAttribute("Height", keyValuePair.Value.Height.ToString());
             xmlNode.AppendChild(xmlElement2);
         }
-        if (this.string_0.Length > 0 && Application.ProductVersion.CompareTo(this.string_0) != 0)
+        if (this.productVersion.Length > 0 && Application.ProductVersion.CompareTo(this.productVersion) != 0)
         {
             XmlElement xmlElement3 = xmlDocument.CreateElement("AlertVersion");
             xmlElement3.SetAttribute("Old", Application.ProductVersion);
-            xmlElement3.SetAttribute("New", this.string_0);
+            xmlElement3.SetAttribute("New", this.productVersion);
             xmlNode.AppendChild(xmlElement3);
         }
         foreach (KeyValuePair<string, string> keyValuePair2 in this.class60_0.method_0())
@@ -128,20 +127,20 @@ class Settings
             xmlElement4.SetAttribute("Path", keyValuePair2.Value);
             xmlNode.AppendChild(xmlElement4);
         }
-        if (File.Exists(this.method_0()))
+        if (File.Exists(this.GetXMLFileLocation()))
         {
-            if (File.Exists(this.method_0() + ".bak"))
+            if (File.Exists(this.GetXMLFileLocation() + ".bak"))
             {
-                File.Delete(this.method_0() + ".bak");
+                File.Delete(this.GetXMLFileLocation() + ".bak");
             }
-            File.Move(this.method_0(), this.method_0() + ".bak");
+            File.Move(this.GetXMLFileLocation(), this.GetXMLFileLocation() + ".bak");
         }
-        xmlDocument.Save(this.method_0());
+        xmlDocument.Save(this.GetXMLFileLocation());
     }
 
-    public Class59 method_3()
+    public ArchiveSourceCollection GetSources()
     {
-        return this.class59_0;
+        return this.archiveSources;
     }
 
     public SortedList<string, Rectangle> method_4()
@@ -154,30 +153,28 @@ class Settings
         return this.class57_0;
     }
 
-    public string method_6()
+    public string GetProductVersion()
     {
-        return this.string_0;
+        return this.productVersion;
     }
 
-    public void method_7(string string_1)
+    public void SetProductVersion(string newVersion)
     {
-        this.string_0 = string_1;
+        this.productVersion = newVersion;
     }
 
     public Class60 method_8()
     {
         return this.class60_0;
     }
-
-    static Settings class61_0 = new Settings();
-
-    Class59 class59_0 = new Class59();
+    
+    ArchiveSourceCollection archiveSources = new ArchiveSourceCollection();
 
     SortedList<string, Rectangle> sortedList_0 = new SortedList<string, Rectangle>();
 
     Class57 class57_0 = new Class57();
 
-    string string_0 = "";
+    string productVersion = "";
 
     Class60 class60_0 = new Class60();
 }

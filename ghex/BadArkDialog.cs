@@ -90,7 +90,7 @@ public partial class BadArkDialog : Form
         {
             return;
         }
-        this.folderBrowserDialog_0.SelectedPath = Settings.smethod_0().method_8().method_1("RecoverArchive");
+        this.folderBrowserDialog_0.SelectedPath = Settings.GetGlobalSettings().method_8().method_1("RecoverArchive");
         if (this.folderBrowserDialog_0.ShowDialog() != DialogResult.OK)
         {
             e.Cancel = true;
@@ -111,14 +111,14 @@ public partial class BadArkDialog : Form
                 else
                 {
                     this.string_0 = this.folderBrowserDialog_0.SelectedPath;
-                    Settings.smethod_0().method_8().method_2("RecoverArchive", this.folderBrowserDialog_0.SelectedPath);
+                    Settings.GetGlobalSettings().method_8().method_2("RecoverArchive", this.folderBrowserDialog_0.SelectedPath);
                 }
                 return;
             }
         }
 
         this.string_0 = this.folderBrowserDialog_0.SelectedPath;
-        Settings.smethod_0().method_8().method_2("RecoverArchive", this.folderBrowserDialog_0.SelectedPath);
+        Settings.GetGlobalSettings().method_8().method_2("RecoverArchive", this.folderBrowserDialog_0.SelectedPath);
     }
 
     void btnOk_Click(object sender, EventArgs e)

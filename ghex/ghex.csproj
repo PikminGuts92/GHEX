@@ -173,8 +173,8 @@
     <Compile Include="Class5.cs" />
     <Compile Include="Class56.cs" />
     <Compile Include="Class57.cs" />
-    <Compile Include="Class58.cs" />
-    <Compile Include="Class59.cs" />
+    <Compile Include="ArchiveSource.cs" />
+    <Compile Include="ArchiveSourceCollection.cs" />
     <Compile Include="Class6.cs" />
     <Compile Include="Class60.cs" />
     <Compile Include="Settings.cs" />

@@ -96,12 +96,12 @@ public partial class ArkCopyDialog : Form
 
     void btnBrowser_Click(object sender, EventArgs e)
     {
-        this.folderBrowserDialog_0.SelectedPath = Settings.smethod_0().method_8().method_1("CopyArchive");
+        this.folderBrowserDialog_0.SelectedPath = Settings.GetGlobalSettings().method_8().method_1("CopyArchive");
         if (this.folderBrowserDialog_0.ShowDialog() != DialogResult.OK)
         {
             return;
         }
-        if (Settings.smethod_0().method_3().method_0(this.folderBrowserDialog_0.SelectedPath + "\\main.hdr"))
+        if (Settings.GetGlobalSettings().GetSources().method_0(this.folderBrowserDialog_0.SelectedPath + "\\main.hdr"))
         {
             MessageBox.Show("The selected folder already contains an archive that\nis currently in the list.\nPlease remove it or choose another location.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             return;
@@ -143,7 +143,7 @@ public partial class ArkCopyDialog : Form
                                 return;
                             }
 
-                            Settings.smethod_0().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
+                            Settings.GetGlobalSettings().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
                             this.lblTarget.Text = this.folderBrowserDialog_0.SelectedPath;
                             this.string_1 = this.lblTarget.Text;
                             if (this.cbDrives.Enabled)
@@ -155,7 +155,7 @@ public partial class ArkCopyDialog : Form
                         }
                     }
 
-                    Settings.smethod_0().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
+                    Settings.GetGlobalSettings().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
                     this.lblTarget.Text = this.folderBrowserDialog_0.SelectedPath;
                     this.string_1 = this.lblTarget.Text;
                     if (this.cbDrives.Enabled)
@@ -187,7 +187,7 @@ public partial class ArkCopyDialog : Form
                     return;
                 }
 
-                Settings.smethod_0().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
+                Settings.GetGlobalSettings().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
                 this.lblTarget.Text = this.folderBrowserDialog_0.SelectedPath;
                 this.string_1 = this.lblTarget.Text;
                 if (this.cbDrives.Enabled)
@@ -199,7 +199,7 @@ public partial class ArkCopyDialog : Form
             }
         }
 
-        Settings.smethod_0().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
+        Settings.GetGlobalSettings().method_8().method_2("CopyArchive", this.folderBrowserDialog_0.SelectedPath);
         this.lblTarget.Text = this.folderBrowserDialog_0.SelectedPath;
         this.string_1 = this.lblTarget.Text;
         if (this.cbDrives.Enabled)
