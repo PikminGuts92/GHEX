@@ -518,6 +518,9 @@ public class VgsPreview : UserControl
         {
             this.gclass62_0.Dispose();
         }
+
+        outputDevice?.Dispose();
+
         this.isAudioInitialized = false;
         this.btnStop.Enabled = false;
         this.btnPlay.ImageIndex = 1;
