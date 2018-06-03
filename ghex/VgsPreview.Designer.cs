@@ -693,9 +693,10 @@ public class VgsPreview : UserControl
         this.pbVolume.Value = 50;
         this.pbVolume.MouseDown += this.pbVolume_MouseMove;
         this.pbVolume.MouseMove += this.pbVolume_MouseMove;
+        // Playback speed label
         this.lSpeed.AutoSize = true;
         this.lSpeed.Font = new Font("Microsoft Sans Serif", 7f, FontStyle.Regular, GraphicsUnit.Point, 0);
-        this.lSpeed.Location = new Point(267, 3);
+        this.lSpeed.Location = new Point(317, 3);
         this.lSpeed.Name = "lSpeed";
         this.lSpeed.Size = new Size(34, 13);
         this.lSpeed.TabIndex = 5;
@@ -715,13 +716,14 @@ public class VgsPreview : UserControl
         this.pbSong.Style = ProgressBarStyle.Continuous;
         this.pbSong.TabIndex = 3;
         this.pbSong.MouseClick += this.pbSong_MouseClick;
+        // Playback speed slider
         this.tbSpeed.AutoSize = false;
         this.tbSpeed.LargeChange = 25;
         this.tbSpeed.Location = new Point(234, 15);
-        this.tbSpeed.Maximum = 100;
+        this.tbSpeed.Maximum = 200; // Because why just limit to only 100?
         this.tbSpeed.Minimum = 25;
         this.tbSpeed.Name = "tbSpeed";
-        this.tbSpeed.Size = new Size(100, 15);
+        this.tbSpeed.Size = new Size(200, 15);
         this.tbSpeed.SmallChange = 5;
         this.tbSpeed.TabIndex = 0;
         this.tbSpeed.TickFrequency = 10;
