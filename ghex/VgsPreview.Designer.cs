@@ -413,7 +413,7 @@ public class VgsPreview : UserControl
                     float num3 = this.float_0 * (float)@class.int_0 / (float)gclass103_0.GetAudioInfo().bitrate;
                     for (int j = 0; j < num; j++)
                     {
-                        float[] array2 = @class.class88_0[@class.int_3].float_0;
+                        float[] array2 = @class.class88_0[@class.int_3].float_0; // Merges channels?
                         float num4 = array2[(int)@class.float_0];
                         float num5 = num4;
                         int num6 = (int)(@class.float_0 + 0.5f);
